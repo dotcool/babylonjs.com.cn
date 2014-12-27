@@ -1,309 +1,783 @@
+<!DOCTYPE html>
+<html>
 
- <!DOCTYPE HTML>
-<html >
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>babylonjs</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="babylonjs">
+  <script src="http://static.duoshuo.com/embed.js"></script>
   
-    <title>Hexo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="John Doe">
-    
-    
-    
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  
+
+  
 
 </head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/06-Lights/">灯光</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/The-Playground/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-Actions/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-merge-meshes/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Home/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use FresnelParameters/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating the minified version/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-file-format/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-Primer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Advanced Texturing/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-instances/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-level-of-details/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-lens-flares/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use procedural textures?/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Naming-convention/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-postprocesses/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Roadmap/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-multi-views/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Tags/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using AssetsManager/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Working-with-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-debug-layer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
 
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;微博</a>
 
-    </header>
-    <div id="container">
-      <div id="main">
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-weibo"></i>
+                                微博</h2>
+                            <a class="mp-back" href="#">返回</a>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;E家课堂</a></li>
 
-  <section class="post" itemscope itemprop="blogPost">
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                    <a  data-pjax href="/2014/12/27/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/27/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/27/06-Lights/">灯光</a>
+                
+                    <a  data-pjax href="/2014/12/27/The-Playground/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-Actions/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-merge-meshes/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Home/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use FresnelParameters/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating the minified version/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-file-format/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-Primer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Advanced Texturing/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-instances/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-level-of-details/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-lens-flares/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use procedural textures?/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Naming-convention/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-postprocesses/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Roadmap/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-multi-views/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Tags/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using AssetsManager/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Working-with-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-debug-layer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="home-template">-->
+<!---->
   
-    <a href="/2014/12/27/hello-world/" title="Hello World" itemprop="url">
-  
-    <h1 itemprop="name">Hello World</h1>
+<main class="content" role="main">
+
     
-     
-           <p itemprop="description" >Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the </p>
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T16:47:37.000Z"
+                      itemprop="datePublished">Dec 28 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                babylonjs摄像机
+在任意的babylonjs的场景中，你可以创建很多摄像机，但是同时只能有一台摄像机是激活状态(除非你使用了multi-viewports).
+摄像机的管理是很简单的，babylonjs提供了很多种类的摄像机，我们将从最常见的两种(自由摄像机和轨迹旋转摄像机)
+
+自由摄像机 - 这是一个第一视角种类的摄像机，当你使用鼠标和键盘来控制时，和很多摄像机一样，你也可以添加控制键比如wasd等自由相机并不会自动对准目标，
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/04-Materials/">材质</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T09:34:58.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                材质
+现在我们可以在场景中创建不同的纹理元素，现在我们将介绍如何定义材质让纹理物体看上去不一样。
+
+Playground Demo Scene 4 - Materials
+我应该如何做
+我们已经熟练的在createScene函数中创建对象了了，所以我们现在创建一个全向点光源和一个轨道旋转摄像机，然后我们就开始制作一些基本的为纹理去测试我们的材质
+12345678910111213function createScene() {    v
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/03---Position,-Rotation-&-Scaling/">位移，旋转，缩放</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T08:54:22.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                位移，旋转，缩放
+在这个实例里面，我们将要学会如何使用放置、旋转和缩放我们例子里面的所以元素对象。我们将设置一个父类以及学习父类如何影响着位移旋转和缩放。
+Playground Demo Scene 3 - Positioned, Scaled, and Rotated Boxes
+我应该如何做？
+通常，我们将会在createScene中创建一个基本元素的场景
+1234function createScene() {    var sc
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T08:39:01.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                创建一个基本元素(形状或者纹理)
+在这个实例中，我们将要学会如何使用babylongjs创构建一个基本的元素，例如盒子，气缸或者飞机。
+Playground Demo Scene 2 - Seven basic shapes/mesh
+我应该如何开始呢？
+使用基本元素的一个简单方法是访问 Playground Demo Scene 02。你可以下载或者在线的方式浏览整个实例.
+我确信你已经阅读过这篇文章  Babylon.js Prim
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T08:38:53.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                创建基础场景
+在这个例子里面，我们将使用babylongjs创建一个基本的3D场景。
+在场景里的两个物体
+在你开始之前，请确保你使用的浏览器兼容WebGL(比如IE 11+，Firefox 4+，Google Chrome 9+，Opera 15+等)
+Html代码
+首先创建一个基本的html5页面:
+123456789101112&lt;!DOCTYPE html&gt;&lt;html xmlns="http://www.w3.or
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/15-Shadows/">阴影</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T05:03:31.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                In this tutorial, we are going to learn how to create shadows in Babylon JS. Shadows are now becoming dynamic, and they are now dynamically generated depending upon a light.
+
+Final result
+How can I do this ?
+Shadows are 
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T05:03:20.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                In this tutorial, uur goal is to understand height maps, and to learn how to generate realistic grounds.
+
+Final result
+How can I do this ?
+
+Introduction
+
+Those mountains are very easy to generate with Babylon.js, and wit
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/13 Environment/">环境</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T05:02:56.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                You have come a long way, and your scene is full of shapes, lights, sprites, particles, materials, it looks pretty good.  But there is something missing: a proper environment.  This is the first of three tutorials that t
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T05:02:49.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                This tutorial is going to talk about the particle system in BabylonJS. Particles are often small sprites used to simulate hard-to-reproduce phenomena like fire, smoke, water, or abstract visual effects like magic glitter
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-27T05:02:40.000Z"
+                      itemprop="datePublished">Dec 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                The last collision type could be very useful for you: it’s picking an object with your mouse. The main difficulty is to click on a 3D object whereas your screen is a flat 2D display.
+Let’s see how we can get your mouse p
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <nav class="pagination" role="pagination">
         
-    
-    <time datetime="2014-12-27T03:08:01.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/Using AssetsManager/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >In order to help developers load multiple assets, Babylon.js (starting with version 1.14) introduced the AssetsManager class.
-This class can</p>
+        <span class="page-number">Page 1 of 5</span>
         
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/Tags/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Concepts
-Tag? You may already have heard or read this word before. Let’s see some generic concepts.
-Tags are used:
-
-as an index term assigne</p>
+        <a data-pjax class="older-posts" href="/page/2/">Older Posts →</a>
         
+    </nav>
+</main>
+
+
+  
+<footer class="site-footer">
     
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/How-to-use-multi-views/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Babylon.js is able to render multi views of the same scene.
-Active cameras
-Basically, a scene has a 
-property to define the point of view. B</p>
-        
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/Roadmap/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Here are the next updates we will probably add to babylon.js:
-v2.0:
-
-Support for camera type, biped et physics for 3ds max exporter
-Vertex c</p>
-        
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/How-to-use-postprocesses/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Postprocesses allow you to create 2D effects on top of your scene.A postprocess is linked to a camera and can be part of a chain of postproc</p>
-        
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Why is it better than “ctrl + prt scr” screenshot?
-With a ctrl + print screen you can’t make screenshot with higher resolution than your scr</p>
-        
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/Optimizing-performances-with-octrees/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Octrees are a really powerful data structure that can quickly select entities based on space coordinates.More on wikipedia: http://en.wikipe</p>
-        
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/Naming-convention/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >If you want to contribute to babylon.js (What an excellent idea!), you should attempt to align your code with the following naming conventio</p>
-        
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/27/How to use procedural textures?/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >In classic texturing, we use 2D images, often pictures that have been shaped specifically to match an object. Let’s imagine you are creating</p>
-        
-    
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-  </a>
-</section>
-
-
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
-
-  
-
-  
-
-  <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS</a>
-</div>
-
-</aside>
-</div>
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<div class="social-font clearfix">
-		
-		
-		
-		
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
-		
-		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
-		
-		</p>
-</div>
 </footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-        
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
 </script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 
 
 
@@ -311,5 +785,5 @@ $(document).ready(function(){
 
 
 
-  </body>
- </html>
+</body>
+</html>

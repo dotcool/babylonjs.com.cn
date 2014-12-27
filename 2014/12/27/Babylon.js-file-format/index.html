@@ -1,93 +1,453 @@
+<!DOCTYPE html>
+<html>
 
- <!DOCTYPE HTML>
-<html >
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>babylonjs</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="babylonjs">
+  <script src="http://static.duoshuo.com/embed.js"></script>
   
-    <title>Hexo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="John Doe">
-    
-    <meta name="description" content="Babylon.js uses a JSON file format for describing scenes.
-You can find the complete loader code here:https://github.com/BabylonJS/Babylon.js/blob/mast">
-    
-    
-    
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  
+
+  
 
 </head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/06-Lights/">灯光</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/The-Playground/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-Actions/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-merge-meshes/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Home/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use FresnelParameters/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating the minified version/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-file-format/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-Primer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Advanced Texturing/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-instances/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-level-of-details/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-lens-flares/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use procedural textures?/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Naming-convention/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-postprocesses/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Roadmap/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-multi-views/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Tags/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using AssetsManager/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Working-with-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-debug-layer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
 
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;微博</a>
 
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/12/27/Babylon.js-file-format/" title="" itemprop="url"></a>
-  </h1>
-  <p class="article-author">By
-    
-      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
-    </p>
-  <p class="article-time">
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic_types"><span class="toc-number">1.</span> <span class="toc-text">Basic types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Global_structure"><span class="toc-number">2.</span> <span class="toc-text">Global structure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cameras"><span class="toc-number">3.</span> <span class="toc-text">Cameras</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lights"><span class="toc-number">4.</span> <span class="toc-text">Lights</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Materials"><span class="toc-number">5.</span> <span class="toc-text">Materials</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Textures"><span class="toc-number">6.</span> <span class="toc-text">Textures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MultiMaterials"><span class="toc-number">7.</span> <span class="toc-text">MultiMaterials</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Geometries"><span class="toc-number">8.</span> <span class="toc-text">Geometries</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boxes"><span class="toc-number">9.</span> <span class="toc-text">Boxes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spheres"><span class="toc-number">10.</span> <span class="toc-text">Spheres</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cylinders"><span class="toc-number">11.</span> <span class="toc-text">Cylinders</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Toruses"><span class="toc-number">12.</span> <span class="toc-text">Toruses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grounds"><span class="toc-number">13.</span> <span class="toc-text">Grounds</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Planes"><span class="toc-number">14.</span> <span class="toc-text">Planes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TorusKnots"><span class="toc-number">15.</span> <span class="toc-text">TorusKnots</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VertexData"><span class="toc-number">16.</span> <span class="toc-text">VertexData</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Instances"><span class="toc-number">17.</span> <span class="toc-text">Instances</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Meshes"><span class="toc-number">18.</span> <span class="toc-text">Meshes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SubMeshes"><span class="toc-number">19.</span> <span class="toc-text">SubMeshes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Animations"><span class="toc-number">20.</span> <span class="toc-text">Animations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AnimationKeys"><span class="toc-number">21.</span> <span class="toc-text">AnimationKeys</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowGenerators"><span class="toc-number">22.</span> <span class="toc-text">ShadowGenerators</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skeletons"><span class="toc-number">23.</span> <span class="toc-text">Skeletons</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bones"><span class="toc-number">24.</span> <span class="toc-text">Bones</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ParticleSystems"><span class="toc-number">25.</span> <span class="toc-text">ParticleSystems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LensFlareSystems"><span class="toc-number">26.</span> <span class="toc-text">LensFlareSystems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LensFlares"><span class="toc-number">27.</span> <span class="toc-text">LensFlares</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Example"><span class="toc-number">28.</span> <span class="toc-text">Example</span></a></li></ol>
-		</div>
-		
-		<p><strong>Babylon.js</strong> uses a JSON file format for describing scenes.</p>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-weibo"></i>
+                                微博</h2>
+                            <a class="mp-back" href="#">返回</a>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;E家课堂</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                    <a  data-pjax href="/2014/12/27/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/27/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/27/06-Lights/">灯光</a>
+                
+                    <a  data-pjax href="/2014/12/27/The-Playground/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-Actions/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-merge-meshes/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Home/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use FresnelParameters/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating the minified version/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-file-format/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-Primer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Advanced Texturing/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-instances/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-level-of-details/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-lens-flares/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use procedural textures?/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Naming-convention/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-postprocesses/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Roadmap/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-multi-views/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Tags/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using AssetsManager/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Working-with-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-debug-layer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#"></a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D"></h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-27T02:53:21.000Z"
+                              itemprop="datePublished">Dec 27 2014</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <p><strong>Babylon.js</strong> uses a JSON file format for describing scenes.</p>
 <p>You can find the complete loader code here:<br><a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Loading/Plugins/babylon.babylonFileLoader.js" target="_blank" rel="external">https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Loading/Plugins/babylon.babylonFileLoader.js</a></p>
 <h2 id="Basic_types">Basic types</h2>
 <p>.babylon files uses the following convention for basic types:</p>
@@ -207,202 +567,72 @@ You can find the complete loader code here:https://github.com/BabylonJS/Babylon.
 <p>Here is a simple example of .babylon file:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    <span class="string">"autoClear"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="string">"clearColor"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">    <span class="string">"ambientColor"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">    <span class="string">"gravity"</span>: [<span class="number">0</span>, -<span class="number">9.81</span>, <span class="number">0</span>],</div><div class="line">    <span class="string">"cameras"</span>: [{</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Camera"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Camera"</span>,</div><div class="line">        <span class="string">"position"</span>: [<span class="number">7.4811</span>, <span class="number">5.3437</span>, -<span class="number">6.5076</span>],</div><div class="line">        <span class="string">"target"</span>: [-<span class="number">0.3174</span>, <span class="number">0.8953</span>, <span class="number">0.3125</span>],</div><div class="line">        <span class="string">"fov"</span>: <span class="number">0.8576</span>,</div><div class="line">        <span class="string">"minZ"</span>: <span class="number">0.1</span>,</div><div class="line">        <span class="string">"maxZ"</span>: <span class="number">100</span>,</div><div class="line">        <span class="string">"speed"</span>: <span class="number">1</span>,</div><div class="line">        <span class="string">"inertia"</span>: <span class="number">0.9</span>,</div><div class="line">        <span class="string">"checkCollisions"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"applyGravity"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"ellipsoid"</span>: [<span class="number">0.2</span>, <span class="number">0.9</span>, <span class="number">0.2</span>]</div><div class="line">    }],</div><div class="line">    <span class="string">"activeCamera"</span>: <span class="string">"Camera"</span>,</div><div class="line">    <span class="string">"lights"</span>: [{</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Sun"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Sun"</span>,</div><div class="line">        <span class="string">"type"</span>: <span class="number">1</span>,</div><div class="line">        <span class="string">"position"</span>: [<span class="number">0.926</span>, <span class="number">7.3608</span>, <span class="number">14.1829</span>],</div><div class="line">        <span class="string">"direction"</span>: [-<span class="number">0.347</span>, -<span class="number">0.4916</span>, -<span class="number">0.7987</span>],</div><div class="line">        <span class="string">"intensity"</span>: <span class="number">1</span>,</div><div class="line">        <span class="string">"diffuse"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line">        <span class="string">"specular"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</div><div class="line">    }],</div><div class="line">    <span class="string">"materials"</span>: [{</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Material"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Material"</span>,</div><div class="line">        <span class="string">"ambient"</span>: [<span class="number">0.8</span>, <span class="number">0.8</span>, <span class="number">0.8</span>],</div><div class="line">        <span class="string">"diffuse"</span>: [<span class="number">0.64</span>, <span class="number">0.64</span>, <span class="number">0.64</span>],</div><div class="line">        <span class="string">"specular"</span>: [<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>],</div><div class="line">        <span class="string">"specularPower"</span>: <span class="number">50</span>,</div><div class="line">        <span class="string">"emissive"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"alpha"</span>: <span class="number">1</span>,</div><div class="line">        <span class="string">"backFaceCulling"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"diffuseTexture"</span>: {</div><div class="line">            <span class="string">"name"</span>: <span class="string">"Metal1.png"</span>,</div><div class="line">            <span class="string">"level"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"hasAlpha"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"coordinatesMode"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"uOffset"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"vOffset"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"uScale"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"vScale"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"uAng"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"vAng"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"wAng"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"wrapU"</span>: <span class="literal">true</span>,</div><div class="line">            <span class="string">"wrapV"</span>: <span class="literal">true</span>,</div><div class="line">            <span class="string">"coordinatesIndex"</span>: <span class="number">0</span></div><div class="line">        }</div><div class="line">    },</div><div class="line">    {</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Material.001"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Material.001"</span>,</div><div class="line">        <span class="string">"ambient"</span>: [<span class="number">0.8</span>, <span class="number">0.8</span>, <span class="number">0.8</span>],</div><div class="line">        <span class="string">"diffuse"</span>: [<span class="number">0.64</span>, <span class="number">0.64</span>, <span class="number">0.64</span>],</div><div class="line">        <span class="string">"specular"</span>: [<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>],</div><div class="line">        <span class="string">"specularPower"</span>: <span class="number">50</span>,</div><div class="line">        <span class="string">"emissive"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"alpha"</span>: <span class="number">1</span>,</div><div class="line">        <span class="string">"backFaceCulling"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"diffuseTexture"</span>: {</div><div class="line">            <span class="string">"name"</span>: <span class="string">"concrete5.png"</span>,</div><div class="line">            <span class="string">"level"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"hasAlpha"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"coordinatesMode"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"uOffset"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"vOffset"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"uScale"</span>: <span class="number">5</span>,</div><div class="line">            <span class="string">"vScale"</span>: <span class="number">5</span>,</div><div class="line">            <span class="string">"uAng"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"vAng"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"wAng"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"wrapU"</span>: <span class="literal">true</span>,</div><div class="line">            <span class="string">"wrapV"</span>: <span class="literal">true</span>,</div><div class="line">            <span class="string">"coordinatesIndex"</span>: <span class="number">0</span></div><div class="line">        }</div><div class="line">    }],</div><div class="line">    <span class="string">"geometries"</span>: {</div><div class="line">        <span class="string">"boxes"</span>: [{</div><div class="line">            <span class="string">"id"</span>: <span class="string">"BoxPrimitive"</span>,</div><div class="line">            <span class="string">"size"</span>: <span class="number">2</span>,</div><div class="line">            <span class="string">"canBeRegenerated"</span>: <span class="literal">true</span>,</div><div class="line">            <span class="string">"tags"</span>: <span class="string">"Box Primitive Cube CanBeRegenerated"</span></div><div class="line">        }],</div><div class="line">        <span class="string">"vertexData"</span>: [{</div><div class="line">            <span class="string">"id"</span>: <span class="string">"CubeGeometry"</span>,</div><div class="line">            <span class="string">"updatable"</span>: <span class="literal">false</span>,</div><div class="line">            <span class="string">"positions"</span>: [ <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line">            <span class="string">"normals"</span>: [<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, -<span class="number">0.5773</span>, <span class="number">0.5773</span>, <span class="number">0.5773</span>],</div><div class="line">            <span class="string">"uvs"</span>: [<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>],</div><div class="line">            <span class="string">"indices"</span>: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">1</span>, <span class="number">17</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">18</span>, <span class="number">5</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">10</span>, <span class="number">12</span>, <span class="number">24</span>, <span class="number">25</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span>]</div><div class="line">        }]</div><div class="line">    },</div><div class="line">    <span class="string">"meshes"</span>: [{</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Plane"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Plane"</span>,</div><div class="line">        <span class="string">"materialId"</span>: <span class="string">"Material.001"</span>,</div><div class="line">        <span class="string">"position"</span>: [<span class="number">0.0172</span>, -<span class="number">2.9787</span>, -<span class="number">0.5184</span>],</div><div class="line">        <span class="string">"rotation"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"scaling"</span>: [<span class="number">87.1479</span>, <span class="number">0.8635</span>, <span class="number">87.1479</span>],</div><div class="line">        <span class="string">"isVisible"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"isEnabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"checkCollisions"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"billboardMode"</span>: <span class="number">0</span>,</div><div class="line">        <span class="string">"receiveShadows"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"positions"</span>: [-<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</div><div class="line">        <span class="string">"normals"</span>: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"uvs"</span>: [<span class="number">0.0001</span>, <span class="number">0.0001</span>, <span class="number">0.9999</span>, <span class="number">0.0001</span>, <span class="number">0.0001</span>, <span class="number">0.9999</span>, <span class="number">0.9999</span>, <span class="number">0.9999</span>],</div><div class="line">        <span class="string">"indices"</span>: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>],</div><div class="line">        <span class="string">"subMeshes"</span>: [{</div><div class="line">            <span class="string">"materialIndex"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesCount"</span>: <span class="number">4</span>,</div><div class="line">            <span class="string">"indexStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"indexCount"</span>: <span class="number">6</span></div><div class="line">        }]</div><div class="line">    },</div><div class="line">    {</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Cube"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Cube"</span>,</div><div class="line">        <span class="string">"materialId"</span>: <span class="string">"Material"</span>,</div><div class="line">        <span class="string">"geometryId"</span>: <span class="string">"CubeGeometry"</span>,</div><div class="line">        <span class="string">"position"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"rotation"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"scaling"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line">        <span class="string">"isVisible"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"isEnabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"checkCollisions"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"billboardMode"</span>: <span class="number">0</span>,</div><div class="line">        <span class="string">"receiveShadows"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"subMeshes"</span>: [{</div><div class="line">            <span class="string">"materialIndex"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesCount"</span>: <span class="number">29</span>,</div><div class="line">            <span class="string">"indexStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"indexCount"</span>: <span class="number">36</span></div><div class="line">        }],</div><div class="line">        <span class="string">"animations"</span>: [{</div><div class="line">            <span class="string">"dataType"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"framePerSecond"</span>: <span class="number">30</span>,</div><div class="line">            <span class="string">"loopBehavior"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"name"</span>: <span class="string">"position animation"</span>,</div><div class="line">            <span class="string">"property"</span>: <span class="string">"position"</span>,</div><div class="line">            <span class="string">"keys"</span>: [{</div><div class="line">                <span class="string">"frame"</span>: <span class="number">0</span>,</div><div class="line">                <span class="string">"values"</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.0291</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">1</span>,</div><div class="line">                <span class="string">"values"</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.0291</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">30</span>,</div><div class="line">                <span class="string">"values"</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">10</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">60</span>,</div><div class="line">                <span class="string">"values"</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">9.975</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">90</span>,</div><div class="line">                <span class="string">"values"</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">250</span>,</div><div class="line">                <span class="string">"values"</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</div><div class="line">            }]</div><div class="line">        },</div><div class="line">        {</div><div class="line">            <span class="string">"dataType"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"framePerSecond"</span>: <span class="number">30</span>,</div><div class="line">            <span class="string">"loopBehavior"</span>: <span class="number">1</span>,</div><div class="line">            <span class="string">"name"</span>: <span class="string">"rotation animation"</span>,</div><div class="line">            <span class="string">"property"</span>: <span class="string">"rotation"</span>,</div><div class="line">            <span class="string">"keys"</span>: [{</div><div class="line">                <span class="string">"frame"</span>: <span class="number">0</span>,</div><div class="line">                <span class="string">"values"</span>: [-<span class="number">0.016</span>, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">30</span>,</div><div class="line">                <span class="string">"values"</span>: [-<span class="number">0.016</span>, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">60</span>,</div><div class="line">                <span class="string">"values"</span>: [-<span class="number">6.2832</span>, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line">            },</div><div class="line">            {</div><div class="line">                <span class="string">"frame"</span>: <span class="number">250</span>,</div><div class="line">                <span class="string">"values"</span>: [-<span class="number">6.2832</span>, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line">            }]</div><div class="line">        }],</div><div class="line">        <span class="string">"autoAnimate"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"autoAnimateFrom"</span>: <span class="number">0</span>,</div><div class="line">        <span class="string">"autoAnimateTo"</span>: <span class="number">250</span>,</div><div class="line">        <span class="string">"autoAnimateLoop"</span>: <span class="literal">true</span></div><div class="line">    },</div><div class="line">    {</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Cube2"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Cube2"</span>,</div><div class="line">        <span class="string">"materialId"</span>: <span class="string">"Material"</span>,</div><div class="line">        <span class="string">"geometryId"</span>: <span class="string">"CubeGeometry"</span>,</div><div class="line">        <span class="string">"position"</span>: [<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"rotation"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"scaling"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line">        <span class="string">"isVisible"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"isEnabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"checkCollisions"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"billboardMode"</span>: <span class="number">0</span>,</div><div class="line">        <span class="string">"receiveShadows"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"subMeshes"</span>: [{</div><div class="line">            <span class="string">"materialIndex"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesCount"</span>: <span class="number">29</span>,</div><div class="line">            <span class="string">"indexStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"indexCount"</span>: <span class="number">36</span></div><div class="line">        }]</div><div class="line">    },</div><div class="line">    {</div><div class="line">        <span class="string">"name"</span>: <span class="string">"Cube3"</span>,</div><div class="line">        <span class="string">"id"</span>: <span class="string">"Cube3"</span>,</div><div class="line">        <span class="string">"materialId"</span>: <span class="string">"Material"</span>,</div><div class="line">        <span class="string">"geometryId"</span>: <span class="string">"BoxPrimitive"</span>,</div><div class="line">        <span class="string">"position"</span>: [-<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"rotation"</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</div><div class="line">        <span class="string">"scaling"</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line">        <span class="string">"isVisible"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"isEnabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"checkCollisions"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"billboardMode"</span>: <span class="number">0</span>,</div><div class="line">        <span class="string">"receiveShadows"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="string">"subMeshes"</span>: [{</div><div class="line">            <span class="string">"materialIndex"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"verticesCount"</span>: <span class="number">29</span>,</div><div class="line">            <span class="string">"indexStart"</span>: <span class="number">0</span>,</div><div class="line">            <span class="string">"indexCount"</span>: <span class="number">36</span></div><div class="line">        }]</div><div class="line">    }],</div><div class="line">    <span class="string">"multiMaterials"</span>: [],</div><div class="line">    <span class="string">"shadowGenerators"</span>: [{</div><div class="line">        <span class="string">"useVarianceShadowMap"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="string">"mapSize"</span>: <span class="number">1024</span>,</div><div class="line">        <span class="string">"lightId"</span>: <span class="string">"Sun"</span>,</div><div class="line">        <span class="string">"renderList"</span>: [<span class="string">"Cube"</span>, <span class="string">"Cube2"</span>, <span class="string">"Cube3"</span>]</div><div class="line">    }],</div><div class="line">    <span class="string">"skeletons"</span>: []</div><div class="line">}</div></pre></td></tr></table></figure>
 
-  
-	</div>
-		<footer class="article-footer clearfix">
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
 
 
+    </article>
+</main>
 
-
-<div class="article-share" id="share">
-
-  <div data-url="http://www.babylonjs.com.cn/2014/12/27/Babylon.js-file-format/" data-title="Hexo" data-tsina="null" class="share clearfix">
-  </div>
-
-</div>
-</footer>   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/" title="">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  (no title)</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"  title="">
- <strong>NEXT:</strong><br/> 
- <span>(no title)
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic_types"><span class="toc-number">1.</span> <span class="toc-text">Basic types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Global_structure"><span class="toc-number">2.</span> <span class="toc-text">Global structure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cameras"><span class="toc-number">3.</span> <span class="toc-text">Cameras</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lights"><span class="toc-number">4.</span> <span class="toc-text">Lights</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Materials"><span class="toc-number">5.</span> <span class="toc-text">Materials</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Textures"><span class="toc-number">6.</span> <span class="toc-text">Textures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MultiMaterials"><span class="toc-number">7.</span> <span class="toc-text">MultiMaterials</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Geometries"><span class="toc-number">8.</span> <span class="toc-text">Geometries</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boxes"><span class="toc-number">9.</span> <span class="toc-text">Boxes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spheres"><span class="toc-number">10.</span> <span class="toc-text">Spheres</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cylinders"><span class="toc-number">11.</span> <span class="toc-text">Cylinders</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Toruses"><span class="toc-number">12.</span> <span class="toc-text">Toruses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grounds"><span class="toc-number">13.</span> <span class="toc-text">Grounds</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Planes"><span class="toc-number">14.</span> <span class="toc-text">Planes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TorusKnots"><span class="toc-number">15.</span> <span class="toc-text">TorusKnots</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VertexData"><span class="toc-number">16.</span> <span class="toc-text">VertexData</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Instances"><span class="toc-number">17.</span> <span class="toc-text">Instances</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Meshes"><span class="toc-number">18.</span> <span class="toc-text">Meshes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SubMeshes"><span class="toc-number">19.</span> <span class="toc-text">SubMeshes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Animations"><span class="toc-number">20.</span> <span class="toc-text">Animations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AnimationKeys"><span class="toc-number">21.</span> <span class="toc-text">AnimationKeys</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowGenerators"><span class="toc-number">22.</span> <span class="toc-text">ShadowGenerators</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skeletons"><span class="toc-number">23.</span> <span class="toc-text">Skeletons</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bones"><span class="toc-number">24.</span> <span class="toc-text">Bones</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ParticleSystems"><span class="toc-number">25.</span> <span class="toc-text">ParticleSystems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LensFlareSystems"><span class="toc-number">26.</span> <span class="toc-text">LensFlareSystems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LensFlares"><span class="toc-number">27.</span> <span class="toc-text">LensFlares</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Example"><span class="toc-number">28.</span> <span class="toc-text">Example</span></a></li></ol>
-  </div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
 
   
-
-  
-
-  <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS</a>
-</div>
-
-</aside>
-</div>
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<div class="social-font clearfix">
-		
-		
-		
-		
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
-		
-		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
-		
-		</p>
-</div>
 </footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
-        
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
 </script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 
 
 
 
 
 
-  </body>
+
+</body>
 </html>

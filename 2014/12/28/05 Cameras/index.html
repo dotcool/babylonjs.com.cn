@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>摄像机 | babylonjs</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="babylonjs">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/06-Lights/">灯光</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/The-Playground/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-Actions/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-merge-meshes/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Home/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use FresnelParameters/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating the minified version/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-file-format/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-Primer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Advanced Texturing/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-instances/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-level-of-details/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-lens-flares/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use procedural textures?/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Naming-convention/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-postprocesses/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Roadmap/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-multi-views/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Tags/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using AssetsManager/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Working-with-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-debug-layer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;微博</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-weibo"></i>
+                                微博</h2>
+                            <a class="mp-back" href="#">返回</a>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;E家课堂</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                    <a  data-pjax href="/2014/12/27/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/27/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/27/06-Lights/">灯光</a>
+                
+                    <a  data-pjax href="/2014/12/27/The-Playground/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-Actions/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-merge-meshes/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Home/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use FresnelParameters/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating the minified version/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-file-format/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-Primer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Advanced Texturing/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-instances/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-level-of-details/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-lens-flares/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use procedural textures?/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Naming-convention/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-postprocesses/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Roadmap/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-multi-views/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Tags/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using AssetsManager/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Working-with-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-debug-layer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">摄像机</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">摄像机</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-27T16:47:37.000Z"
+                              itemprop="datePublished">Dec 28 2014</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <h1 id="babylonjs摄像机">babylonjs摄像机</h1>
+<p>在任意的babylonjs的场景中，你可以创建很多摄像机，但是同时只能有一台摄像机是激活状态(除非你使用了<a href="https://github.com/BabylonJS/Babylon.js/wiki/How-to-use-multi-views" target="_blank" rel="external">multi-viewports</a>).</p>
+<p>摄像机的管理是很简单的，babylonjs提供了很多种类的摄像机，我们将从最常见的两种(自由摄像机和轨迹旋转摄像机)</p>
+<ul>
+<li><strong>自由摄像机</strong> - 这是一个第一视角种类的摄像机，当你使用鼠标和键盘来控制时，和很多摄像机一样，你也可以添加控制键比如wasd等<br>自由相机并不会自动对准目标，但是在构建自由摄像机时，你可以轻易的设置他锁定到某一个纹理或者向量的位置使用<em>lockedtarget</em>属性。这里示例了你如何构造一个自由摄像机：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// FreeCamera &gt;&gt; You can move around the scene with mouse and cursor keys</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.FreeCamera(<span class="string">"FreeCamera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>自由摄像机初始化时被构造为z正方向，点的数值就是上边构造函数中写入的，放置在一个有用的开始位置。自由摄像机有很多属性你可以用来适应到你的视图，这里有一些常用的属性<em>position</em>, <em>rotation</em>, <em>speed</em>, <em>inertia</em>, and <em>fov</em>. 自由摄像机也被用作很多其他种类的摄像机 查看更多信息<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.FreeCamera.html" target="_blank" rel="external">FreeCamera  API page</a> .</p>
+<ul>
+<li><strong>轨迹旋转摄像机</strong> - 这是一种围绕着目标锚点旋转的摄像机，他可以被鼠标的焦点或者是点击、触摸时间控制，同时他需要第三方的文件hand.js。</li>
+</ul>
+<p>这里展示你如何去构造一个轨迹旋转摄像机:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ArcRotateCamera &gt;&gt; Camera turning around a 3D point (here Vector zero) with mouse and cursor keys</span></div><div class="line"><span class="comment">// Parameters : name, alpha, beta, radius, target, scene</span></div><div class="line">   <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"ArcRotateCamera"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>轨迹旋转摄像机用起来有点起卦，但是你会经常使用到，他们有3个独特的属性分别是 <em>alpha</em> (in radians), <em>beta</em> (in radians), and <em>radius</em> (a number). 如果你想像一下轨迹旋转摄像机是一个围绕地球的卫星那么<em>alpha</em>就是纵向或横向轴线, <em>beta</em>就是纬度或上/下轴,而<em>radius</em> 就是地球的半径<br><img src="http://urbanproductions.com/wingy/babylon/misc/arc01.jpg" alt=""></p>
+<p>轨迹旋转摄像机有很多属性用来适应你的师徒，最常见是的 <em>alpha</em>, <em>beta</em>, <em>radius</em>, <em>target</em>, <em>speed</em>, <em>inertia</em>, and <em>fov</em>.<br>默认情况下，没有设定alpha和beta的值，轨迹旋转摄像机是指向x轴正方向上，具有讽刺意味的是，没有旋转的属性只有位移的属性，因为轨迹旋转摄像机的方向是相对他的目标<em>target</em>属性的，所以可以通过_setPosition方法来设定位置。</p>
+<p>在下边的这个离职，我们将会构建一个轨迹旋转摄像机有一个Zero()的对象没有初始化 <em>alpha</em>, <em>beta</em>, or <em>radius</em> 这些的值.  (提示：在没有使用_setPosition设定位置的时候轨迹旋转摄像的朝向有些奇怪，通过Vector3形式的向量我们可以设定这些属性的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Create an ArcRotateCamera aimed at 0,0,0, with no alpha, beta or radius, so be careful.  It will look broken.</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"ArcRotateCamera"</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, BABYLON.Vector3.Zero(), scene);</div><div class="line"><span class="comment">// Quick, let's use the setPosition() method... with a common Vector3 position, to make our camera better aimed.</span></div><div class="line">camera.setPosition(<span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">15</span>, -<span class="number">30</span>));</div></pre></td></tr></table></figure>
+
+<p>当我们使用了有用的<em>setPosition方法，我们并不在意我们自己的_alpha</em>, <em>beta</em>, and <em>radius</em>属性。我们只是要确认设置了 <em>target</em> property ( 我们通过new BABYLON.Vector3.Zero() 方法设定的),然后使用方法<em>setPosition()</em> 将摄像机放置到我们需要的3D空间中. 方法<em>setPosition()</em>很容易使用。</p>
+<p>轨迹旋转摄像机对动画来说是一个很棒的摄像机，默认情况下，轨迹旋转摄像机没有属性 <em>upperAlphaLimit</em> 或者<em>lowerAlphaLimit</em>. 所以当你要设置scene.activeCamera 然后就能在你想的目标周围了将如下的循环放置到场景里。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.activeCamera.alpha += <span class="number">.01</span>;</div></pre></td></tr></table></figure>
+
+<p>这就是babylonjs很容易很简单但是很出彩，更多信息<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.ArcRotateCamera.html" target="_blank" rel="external">ArcRotateCamera API page</a></p>
+<p>两个摄像机都会对你的输入自动兑奖，所以你可以调用函数<em>attachControl</em>和函数<em>detachControl</em>两步去激活和绑定一个摄像机</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// First, set the scene's activeCamera... to be YOUR camera.</span></div><div class="line">   scene.activeCamera = myCamera;</div><div class="line"><span class="comment">// Then attach the activeCamera to the canvas.</span></div><div class="line">   scene.activeCamera.attachControl(canvas);</div></pre></td></tr></table></figure>
+
+<p>激活和绑定的代码也可以用在我们的特殊用途摄像机上。</p>
+<h2 id="特殊用途摄像机">特殊用途摄像机</h2>
+<p>在babylonjs中有些特殊用途的摄像机，我们将通过测试他们来解释</p>
+<ul>
+<li><strong>触摸摄像机</strong> - 触摸摄像机的工作方式和hand.js很相似，是DOM手势时间的一种现代技术。触摸是一种手势，不论是使用手指还是脚趾在pad还是屏幕上触摸所有的事件都会被触发。这就被识别为手势，你可以通过访问这里了解更多信息 <a href="http://en.wikipedia.org/wiki/Gesture_recognition" target="_blank" rel="external"><strong>a wikipedia page that tells all about it</strong></a>.</li>
+</ul>
+<p>触摸摄像机对于几乎所有的现代手势输入都是很特别的。大部分是由于hand.js提供了支持，如果你喜欢学习hand.js和他的手势方法，请查看 <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/01/16/hand-js-a-polyfill-for-supporting-pointer-events-on-every-browser.aspx" target="_blank" rel="external"><strong>this comprehensive blog entry</strong></a> </p>
+<p>触摸摄像机有很多魔法方法，像很多来自babylon里一样，我们将让他变得容易很舒适，这里展示了使用触摸摄像机：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// TouchCamera &gt;&gt; Move in your world with your touch-gesture device</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.TouchCamera(<span class="string">"TouchCamera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene)</div></pre></td></tr></table></figure>
+
+<p>触摸摄像机以自由摄像机为基础，所以有用的特性和方法都和我们的自由摄像机接近，都可以在触摸摄像机中找到。你可以浏览这些属性和方法在触摸摄像机中 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.TouchCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>装置方向摄像机</strong> - 装置方向摄像师是专门设计用来和装置的方向事件交互。当你前后、左右移动你的移动设备都会引发对摄像机的控制或者是场景中的单位，更多信息<a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/10/07/understanding-deviceorientation-events-by-creating-a-small-3d-game-with-babylon-js.aspx" target="_blank" rel="external"><strong>a wonderfully-detailed blog entry</strong></a></li>
+</ul>
+<p>同时，我们希望你能构造一个装置方向摄像机，轻松加愉快。<br>装置方向摄像机:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// DeviceOrientationCamera &gt;&gt; Move in your scene with device orientation</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.DeviceOrientationCamera(<span class="string">"DevOr_camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>装置方向摄像机也是以自由摄像机为基础，所有的方法也和自由摄像机很接近，但是有两个特有方法 <em>angularSensibility</em> 和 <em>moveSensibility</em> ，更多信息<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.DeviceOrientationCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>跟随摄像机</strong> - 这个摄像机专门用来跟随场景中的一个组件使用了.<em>position</em>属性定义的，距离目标的方位和角度都已定义。</li>
+</ul>
+<p>如下的构造函数是从这里<a href="http://www.html5gamedevs.com/topic/8433-smooth-camera-follow/" target="_blank" rel="external">Alex’s FollowCamera forum thread</a> 这里我们展示了跟随摄像机的构建：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// FollowCamera &gt;&gt; Follow a mesh through your scene</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.FollowCamera(<span class="string">"FollowCam"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">15</span>, -<span class="number">45</span>), scene);</div><div class="line">    camera.target = myMeshObject; <span class="comment">// target any mesh or object with a "position" Vector3</span></div></pre></td></tr></table></figure>
+
+<p>上边的代码就是构造了一个跟随摄像机同时添加了目标的纹理，这些都是必须的步骤，但是跟随摄像机有一些有用的特性可以选择：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">camera.radius = <span class="number">30</span>; <span class="comment">// how far from the object to follow</span></div><div class="line">camera.heightOffset = <span class="number">8</span>; <span class="comment">// how high above the object to place the camera</span></div><div class="line">camera.rotationOffset = <span class="number">180</span>; <span class="comment">// the viewing angle</span></div><div class="line">camera.cameraAcceleration = <span class="number">0.05</span> <span class="comment">// how fast to move</span></div><div class="line">camera.maxCameraSpeed = <span class="number">20</span> <span class="comment">// speed limit</span></div></pre></td></tr></table></figure>
+
+<p>不要忘记要设置这个属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.activeCamera = camera;</div></pre></td></tr></table></figure>
+
+<p>然后你又拥有了跟随摄像机，</p>
+<ul>
+<li><strong>虚拟操作杆摄像机</strong> - 虚拟操作杆摄像机专门用于虚拟操作杆的事件，虚拟操纵杆是在屏幕上模拟的2D用来操控场景中的组件，详细信息<a href="https://www.youtube.com/watch?v=53Piiy71lB0" target="_blank" rel="external"><strong>a video tour with Virtual Joysticks</strong></a>,因为处理起来很方便，所以你可以阅读相关的设置<a href="http://blogs.msdn.com/b/davrous/archive/2013/02/22/creating-an-universal-virtual-touch-joystick-working-for-all-touch-models-thanks-to-hand-js.aspx" target="_blank" rel="external"><strong>read about Virtual Joysticks</strong></a> 下面就介绍了如何使用虚拟操纵杆摄像机</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// VirtualJoysticksCamera &gt;&gt; Move in your world with on-screen Virtual Joysticks</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.VirtualJoysticksCamera(<span class="string">"VJ_camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>虚拟操纵杆摄像机也是基于自由摄像机，所以属性和方法都很接近</p>
+<p>我们有一个实例 <a href="https://github.com/BabylonJS/Babylon.js/wiki/Using-the-VirtualJoysticksCamera-with-Babylon.js" target="_blank" rel="external">special tutorial dedicated to the VirtualJoysticksCamera</a>.</p>
+<p>你也可以浏览所以的api的使用<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.VirtualJoysticksCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>双视摄像机</strong> - 双视摄像机是专门应对虚拟现实设备开发，当前这个技术以及被应用到babylonjs中，但是只是在IE11才能使用，如果你想学习更多关于双视摄像机，请访问<a href="http://tinyurl.com/moyxqwp" target="_blank" rel="external"><strong>this Wikipedia page about the device</strong></a> 或者阅读 <a href="http://www.oculusvr.com/blog/sensor-fusion-keeping-it-simple/" target="_blank" rel="external"><strong>some information from one of the developers</strong></a>.</li>
+</ul>
+<p>我们有一个独特的实例<a href="https://github.com/BabylonJS/Babylon.js/wiki/Using-Oculus-Rift-with-Babylon.js" target="_blank" rel="external">special tutorial dedicated to the OculusCamera</a>.</p>
+<p>你也可以阅读相关的实例 <a href="http://tinyurl.com/moyxqwp" target="_blank" rel="external"><strong>Simon Ferquel’s blog about the project</strong></a>. (Google Translation  - French to English). 并且不要忘记我们的api列表<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.OculusOrientedCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<p><strong>注意:</strong> 双视摄像机需要在构造时使用6个参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// OculusCamera &gt;&gt; Move in your Oculus scene with on-screen Virtual Joysticks</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.OculusCamera(<span class="string">"Camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">20</span>, -<span class="number">45</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>你也可以阅读 <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.oculusCamera.js" target="_blank" rel="external"><strong>source code</strong></a> .  请注意OVR设置和neutralOrientation的值是有默认值的.</p>
+<ul>
+<li><strong>立体摄像机</strong> -立体摄像机是用于红蓝3D眼睛. 使用很简单有两种类型的立体摄像机</li>
+</ul>
+<p>首先是<strong>轨道旋转立体摄像机</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// AnaglyphArcRotateCamera &gt;&gt; Analglyph 3D using filter-shifted ArcRotateCamera</span></div><div class="line"><span class="comment">// Parameters : name, alpha, beta, radius, target (in Vector3), eyeSpace (in degrees), scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.AnaglyphArcRotateCamera(<span class="string">"aar_cam"</span>, -<span class="built_in">Math</span>.PI/<span class="number">2</span>, <span class="built_in">Math</span>.PI/<span class="number">4</span>, <span class="number">20</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), <span class="number">1.0</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>第二种是<strong>自由立体摄像机</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// AnaglyphFreeCamera &gt;&gt; Analglyph 3D using filter-shifted FreeCamera</span></div><div class="line"><span class="comment">// Parameters : name, position (in Vector3), eyeSpace (in degrees), scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.AnaglyphFreeCamera(<span class="string">"af_cam"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), <span class="number">0.5</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>参数<em>eyeSpace</em> 是设置了左眼和右眼之间的视差.一旦你带上了3D眼睛你就能体会到这些值设定的不同.</p>
+<p>跟多信息 <a href="http://en.wikipedia.org/wiki/Anaglyph_3D" target="_blank" rel="external">Wikipedia page that explains it thoroughly</a>. </p>
+<ul>
+<li><strong>手柄游戏摄像机</strong> - 手柄游戏摄像机是专门对手柄游戏主机游戏、XBOX等平台开发的摄像机。</li>
+</ul>
+<p>好的，让我们来创建一个手柄游戏摄像机:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// GamepadCamera &gt;&gt; Move in your scene with gamepad controls</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.GamepadCamera(<span class="string">"Camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">15</span>, -<span class="number">45</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>简单的，大多数的属性和方法都和自由摄像机很像，要注意的是 .<em>angularSensibility</em> 和 .<em>moveSensibility</em> 属性,和设备方位摄像机比较接近，更多信息 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.GamepadCamera.html" target="_blank" rel="external">our API documentation site</a>.</p>
+<ul>
+<li><strong>双视摄像机</strong> - The <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.oculusGamepadCamera.js" target="_blank" rel="external">OculusGamepadCamera</a> </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// OculusGamepadCamera &gt;&gt; Move in your Oculus scene with on-screen Virtual Joysticks</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.OculusGamepadCamera(<span class="string">"Camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">20</span>, -<span class="number">45</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>双视摄像机也是基于自由摄像机所以很多方法都能在里面找到很接近，你也可以在这里找到对应的文档 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.OculusGamepadCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>虚拟现实设备方位摄像机</strong> - 文档地址<a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.vrDeviceOrientationCamera.js" target="_blank" rel="external">VRDeviceOrientationCamera</a> .</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// VRDeviceOrientationCamera &gt;&gt; Move in your VR scene with device orientation</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.VRDeviceOrientationCamera(<span class="string">"VRDO"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>虚拟现实设备方位摄像机也是基于自由摄像机，更多信息 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.VRDeviceOrientationCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>网页虚拟摄像机</strong> - The <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.webVRCamera.js" target="_blank" rel="external">WebVRCamera</a> is yet to be documented.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// WebVRCamera &gt;&gt; Move in your VR scene</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.WebVRCamera(<span class="string">"WVR"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>网页虚拟摄像机也是基于自由摄像机<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.WebVRCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<h2 id="总结">总结</h2>
+<p>最后再次提醒，babylonjs的摄像机需要绑定和接触绑定函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// First, set the scene's activeCamera... to be YOUR camera.</span></div><div class="line">   scene.activeCamera = myCamera;</div><div class="line"><span class="comment">// Then attach the activeCamera to the canvas.</span></div><div class="line">   scene.activeCamera.attachControl(canvas);</div></pre></td></tr></table></figure>
+
+<h2 id="接下来">接下来</h2>
+<p>你已经学会了如何使用两个最常用的摄像机，而且也介绍了一些独特的摄像机，你现在能够控制你的场景而且你能够选择输入和查看你的设备，为了给你更多的现实的效果我们需要学习如何控制灯光</p>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/12/27/04-Materials/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

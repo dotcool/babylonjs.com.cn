@@ -1,369 +1,596 @@
+<!DOCTYPE html>
+<html>
 
- <!DOCTYPE HTML>
-<html >
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>基本元素 | babylonjs</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="babylonjs">
+  <script src="http://static.duoshuo.com/embed.js"></script>
   
-    <title>Hexo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="John Doe">
-    
-    <meta name="description" content="Create Basic Elements (shapes/meshes)
-In this tutorial, we are going to learn how to create basic elements using Babylon.js, such as boxes, spheres, a">
-    
-    
-    
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  
+
+  
 
 </head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/06-Lights/">灯光</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/The-Playground/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-Actions/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-merge-meshes/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Home/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use FresnelParameters/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating the minified version/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-file-format/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Babylon.js-Primer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Advanced Texturing/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-instances/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-level-of-details/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-lens-flares/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How to use procedural textures?/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Naming-convention/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-postprocesses/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Roadmap/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/How-to-use-multi-views/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Tags/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using AssetsManager/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Working-with-Blender/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-the-debug-layer/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
 
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;微博</a>
 
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/12/27/02-Basic-elements/" title="" itemprop="url"></a>
-  </h1>
-  <p class="article-author">By
-    
-      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
-    </p>
-  <p class="article-time">
-    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
-    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create_Basic_Elements_(shapes/meshes)"><span class="toc-number">1.</span> <span class="toc-text">Create Basic Elements (shapes/meshes)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#More_Basic_Elements_-_Grounds"><span class="toc-number">2.1.</span> <span class="toc-text">More Basic Elements - Grounds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wrapping_Up"><span class="toc-number">2.2.</span> <span class="toc-text">Wrapping Up</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
-		</div>
-		
-		<h2 id="Create_Basic_Elements_(shapes/meshes)">Create Basic Elements (shapes/meshes)</h2>
-<p>In this tutorial, we are going to learn how to create basic elements using Babylon.js, such as boxes, spheres, and planes.<br><img src="http://urbanproductions.com/wingy/babylon/misc/tut02pic.jpg" alt="Elements"></p>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-weibo"></i>
+                                微博</h2>
+                            <a class="mp-back" href="#">返回</a>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;E家课堂</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                    <a  data-pjax href="/2014/12/27/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/27/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/27/06-Lights/">灯光</a>
+                
+                    <a  data-pjax href="/2014/12/27/The-Playground/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-Actions/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-merge-meshes/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-handle-rotations-and-translations/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Home/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use FresnelParameters/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Entities-exported-from-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating the minified version/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-file-format/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Converting-a-.babylon-file-to-.incremental.babylon-file/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Caching-the-resources-in-IndexedDB/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Babylon.js-Primer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Adding-your-own-physics-engine-plugin-to-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Advanced Texturing/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-bones-and-skeletons/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-SceneOptimizer-tool/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-instances/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-level-of-details/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-lens-flares/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How to use procedural textures?/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Naming-convention/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Optimizing-performances-with-octrees/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Render-scene-on-a-PNG-(Screenshot)/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-postprocesses/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Roadmap/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/How-to-use-multi-views/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Tags/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using AssetsManager/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Working-with-Blender/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-the-debug-layer/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Using-Oculus-Rift-with-Babylon.js/"></a>
+                
+                    <a  data-pjax href="/2014/12/27/Creating-your-own-file-importer/"></a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">基本元素</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">基本元素</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-27T08:39:01.000Z"
+                              itemprop="datePublished">Dec 27 2014</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <h2 id="创建一个基本元素(形状或者纹理)">创建一个基本元素(形状或者纹理)</h2>
+<p>在这个实例中，我们将要学会如何使用babylongjs创构建一个基本的元素，例如盒子，气缸或者飞机。<br><img src="http://urbanproductions.com/wingy/babylon/misc/tut02pic.jpg" alt="Elements"></p>
 <p><a href="http://www.babylonjs.com/playground/?2" target="_blank" rel="external"><strong>Playground Demo Scene 2 - Seven basic shapes/mesh</strong></a></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>An easy way to get started using basic elements… is by visiting <a href="http://www.babylonjs.com/playground/?2" target="_blank" rel="external"><strong>Playground Demo Scene 02</strong></a>.  You might wish to use the ‘Get .zip’ choice on its top menu.  The index.html that you will receive in that zip… contains everything you will need to start making basic elements.  Remember that link, as we will talk more about it.</p>
-<p>I’m sure you have already read the  <a href="https://github.com/BabylonJS/Babylon.js/wiki/Babylon.js-Primer" target="_blank" rel="external"><strong>Babylon.js Primer</strong></a> and the  <a href="https://github.com/BabylonJS/Babylon.js/wiki/01---Basic-scene" target="_blank" rel="external"><strong>previous tutorial</strong></a>, and thus you know how to format scene files.  So, we won’t talk about that, here.  We are going to go step by step through <a href="http://www.babylonjs.com/playground/?2" target="_blank" rel="external"><strong>Playground Demo Scene 02</strong></a>.  Open that link in a new tab or window, and then come back here, and we’ll get started.</p>
-<p>Let’s look at the createScene function used in Playground Demo 2:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> createScene = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera"</span>, <span class="number">3</span> * <span class="built_in">Math</span>.PI / <span class="number">2</span>, <span class="built_in">Math</span>.PI / <span class="number">8</span>, <span class="number">50</span>, BABYLON.Vector3.Zero(), scene);</div><div class="line"></div><div class="line">    camera.attachControl(canvas, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.HemisphericLight(<span class="string">"hemi"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line">    <span class="comment">//Creation of a box</span></div><div class="line">    <span class="comment">//(name of the box, size, scene)</span></div><div class="line">    <span class="keyword">var</span> box = BABYLON.Mesh.CreateBox(<span class="string">"box"</span>, <span class="number">6.0</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">//Creation of a sphere </span></div><div class="line">    <span class="comment">//(name of the sphere, segments, diameter, scene) </span></div><div class="line">    <span class="keyword">var</span> sphere = BABYLON.Mesh.CreateSphere(<span class="string">"sphere"</span>, <span class="number">10.0</span>, <span class="number">10.0</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">//Creation of a plane</span></div><div class="line">    <span class="comment">//(name of the plane, size, scene)</span></div><div class="line">    <span class="keyword">var</span> plane = BABYLON.Mesh.CreatePlane(<span class="string">"plane"</span>, <span class="number">10.0</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">//Creation of a cylinder</span></div><div class="line">    <span class="comment">//(name, height, diamTop, diamBottom, tessellation, [optional height subdivs], scene, updatable)</span></div><div class="line">    <span class="keyword">var</span> cylinder = BABYLON.Mesh.CreateCylinder(<span class="string">"cylinder"</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">1</span>, scene, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="comment">// Creation of a torus</span></div><div class="line">    <span class="comment">// (name, diameter, thickness, tessellation, scene, updatable)</span></div><div class="line">    <span class="keyword">var</span> torus = BABYLON.Mesh.CreateTorus(<span class="string">"torus"</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">10</span>, scene, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="comment">// Creation of a knot</span></div><div class="line">    <span class="comment">// (name, radius, tube, radialSegments, tubularSegments, p, q, scene, updatable)</span></div><div class="line">    <span class="keyword">var</span> knot = BABYLON.Mesh.CreateTorusKnot(<span class="string">"knot"</span>, <span class="number">2</span>, <span class="number">0.5</span>, <span class="number">128</span>, <span class="number">64</span>, <span class="number">2</span>, <span class="number">3</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">// Creation of a lines mesh</span></div><div class="line">    <span class="keyword">var</span> lines = BABYLON.Mesh.CreateLines(<span class="string">"lines"</span>, [</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, -<span class="number">10</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>)</div><div class="line">    ], scene);</div><div class="line"></div><div class="line">    <span class="comment">// Moving elements</span></div><div class="line">    box.position = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>);   <span class="comment">// Using a vector</span></div><div class="line">    sphere.position = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>); <span class="comment">// Using a vector</span></div><div class="line">    plane.position.z = <span class="number">10</span>;                            <span class="comment">// Using a single coordinate component</span></div><div class="line">    cylinder.position.z = -<span class="number">10</span>;</div><div class="line">    torus.position.x = <span class="number">10</span>;</div><div class="line">    knot.position.y = -<span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> scene;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h2 id="我应该如何开始呢？">我应该如何开始呢？</h2>
+<p>使用基本元素的一个简单方法是访问 <a href="http://www.babylonjs.com/playground/?2" target="_blank" rel="external"><strong>Playground Demo Scene 02</strong></a>。你可以下载或者在线的方式浏览整个实例.</p>
+<p>我确信你已经阅读过这篇文章  <a href="https://github.com/BabylonJS/Babylon.js/wiki/Babylon.js-Primer" target="_blank" rel="external"><strong>Babylon.js Primer</strong></a> 和 <a href="https://github.com/BabylonJS/Babylon.js/wiki/01---Basic-scene" target="_blank" rel="external"><strong>previous tutorial</strong></a>, 所以你应该知道如何规范化脚本文件，所以我们将不会在这里讨论这个问题，我们将会一步一步得实践这个例子<a href="http://www.babylonjs.com/playground/?2" target="_blank" rel="external"><strong>Playground Demo Scene 02</strong></a>。</p>
+<p>让我们来看看这个例子里面的createScene函数:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> createScene = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera"</span>, <span class="number">3</span> * <span class="built_in">Math</span>.PI / <span class="number">2</span>, <span class="built_in">Math</span>.PI / <span class="number">8</span>, <span class="number">50</span>, BABYLON.Vector3.Zero(), scene);</div><div class="line"></div><div class="line">    camera.attachControl(canvas, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.HemisphericLight(<span class="string">"hemi"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line">    <span class="comment">//创建一个盒子包括名字大小和场景</span></div><div class="line">    <span class="keyword">var</span> box = BABYLON.Mesh.CreateBox(<span class="string">"box"</span>, <span class="number">6.0</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">//创建一个球包括名字、段长、直径和场景</span></div><div class="line">    <span class="keyword">var</span> sphere = BABYLON.Mesh.CreateSphere(<span class="string">"sphere"</span>, <span class="number">10.0</span>, <span class="number">10.0</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">//创建一个飞机包括名字、大小和场景</span></div><div class="line">    <span class="keyword">var</span> plane = BABYLON.Mesh.CreatePlane(<span class="string">"plane"</span>, <span class="number">10.0</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">//创建一个气缸包括名字，高度，距离顶部，距离底部，镶嵌，场景是否可更新等</span></div><div class="line">    <span class="keyword">var</span> cylinder = BABYLON.Mesh.CreateCylinder(<span class="string">"cylinder"</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">1</span>, scene, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="comment">//创建一个花托包括名字，厚度，镶嵌，场景和是否可更新</span></div><div class="line">    <span class="keyword">var</span> torus = BABYLON.Mesh.CreateTorus(<span class="string">"torus"</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">10</span>, scene, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="comment">//创建一个结包括名字，半径、管等</span></div><div class="line">    <span class="keyword">var</span> knot = BABYLON.Mesh.CreateTorusKnot(<span class="string">"knot"</span>, <span class="number">2</span>, <span class="number">0.5</span>, <span class="number">128</span>, <span class="number">64</span>, <span class="number">2</span>, <span class="number">3</span>, scene);</div><div class="line"></div><div class="line">    <span class="comment">//创建一些线条的纹理</span></div><div class="line">    <span class="keyword">var</span> lines = BABYLON.Mesh.CreateLines(<span class="string">"lines"</span>, [</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, -<span class="number">10</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>)</div><div class="line">    ], scene);</div><div class="line"></div><div class="line">    <span class="comment">// 移动这些物体</span></div><div class="line">    box.position = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>);   <span class="comment">// 使用向量</span></div><div class="line">    sphere.position = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>); <span class="comment">// 使用向量</span></div><div class="line">    plane.position.z = <span class="number">10</span>;                            <span class="comment">// 使用单一坐标组件</span></div><div class="line">    cylinder.position.z = -<span class="number">10</span>;</div><div class="line">    torus.position.x = <span class="number">10</span>;</div><div class="line">    knot.position.y = -<span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> scene;</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<p>Starting with the box, we create 7 different basic elements, and then position them at the end of the function (to keep them from being atop one another).  It’s really quite easy, isn’t it?  Again, starting with the creation of the box, let’s talk about each of the 7 shapes/meshes.  </p>
+<p>我们创建了7个不同的基础元素，并将他们放置到函数的最后边，这是很容易的。我们来谈一谈这7个物体或者纹理的一些特点。</p>
 <ul>
-<li><strong>Creation of a Box</strong></li>
+<li><strong>创建一个盒子</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = BABYLON.Mesh.CreateBox(<span class="string">"box"</span>, <span class="number">6.0</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, size of the box, the scene to attach the mesh.</p>
+<p>参数分别是名字，大小和关联的场景</p>
 <ul>
-<li><strong>Creation of a Sphere</strong></li>
+<li><strong>创建一个球</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sphere = BABYLON.Mesh.CreateSphere(<span class="string">"sphere"</span>, <span class="number">10.0</span>, <span class="number">10.0</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, number of segments (highly detailed or not), size, scene to attach the mesh. Beware to adapt the number of segments to the size of your mesh ;)</p>
+<p>参数分别是名字、段长，大小和关联的场景，段长是用来适应你纹理的大小</p>
 <ul>
-<li><strong>Creation of a Plane</strong></li>
+<li><strong>创建一个飞机</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> plane = BABYLON.Mesh.CreatePlane(<span class="string">"plane"</span>, <span class="number">10.0</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, size, and scene to attach the mesh.</p>
+<p>参数是名字、大小和场景</p>
 <ul>
-<li><strong>Creation of a Cylinder</strong></li>
+<li><strong>创建一个气缸</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cylinder = BABYLON.Mesh.CreateCylinder(<span class="string">"cylinder"</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">1</span>, scene, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, height, diamTop, diamBottom, tessellation, [height subdivs], scene, updatable.  The <em>height subdivs</em> parameter (shown set to 1) is optional.</p>
+<p>参数是名字、高度、距离顶部大小、距离底部大小、镶嵌以及一些可选的参数</p>
 <ul>
-<li><strong>Creation of a Torus</strong></li>
+<li><strong>创建一个花托</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> torus = BABYLON.Mesh.CreateTorus(<span class="string">"torus"</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">10</span>, scene, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, diameter, thickness, tessellation (highly detailed or not), scene, updatable.</p>
+<p>参数分别是名字，厚度，镶嵌，场景和是否可更新</p>
 <ul>
-<li><strong>Creation of a Knot</strong></li>
+<li><strong>创建一个结</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> knot = BABYLON.Mesh.CreateTorusKnot(<span class="string">"knot"</span>, <span class="number">2</span>, <span class="number">0.5</span>, <span class="number">128</span>, <span class="number">64</span>, <span class="number">2</span>, <span class="number">3</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, radius, tube, radialSegments, tubularSegments, p, q, scene, updatable<br>You can learn more about torus knots… <a href="http://en.wikipedia.org/wiki/Torus_knot" target="_blank" rel="external"><strong>RIGHT HERE</strong></a>.</p>
+<p>参数是名字，半径、管等<a href="http://en.wikipedia.org/wiki/Torus_knot" target="_blank" rel="external"><strong>RIGHT HERE</strong></a>.</p>
 <ul>
-<li><strong>Creation of a Lines Mesh</strong></li>
+<li><strong>一条线的纹理</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lines = BABYLON.Mesh.CreateLines(<span class="string">"lines"</span>, [</div><div class="line">	<span class="keyword">new</span> BABYLON.Vector3(-<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>),</div><div class="line">	<span class="keyword">new</span> BABYLON.Vector3(<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>),</div><div class="line">	<span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, -<span class="number">10</span>),</div><div class="line">	<span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>)</div><div class="line">], scene);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, [array of comma-separated vectors], scene. </p>
-<p>I could explain how the Lines Mesh constructor works, but I think you can see how it works just by looking at the demo code above.  Notice the [ and ].  Those are the enclosing tokens for an array, yet another kind of Javascript value.  The first vector3 of the array is the starting location for drawing lines.  After that, a comma, and then the next vector3 location… indicating where the line is drawing-to next.  Then, another comma, and another vector3 to a new location.  You can add as many vectors as you wish, but notice that the LAST vector3 does not have a comma following it.  Please make your array of vectors be formatted similarly.  </p>
-<h3 id="More_Basic_Elements_-_Grounds">More Basic Elements - Grounds</h3>
-<p>Up to this point, we have been talking about basic elements from our <a href="http://www.babylonjs.com/playground/?2" target="_blank" rel="external"><strong>Playground Demo Scene 02</strong></a>, but three important mesh shapes (basic elements) are not included in that demo scene.  They are each ways of making ‘ground’ in Babylon.js.  Let’s take a look: </p>
+<p>参数是名字向量空间和场景<br>我可以解释线的纹理是如何工作的，但是我觉得你应该通过运行上边的例子来观察这些语句是如何工作的。</p>
+<h3 id="更多基本的元素_-_地面">更多基本的元素 - 地面</h3>
+<p>这里我们将要讨论一下这里的基本元素<a href="http://www.babylonjs.com/playground/?2" target="_blank" rel="external"><strong>Playground Demo Scene 02</strong></a>, 有3个重要的纹理形状没有被包含在我们的例子中让我们来看一看： </p>
 <ul>
-<li><strong>Creation of a Ground</strong></li>
+<li><strong>创建一个地面</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ground = BABYLON.Mesh.CreateGround(<span class="string">"ground"</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">2</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, width, depth, subdivs, scene</p>
-<p>Our <a href="http://www.babylonjs.com/playground/?1" target="_blank" rel="external"><strong>Playground Demo Scene 01</strong></a> uses a CreateGround constructor… so you can see one in action by using the above link.</p>
+<p>参数是名字宽度深度细分值和场景</p>
+<p>我们的第一个例子<a href="http://www.babylonjs.com/playground/?1" target="_blank" rel="external"><strong>Playground Demo Scene 01</strong></a> 就是使用了地面这个基本元素</p>
 <ul>
-<li><strong>Creation of a Ground From HeightMap</strong></li>
+<li><strong>从高度地图创建一个地面</strong></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ground = BABYLON.Mesh.CreateGroundFromHeightMap(<span class="string">"ground"</span>, <span class="string">"heightmap.jpg"</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">250</span>, <span class="number">0</span>, <span class="number">10</span>, scene, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, heightmapPath, width, depth, subdivs, minheight, maxheight, scene, updatable</p>
-<p>HeightMap grounds are easy, but we decided to create a separate tutorial so we could say more about this important Babylon.js feature.  Please see our <a href="https://github.com/BabylonJS/Babylon.js/wiki/16-Height-map" target="_blank" rel="external"><strong>HeightMap Tutorial</strong></a> to learn all about heightMap grounds.</p>
+<p>参数是名字高度地图位置宽度深度细分至最小高度，最大高度，场景是否可更新<br>高度地图的地面是很简单的但是我们要把他单独分开详细说明因为他可以展示bablonjs更多的特性。请查看<a href="https://github.com/BabylonJS/Babylon.js/wiki/16-Height-map" target="_blank" rel="external"><strong>HeightMap Tutorial</strong></a> 学习如何使用高度地图.</p>
 <ul>
-<li><strong>Creation of a Tiled Ground</strong></li>
+<li><strong>创建一个切片地面</strong></li>
 </ul>
-<p>Thanks to forum user Kostar111 for this handy Tiled Ground constructor.  Here is the basic code needed to create a tiled ground.</p>
+<p>创建一个切片的地面很简单</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> precision = {</div><div class="line">    <span class="string">"w"</span> : <span class="number">2</span>,</div><div class="line">    <span class="string">"h"</span> : <span class="number">2</span></div><div class="line">};</div><div class="line"><span class="keyword">var</span> subdivisions = {</div><div class="line">    <span class="string">'h'</span> : <span class="number">8</span>,</div><div class="line">    <span class="string">'w'</span> : <span class="number">8</span></div><div class="line">};</div><div class="line"><span class="keyword">var</span> tiledGround = BABYLON.Mesh.CreateTiledGround(<span class="string">"Tiled Ground"</span>, -<span class="number">3</span>, -<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, subdivisions, precision, scene, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
 
-<p>Parameters are: name, xmin, zmin, xmax, zmax, subdivisions = the number of tiles. (subdivisions.w : in width; subdivisions.h: in height), precision = the number of subdivisions inside a tile. (precision.w : in width; precision.h: in height), scene, updatable.</p>
-<p>Kostar111 was also kind enough to give us a fine tutorial about how to use tiled grounds.  <a href="http://makina-corpus.com/blog/metier/how-to-use-multimaterials-with-a-tiled-ground-in-babylonjs" target="_blank" rel="external"><strong>Click right here</strong></a> to view it.  At that link, Kostar111 thoroughly explains how the tiled ground works, and also provides some Babylon.js Playground scenes that nicely demonstrate some of its many uses.</p>
-<h3 id="Wrapping_Up">Wrapping Up</h3>
-<p>And that’s it!  Now you have seen all of our basic elements, and some ways to use them.  Keep watching this area of the tutorial for new basic elements, as they are being added quite quickly.  Feel free to imagine a few of your own basic element ideas, and present them on the forum.  Help us make our list of basic elements grow, if you can.  </p>
-<h2 id="Next_step">Next step</h2>
-<p>We saw that we needed a bit of ‘positioning’ to keep our basic elements from sitting atop one another in the scene.  Now let’s learn more about positions (sometimes called translations) as well as about rotation and scaling.  Ready?  Sure you are!  <a href="https://github.com/BabylonJS/Babylon.js/wiki/03---Position,-Rotation-&amp;-Scaling" target="_blank" rel="external"><strong>Click here for the next tutorial</strong></a>.</p>
-  
-	</div>
-		<footer class="article-footer clearfix">
+<p>参数是名字x最小值，z的最小值，x的最大值，z的最大值，细分值，场景，是否可以更新等<br>这里有一个实例是来介绍切片地图的<a href="http://makina-corpus.com/blog/metier/how-to-use-multimaterials-with-a-tiled-ground-in-babylonjs" target="_blank" rel="external"><strong>Click right here</strong></a> </p>
+<h3 id="总结">总结</h3>
+<p>现在你已经查看了我们所有的基础元素以及如何去使用他们，通过学习这部分的例子，我们可以发现很容易就能把创建的新元素添加的界面。</p>
+<h2 id="接下来">接下来</h2>
+<p>在上边的例子里面我们可以看到我们要设置不同的点位给基本元素才能在场景里面很好的展示出来，那么我们就来看看如何给对象设置位置、旋转或者缩放。</p>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2014/12/27/03---Position,-Rotation-&-Scaling/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/12/27/01---Basic-scene/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
 
 
+    </article>
+</main>
 
-
-<div class="article-share" id="share">
-
-  <div data-url="http://www.babylonjs.com.cn/2014/12/27/02-Basic-elements/" data-title="Hexo" data-tsina="null" class="share clearfix">
-  </div>
-
-</div>
-</footer>   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2014/12/27/06-Lights/" title="">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  (no title)</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2014/12/27/01---Basic-scene/"  title="">
- <strong>NEXT:</strong><br/> 
- <span>(no title)
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create_Basic_Elements_(shapes/meshes)"><span class="toc-number">1.</span> <span class="toc-text">Create Basic Elements (shapes/meshes)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#More_Basic_Elements_-_Grounds"><span class="toc-number">2.1.</span> <span class="toc-text">More Basic Elements - Grounds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wrapping_Up"><span class="toc-number">2.2.</span> <span class="toc-text">Wrapping Up</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
-  </div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
 
   
-
-  
-
-  <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS</a>
-</div>
-
-</aside>
-</div>
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<div class="social-font clearfix">
-		
-		
-		
-		
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
-		
-		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
-		
-		</p>
-</div>
 </footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
-        
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
 </script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 
 
 
 
 
 
-  </body>
+
+</body>
 </html>
