@@ -1,0 +1,411 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Actions are a simple way to add interactions in your scenes. An action is launched when its trigger is fired.
+For instance, you can specify that when ">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/How-to-use-Actions/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How_to_use_it"><span class="toc-number">1.</span> <span class="toc-text">How to use it</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Triggers"><span class="toc-number">2.</span> <span class="toc-text">Triggers</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Actions"><span class="toc-number">3.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conditions"><span class="toc-number">4.</span> <span class="toc-text">Conditions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Playground"><span class="toc-number">5.</span> <span class="toc-text">Playground</span></a></li></ol>
+		</div>
+		
+		<p>Actions are a simple way to add interactions in your scenes. An action is launched when its trigger is fired.</p>
+<p>For instance, you can specify that when the user clicks (or touches) a mesh, an action is executed.</p>
+<h1 id="How_to_use_it">How to use it</h1>
+<p>To use actions, you have to attach an <code>BABYLON.ActionManager</code> to a mesh or to your scene:<br><code>mesh.actionManager = new BABYLON.ActionManager(scene);</code></p>
+<p>Once the ActionManager is created, you can start registering actions:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mesh.actionManager.registerAction(<span class="keyword">new</span> BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, light, <span class="string">"diffuse"</span>, BABYLON.Color3.Black(), <span class="number">1000</span>))</div></pre></td></tr></table></figure>
+
+<p>For instance this action will animate the <code>light.diffuse</code> property to black in 1000ms when the user picks the mesh.</p>
+<p>You can also chain actions:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mesh.actionManager.registerAction(<span class="keyword">new</span> BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, light, <span class="string">"diffuse"</span>, BABYLON.Color3.Black(), <span class="number">1000</span>))</div><div class="line">        .then(<span class="keyword">new</span> BABYLON.SetValueAction(BABYLON.ActionManager.NothingTrigger, mesh.material, <span class="string">"wireframe"</span>, <span class="literal">false</span>))</div></pre></td></tr></table></figure>
+
+<p>In this case, the first click will animate the <code>light.diffuse</code> property, the second click will set <code>mesh.material</code> to false. The third one will start again and will animate the <code>light.diffuse</code> property and so on…</p>
+<p>Finally, you can add a condition to your actions. In this case, actions are launched when the trigger is fired if the condition is true:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> condition1 = <span class="keyword">new</span> BABYLON.PredicateCondition(sphere.actionManager, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">return</span> light1.diffuse.equals(BABYLON.Color3.Red());</div><div class="line">});</div><div class="line">sphere.actionManager.registerAction(<span class="keyword">new</span> BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, camera, <span class="string">"alpha"</span>, <span class="number">0</span>, <span class="number">500</span>, condition1));</div></pre></td></tr></table></figure>
+
+<p>In this example, the <code>camera.alpha</code> property will be animated to 0 in 500ms when the user clicks the sphere only if the <code>light1.diffuse</code> property is equal to red.</p>
+<h1 id="Triggers">Triggers</h1>
+<p>Currently, 10 different triggers are supported:</p>
+<p>The following list defines triggers associated with meshes:</p>
+<ul>
+<li><code>BABYLON.ActionManager.NothingTrigger</code>: Never raised. Used for sub-actions with <code>action.then</code> function</li>
+<li><code>BABYLON.ActionManager.OnPickTrigger</code>: Raised when the user touches/clicks on a mesh</li>
+<li><code>BABYLON.ActionManager.OnLeftPickTrigger</code>: Raised when the user touches/clicks on a mesh with left button</li>
+<li><code>BABYLON.ActionManager.OnRightPickTrigger</code>: Raised when the user touches/clicks on a mesh with right button</li>
+<li><code>BABYLON.ActionManager.OnCenterPickTrigger</code>: Raised when the user touches/clicks on a mesh with center button</li>
+<li><code>BABYLON.ActionManager.OnPointerOverTrigger</code>: Raised when the pointer is over a mesh. Raised just once</li>
+<li><code>BABYLON.ActionManager.OnPointerOutTrigger</code>: Raised when the pointer is no more over a mesh. Raised just once</li>
+<li><code>BABYLON.ActionManager.OnIntersectionEnterTrigger</code>: Raised when the mesh is in intersection with another mesh. Raised just once</li>
+<li><code>BABYLON.ActionManager.OnIntersectionExitTrigger</code>: Raised when the mesh is no more in intersection with another mesh. Raised just once</li>
+</ul>
+<p>For intersection triggers, you have to specify the “other” mesh with the following code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mesh.actionManager.registerAction(<span class="keyword">new</span> BABYLON.SetValueAction({ trigger: BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: otherMesh }, mesh, <span class="string">"scaling"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1.2</span>, <span class="number">1.2</span>, <span class="number">1.2</span>)));</div></pre></td></tr></table></figure>
+
+<p>The following list defines triggers associated with scene:</p>
+<ul>
+<li><code>BABYLON.ActionManager.OnEveryFrameTrigger</code>: Raised once per frame.</li>
+<li><code>BABYLON.ActionManager.OnKeyDownTrigger</code>: Raised when a key is pressed.</li>
+<li><code>BABYLON.ActionManager.OnKeyUpTrigger</code>: Raised when a key is released.</li>
+</ul>
+<p>For OnKeyUpTrigger and OnKeyDownTrigger triggers, you can filter events based on a key, either in your code or with a parameter:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">scene.actionManager.registerAction(<span class="keyword">new</span> BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnKeyUpTrigger, <span class="function"><span class="keyword">function</span> <span class="params">(evt)</span> </span>{</div><div class="line">   <span class="keyword">if</span> (evt.sourceEvent.key == <span class="string">"r"</span>) {</div><div class="line">       ...</div><div class="line">   }</div><div class="line">}));</div><div class="line"></div><div class="line">scene.actionManager.registerAction(<span class="keyword">new</span> BABYLON.ExecuteCodeAction({ trigger: BABYLON.ActionManager.OnKeyUpTrigger, parameter: <span class="string">"r"</span> },</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">            ...</div><div class="line">  }));</div></pre></td></tr></table></figure>
+
+<h1 id="Actions">Actions</h1>
+<p>Most of the action have a <code>propertyPath</code> property. This string defines the path to the property to affect with the action. You can use direct values like <code>position</code> or <code>diffuse</code>. But you can also provide complex paths like <code>position.x</code></p>
+<ul>
+<li><code>BABYLON.SwitchBooleanAction</code>: Used to switch the current value of a boolean property:</li>
+</ul>
+<p><code>SwitchBooleanAction(trigger, target, propertyPath, condition)</code></p>
+<ul>
+<li><code>BABYLON.SetValueAction</code>: Used to specify a direct value for a property:</li>
+</ul>
+<p><code>SetValueAction(trigger, target, propertyPath, value, condition)</code></p>
+<ul>
+<li><code>BABYLON.IncrementValueAction</code>: Add a specified value to a number property:</li>
+</ul>
+<p><code>IncrementValueAction(trigger, target, propertyPath, value, condition)</code></p>
+<ul>
+<li><code>BABYLON.PlayAnimationAction</code>: Launch an animation on a specified target:</li>
+</ul>
+<p><code>PlayAnimationAction(trigger, target, from, to, loop, condition)</code></p>
+<ul>
+<li><code>BABYLON.StopAnimationAction</code>: Stop an animation on a specified target:</li>
+</ul>
+<p><code>StopAnimationAction(trigger, target, condition)</code></p>
+<ul>
+<li><code>BABYLON.DoNothingAction</code>: Do nothing :)</li>
+</ul>
+<p><code>DoNothingAction(trigger, condition)</code></p>
+<ul>
+<li><code>BABYLON.CombineAction</code>: This action is a container. You can use it to execute many actions simultaneously on the same trigger. The children property must be an array of actions:</li>
+</ul>
+<p><code>CombineAction(trigger, children, condition)</code></p>
+<ul>
+<li><code>BABYLON.ExecuteCodeAction</code>: Execute your own code when the trigger is raised and the condition is true:</li>
+</ul>
+<p><code>ExecuteCodeAction(trigger, func, condition)</code></p>
+<ul>
+<li><code>BABYLON.SetParentAction</code>: Used to define the parent of a node (camera, light, mesh):</li>
+</ul>
+<p><code>SetParentAction(trigger, target, parent, condition)</code></p>
+<ul>
+<li><code>BABYLON.InterpolateValueAction</code>: This action creates an animation to interpolate the current value of a property to a given target. The following types are supported:<ul>
+<li><code>number</code></li>
+<li><code>BABYLON.Color3</code></li>
+<li><code>BABYLON.Vector3</code></li>
+<li><code>BABYLON.Quaternion</code></li>
+</ul>
+</li>
+</ul>
+<p><code>InterpolateValueAction(trigger, target, propertyPath, value, duration, condition, stopOtherAnimations)</code></p>
+<h1 id="Conditions">Conditions</h1>
+<p>There are three kinds of conditions:</p>
+<ul>
+<li><code>BABYLON.ValueCondition</code>: This condition is true when a given property is equal / greater / lesser / different from a specific value. The following operands are thus supported:<ul>
+<li><code>BABYLON.ValueCondition.IsEqual</code></li>
+<li><code>BABYLON.ValueCondition.IsDifferent</code></li>
+<li><code>BABYLON.ValueCondition.IsGreater</code></li>
+<li><code>BABYLON.ValueCondition.IsLesser</code></li>
+</ul>
+</li>
+</ul>
+<p><code>ValueCondition(actionManager, target, propertyPath, value, operator)</code></p>
+<ul>
+<li><code>BABYLON.PredicateCondition</code>: This condition uses a predicate to determine its state:</li>
+</ul>
+<p><code>PredicateCondition(actionManager, predicate)</code></p>
+<ul>
+<li><code>BABYLON.StateCondition</code>: This condition checks the </li>
+</ul>
+<figure class="highlight state```"><figcaption><span>property of an object and compares it to given value:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`StateCondition(actionManager, target, value)`</div><div class="line"></div><div class="line"># Experimenting actions</div><div class="line">So basically, let<span class="attribute">'s</span> imagine you want <span class="keyword">to</span> almost hide a mesh <span class="keyword">when</span> the user touches it.</div><div class="line">First <span class="keyword">of</span> <span class="keyword">all</span> you have <span class="keyword">to</span> add a `BABYLON.ActionManager` <span class="keyword">on</span> it:</div><div class="line"></div><div class="line">`mesh.actionManager = <span class="keyword">new</span> BABYLON.ActionManager(scene);`</div><div class="line"></div><div class="line"><span class="keyword">Then</span> you can create an action that will be associated <span class="keyword">with</span> the `BABYLON.ActionManager.OnPickTrigger` trigger. This action will interpolate the</div></pre></td></tr></table></figure>
+
+<p>mesh.visibility``` property to 0.2:</p>
+<p><code>var action = new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, mesh, &quot;visibility&quot;, 0.2, 1000);</code></p>
+<p>Then add this action to the mesh:</p>
+<p><code>mesh.actionManager.registerAction(action);</code></p>
+<p>And you’re done! Easy, right?</p>
+<p>You can also chain another action to restore the <code>mesh.visibility</code> property to default value:</p>
+<p><code>var action = new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, mesh, &quot;visibility&quot;, 0.2, 1000);</code></p>
+<p><code>var action2 = new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, mesh, &quot;visibility&quot;, 1.0, 1000);</code></p>
+<p><code>mesh.actionManager.registerAction(action).then(action2);</code></p>
+<p>In this case, the first click will hide the button, the following click will restore it, and so on…</p>
+<h1 id="Playground">Playground</h1>
+<p>If you want to play with actions, you can try them at our playground:<br><a href="http://www.babylonjs.com/playground/?17" target="_blank" rel="external">http://www.babylonjs.com/playground/?17</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/How-to-use-Actions/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/How-to-use-bones-and-skeletons/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/03---Position,-Rotation-&-Scaling/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How_to_use_it"><span class="toc-number">1.</span> <span class="toc-text">How to use it</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Triggers"><span class="toc-number">2.</span> <span class="toc-text">Triggers</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Actions"><span class="toc-number">3.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conditions"><span class="toc-number">4.</span> <span class="toc-text">Conditions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Playground"><span class="toc-number">5.</span> <span class="toc-text">Playground</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

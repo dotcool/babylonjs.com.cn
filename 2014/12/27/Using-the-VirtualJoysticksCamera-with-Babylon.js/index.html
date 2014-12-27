@@ -1,0 +1,310 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="The VirtualJoysticksCamera will create a babylon.js camera that can move within your games, thanks to 2 touch-enabled joysticks drawn on the left &amp;amp">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_the_BABYLON-VirtualJoysticksCamera_camera"><span class="toc-number">1.</span> <span class="toc-text">Using the BABYLON.VirtualJoysticksCamera camera</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Video"><span class="toc-number">2.</span> <span class="toc-text">Video</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Complete_sample"><span class="toc-number">3.</span> <span class="toc-text">Complete sample</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If_you’re_switching_back,_don’t_forget_to_dispose!"><span class="toc-number">4.</span> <span class="toc-text">If you’re switching back, don’t forget to dispose!</span></a></li></ol>
+		</div>
+		
+		<p>The VirtualJoysticksCamera will create a babylon.js camera that can move within your games, thanks to 2 touch-enabled joysticks drawn on the left &amp; right of the screen. It’s designed to be controlled via your 2 thumbs.</p>
+<p>It derives from the <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.freeCamera.js" target="_blank" rel="external">FreeCamera</a> to provide a FPS-like experience and instantiate 2 <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Tools/babylon.virtualJoystick.js" target="_blank" rel="external">VirtualJoystick</a> for you.</p>
+<p><strong>Note:</strong> We’re using the <a href="http://www.w3.org/TR/pointerevents/" target="_blank" rel="external">W3C Pointer Events</a> model. To enable touch on all devices &amp; platforms, we’re using our <a href="http://handjs.codeplex.com/" target="_blank" rel="external">Hand.js polyfill</a> library. Don’t forget to include it in your project, otherwise the virtual joysticks will only work in IE.</p>
+<h3 id="Using_the_BABYLON-VirtualJoysticksCamera_camera">Using the BABYLON.VirtualJoysticksCamera camera</h3>
+<p>It’s the same concept as all our cameras, 1 line of code to activate all the magic. For instance, here is how to create a virtual joysticks camera at the center of the world:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> VJC = <span class="keyword">new</span> BABYLON.VirtualJoysticksCamera(<span class="string">"VJC"</span>, BABYLON.Vector3.Zero(), scene);</div></pre></td></tr></table></figure>
+
+<p>The camera constructor takes the following parameters:</p>
+<ul>
+<li>Name</li>
+<li>Position</li>
+<li>Scene</li>
+</ul>
+<h3 id="Video">Video</h3>
+<p>Here is a 1 minute video demonstrating how it works:</p>
+<p><a href="https://www.youtube.com/watch?v=53Piiy71lB0" target="_blank" rel="external">Virtual Joysticks Camera demo in video</a></p>
+<p><img src="http://david.blob.core.windows.net/babylonjs/VJCBabylon.jpg" alt="Screenshot of the Virtual Joysticks Camera in action on Espilit"></p>
+<h3 id="Complete_sample">Complete sample</h3>
+<p>Here is a complete sample that loads the Espilit demo and switches the default camera to a virtual joysticks camera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>, startGame, <span class="literal">false</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startGame</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">if</span> (BABYLON.Engine.isSupported()) {</div><div class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"renderCanvas"</span>);</div><div class="line">        <span class="keyword">var</span> engine = <span class="keyword">new</span> BABYLON.Engine(canvas, <span class="literal">true</span>);</div><div class="line"></div><div class="line">        BABYLON.SceneLoader.Load(<span class="string">"Espilit/"</span>, <span class="string">"Espilit.babylon"</span>, engine, <span class="function"><span class="keyword">function</span> <span class="params">(newScene)</span> </span>{</div><div class="line"></div><div class="line">            <span class="keyword">var</span> VJC = <span class="keyword">new</span> BABYLON.VirtualJoysticksCamera(<span class="string">"VJC"</span>, newScene.activeCamera.position, newScene);</div><div class="line">            VJC.rotation = newScene.activeCamera.rotation;</div><div class="line">            VJC.checkCollisions = newScene.activeCamera.checkCollisions;</div><div class="line">            VJC.applyGravity = newScene.activeCamera.applyGravity;</div><div class="line"></div><div class="line">            <span class="comment">// Wait for textures and shaders to be ready</span></div><div class="line">            newScene.executeWhenReady(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">                newScene.activeCamera = VJC;</div><div class="line">                <span class="comment">// Attach camera to canvas inputs</span></div><div class="line">                newScene.activeCamera.attachControl(canvas);</div><div class="line">                <span class="comment">// Once the scene is loaded, just register a render loop to render it</span></div><div class="line">                engine.runRenderLoop(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">                    newScene.render();</div><div class="line">                });</div><div class="line">            });</div><div class="line">        }, <span class="function"><span class="keyword">function</span> <span class="params">(progress)</span> </span>{</div><div class="line">            <span class="comment">// To do: give progress feedback to user</span></div><div class="line">        });</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="If_you’re_switching_back,_don’t_forget_to_dispose!">If you’re switching back, don’t forget to dispose!</h3>
+<p>If you switch back to another camera, don’t forget to call the dispose() function first. Indeed, the VirtualJoysticks are creating a 2D canvas on top of the 3D WebGL canvas to draw the joysticks with cyan &amp; yellow circles. If you forget to call the dispose() function, the 2D canvas will remain, and will cninue to use touch events input.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/Using-the-VirtualJoysticksCamera-with-Babylon.js/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/Using-the-debug-layer/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/The-Playground/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_the_BABYLON-VirtualJoysticksCamera_camera"><span class="toc-number">1.</span> <span class="toc-text">Using the BABYLON.VirtualJoysticksCamera camera</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Video"><span class="toc-number">2.</span> <span class="toc-text">Video</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Complete_sample"><span class="toc-number">3.</span> <span class="toc-text">Complete sample</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If_you’re_switching_back,_don’t_forget_to_dispose!"><span class="toc-number">4.</span> <span class="toc-text">If you’re switching back, don’t forget to dispose!</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

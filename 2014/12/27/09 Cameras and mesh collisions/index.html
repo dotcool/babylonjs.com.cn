@@ -1,0 +1,330 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Did you ever play a FPS (First Person Shooter) game? In this tutorial, we are going to simulate the same camera movements: the camera is on the floor,">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/09 Cameras and mesh collisions/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArcRotateCamera"><span class="toc-number">2.</span> <span class="toc-text">ArcRotateCamera</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<p>Did you ever play a FPS (First Person Shooter) game? In this tutorial, we are going to simulate the same camera movements: the camera is on the floor, in collision with the ground, and potentially in collision with any objects in the scene.</p>
+<p><img src="http://www.babylonjs.com/tutorials/09 - Collisions Gravity/09.png" alt="Elements"></p>
+<p><em>Final result</em></p>
+<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
+<p>To replicate this movement, we have to do 3 simple steps:</p>
+<p><strong>1 - Define and apply gravity</strong></p>
+<p>The first thing to do is to define our gravity vector, defining the G-force. In a classic world such as Earth, the direction of the force of gravity is down (negative) along the Y axis, but feel free to change it!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.gravity = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">9.81</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+
+
+<p>Gravity can be applied to any camera that you have defined previously in your code.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">camera.applyGravity = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p><strong>2 - Define an ellipsoid</strong></p>
+<p>The next important step is to define the ellipsoid around our camera. This ellipsoid represents our player’s dimensions: a collision event will be raised when a mesh comes in contact with this ellipsoid, preventing our camera from getting too close to this mesh:</p>
+<p><img src="http://www.babylonjs.com/tutorials/09 - Collisions Gravity/09-1.jpg" alt="Ellipsoid"></p>
+<p>The <em>ellipsoid</em> property on babylon.js cameras is default to size (0.5, 1, 0.5), but changing values will make you taller, bigger, smaller, thinner, it depends upon the adjusted axis.  In the example below, we will make our camera’s ellipsoid a bit bigger than the default one:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Set the ellipsoid around the camera (e.g. your player's size)</span></div><div class="line">camera.ellipsoid = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+
+<p><strong>3 - Apply collision</strong></p>
+<p>Once you have those previous settings completed, our final step is to declare that we are interested in sensing collisions in our scene:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Enable Collisions</span></div><div class="line">scene.collisionsEnabled = <span class="literal">true</span>;</div><div class="line">camera.checkCollisions = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p>And declare which meshes could be in collision with our camera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ground.checkCollisions = <span class="literal">true</span>;</div><div class="line">box.checkCollisions = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p>That’s it!  Easy!</p>
+<p>Now, your camera is going to fall on the y-axis until it collides with the ground.  And, your camera will collide with the box when you move it too near to it.</p>
+<p><strong>4 - Object vs. object collision</strong></p>
+<p>You can also do the same thing with a mesh by playing with <em>mesh.ellipsoid</em> property and <em>mesh.moveWithCollisions(velocity)</em> function. This function will try to move the mesh according to given velocity and will check if there is no collision between current mesh and all meshes with checkCollisions activated.</p>
+<p>You can also use <em>mesh.ellipsoidOffset</em> to move the ellipsoid on the mesh (By default the ellipsoid is centered on the mesh)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> velocity = <span class="keyword">new</span> BABYLON.Vector3(<span class="built_in">parseFloat</span>(<span class="built_in">Math</span>.sin(<span class="built_in">parseFloat</span>(character.rotation.y))) / <span class="number">8</span>, -<span class="number">0.7</span>, <span class="built_in">parseFloat</span>(<span class="built_in">Math</span>.cos(<span class="built_in">parseFloat</span>(character.rotation.y))) / <span class="number">8</span>);</div><div class="line">character.ellipsoid = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">0.5</span>);</div><div class="line">character.ellipsoidOffset = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1.0</span>, <span class="number">0</span>);</div><div class="line">character.moveWithCollisions(velocity);</div></pre></td></tr></table></figure>
+
+<p>Demo By dad72: <a href="http://www.castorengine.com/babylon/moveCharacter/" target="_blank" rel="external">Move character with gravity and collision</a></p>
+<h2 id="ArcRotateCamera">ArcRotateCamera</h2>
+<p>The ArcRotateCamera can also check collisions but instead of sliding along obstacles, this camera won’t move when a collision appends.</p>
+<p>To activate collisions, just call </p>
+<figure class="highlight camera.checkCollisions"><figcaption><span>= true```. You can define the collision radius with this code:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>javascript<br>camera.collisionRadius = new BABYLON.Vector3(0.5, 0.5, 0.5)<br>```</p>
+<p>You can play with the scene used in this tutorial… by visiting the Babylon.js <a href="http://www.babylonjs-playground.com/#4HUQQ" target="_blank" rel="external"><strong>playground demo</strong></a>.</p>
+<h2 id="Next_step">Next step</h2>
+<p>Great, now you can develop a real FPS game! But maybe you would like to know when a mesh is in collision with another mesh?  Good, because that is exactly the purpose of our <a href="https://github.com/BabylonJS/Babylon.js/wiki/10-Object-collisions" target="_blank" rel="external">next tutorial</a>.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/09 Cameras and mesh collisions/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/07-Animation/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/04-Materials/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArcRotateCamera"><span class="toc-number">2.</span> <span class="toc-text">ArcRotateCamera</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

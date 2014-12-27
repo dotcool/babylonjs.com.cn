@@ -1,0 +1,337 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Position, Rotation and Scaling
+(and basic parenting)
+In this tutorial, we are going to learn how to position, scale and rotate any kind of objects tha">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/03---Position,-Rotation-&-Scaling/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Position,_Rotation_and_Scaling"><span class="toc-number">1.</span> <span class="toc-text">Position, Rotation and Scaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#(and_basic_parenting)"><span class="toc-number">1.1.</span> <span class="toc-text">(and basic parenting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Notes"><span class="toc-number">3.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Some_Links"><span class="toc-number">3.1.</span> <span class="toc-text">Some Links</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">4.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<h2 id="Position,_Rotation_and_Scaling">Position, Rotation and Scaling</h2>
+<h3 id="(and_basic_parenting)">(and basic parenting)</h3>
+<p>In this tutorial, we are going to learn how to position, scale and rotate any kind of objects that you created in our last tutorial. We will also set a parent and start to understand how parenting affects position, rotation and scaling.<br><img src="http://www.babylonjs.com/tutorials/03 - Rotation and scaling/03.png" alt="Elements"></p>
+<p><a href="http://www.babylonjs.com/playground/?3" target="_blank" rel="external"><strong>Playground Demo Scene 3 - Positioned, Scaled, and Rotated Boxes</strong></a></p>
+<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
+<p>As usual, we are beginning a createScene function by including the basic elements of a scene:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createScene</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line">    <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>), scene);</div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera"</span>, <span class="number">0</span>, <span class="number">0.8</span>, <span class="number">100</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), scene);</div></pre></td></tr></table></figure>
+
+<p>Then create as many boxes as you want:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Creation of 3 boxes</span></div><div class="line">    <span class="keyword">var</span> box1 = BABYLON.Mesh.CreateBox(<span class="string">"Box1"</span>, <span class="number">6.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> box2 = BABYLON.Mesh.CreateBox(<span class="string">"Box2"</span>, <span class="number">6.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> box3 = BABYLON.Mesh.CreateBox(<span class="string">"Box3"</span>, <span class="number">6.0</span>, scene);</div><div class="line">	[…]</div></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Position</strong></li>
+</ul>
+<p>You can easily position any boxes in the scene, anywhere you like. For example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Positioning the boxes</span></div><div class="line">box1.position = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">20</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">box2.position.x = -<span class="number">10</span>; <span class="comment">// or box2.position = new BABYLON.Vector3(-10,0,0);</span></div><div class="line">box3.position.x = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+
+<p>And now, with the same ease of coding, you can rotate boxes around any axes.  For example:</p>
+<ul>
+<li><strong>Rotation</strong> (angles are in radians)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Rotate the box around the x axis</span></div><div class="line">box1.rotation.x = <span class="built_in">Math</span>.PI/<span class="number">4</span>; <span class="comment">// or box1.rotation = new BABYLON.Vector3(Math.PI/4,0,0);</span></div><div class="line"></div><div class="line"><span class="comment">//Rotate the box around the y axis</span></div><div class="line">box2.rotation.y = <span class="built_in">Math</span>.PI/<span class="number">6</span>;</div></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Scaling</strong></li>
+</ul>
+<p>And yes, it is just as easy to scale the boxes along any axes.  For example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Scaling of 2x on the x axis</span></div><div class="line">    box3.scaling.x = <span class="number">2</span>; <span class="comment">// or box3.scaling = new BABYLON.Vector3(2,1,1);</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Parenting</strong></li>
+</ul>
+<p>Another Babylon feature is attaching an object, relatively to another, by creating a parent-child link between two meshes. This link implies that all parent transformations (position/rotation/scaling) will also be applied to the child’s transformations.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Positioning box3 relative to box1</span></div><div class="line">    box3.parent = box1;</div><div class="line">    box3.position.z = -<span class="number">10</span>;</div></pre></td></tr></table></figure>
+
+<h2 id="Notes">Notes</h2>
+<p>Parent-child hierarchies are evaluated on every frame. So any postion, rotation and scaling transformations made to the parent… prior to assigning it to children… will also be applied to the children when the parent is assigned.</p>
+<p>All transformations made after assigning a parent to a child… will be maintained with the child in relation to the parent.</p>
+<p>Basically in simple terms, don’t rotate or move a child until after you’ve assigned it to the parent, and keep in mind that additional rotations will be in relation to the parent after the parent rotations are applied to the child.</p>
+<h3 id="Some_Links">Some Links</h3>
+<p>This tutorial’s createScene() can be viewed and experimented-with… by visiting <a href="http://www.babylonjs.com/playground/?3" target="_blank" rel="external">Babylon.js Playground scene 03</a>. We also have some animated demonstrations that are part of the <a href="https://github.com/BabylonJS/Babylon.js/wiki/Babylon.js-Primer" target="_blank" rel="external">Babylon.JS Primer</a>…</p>
+<ul>
+<li><a href="http://www.babylonjs.com/playground/#35CPC" target="_blank" rel="external">Position demo</a></li>
+<li><a href="http://www.babylonjs.com/playground/#YIT1S" target="_blank" rel="external">Rotation demo</a></li>
+<li><a href="http://www.babylonjs.com/playground/#1VMQNH" target="_blank" rel="external">Scaling demo</a></li>
+</ul>
+<h2 id="Next_step">Next step</h2>
+<p>Now you know how to create and move objects in a scene, but all your meshes have the same ‘skin’. Not for long, if you read our next tutorial about materials.  <a href="https://github.com/BabylonJS/Babylon.js/wiki/04-Materials" target="_blank" rel="external">Go to the Materials Tutorial</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/03---Position,-Rotation-&-Scaling/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/How-to-use-Actions/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/How-to-use-PostProcessRenderPipeline/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Position,_Rotation_and_Scaling"><span class="toc-number">1.</span> <span class="toc-text">Position, Rotation and Scaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#(and_basic_parenting)"><span class="toc-number">1.1.</span> <span class="toc-text">(and basic parenting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Notes"><span class="toc-number">3.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Some_Links"><span class="toc-number">3.1.</span> <span class="toc-text">Some Links</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">4.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

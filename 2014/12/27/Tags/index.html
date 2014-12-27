@@ -1,0 +1,388 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Concepts
+Tag? You may already have heard or read this word before. Let’s see some generic concepts.
+Tags are used:
+
+as an index term assigned to a pie">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/Tags/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Concepts"><span class="toc-number">1.</span> <span class="toc-text">Concepts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tags_are_used:"><span class="toc-number">1.1.</span> <span class="toc-text">Tags are used:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tags_on_forums_/_Categories"><span class="toc-number">1.2.</span> <span class="toc-text">Tags on forums / Categories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS_classes"><span class="toc-number">1.3.</span> <span class="toc-text">CSS classes</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="Concepts">Concepts</h2>
+<p>Tag? You may already have heard or read this word before. Let’s see some generic concepts.</p>
+<h3 id="Tags_are_used:">Tags are used:</h3>
+<ul>
+<li>as an index term assigned to a piece of information</li>
+<li>to pass parameters to subroutines</li>
+<li>as components of the HTML markup language</li>
+<li>as labels for specific revisions of a project</li>
+<li>as unique identifiers in URI</li>
+<li>as links to other Facebook pages<br>…</li>
+</ul>
+<p>(from <a href="http://en.wikipedia.org/wiki/Tag" target="_blank" rel="external">Wikipedia</a>)</p>
+<h3 id="Tags_on_forums_/_Categories">Tags on forums / Categories</h3>
+<p>If you spend some time on forums (let’s pick one randomly: <a href="http://http://www.html5gamedevs.com/forum/16-babylonjs/" target="_blank" rel="external">forum</a> ;)), you may have noticed that tags are attached to topics (and/or posts sometimes).<br>The author can write words (tags) to shortly describe his/her topic without having to write a gramatically correct sentence. It’s kind of a list of words that you could say during a brainstorming after reading the post.</p>
+<p>Example of a topic with tags:</p>
+<p><img src="http://pix.keuse.fr/images/topic.jpg" alt="Topic with tags"></p>
+<p>Thus, if you need information about, let’s say, meshes, you can search for topics having “mesh” as a word in those topics, BUT you could also search for “mesh” as a tag of the topic. Indeed, maybe the word is never used in the topic (maybe it’s only used, or not, in the title) but the author can choose to add it as a tag in the aim to categorize his/her topic.<br>Tags can be used to categorize/group things.</p>
+<p>Here the first search results:</p>
+<p><img src="http://pix.keuse.fr/images/meshtag.jpg" alt="Search results for &quot;mesh&quot; tag"></p>
+<h3 id="CSS_classes">CSS classes</h3>
+<p>OK…? What’s the link with tags? Why are we about to talk about CSS classes?</p>
+<p>Because CSS classes are great and Tags in Babylon.js can be considered similar, in principle, to CSS classes. So let’s talk about them.</p>
+<p>CSS stands for Cascading Style Sheets. It’s used to define how to display HTML elements.</p>
+<p>CSS classes are added to HTML elements (by writing them directly in the HTML code or by adding them via javascript) as a value of the </p>
+<figure class="highlight class```"><figcaption><span>attribute of the corresponding HTML elements.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">HTML elements can have several CSS classes <span class="keyword">in</span> their</div></pre></td></tr></table></figure>
+
+<p>class</p>
+<figure class="highlight attribute"><figcaption><span>and the same CSS class can be used on different HTML elements. CSS classes, just like tags on forums, can then be used to categorize HTML elements. Thus, a same style (background, font, color...) can easily be applied to a group of HTML elements identified by a CSS class (or a list of CSS classes). </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">_Style <span class="keyword">for</span> all HTML elements <span class="keyword">of</span> <span class="keyword">the</span> page having <span class="keyword">the</span> <span class="string">"center"</span> <span class="type">class</span> <span class="function_start"><span class="keyword">on</span></span> them (<span class="keyword">to</span> find elements <span class="keyword">with</span> a specific <span class="type">class</span>, <span class="command">write</span> a period <span class="property">character</span>, followed <span class="keyword">by</span> <span class="keyword">the</span> <span class="property">name</span> <span class="keyword">of</span> <span class="keyword">the</span> <span class="type">class</span>)_</div></pre></td></tr></table></figure>
+
+<p>css<br>.center<br>{<br>    text-align: center;<br>    color: red;<br>}</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Thanks <span class="built_in">to</span> javascript, you can even retrieve all these elements <span class="operator">and</span> <span class="keyword">then</span> <span class="built_in">do</span> further javascript operations <span class="command"><span class="keyword">on</span> <span class="title">them</span> (<span class="title">jQuery</span> <span class="title">plugins</span> <span class="title">largely</span> <span class="title">use</span> <span class="title">CSS</span> <span class="title">classes</span>).</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>var elements = document.getElementsByClassName(“.center”);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The above directive would gather a collection of all HTML elements that use the .center class.</div><div class="line"></div><div class="line">Here we are! <span class="strong">**Tags in babylon.js can be used to categorize/group elements, and helper functions are provided to retrieve/gather tagged elements.**</span></div><div class="line"></div><div class="line"><span class="header">## Integration to babylon.js</span></div><div class="line"></div><div class="line">Tags were integrated into babylon.js on April 7, 2014. [<span class="link_label">Pull request</span>](<span class="link_url">https://github.com/BabylonJS/Babylon.js/pull/170#event-109351015</span>)</div><div class="line"></div><div class="line">There was a [<span class="link_label">discussion</span>](<span class="link_url">http://www.html5gamedevs.com/topic/4961-user-data-in-mesh-object/?p=30458</span>) about adding this feature on the forum. The goal was to be able to retrieve meshes.</div><div class="line"></div><div class="line"><span class="header">### Pure javascript</span></div><div class="line"></div><div class="line">The concept was expanded to allow the adding of tags on any javascript object (not necessarily only the objects created by babylon.js). The</div></pre></td></tr></table></figure>
+
+<p>Tag</p>
+<figure class="highlight class"><figcaption><span>that has been added to babylon.js contains all the necessary code for this generic concept ([Typescript code](https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Tools/babylon.tags.ts)) and internally uses the ```AndOrNotEvaluator``` class ([Typescript code](https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Tools/babylon.andOrNotEvaluator.ts)).</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The <span class="operator"><span class="keyword">use</span> <span class="keyword">of</span> tags <span class="keyword">for</span> a javascript object can be enabled/disabled <span class="keyword">like</span> this (javascript code):</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>var myJSObj = {};<br>// enable tags for myJSObj<br>BABYLON.Tags.EnableFor(myJSObj);</p>
+<p>// disable tags for myJSObj<br>BABYLON.Tags.DisableFor(myJSObj);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>EnableFor</p>
+<figure class="highlight adds"><figcaption><span>functions to the javascript object in the aim to:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*  test <span class="keyword">if</span> it <span class="built_in">has</span> <span class="keyword">tags</span></div></pre></td></tr></table></figure>
+
+<p>hasTags</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*  <span class="built_in">add</span> <span class="keyword">tags</span> <span class="keyword">to</span> it</div></pre></td></tr></table></figure>
+
+<p>addTags</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*  <span class="built_in">remove</span> <span class="keyword">tags</span> from it</div></pre></td></tr></table></figure>
+
+<p>removesTags</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*  test <span class="keyword">if</span> <span class="keyword">it</span> matches <span class="operator">a</span> tags query</div></pre></td></tr></table></figure>
+
+<p>matchesTagsQuery</p>
+<figure class="highlight (see"><figcaption><span>below)</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="type">Those</span> functions are proxies <span class="keyword">of</span> <span class="keyword">static</span> methods <span class="keyword">of</span></div></pre></td></tr></table></figure>
+
+<p>Tags</p>
+<figure class="highlight (```HasTags```,"><figcaption><span>```AddTagsTo```, ```RemoveTagsFrom``` and ```MatchesQuery```).</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>Tags</p>
+<figure class="highlight also"><figcaption><span>contains ```GetTags``` which retrieves the array of tags of the javascript object.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Remark: Tags.AddTagsTo enables tags <span class="keyword">for</span> the <span class="keyword">object</span> <span class="keyword">if</span> needed</div></pre></td></tr></table></figure>
+
+<p>javascript<br>var myJSObj1 = {};<br>// enable tags for myJSObj1<br>BABYLON.Tags.EnableFor(myJSObj);// =&gt; addTags is available on myJSObj1<br>// add tags to myJSObj1<br>myJSObj1.addTags(“tag1 tag2”); // same as BABYLON.Tags.AddTagsTo(myJSObj1, “tag1 tag2”);</p>
+<p>var myJSObj2 = {};<br>// add tags to myJSObj2 without having to enable tags for it first<br>BABYLON.Tags.AddTagsTo(myJSObj2, “tag1 tag2”); // addTags couldn’t be used on myJSObj2 since tags were not previously enabled for myJSObj2</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="variable">Tags</span> <span class="keyword">query</span>:</div></pre></td></tr></table></figure>
+
+<p>Tags.MatchesQuery</p>
+<figure class="highlight (and"><figcaption><span>```matchesTagsQuery``` if tags are enabled for the javascript object) accepts a list of correct tags (see "Rules to respect") containing parenthesis, and boolean evaluators such as ```(tag1 && (tag2 || tag4 || !tag5)) || !(!tag1) && !!!tag5```. The tags query is evaluated thanks to ```AndOrNotEvaluator```.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">Full</span> example:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>var myJSObj1 = {};<br>BABYLON.Tags.AddTagsTo(myJSObj1, “tag1 tag2”);</p>
+<p>var myJSObj2 = {};<br>BABYLON.Tags.AddTagsTo(myJSObj2, “tag3 tag4 tag5”);</p>
+<p>var myJSObj3 = {};<br>BABYLON.Tags.EnableFor(myJSObj3);</p>
+<p>var myJSObj4 = {};</p>
+<p>myJSObj4.hasTags(); // TypeError: undefined is not a function<br>BABYLON.Tags.HasTags(myJSObj4); // false</p>
+<p>myJSObj3.hasTags(); // false<br>BABYLON.Tags.HasTags(myJSObj3); // false</p>
+<p>myJSObj2.hasTags(); // true<br>myJSObj1.hasTags(); // true</p>
+<p>myJSObj1.matchesTagsQuery(“tag1”); // true<br>myJSObj1.matchesTagsQuery(“tag2”); // true<br>myJSObj1.matchesTagsQuery(“tag1 || tag2”); // true<br>myJSObj1.matchesTagsQuery(“tag1 &amp;&amp; tag2”); // true<br>myJSObj1.matchesTagsQuery(“tag3”); // false<br>myJSObj1.matchesTagsQuery(“!tag3”); // true<br>myJSObj1.matchesTagsQuery(“tag1 &amp;&amp; tag3”); // false<br>myJSObj1.matchesTagsQuery(“tag1 || tag3”); // true<br>myJSObj1.matchesTagsQuery(“tag1 &amp;&amp; !tag3”); // true</p>
+<p>myJSObj1.removeTags(“tag1”);</p>
+<p>myJSObj1.matchesTagsQuery(“tag1 &amp;&amp; !tag3”); // false</p>
+<p>myJSObj2.removeTags(“tag4 tag3 tag5”);</p>
+<p>myJSObj2.hasTags(); // false</p>
+<p>BABYLON.Tags.DisableFor(myJSObj2);</p>
+<p>myJSObj2.hasTags(); // TypeError: undefined is not a function</p>
+<p>myJSObj3.matchesTagsQuery(“”); // false<br>myJSObj3.matchesTagsQuery(); // true</p>
+<p>myJSObj4.matchesTagsQuery(“”); // TypeError: undefined is not a function<br>myJSObj4.matchesTagsQuery(); // TypeError: undefined is not a function</p>
+<p>BABYLON.Tags.MatchesQuery(myJSObj4, “”); // false<br>BABYLON.Tags.MatchesQuery(myJSObj4, undefined); // true<br>BABYLON.Tags.MatchesQuery(myJSObj4); // true</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">### Rules to respect</span></div><div class="line"></div><div class="line">* <span class="keyword">the</span> tags <span class="string">"true"</span> <span class="keyword">and</span> <span class="string">"false"</span> are reserved <span class="keyword">and</span> cannot be used <span class="keyword">as</span> tags.</div><div class="line">* a tag cannot <span class="keyword">start with</span> <span class="string">"||"</span>, <span class="string">"&&"</span>, <span class="keyword">or</span> '!'</div><div class="line">* a tag cannot <span class="keyword">contain</span> whitespaces</div><div class="line"></div><div class="line"><span class="comment">### Use in babylon.js</span></div><div class="line"></div><div class="line">Since <span class="keyword">it</span>'s possible <span class="keyword">to</span> use tags <span class="function_start"><span class="keyword">on</span></span> any javascript object <span class="keyword">and</span> <span class="keyword">since</span> meshes are javascript objects, <span class="keyword">it</span>'s possible <span class="keyword">to</span> add tags <span class="function_start"><span class="keyword">on</span></span> them <span class="keyword">and</span> <span class="keyword">to</span> retrieve them according <span class="keyword">to</span> a tags query.</div></pre></td></tr></table></figure>
+
+<p>javascript<br>var meshes = myScene.getMeshesByTags(“tag1 &amp;&amp; (tag2 || tag4 || !tag5)) || !(!tag1) &amp;&amp; !!!tag5”);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">All</span> tags added <span class="keyword">to</span> meshes, cameras, lights... are saved <span class="keyword">to</span> the scene files (see [.babylon <span class="keyword">file</span> format](https://github.com/BabylonJS/Babylon.js/wiki/Babylon.js-<span class="keyword">file</span>-format)) <span class="keyword">and</span> reloaded from them.</div><div class="line"></div><div class="line">## What <span class="keyword">to</span> do <span class="keyword">with</span> them?</div><div class="line"></div><div class="line">It<span class="attribute">'s</span> up <span class="keyword">to</span> you!</div><div class="line"></div><div class="line">You can <span class="keyword">use</span> them <span class="keyword">to</span> retrieve <span class="keyword">all</span> the meshes that should be lighted by the light <span class="string">"light1"</span>:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>var meshesToLightByLight1 = myScene.getMeshesByTags(“mustBeLightedByLight1”);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">or</span> <span class="keyword">make</span> some green ghosts appear when you wan<span class="variable">t:</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>var ghosts = myScene.getMeshesByTags(“ghost &amp;&amp; green”);</p>
+<p>for(var index=0; index &lt; ghosts.length; index++) {<br>    ghosts[index].isVisible = true;<br>}</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/Tags/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/Using AssetsManager/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/How-to-use-multi-views/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Concepts"><span class="toc-number">1.</span> <span class="toc-text">Concepts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tags_are_used:"><span class="toc-number">1.1.</span> <span class="toc-text">Tags are used:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tags_on_forums_/_Categories"><span class="toc-number">1.2.</span> <span class="toc-text">Tags on forums / Categories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS_classes"><span class="toc-number">1.3.</span> <span class="toc-text">CSS classes</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

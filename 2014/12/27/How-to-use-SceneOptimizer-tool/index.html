@@ -1,0 +1,345 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="From version 2.0 of babylonJS
+Rendering a scene on a browser is a great experience because you can reach a lot of different users and hardware. But th">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/How-to-use-SceneOptimizer-tool/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic_usage"><span class="toc-number">1.</span> <span class="toc-text">Basic usage</span></a></li></ol>
+		</div>
+		
+		<p><strong>From version 2.0 of babylonJS</strong></p>
+<p>Rendering a scene on a browser is a great experience because you can reach a lot of different users and hardware. But the main associated caveat is that you can encounter very low end devices.</p>
+<p>The SceneOptimizer tool is designed to help you reach a specific framerate by gracefully degrading rendering quality at runtime.</p>
+<h1 id="Basic_usage">Basic usage</h1>
+<p>The main function you have to know is </p>
+<figure class="highlight BABYLON.SceneOptimizer.OptimizeAsync()```."><figcaption><span>You can call this function when you want to optimize your scene. The simplest call you can do is the following:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>javascript<br>BABYLON.SceneOptimizer.OptimizeAsync(scene);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You have <span class="keyword">to</span> provide at least <span class="keyword">a</span> scene. That <span class="keyword">previous</span> code <span class="built_in">line</span> <span class="keyword">is</span> actually equivalent <span class="keyword">to</span> thi<span class="variable">s:</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>BABYLON.SceneOptimizer.OptimizeAsync(scene, BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed(),<br>function() {<br>   // On success<br>}, function() {<br>   // FPS target not reached<br>});</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">As you can see, you can provide success/fail callbacks and a <span class="operator"><span class="keyword">set</span> <span class="keyword">of</span> options.</span></div><div class="line">A <span class="keyword">set</span> <span class="keyword">of</span> options contains a list <span class="keyword">of</span> optimization <span class="keyword">to</span> apply <span class="keyword">in</span> a specific <span class="keyword">order</span>. <span class="keyword">As</span> soon <span class="keyword">as</span> the target FPS <span class="keyword">is</span> reached, the SceneOptimizer stops. There <span class="keyword">are</span> different layers (<span class="keyword">or</span> passes) that <span class="keyword">are</span> applied one <span class="keyword">after</span> another. The SceneOptimizer pauses <span class="keyword">between</span> <span class="keyword">each</span> layer <span class="keyword">to</span> ensure a stable FPS, <span class="keyword">for</span> measuring.</div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">default</span>, there <span class="keyword">are</span> <span class="number">3</span> sets available:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>BABYLON.SceneOptimizerOptions.LowDegradationAllowed()<br>BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed()<br>BABYLON.SceneOptimizerOptions.HighDegradationAllowed()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">All these sets <span class="constant">return</span> <span class="operator">a</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.SceneOptimizerOptions</p>
+<figure class="highlight object"><figcaption><span>configured with progressive degradations.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Here are <span class="operator">the</span> properties available <span class="command"><span class="keyword">on</span> <span class="title">a</span></span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.SceneOptimizerOptions</p>
+<figure class="highlight object:"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* targetFrameRate: <span class="operator">a</span> <span class="built_in">number</span> defining <span class="operator">the</span> FPS you want <span class="built_in">to</span> achieve (<span class="number">60</span> <span class="keyword">by</span> default)</div><div class="line">* optimizations: <span class="operator">an</span> array <span class="operator">of</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.SceneOptimization</p>
+<figure class="highlight objects."><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">* trackerDuration: <span class="built_in">time</span> <span class="operator">in</span> <span class="built_in">milliseconds</span> between passes (<span class="number">2000</span> <span class="keyword">by</span> default)</div><div class="line"></div><div class="line">SceneOptimizer comes <span class="operator">with</span> some out-<span class="operator">of</span>-<span class="operator">the</span>-box optimizations:</div><div class="line">*</div></pre></td></tr></table></figure>
+
+<p>BABYLON.TextureOptimization(priority, maximumSize)</p>
+<figure class="highlight :"><figcaption><span>This optimization tries to reduce the size of render textures.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.HardwareScalingOptimization(priority, maximumScale)</p>
+<figure class="highlight :"><figcaption><span>This optimization increments the value of hardware scaling. This is a really aggressive optimization.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.ShadowsOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables shadows.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.PostProcessesOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables post-processes.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.LensFlaresOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables lens flares.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.ParticlesOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables particles.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.RenderTargetsOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables render targets.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Based on these optimizations, the basic sets are configured like this:</div><div class="line"><span class="keyword">*</span> BABYLON.SceneOptimizerOptions.LowDegradationAllowed():</div><div class="line"> <span class="keyword">*</span> Level 0: ShadowsOptimization and LensFlaresOptimization</div><div class="line"> <span class="keyword">*</span> Level 1: PostProcessesOptimization and ParticlesOptimization</div><div class="line"> <span class="keyword">*</span> Level 2: TextureOptimization(2, 1024)</div><div class="line"><span class="keyword">*</span> BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed():</div><div class="line"> <span class="keyword">*</span> Level 0: ShadowsOptimization and LensFlaresOptimization</div><div class="line"> <span class="keyword">*</span> Level 1: PostProcessesOptimization and ParticlesOptimization</div><div class="line"> <span class="keyword">*</span> Level 2: TextureOptimization(2, 512) </div><div class="line"> <span class="keyword">*</span> Level 3: RenderTargetsOptimization </div><div class="line"> <span class="keyword">*</span> Level 4: HardwareScalingOptimization(4, 2)</div><div class="line"><span class="keyword">*</span> BABYLON.SceneOptimizerOptions.HighDegradationAllowed():</div><div class="line"> <span class="keyword">*</span> Level 0: ShadowsOptimization and LensFlaresOptimization</div><div class="line"> <span class="keyword">*</span> Level 1: PostProcessesOptimization and ParticlesOptimization</div><div class="line"> <span class="keyword">*</span> Level 2: TextureOptimization(2, 256) </div><div class="line"> <span class="keyword">*</span> Level 3: RenderTargetsOptimization </div><div class="line"> <span class="keyword">*</span> Level 4: HardwareScalingOptimization(4, 4)</div><div class="line"></div><div class="line"><span class="comment"># Advanced usage</span></div><div class="line">You can create your own set of options with the following code:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>var result = new BABYLON.SceneOptimizerOptions(60, 2000);</p>
+<p>var priority = 0;<br>result.optimizations.push(new BABYLON.ShadowsOptimization(priority));<br>result.optimizations.push(new BABYLON.LensFlaresOptimization(priority));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.PostProcessesOptimization(priority));<br>result.optimizations.push(new BABYLON.ParticlesOptimization(priority));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.TextureOptimization(priority, 256));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.RenderTargetsOptimization(priority));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.HardwareScalingOptimization(priority, 4));</p>
+<p>return result;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can also <span class="operator"><span class="keyword">create</span> your own optimization <span class="keyword">by</span> creating your own object:</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>function mySceneOptimization(priority) {<br>  if (typeof priority === “undefined”) {<br>     priority = 0;<br>  }</p>
+<p>  this.priority = priority;<br>  this.apply = function (scene) {<br>     // Work on scene…<br>  };<br>}<br>```</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/How-to-use-SceneOptimizer-tool/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/How-to-use-instances/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/How-to-use-bones-and-skeletons/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic_usage"><span class="toc-number">1.</span> <span class="toc-text">Basic usage</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

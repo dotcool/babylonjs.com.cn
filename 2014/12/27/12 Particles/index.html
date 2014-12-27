@@ -1,0 +1,414 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="This tutorial is going to talk about the particle system in BabylonJS. Particles are often small sprites used to simulate hard-to-reproduce phenomena ">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/12 Particles/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#customEffect_(the_fourth_parameter_in_the_constructor)"><span class="toc-number">1.1.</span> <span class="toc-text">customEffect (the fourth parameter in the constructor)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">2.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<p>This tutorial is going to talk about the particle system in BabylonJS. Particles are often small sprites used to simulate hard-to-reproduce phenomena like fire, smoke, water, or abstract visual effects like magic glitter and faery dust.</p>
+<p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12.png" alt="Particles"></p>
+<p>A picture of <a href="http://www.babylonjs.com/playground/?12" target="_blank" rel="external">the playground’s ParticleSystem demo</a></p>
+<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
+<p>To perform this magic trick, the first thing to do is to create a new object, which will be the particle emitter. In our case, a box will be our emitting object, representing a particle fountain.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fountain = BABYLON.Mesh.CreateBox(<span class="string">"fountain"</span>, <span class="number">1.0</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>The emitter acts as the source of the particles, and its location in 3D space determines where they are generated and how they move. So pay attention to the location/rotation of this object.<br>In our case, the emitter is our fountain, but if you wish, you can use only a vector (BABYLON.Vector3) as an emitter.</p>
+<p>Now, we must create a new (not-rendered) ParticleSystem object:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> particleSystem = <span class="keyword">new</span> BABYLON.ParticleSystem(<span class="string">"particles"</span>, <span class="number">2000</span>, scene, customEffect);</div></pre></td></tr></table></figure>
+
+<p>Simple.  The first parameter is the name, the second parameter is the maximum number of particles, the third parameter is the scene, and the optional fourth parameter is a reference to a shader effect for the particles, overriding the default shader.  I will talk about the fourth parameter further below.</p>
+<p>An important part is to define the texture of each particle. Each one will have the same pattern, so choose carefully which one you want. But keep in mind that a single scene can contain multiple particleSystems, and each one can emit particles with unique texture patterns.  Also keep in mind that multiple particle systems can use the same emitter object.<br>Our particle texture is going to be this one:</p>
+<p><img src="http://www.babylonjs.com/tutorials/12 - Particles/Flare.png" alt="Flare"></p>
+<p>To define the particle’s texture, add a line like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.particleTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"Flare.png"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>(in the playground demo, we used /textures/flare.png)</p>
+<p>For this texture, you can use an optional mask to filter some colors, or filter a part of the alpha channel.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.textureMask = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>, <span class="number">1.0</span>);</div></pre></td></tr></table></figure>
+
+<p>This is the output of this configuration:</p>
+<p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-1.png" alt="TextureMask"></p>
+<p>The last main thing to do is to define our emitter that we talked about earlier:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Where the particles comes from</span></div><div class="line">particleSystem.emitter = fountain; <span class="comment">// the starting object, the emitter, a box in this case.</span></div></pre></td></tr></table></figure>
+
+<p>Now you should see your particle system working. But it might not be our final result. We can refine some parameters:</p>
+<ul>
+<li>Box around our emitter. Our emitter is the center of particles source, but if you want your particles to emit from more than one point, then you can tell it to do so:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">particleSystem.minEmitBox = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">// Starting all From</span></div><div class="line">particleSystem.maxEmitBox = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">// To...</span></div></pre></td></tr></table></figure>
+
+<p>As you can see, particles are emitted from different positions along the X-axis:</p>
+<p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-2.png" alt="EmitBox"></p>
+<ul>
+<li>Now you can give some colors to your particles. Color one and two are combined, and “colorDead” is the color that the particle takes-on just before it disappears.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Colors of all particles (splited in 2 + specific color before dispose)</span></div><div class="line">particleSystem.color1 = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0.7</span>, <span class="number">0.8</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line">particleSystem.color2 = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0.2</span>, <span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line">particleSystem.colorDead = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">0.0</span>);</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Size of particles:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Size of each particle (random between...)</span></div><div class="line">particleSystem.minSize = <span class="number">0.1</span>;</div><div class="line">particleSystem.maxSize = <span class="number">0.5</span>;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>LifeTime of particles:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Life time of each particle (random between...)</span></div><div class="line">particleSystem.minLifeTime = <span class="number">0.3</span>;</div><div class="line">particleSystem.maxLifeTime = <span class="number">1.5</span>;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Emit rate. This is the density of particles, the rate of particle flow:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.emitRate = <span class="number">1000</span>;</div></pre></td></tr></table></figure>
+
+<p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-3.png" alt="emitRate"></p>
+<p>If you want to launch only a few particles at once, that can be done, as well.  For example, if you want to emit only 300 particles:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.manualEmitCount = <span class="number">300</span>;</div></pre></td></tr></table></figure>
+
+<p>Be aware that the stream is no longer continuous.  This is a one-shot particle emission, so this function overrides the previous “emitRate” parameter.</p>
+<ul>
+<li>The selected mode for particles. You can choose between “BLENDMODE_ONEONE” (default choice: source color is added to the destination color without alpha affecting the result), and “BLENDMODE_STANDARD” (to blend current color and particle color using particle’s alpha).</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Gravity. You can use gravity if you want to give an orientation to your particles (e.g.: fire particles travel upward on the Y-axis)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Set the gravity of all particles (not necessarily down)</span></div><div class="line">particleSystem.gravity = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">9.81</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Direction. Random direction of each particle after it has been emitted, between direction1 and direction2 vectors.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">particleSystem.direction1 = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">7</span>, <span class="number">8</span>, <span class="number">3</span>);</div><div class="line">particleSystem.direction2 = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">7</span>, <span class="number">8</span>, -<span class="number">3</span>);</div></pre></td></tr></table></figure>
+
+<p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-4.png" alt="emitRate"></p>
+<ul>
+<li>AngularSpeed. You can define a Z-axis rotation for each particle (in radian):</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">particleSystem.minAngularSpeed = <span class="number">0</span>;</div><div class="line">particleSystem.maxAngularSpeed = <span class="built_in">Math</span>.PI;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Speed/Strength. You can define the power of emitting particles, and the overall motion speed (0.01 is default update speed, faster updates = faster animation).</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">particleSystem.minEmitPower = <span class="number">1</span>;</div><div class="line">particleSystem.maxEmitPower = <span class="number">3</span>;</div><div class="line"></div><div class="line">particleSystem.updateSpeed = <span class="number">0.005</span>;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Duration. You can set the amount of time the particle system is running (depends of the overall speed above).</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.targetStopDuration = <span class="number">5</span>;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Dispose. Disposes (or not) the particle system on stop (very useful if you want to create a one shot particle system with a specific targetStopDuration):</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.disposeOnStop = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p>Finally, you can start this particle system whenever you want in your code with:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.start();</div></pre></td></tr></table></figure>
+
+<p>And naturally stop it:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.stop();</div></pre></td></tr></table></figure>
+
+<p>Feel free to play with this scene… <a href="http://www.babylonjs.com/playground/?12" target="_blank" rel="external">at our online playground</a>.</p>
+<h3 id="customEffect_(the_fourth_parameter_in_the_constructor)">customEffect (the fourth parameter in the constructor)</h3>
+<p>var ps = new BABYLON.ParticleSystem(“particles”, 2000, scene, <strong>customEffect</strong>);</p>
+<p>The customEffect is a type of BABYLON.Effect used to target a valid shader program.</p>
+<p>The primary author of Babylon.js was kind enough to make us <a href="http://www.babylonjs.com/playground/#1ASENS" target="_blank" rel="external">a fantastic playground demo of a particle system using a fragment shader effect</a>.  Visit that link, and you can see a fragment shader program that has been stored in a shader store.  Notice the line:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BABYLON.Effect.ShadersStore[<span class="string">"myParticleFragmentShader"</span>] = [...]</div></pre></td></tr></table></figure>
+
+<p>A bit below that, you will see:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> effect = engine.createEffectForParticles(<span class="string">"myParticle"</span>, [<span class="string">"time"</span>]);</div></pre></td></tr></table></figure>
+
+<p><em>.createEffectForParticles</em> accepts the following parameters:</p>
+<ul>
+<li>fragment name (can be in the shaders store or the id of a DOM element)</li>
+<li>array of additional parameters (uniforms)</li>
+<li>array of additional samplers (for additional textures!)</li>
+</ul>
+<p>The particle Effect Object is a slightly-modified <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Effect.html" target="_blank" rel="external">Babylon Effect Object</a>.  Also notice that the ShadersStore is a namespace upon this special <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Effect.html" target="_blank" rel="external">Effect Object</a>.  </p>
+<p>The Effect Object has many ‘setter’ methods on it, one of which is <em>.setFloat</em>.  Notice how it is used in the registerBeforeRender function.  This causes the speed of the effect to cycle across about a 20 second time span.  We are (the demo author is) varying the time parameter of the fragment shader program… from within the scene’s render loop!  WE LOVE IT!</p>
+<p>Here is a short comment from Deltakosh… regarding that playground demo linked above:</p>
+<blockquote>
+<p>By default Babylon.js will give you a vUV and a vColor varying parameter. It will also transmit you the particle texture. But you can feel free to add any new parameter, like I did, with ‘time’.</p>
+</blockquote>
+<p>This section of the tutorial is under construction.  We will have much more to say, soon.</p>
+<h2 id="Next_step">Next step</h2>
+<p>ParticleSystems are very powerful and versatile tools that can help bring realness and movement to your scenes. Don’t hesitate to use them as they are not resource-intensive.</p>
+<p>Stay with us, because we are going to learn a new, very interesting thing: <a href="https://github.com/BabylonJS/Babylon.js/wiki/13-Environment" target="_blank" rel="external">Configuring your environment</a>.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/12 Particles/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/15-Shadows/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/11   Picking collisions/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#customEffect_(the_fourth_parameter_in_the_constructor)"><span class="toc-number">1.1.</span> <span class="toc-text">customEffect (the fourth parameter in the constructor)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">2.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

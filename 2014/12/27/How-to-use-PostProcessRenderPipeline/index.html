@@ -1,0 +1,456 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="How to use Post Process Render Pipeline
+Post Process Renders pipelines allow you to create a chain of post processes and attach it to a camera.A rende">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/How-to-use-PostProcessRenderPipeline/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How_to_use_Post_Process_Render_Pipeline"><span class="toc-number">1.</span> <span class="toc-text">How to use Post Process Render Pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Base_Render_Pipeline"><span class="toc-number">1.1.</span> <span class="toc-text">Base Render Pipeline</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.2.</span> <span class="toc-text">Reference</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderPipelineManager"><span class="toc-number">1.2.1.</span> <span class="toc-text">BABYLON.PostProcessRenderPipelineManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderPipeline"><span class="toc-number">1.2.2.</span> <span class="toc-text">BABYLON.PostProcessRenderPipeline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderEffect"><span class="toc-number">1.2.3.</span> <span class="toc-text">BABYLON.PostProcessRenderEffect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderPass"><span class="toc-number">1.2.4.</span> <span class="toc-text">BABYLON.PostProcessRenderPass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Let’s_play_with_Render_Pipeline"><span class="toc-number">1.3.</span> <span class="toc-text">Let’s play with Render Pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Simple_Pipeline"><span class="toc-number">1.3.1.</span> <span class="toc-text">Simple Pipeline</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="How_to_use_Post_Process_Render_Pipeline">How to use Post Process Render Pipeline</h1>
+<p>Post Process Renders pipelines allow you to create a chain of post processes and attach it to a camera.<br>A render pipeline can be managed by enabling and disabling some effects and displaying a specific pass for debugging.</p>
+<h2 id="Base_Render_Pipeline">Base Render Pipeline</h2>
+<p><img src="https://raw.githubusercontent.com/michael-korbas/Babylon.js/Docs/Docs/RenderPipeline/Resources/Architecture.png" alt=""></p>
+<p>Renders Pipelines are composed of serval classes.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderPipelineManager</code></strong></td>
+<td>Managing all pipelines, allow you to enable or disable an effect, displaying a pass of post process for debugging.</td>
+</tr>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderPipeline</code></strong></td>
+<td>Set of effects that can be ordered.</td>
+</tr>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderEffect</code></strong></td>
+<td>A render effect is a smart postprocess who can manage their own instances itself.</td>
+</tr>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderPass</code></strong></td>
+<td>A render pass is a render texture that you can use in differents render effects.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Reference">Reference</h2>
+<h3 id="BABYLON-PostProcessRenderPipelineManager">BABYLON.PostProcessRenderPipelineManager</h3>
+<p><center><code>new BABYLON.PostProcessRenderPipelineManager();</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderPipelineManager()</code></strong></td>
+<td>Create a new instance of PostProcessRenderPipelineManager.</td>
+</tr>
+<tr>
+<td><strong><code>addPipeline(renderPipeline)</code></strong></td>
+<td>Add a new pipeline to an instance of PostProcessRenderPipelineManager.</td>
+</tr>
+<tr>
+<td><strong><code>attachCamerasToRenderPipeline(renderPipelineName, cameras, unique)</code></strong></td>
+<td>Attach a render pipeline to a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>detachCamerasFromRenderPipeline(renderPipelineName, cameras)</code></strong></td>
+<td>Detach a render pipeline from a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>enableEffectInPipeline(renderPipelineName, renderEffectName, cameras)</code></strong></td>
+<td>Enable an effect in a pipeline for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>disableEffectInPipeline(renderPipelineName, renderEffectName, cameras)</code></strong></td>
+<td>Disable an effect in a pipeline for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>enableDisplayOnlyPass(renderPipelineName, passName, cameras)</code></strong></td>
+<td>Enable displaying of a specific pass used in a specific render pipeline, for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>disableDisplayOnlyPass(renderPipelineName, passName, cameras)</code></strong></td>
+<td>Disable displaying of a specific pass used in a specific render pipeline, for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>update</code></strong></td>
+<td>Update all pipelines.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="BABYLON-PostProcessRenderPipeline">BABYLON.PostProcessRenderPipeline</h3>
+<p><center><code>new BABYLON.PostProcessRenderPipeline(BABYLON.Engine engine, string name);</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderPipeline(engine, name)</code></strong></td>
+<td>Create a new instance of PostProcessRenderPipeline.</td>
+</tr>
+<tr>
+<td><strong><code>addEffect(renderEffect)</code></strong></td>
+<td>Add a new render effect to the pipeline.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="BABYLON-PostProcessRenderEffect">BABYLON.PostProcessRenderEffect</h3>
+<p><center><code>new BABYLON.PostProcessRenderEffect(BABYLON.Engine engine, string name, string postProcessType, number ratio, BABYLON.Texture.SAMPLING_MODE samplingMode, bool singleInstance);</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderEffect(engine, name, createPostProcessFunction, singleInstance)</code></strong></td>
+<td>Create a new instance of PostProcessRenderEffect. The createPostProcessFunction have to return a nes instance of the postprocess you want to use</td>
+</tr>
+<tr>
+<td><strong><code>addPass(renderPass)</code></strong></td>
+<td>Add a new pass to the effect.</td>
+</tr>
+<tr>
+<td><strong><code>addRenderEffectAsPass(renderEffect)</code></strong></td>
+<td>Add a render effect as a pass.</td>
+</tr>
+<tr>
+<td><strong><code>removePass(renderPass)</code></strong></td>
+<td>Delete a pass from the effect.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>parameters</code></strong></td>
+<td>Callback used for passing extra parameters on a post process.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="BABYLON-PostProcessRenderPass">BABYLON.PostProcessRenderPass</h3>
+<p><center><code>new BABYLON.PostProcessRenderPass(BABYLON.Scene scene, string name, object size, BABYLON.Mesh[] renderList, function(){} beforeRender, function(){} afterRender)</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderPass(scene, name, size, renderList, beforeRender, afterRender)</code></strong></td>
+<td>Create a new instance of PostProcessRenderPass.</td>
+</tr>
+<tr>
+<td><strong><code>setRenderList(meshes)</code></strong></td>
+<td>Update the renderList.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Let’s_play_with_Render_Pipeline">Let’s play with Render Pipeline</h2>
+<h3 id="Simple_Pipeline">Simple Pipeline</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"renderCanvas"</span>);</div><div class="line"><span class="keyword">var</span> engine = <span class="keyword">new</span> BABYLON.Engine(canvas, <span class="literal">true</span>);</div><div class="line"><span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line"></div><div class="line"><span class="keyword">var</span> camera_01 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_01"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> camera_02 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_02"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> camera_03 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_03"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> camera_04 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_04"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line">camera_01.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">camera_02.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.5</span>, <span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">camera_03.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">camera_04.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line"></div><div class="line">scene.activeCameras.push(camera_01);</div><div class="line">scene.activeCameras.push(camera_02);</div><div class="line">scene.activeCameras.push(camera_03);</div><div class="line">scene.activeCameras.push(camera_04);</div><div class="line"></div><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni_0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>), scene);</div><div class="line"><span class="keyword">var</span> light1 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni_1"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> light2 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni_2"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line"><span class="keyword">var</span> box = BABYLON.Mesh.CreateBox(<span class="string">"Box"</span>, <span class="number">3.0</span>, scene);</div><div class="line"></div><div class="line">camera_01.attachControl(canvas);</div><div class="line">camera_02.attachControl(canvas);</div><div class="line">camera_03.attachControl(canvas);</div><div class="line">camera_04.attachControl(canvas);</div><div class="line"></div><div class="line"><span class="keyword">var</span> standardPipeline = <span class="keyword">new</span> BABYLON.PostProcessRenderPipeline(engine, <span class="string">"standardPipeline"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> blackAndWhiteEffect = <span class="keyword">new</span> BABYLON.PostProcessRenderEffect(engine, <span class="string">"blackAndWhiteEffect"</span>, </div><div class="line">	<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{<span class="keyword">return</span> <span class="keyword">new</span> BABYLON.BlackAndWhitePostProcess(<span class="string">"bw"</span>, <span class="number">1.0</span>, <span class="literal">null</span>, <span class="literal">null</span>, engine, <span class="literal">true</span>)});</div><div class="line"></div><div class="line"><span class="keyword">var</span> horizontalBlur = <span class="keyword">new</span> BABYLON.PostProcessRenderEffect(engine, <span class="string">"horizontalBlurEffect"</span>, </div><div class="line">	<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{ <span class="keyword">return</span> <span class="keyword">new</span> BABYLON.BlurPostProcess(<span class="string">"hb"</span>, <span class="keyword">new</span> BABYLON.Vector2(<span class="number">1.0</span>, <span class="number">0</span>), <span class="number">10</span>, <span class="number">1.0</span>, <span class="literal">null</span>, <span class="literal">null</span>, engine, <span class="literal">true</span>) });</div><div class="line"></div><div class="line"><span class="keyword">var</span> verticalBlur = <span class="keyword">new</span> BABYLON.PostProcessRenderEffect(engine, <span class="string">"verticalBlurEffect"</span>, </div><div class="line">	<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{ <span class="keyword">return</span> <span class="keyword">new</span> BABYLON.BlurPostProcess(<span class="string">"vb"</span>, <span class="keyword">new</span> BABYLON.Vector2(<span class="number">0</span>, <span class="number">1.0</span>), <span class="number">10</span>, <span class="number">1.0</span>, <span class="literal">null</span>, <span class="literal">null</span>, engine, <span class="literal">true</span>) });</div><div class="line"></div><div class="line">standardPipeline.addEffect(blackAndWhiteEffect);</div><div class="line">standardPipeline.addEffect(horizontalBlur);</div><div class="line">standardPipeline.addEffect(verticalBlur);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.addPipeline(standardPipeline);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_01);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_02);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_03);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_04);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"blackAndWhiteEffect"</span>, camera_01);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"blackAndWhiteEffect"</span>, camera_02);</div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"horizontalBlurEffect"</span>, camera_02);</div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"verticalBlurEffect"</span>, camera_02);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"horizontalBlurEffect"</span>, camera_03);</div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"verticalBlurEffect"</span>, camera_03);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//Render Loop</span></div><div class="line">engine.runRenderLoop(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">    scene.render();</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p><a href="http://www.babylonjs.com/playground/#21EWA7" target="_blank" rel="external">http://www.babylonjs.com/playground/#21EWA7</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/How-to-use-PostProcessRenderPipeline/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/03---Position,-Rotation-&-Scaling/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/How-to-merge-meshes/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How_to_use_Post_Process_Render_Pipeline"><span class="toc-number">1.</span> <span class="toc-text">How to use Post Process Render Pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Base_Render_Pipeline"><span class="toc-number">1.1.</span> <span class="toc-text">Base Render Pipeline</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.2.</span> <span class="toc-text">Reference</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderPipelineManager"><span class="toc-number">1.2.1.</span> <span class="toc-text">BABYLON.PostProcessRenderPipelineManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderPipeline"><span class="toc-number">1.2.2.</span> <span class="toc-text">BABYLON.PostProcessRenderPipeline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderEffect"><span class="toc-number">1.2.3.</span> <span class="toc-text">BABYLON.PostProcessRenderEffect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BABYLON-PostProcessRenderPass"><span class="toc-number">1.2.4.</span> <span class="toc-text">BABYLON.PostProcessRenderPass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Let’s_play_with_Render_Pipeline"><span class="toc-number">1.3.</span> <span class="toc-text">Let’s play with Render Pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Simple_Pipeline"><span class="toc-number">1.3.1.</span> <span class="toc-text">Simple Pipeline</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

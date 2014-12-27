@@ -1,0 +1,358 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="You have come a long way, and your scene is full of shapes, lights, sprites, particles, materials, it looks pretty good.  But there is something missi">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/13 Environment/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Changing_the_Background_color_(scene-clearColor)"><span class="toc-number">1.1.</span> <span class="toc-text">Changing the Background color (scene.clearColor)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Changing_the_Ambient_color_(scene-ambientColor)"><span class="toc-number">1.2.</span> <span class="toc-text">Changing the Ambient color (scene.ambientColor)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Skybox"><span class="toc-number">1.3.</span> <span class="toc-text">Skybox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fog"><span class="toc-number">1.4.</span> <span class="toc-text">Fog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">2.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<p>You have come a long way, and your scene is full of shapes, lights, sprites, particles, materials, it looks pretty good.  But there is something missing: a proper environment.  This is the first of three tutorials that talk about scene environment factors and effects.  We will start off with simple scene <code>clearColor</code> (background color), then talk briefly about scene <code>ambientColor</code>, then on to 6-texture skyboxes, and then fog to give an illusion of depth to your scenes.</p>
+<p><img src="http://www.babylonjs.com/tutorials/13 - Environment/13.png" alt="Environment"><br><em>A picture showing babylon.js fog in action</em></p>
+<h2 id="How_can_I_do_this?">How can I do this?</h2>
+<p>We will talk about that nice fog effect, shortly.  First, I want to introduce you to two interesting properties on the <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Scene.html" target="_blank" rel="external">scene class object</a>:</p>
+<ul>
+<li><code>scene.clearColor</code> - changes the ‘background’ color.</li>
+<li><code>scene.ambientColor</code> - changes the color used in several effects, including ambient lighting.</li>
+</ul>
+<p>Both of them are very useful, and powerful in their own right.</p>
+<h3 id="Changing_the_Background_color_(scene-clearColor)">Changing the Background color (<code>scene.clearColor</code>)</h3>
+<p>The ‘clearColor’ property on the scene object is the most rudimentary of environment properties/adjustments. Simply stated, this is how you change the background color of the scene.  Here is how it is done:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.clearColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.5</span>, <span class="number">0.8</span>, <span class="number">0.5</span>);</div></pre></td></tr></table></figure>
+
+<p>Or maybe you want to use one of our preset colors and avoid using the <code>new</code> keyword:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.clearColor = BABYLON.Color3.Blue();</div></pre></td></tr></table></figure>
+
+<p>This color and property is not used in any calculations for the final colors of mesh, materials, textures, or anything else. It is simply the background color of the scene.  Easy.</p>
+<h3 id="Changing_the_Ambient_color_(scene-ambientColor)">Changing the Ambient color (<code>scene.ambientColor</code>)</h3>
+<p>Conversely, the <code>ambientColor</code> property on the scene object is a very powerful and influential environment property/adjustment.  First, let’s have a look at its syntax:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.ambientColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.3</span>, <span class="number">0.3</span>, <span class="number">0.3</span>);</div></pre></td></tr></table></figure>
+
+<p>As you can see, it is set using the same format as <code>clearColor</code>, but <code>ambientColor</code> is used in quite a few calculations toward determining the final colors of scene items.  Mainly, it is used in conjunction with a mesh’s <code>StandardMaterial.ambientColor</code> to determine a FINAL <code>ambientColor</code> for the mesh material.  </p>
+<p>You will find that when there is no <code>scene.ambientColor</code>, then <code>StandardMaterial.ambientColor</code> and <code>StandardMaterial.ambientTexture</code> will appear to do nothing.  Set a <code>scene.ambientColor</code> of some value, like the example above, and <code>StandardMaterial.ambientColor</code>/<code>StandardMaterial.ambientTexture</code> will become active on meshes where you have applied such.</p>
+<p>By default, <code>scene.ambientColor</code> is set to <code>Color3(0, 0, 0)</code>, which means there is no <code>scene.ambientColor</code>.</p>
+<p>(Please see the section on ambientColors in our <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a> tutorial, for more information.)</p>
+<h3 id="Skybox">Skybox</h3>
+<p>To give a perfect illusion of a beautiful sunny sky, we are going to create a simple box, but with a special texture.</p>
+<p><img src="http://www.babylonjs.com/tutorials/13 - Environment/13-1.png" alt="Skybox"></p>
+<p>First, our box, nothing new, just take notice of the disabled <a href="http://en.wikipedia.org/wiki/Back-face_culling" target="_blank" rel="external">backface culling</a>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> skybox = BABYLON.Mesh.CreateBox(<span class="string">"skyBox"</span>, <span class="number">100.0</span>, scene);</div><div class="line"><span class="keyword">var</span> skyboxMaterial = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"skyBox"</span>, scene);</div><div class="line">skyboxMaterial.backFaceCulling = <span class="literal">false</span>;</div><div class="line">skybox.material = skyboxMaterial;</div></pre></td></tr></table></figure>
+
+<p>Next, we set the <code>infiniteDistance</code> property. This makes the skybox follow our camera’s position.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">skybox.infiniteDistance = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p>Now we must remove all light reflections on our box (the sun doesn’t reflect on the sky!):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">skyboxMaterial.diffuseColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">skyboxMaterial.specularColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+
+<p>Next, we apply our special sky texture to it. This texture must have been prepared to be a skybox, in a dedicated directory, named “skybox” in our example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">skyboxMaterial.reflectionTexture = <span class="keyword">new</span> BABYLON.CubeTexture(<span class="string">"textures/skybox"</span>, scene);</div><div class="line">skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;</div></pre></td></tr></table></figure>
+
+<p>(More about reflectionTextures can be found in our <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a> tutorial.)</p>
+<p>In that <code>/skybox</code> directory, we must find 6 sky textures, one for each face of our box. Each image must be named per the corresponding face: “skybox_nx.png”, “skybox_ny.png”, “skybox_nz.png”, “skybox_px.png”, “skybox_py.png”, “skybox_pz.png”.</p>
+<p><img src="http://www.babylonjs.com/tutorials/13 - Environment/13-2.png" alt="Skybox"></p>
+<p>If you want some free skybox texture samples, point your browser to: <a href="http://3delyvisions.co/skf1.htm" target="_blank" rel="external">http://3delyvisions.co/skf1.htm</a> (look at licenses before use, please.)  As you can see by those examples, skybox textures need not be textures of sky alone.  Buildings, hills, mountains, trees, lakes, planets, stars, you name it (all can be used nicely) as part of skybox textures.</p>
+<p>Final note, if you want your skybox to render behind everything else, set the skybox’s <code>renderingGroupId</code> to <code>0</code>, and every other renderable object’s <code>renderingGroupId</code> greater than zero, for example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">skybox.renderingGroupId = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">// Some other mesh</span></div><div class="line">myMesh.renderingGroupId = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+
+<h3 id="Fog">Fog</h3>
+<p>Fog is quite an advanced effect, but fog in Babylon.js has been simplified to the maximum.  It’s now very easy to add fog to your scenes.  First, we define the fog mode like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.fogMode = BABYLON.Scene.FOGMODE_EXP;</div></pre></td></tr></table></figure>
+
+<p>Here are the available modes :</p>
+<ul>
+<li><code>BABYLON.Scene.FOGMODE_NONE</code> - default one, fog is deactivated.</li>
+<li><code>BABYLON.Scene.FOGMODE_EXP</code> - the fog density is following an exponential function.</li>
+<li><code>BABYLON.Scene.FOGMODE_EXP2</code> - same that above but faster.</li>
+<li><code>BABYLON.Scene.FOGMODE_LINEAR</code> - the fog density is following a linear function.</li>
+</ul>
+<p>-&gt; If you choose the <code>EXP</code>, or <code>EXP2</code> mode, then you can define the density option (default is <code>0.1</code>):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.fogDensity = <span class="number">0.01</span>;</div></pre></td></tr></table></figure>
+
+<p>-&gt; Otherwise, if you choose <code>LINEAR</code> mode, then you can define where fog starts and where fog ends:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scene.fogStart = <span class="number">20.0</span>;</div><div class="line">scene.fogEnd = <span class="number">60.0</span>;</div></pre></td></tr></table></figure>
+
+<p>Finally, whatever the mode, you can specify the color of the fog (default is <code>BABYLON.Color3(0.2, 0.2, 0.3)</code>):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.fogColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.9</span>, <span class="number">0.9</span>, <span class="number">0.85</span>);</div></pre></td></tr></table></figure>
+
+<p>See, we told you it was easy.</p>
+<p>If you want to see and play with the playground scene for this tutorial, you can <a href="http://babylonjs-playground.azurewebsites.net/?13" target="_blank" rel="external"><strong>click right here</strong></a>.</p>
+<h2 id="Next_step">Next step</h2>
+<p>You should have a beautiful scene now, but except from your 3D models, your world is pretty flat, and that’s a shame for your scene. So, in our next environment tutorial, we are going to transform your flat ground into beautiful mountains. To learn this, go <a href="https://github.com/BabylonJS/Babylon.js/wiki/14-Height-map" target="_blank" rel="external">here!</a>.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/13 Environment/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/14-Height-map/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/15-Shadows/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Changing_the_Background_color_(scene-clearColor)"><span class="toc-number">1.1.</span> <span class="toc-text">Changing the Background color (scene.clearColor)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Changing_the_Ambient_color_(scene-ambientColor)"><span class="toc-number">1.2.</span> <span class="toc-text">Changing the Ambient color (scene.ambientColor)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Skybox"><span class="toc-number">1.3.</span> <span class="toc-text">Skybox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fog"><span class="toc-number">1.4.</span> <span class="toc-text">Fog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">2.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

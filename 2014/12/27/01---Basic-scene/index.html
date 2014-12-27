@@ -1,0 +1,365 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Creating a Basic Scene
+In this tutorial, we are going to create a basic 3D scene with Babylon.js.
+Two Basic Shapes in a Basic Scene
+Before you start, ">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/01---Basic-scene/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating_a_Basic_Scene"><span class="toc-number">1.</span> <span class="toc-text">Creating a Basic Scene</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The_HTML_Part"><span class="toc-number">1.1.</span> <span class="toc-text">The HTML Part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The_CSS_Style_Part"><span class="toc-number">1.2.</span> <span class="toc-text">The CSS Style Part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The_Javascript_External_Includes_Part_(the_framework)"><span class="toc-number">1.3.</span> <span class="toc-text">The Javascript External Includes Part (the framework)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Got_Troubles?"><span class="toc-number">2.</span> <span class="toc-text">Got Troubles?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Moving_On"><span class="toc-number">2.1.</span> <span class="toc-text">Moving On</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<h2 id="Creating_a_Basic_Scene">Creating a Basic Scene</h2>
+<p>In this tutorial, we are going to create a basic 3D scene with Babylon.js.<br><img src="http://urbanproductions.com/wingy/babylon/misc/tut01pic01.jpg" alt="Babylon JS 01"></p>
+<p><em>Two Basic Shapes in a Basic Scene</em></p>
+<p>Before you start, be sure you have a WebGL compatible browser (e.g.  Internet Explorer 11+, Firefox 4+, Google Chrome 9+, Opera 15+, etc.).</p>
+<h3 id="The_HTML_Part">The HTML Part</h3>
+<p>First, create a basic HTML5 web page:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"></div><div class="line">   <span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="title">title</span>&gt;</span>Babylon - Basic scene<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"></div><div class="line">   <span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<h3 id="The_CSS_Style_Part">The CSS Style Part</h3>
+<p>Inside the </p>
+<figure class="highlight <head>```"><figcaption><span>part, please add this CSS to view the canvas in maximum size:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">```css</div><div class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="tag">html</span>, <span class="tag">body</span> <span class="rules">{</span></div><div class="line">    <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;</div><div class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</div><div class="line">  <span class="rule">}</span></div><div class="line"></div><div class="line">  <span class="id">#renderCanvas</span> <span class="rules">{</span></div><div class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">touch-action</span>:<span class="value"> none</span></span>;</div><div class="line">  <span class="rule">}</span></div><div class="line"><span class="tag">&lt;/<span class="title">style</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<h3 id="The_Javascript_External_Includes_Part_(the_framework)">The Javascript External Includes Part (the framework)</h3>
+<p>Now we load our framework files.  After the CSS, (but still inside the </p>
+<figure class="highlight <head>```"><figcaption><span>part), please add:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>html</p>
+<p><script src="babylon.js"></script></p>
+<p><script src="hand.js"></script></p>
+<p><script src="cannon.js"></script>  <!-- optional physics engine --><br><!-- <script src="Oimo.js"></script>  New physics engine --></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="keyword">if</span> you don<span class="attribute">'t</span> already have those files, you can find them here: https://github.com/BabylonJS/Babylon.js, <span class="keyword">and</span> here: http://handjs.codeplex.com/)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">Next</span>, we go inside the</div></pre></td></tr></table></figure>
+
+<body>
+
+<figure class="highlight part"><figcaption><span>of the web page... and add a HTML5 canvas element, which will be used to draw our scene.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>html</p>
+<canvas id="renderCanvas"></canvas>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Now, we make <span class="operator">the</span> jump <span class="built_in">from</span> HTML5 <span class="keyword">into</span> Javascript.  Still inside <span class="operator">the</span></div></pre></td></tr></table></figure>
+
+<body>
+
+<figure class="highlight part"><figcaption><span>of the web page,  please add:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">```javascript</div><div class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line">  <span class="comment">// Get the canvas element from our HTML above</span></div><div class="line">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"renderCanvas"</span>);</div><div class="line"></div><div class="line">  <span class="comment">// Load the BABYLON 3D engine</span></div><div class="line">  <span class="keyword">var</span> engine = <span class="keyword">new</span> BABYLON.Engine(canvas, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+
+<p>After this, you will add your scene creation code.  To keep your code compatible with the Babylon.js Playground, we recommend that you insert a ‘createScene’ function at this point.  Besides generating a Babylon Scene object, createScene() is where you will add your basic scene requirements:  One camera, one light, and one or more shapes/meshes.</p>
+<p>So now, add this entire createScene function to your web page:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// This begins the creation of a function that we will 'call' just after it's built</span></div><div class="line"><span class="keyword">var</span> createScene = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line"></div><div class="line">  <span class="comment">// Now create a basic Babylon Scene object </span></div><div class="line">  <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line"></div><div class="line">  <span class="comment">// Change the scene background color to green.</span></div><div class="line">  scene.clearColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);</div><div class="line"></div><div class="line">  <span class="comment">// This creates and positions a free camera</span></div><div class="line">  <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.FreeCamera(<span class="string">"camera1"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">5</span>, -<span class="number">10</span>), scene);</div><div class="line"></div><div class="line">  <span class="comment">// This targets the camera to scene origin</span></div><div class="line">  camera.setTarget(BABYLON.Vector3.Zero());</div><div class="line"></div><div class="line">  <span class="comment">// This attaches the camera to the canvas</span></div><div class="line">  camera.attachControl(canvas, <span class="literal">false</span>);</div><div class="line">      </div><div class="line">  <span class="comment">// This creates a light, aiming 0,1,0 - to the sky.</span></div><div class="line">  <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.HemisphericLight(<span class="string">"light1"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line">  <span class="comment">// Dim the light a small amount</span></div><div class="line">  light.intensity = <span class="number">.5</span>;</div><div class="line"></div><div class="line">  <span class="comment">// Let's try our built-in 'sphere' shape. Params: name, subdivisions, size, scene</span></div><div class="line">  <span class="keyword">var</span> sphere = BABYLON.Mesh.CreateSphere(<span class="string">"sphere1"</span>, <span class="number">16</span>, <span class="number">2</span>, scene);</div><div class="line"></div><div class="line">  <span class="comment">// Move the sphere upward 1/2 its height</span></div><div class="line">  sphere.position.y = <span class="number">1</span>;</div><div class="line"></div><div class="line">  <span class="comment">// Let's try our built-in 'ground' shape.  Params: name, width, depth, subdivisions, scene</span></div><div class="line">  <span class="keyword">var</span> ground = BABYLON.Mesh.CreateGround(<span class="string">"ground1"</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">2</span>, scene);</div><div class="line"></div><div class="line">  <span class="comment">// Leave this function</span></div><div class="line">  <span class="keyword">return</span> scene;</div><div class="line"></div><div class="line">};  <span class="comment">// End of createScene function</span></div></pre></td></tr></table></figure>
+
+<p>Yes, that is quite a function, but do not let it scare you.  You will learn more about the parameters and properties for lights, cameras, and built-in shapes… in the tutorials to come.  The main thing to know is that our createScene function has all requirements complete.  It contains:  </p>
+<ul>
+<li>a Babylon Scene object</li>
+<li>a camera that has been attached</li>
+<li>a light that has been aimed</li>
+<li>a sphere that has been placed at position 0,1,0 (we moved it upward +y)</li>
+<li>a ground plane that has been placed at position 0,0,0 (default position)</li>
+</ul>
+<p>There are three more things to add to your web page.  First, a ‘call’ to the createScene function that we just completed.  Add this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Now, call the createScene function that you just finished creating</span></div><div class="line"><span class="keyword">var</span> scene = createScene();</div></pre></td></tr></table></figure>
+
+
+
+<p>Then, the all-important rendering loop.  Add this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Register a render loop to repeatedly render the scene</span></div><div class="line">engine.runRenderLoop(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">  scene.render();</div><div class="line">});</div></pre></td></tr></table></figure>
+
+
+
+<p>And last, an optional but handy canvas/window resize event handler.  Add this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Watch for browser/canvas resize events</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"resize"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">  engine.resize();</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>There.  All the Javascript inserting is done.  Make sure you close the script, body, and html elements. The last three lines of your HTML5 web page… should be:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>You are done! Save your file (in the same folder as babylon.js, hand.js, and cannon.js) and browse it with your WebGL-ready browser.  You should see your new scene displayed in 3D on its canvas.</p>
+<p>A near-exact duplicate of the createScene function used in this tutorial… can be seen <a href="http://www.babylonjs.com/playground/#1GM4YQ" target="_blank" rel="external"><strong>RIGHT HERE</strong></a> at the Babylon.js Playground.  You will also see the scene render LIVE, ONLINE!  Use the playground’s ‘Get .zip’ choice if you want to download the entire index.html file used in this tutorial.</p>
+<h2 id="Got_Troubles?">Got Troubles?</h2>
+<p>Here is what the entire web page should look like:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="title">title</span>&gt;</span>Babylon - Basic scene<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"></div><div class="line">   <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></div><div class="line">      <span class="tag">html</span>, <span class="tag">body</span> <span class="rules">{</span></div><div class="line">         <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;</div><div class="line">         <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">         <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">         <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</div><div class="line">         <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</div><div class="line">      <span class="rule">}</span></div><div class="line"></div><div class="line">      <span class="id">#renderCanvas</span> <span class="rules">{</span></div><div class="line">         <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">         <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100%</span></span></span>;</div><div class="line">         <span class="rule"><span class="attribute">touch-action</span>:<span class="value"> none</span></span>;</div><div class="line">      <span class="rule">}</span></div><div class="line">   <span class="tag">&lt;/<span class="title">style</span>&gt;</span></div><div class="line"></div><div class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"babylon.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"hand.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"cannon.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>  <span class="comment">&lt;!-- optional physics engine --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="title">canvas</span> <span class="attribute">id</span>=<span class="value">"renderCanvas"</span>&gt;</span><span class="tag">&lt;/<span class="title">canvas</span>&gt;</span></div><div class="line"></div><div class="line">   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line">      <span class="comment">// Get the canvas element from our HTML below</span></div><div class="line">      <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"renderCanvas"</span>);</div><div class="line"></div><div class="line">      <span class="comment">// Load the BABYLON 3D engine</span></div><div class="line">      <span class="keyword">var</span> engine = <span class="keyword">new</span> BABYLON.Engine(canvas, <span class="literal">true</span>);</div><div class="line"></div><div class="line">      <span class="comment">// -------------------------------------------------------------</span></div><div class="line">      <span class="comment">// Here begins a function that we will 'call' just after it's built</span></div><div class="line">      <span class="keyword">var</span> createScene = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line"></div><div class="line">         <span class="comment">// Now create a basic Babylon Scene object</span></div><div class="line">         <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line"></div><div class="line">         <span class="comment">// Change the scene background color to green.</span></div><div class="line">         scene.clearColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);</div><div class="line"></div><div class="line">         <span class="comment">// This creates and positions a free camera</span></div><div class="line">         <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.FreeCamera(<span class="string">"camera1"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">5</span>, -<span class="number">10</span>), scene);</div><div class="line"></div><div class="line">         <span class="comment">// This targets the camera to scene origin</span></div><div class="line">         camera.setTarget(BABYLON.Vector3.Zero());</div><div class="line"></div><div class="line">         <span class="comment">// This attaches the camera to the canvas</span></div><div class="line">         camera.attachControl(canvas, <span class="literal">false</span>);</div><div class="line"></div><div class="line">         <span class="comment">// This creates a light, aiming 0,1,0 - to the sky.</span></div><div class="line">         <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.HemisphericLight(<span class="string">"light1"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line">         <span class="comment">// Dim the light a small amount</span></div><div class="line">         light.intensity = <span class="number">.5</span>;</div><div class="line"></div><div class="line">         <span class="comment">// Let's try our built-in 'sphere' shape. Params: name, subdivisions, size, scene</span></div><div class="line">         <span class="keyword">var</span> sphere = BABYLON.Mesh.CreateSphere(<span class="string">"sphere1"</span>, <span class="number">16</span>, <span class="number">2</span>, scene);</div><div class="line"></div><div class="line">         <span class="comment">// Move the sphere upward 1/2 its height</span></div><div class="line">         sphere.position.y = <span class="number">1</span>;</div><div class="line"></div><div class="line">         <span class="comment">// Let's try our built-in 'ground' shape.  Params: name, width, depth, subdivisions, scene</span></div><div class="line">         <span class="keyword">var</span> ground = BABYLON.Mesh.CreateGround(<span class="string">"ground1"</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">2</span>, scene);</div><div class="line"></div><div class="line">         <span class="comment">// Leave this function</span></div><div class="line">         <span class="keyword">return</span> scene;</div><div class="line"></div><div class="line">      };  <span class="comment">// End of createScene function</span></div><div class="line">      <span class="comment">// -------------------------------------------------------------</span></div><div class="line"></div><div class="line">      <span class="comment">// Now, call the createScene function that you just finished creating</span></div><div class="line">      <span class="keyword">var</span> scene = createScene();</div><div class="line"></div><div class="line">      <span class="comment">// Register a render loop to repeatedly render the scene</span></div><div class="line">      engine.runRenderLoop(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">         scene.render();</div><div class="line">      });</div><div class="line"></div><div class="line">      <span class="comment">// Watch for browser/canvas resize events</span></div><div class="line">      <span class="built_in">window</span>.addEventListener(<span class="string">"resize"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">         engine.resize();</div><div class="line">      });</div><div class="line"></div><div class="line">   <span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<h3 id="Moving_On">Moving On</h3>
+<p>From this point forward in the Basic Series tutorials, I will mostly talk about things that are contained in the createScene function (the part between the dashed lines).  I will assume that you already know how to insert a createScene function into a Babylon.js HTML5 scene document (like the one above).</p>
+<p>Try to memorize this web page layout, and see how the createScene function is at the heart of it.  After you have spent some time using the Babylon.js Playground, you will see how createScene() is portable, and can be easily copied and pasted TO and FROM the playground editor window.  This will allow others to help you with problems, and will also allow you to help others with their problems.</p>
+<h2 id="Next_step">Next step</h2>
+<p>Now you are ready to go further and learn how to create more elements like spheres, cylinders, boxes, etc.</p>
+<p>Next in the Playpen Series - <a href="https://github.com/BabylonJS/Babylon.js/wiki/02-Basic-elements" target="_blank" rel="external"><strong>02-Basic elements</strong></a></p>
+</body></body>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/01---Basic-scene/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/02-Basic-elements/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/Working-with-Blender/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating_a_Basic_Scene"><span class="toc-number">1.</span> <span class="toc-text">Creating a Basic Scene</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The_HTML_Part"><span class="toc-number">1.1.</span> <span class="toc-text">The HTML Part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The_CSS_Style_Part"><span class="toc-number">1.2.</span> <span class="toc-text">The CSS Style Part</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The_Javascript_External_Includes_Part_(the_framework)"><span class="toc-number">1.3.</span> <span class="toc-text">The Javascript External Includes Part (the framework)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Got_Troubles?"><span class="toc-number">2.</span> <span class="toc-text">Got Troubles?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Moving_On"><span class="toc-number">2.1.</span> <span class="toc-text">Moving On</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

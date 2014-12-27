@@ -1,0 +1,307 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Babylon.js comes with an integrated support for level of detail.
+This feature allows you to specify different meshes based on distance to viewer.For i">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/How-to-use-level-of-details/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>Babylon.js comes with an integrated support for level of detail.</p>
+<p>This feature allows you to specify different meshes based on distance to viewer.<br>For instance, here is how to define 4 levels of details for a given mesh:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> knot00 = BABYLON.Mesh.CreateTorusKnot(<span class="string">"knot0"</span>, <span class="number">0.5</span>, <span class="number">0.2</span>, <span class="number">128</span>, <span class="number">64</span>, <span class="number">2</span>, <span class="number">3</span>, scene);</div><div class="line"><span class="keyword">var</span> knot01 = BABYLON.Mesh.CreateTorusKnot(<span class="string">"knot1"</span>, <span class="number">0.5</span>, <span class="number">0.2</span>, <span class="number">32</span>, <span class="number">16</span>, <span class="number">2</span>, <span class="number">3</span>, scene);</div><div class="line"><span class="keyword">var</span> knot02 = BABYLON.Mesh.CreateTorusKnot(<span class="string">"knot2"</span>, <span class="number">0.5</span>, <span class="number">0.2</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">2</span>, <span class="number">3</span>, scene);</div><div class="line"><span class="keyword">var</span> knot03 = BABYLON.Mesh.CreateTorusKnot(<span class="string">"knot3"</span>, <span class="number">0.5</span>, <span class="number">0.2</span>, <span class="number">16</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">3</span>, scene);</div><div class="line"></div><div class="line">knot00.addLODLevel(<span class="number">15</span>, knot01);</div><div class="line">knot00.addLODLevel(<span class="number">30</span>, knot02);</div><div class="line">knot00.addLODLevel(<span class="number">45</span>, knot03);</div><div class="line">knot00.addLODLevel(<span class="number">55</span>, <span class="literal">null</span>);</div></pre></td></tr></table></figure>
+
+<p>The first parameter used with </p>
+<figure class="highlight addLODLevel```"><figcaption><span>defines the distance to the camera. Beyond this distance, the specified level is used.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Each level is independent <span class="operator">and</span> can have its own material.</div><div class="line">By defining <span class="operator">a</span> level <span class="operator">of</span> detail <span class="built_in">to</span> <span class="constant">null</span>, you disable rendering <span class="operator">of</span> <span class="operator">the</span> current mesh, when <span class="keyword">it</span> is viewed beyond <span class="operator">the</span> indicated distance <span class="built_in">to</span> camera.</div><div class="line"></div><div class="line">When <span class="operator">a</span> mesh is used <span class="keyword">as</span> <span class="operator">a</span> level <span class="operator">of</span> detail <span class="keyword">for</span> another mesh, <span class="keyword">it</span> is linked <span class="built_in">to</span> <span class="keyword">it</span> <span class="operator">and</span> cannot be rendered directly.</div><div class="line"></div><div class="line">You can remove <span class="operator">a</span> LOD level <span class="keyword">by</span> <span class="keyword">using</span></div></pre></td></tr></table></figure>
+
+<p>removeLODLevel</p>
+<figure class="highlight :"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>javascript<br>knot00.removeLODLevel(knot02);<br>knot00.removeLODLevel(null);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Try: [<span class="link_label">LOD playground</span>](<span class="link_url">http://www.babylonjs-playground.com/#QE7KM</span>)</div><div class="line"></div><div class="line"><span class="header">## Using LOD and instances</span></div><div class="line">By default, instances will use LOD defined on root mesh. You do not have to specify anything on instances:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>var count = 3;<br>var scale = 4;</p>
+<p>var knot00 = BABYLON.Mesh.CreateTorusKnot(“knot0”, 0.5, 0.2, 128, 64, 2, 3, scene);<br>var knot01 = BABYLON.Mesh.CreateTorusKnot(“knot1”, 0.5, 0.2, 32, 16, 2, 3, scene);<br>var knot02 = BABYLON.Mesh.CreateTorusKnot(“knot2”, 0.5, 0.2, 24, 12, 2, 3, scene);<br>var knot03 = BABYLON.Mesh.CreateTorusKnot(“knot3”, 0.5, 0.2, 16, 8, 2, 3, scene);</p>
+<p>knot00.setEnabled(false);</p>
+<p>knot00.addLODLevel(15, knot01);<br>knot00.addLODLevel(30, knot02);<br>knot00.addLODLevel(45, knot03);<br>knot00.addLODLevel(55, null);</p>
+<p>for (var x = -count; x &lt;= count; x++) {<br>    for (var y = -count; y &lt;= count; y++) {<br>        for (var z = 5; z &lt; 10; z++) {<br>            var knot = knot00.createInstance(“knotI”);<br>            knot.position = new BABYLON.Vector3(x <em> scale, y </em> scale, z * scale);<br>        }<br>    }<br>}<br>```</p>
+<p>Try: <a href="http://www.babylonjs-playground.com/#14ESWC" target="_blank" rel="external">LOD and instances playground</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/How-to-use-level-of-details/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/How-to-use-lens-flares/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/How-to-use-instances/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

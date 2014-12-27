@@ -1,0 +1,356 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="In this tutorial, uur goal is to understand height maps, and to learn how to generate realistic grounds.
+
+Final result
+How can I do this ?
+
+Introducti">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/14-Height-map/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">2.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<p>In this tutorial, uur goal is to understand height maps, and to learn how to generate realistic grounds.</p>
+<p><img src="http://www.babylonjs.com/tutorials/14 - Height map/14.png" alt="HeightMap"></p>
+<p><em>Final result</em></p>
+<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
+<ul>
+<li><strong>Introduction</strong></li>
+</ul>
+<p>Those mountains are very easy to generate with Babylon.js, and with only a single function. But before we do that, we have to create a new material, like we have done many times before:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> groundMaterial = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"ground"</span>, scene);</div><div class="line">groundMaterial.diffuseTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"Earth__land.jpg"</span>, scene);</div><div class="line"></div><div class="line"><span class="keyword">var</span> groundPlane = BABYLON.Mesh.CreatePlane(<span class="string">"groundPlane"</span>, <span class="number">200.0</span>, scene);</div><div class="line">groundPlane.material = groundMaterial;</div></pre></td></tr></table></figure>
+
+<p><img src="http://www.babylonjs.com/tutorials/14 - Height map/14-1.png" alt="HeightMap2"></p>
+<p><em>Our material, a texture, applied to the plane</em></p>
+<ul>
+<li><strong>Explanations of a height map</strong></li>
+</ul>
+<p>Understanding height maps is the main objective of this tutorial. A height map is simply a greyscale image like the one we are going to use:</p>
+<p><img src="http://www.babylonjs.com/tutorials/14 - Height map/worldHeightMap.jpg" alt="HeightMap3"></p>
+<p>This image will now be used to generate our ground, using the different variants of gray of our picture. This image is the elevation data for your ground. Each pixel’s color is interpreted as a distance of displacement or “height” from the “floor” of your mesh. So, the whiter the pixel is, the taller your mountain will be.</p>
+<p>To help you generate those gray-scale height maps, you can use software such as “Terragen”, or ”Picogen”. </p>
+<ul>
+<li><strong>Javascript code</strong></li>
+</ul>
+<p>Now let’s see this powerful function named “CreateGroundFromHeightMap”:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ground = BABYLON.Mesh.CreateGroundFromHeightMap(<span class="string">"ground"</span>, <span class="string">"worldHeightMap.jpg"</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">250</span>, <span class="number">0</span>, <span class="number">10</span>, scene, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+
+<p>Many parameters here:</p>
+<ul>
+<li><em>Name</em></li>
+<li><em>Height map picture url</em></li>
+<li>Size of this mesh: </li>
+<li><blockquote>
+<p><em>Width</em></p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><em>Height</em></p>
+</blockquote>
+</li>
+<li><em>Number of subdivisions</em>: increase the complexity of this mesh in order to improve the visual quality of it:</li>
+</ul>
+<p><img src="http://www.babylonjs.com/tutorials/14 - Height map/14-2.png" alt="HeightMap4"></p>
+<ul>
+<li><em>Minimum height</em> : The lowest level of the mesh</li>
+<li><em>Maximum height</em> : the highest level of the mesh</li>
+<li><em>Scene</em>: the actual scene</li>
+<li><em>Updatable</em>: indicates if this mesh can be updated dynamically in the future (Boolean)</li>
+</ul>
+<p>Finally, when our new mesh is ready, we simply apply our material:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ground.material = groundMaterial;</div></pre></td></tr></table></figure>
+
+<p>And now we have a beautiful 3D view of the earth!</p>
+<p><img src="http://www.babylonjs.com/tutorials/14 - Height map/14-3.png" alt="HeightMap4"></p>
+<p>In my example, I have added a skybox (like we have learned before <a href="https://github.com/BabylonJS/Babylon.js/wiki/13-Environment" target="_blank" rel="external">here</a>), and a spotlight to simulate sun activity.</p>
+<p>Here is another example showing what you can achieve with BabylonJS height maps:</p>
+<p><img src="http://www.babylonjs.com/tutorials/14 - Height map/14-4.png" alt="HeightMap5"></p>
+<ul>
+<li><strong>Tips</strong></li>
+</ul>
+<p>When the user is manipulating the camera, it can be awkward if he can see under the ground, or if he zooms-out outside the skybox. So, to avoid that kind of situation, we can constrain the camera movement:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> camerasBorderFunction = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">        <span class="comment">//Angle</span></div><div class="line">        <span class="keyword">if</span> (camera.beta &lt; <span class="number">0.1</span>)</div><div class="line">            camera.beta = <span class="number">0.1</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (camera.beta &gt; (<span class="built_in">Math</span>.PI / <span class="number">2</span>) * <span class="number">0.9</span>)</div><div class="line">            camera.beta = (<span class="built_in">Math</span>.PI / <span class="number">2</span>) * <span class="number">0.9</span>;</div><div class="line"></div><div class="line">  <span class="comment">//Zoom</span></div><div class="line">        <span class="keyword">if</span> (camera.radius &gt; <span class="number">150</span>)</div><div class="line">            camera.radius = <span class="number">150</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (camera.radius &lt; <span class="number">30</span>)</div><div class="line">            camera.radius = <span class="number">30</span>;</div><div class="line">    };</div><div class="line"></div><div class="line">    scene.registerBeforeRender(camerasBorderFunction);</div></pre></td></tr></table></figure>
+
+<p>You may be interested in visiting <a href="http://babylonjs-playground.azurewebsites.net/?14" target="_blank" rel="external"><strong>the playground demo</strong></a> that goes with this tutorial.</p>
+<h2 id="Next_step">Next step</h2>
+<p>Well done! Your scene looks good now, and you can imagine a lot of new landscapes! One more important thing you need to know is <a href="https://github.com/BabylonJS/Babylon.js/wiki/15-Shadows" target="_blank" rel="external">how to create shadows</a>. Shadows will give your scene a beautiful rendering effect, don’t forget it!</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/14-Height-map/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/Advanced Texturing/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/13 Environment/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">2.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

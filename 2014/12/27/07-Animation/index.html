@@ -1,0 +1,454 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Animation
+Your scene is beginning to look great, but it is very static. To put dynamics in it, we are going to learn how to tell your computer to move">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/07-Animation/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Animation"><span class="toc-number">1.</span> <span class="toc-text">Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<h2 id="Animation">Animation</h2>
+<p>Your scene is beginning to look great, but it is very static. To put dynamics in it, we are going to learn how to tell your computer to move your meshes in any way you choose.</p>
+<p><img src="http://www.babylonjs.com/tutorials/07 - Animation/07.png" alt="Elements"></p>
+<p><em>Final result</em></p>
+<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
+<p>There are two primary ways of doing animations in your scene. The first is to define a collection of keys and defining your object’s situation at each key. The second way is for more complex animations, when you change animation code at run time.</p>
+<p><strong>1 - Basic animation</strong></p>
+<p>The animation is based on objects called Animation (!!). An Animation is defined by various properties and a collection of keys. Every key represents the value of the Animation at that key’s given time.</p>
+<p>To achieve today’s animated scene, we begin by creating our environment:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createScene</span><span class="params">()</span> </span>{</div><div class="line">    <span class="comment">//Here... your basic scene as before: [scene, light, camera]</span></div><div class="line">    </div><div class="line">    <span class="comment">//Create a box</span></div><div class="line">    <span class="keyword">var</span> box1 = BABYLON.Mesh.CreateBox(<span class="string">"Box1"</span>, <span class="number">10.0</span>, scene);</div><div class="line">    box1.position.x = -<span class="number">20</span>;</div></pre></td></tr></table></figure>
+
+<p>Our goal: move this “box1”. First, create our Animation object:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animationBox = <span class="keyword">new</span> BABYLON.Animation(<span class="string">"myAnimation"</span>, <span class="string">"scaling.x"</span>, <span class="number">30</span>, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);</div></pre></td></tr></table></figure>
+
+<p>Much information is in the parameters:</p>
+<p>Parameter 1 - Name of this animation, nothing more.</p>
+<p>Parameter 2 - The property concerned. This can be any mesh property, depending upon what you want to change. Here we want to scale an object on the X axis, so it will be “scaling.x”.</p>
+<p>Parameter 3 - Frames per second requested: highest FPS possible in this animation.</p>
+<p>Parameter 4 - Type of change. Here you decide and enter what kind of value will be modified: is it a float (e.g. a translation), a vector (e.g. a direction), or a quaternion. Exact values are:</p>
+<ul>
+<li><figure class="highlight BABYLON.Animation.ANIMATIONTYPE_FLOAT```"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>BABYLON.Animation.ANIMATIONTYPE_VECTOR3</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.Animation.ANIMATIONTYPE_QUATERNION</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Parameter <span class="number">5.</span> Finally, you have <span class="keyword">to</span> decide <span class="keyword">and</span> enter <span class="keyword">the</span> type <span class="keyword">of</span> behavior this animation will take <span class="keyword">at</span> <span class="keyword">its</span> upper limit (e.g. will <span class="keyword">it</span> <span class="keyword">continue</span> <span class="function_start"><span class="keyword">on</span></span>, will <span class="keyword">it</span> begin again, will <span class="keyword">it</span> stop <span class="keyword">at</span> <span class="keyword">the</span> <span class="keyword">last</span> key value, etc.):</div><div class="line"></div><div class="line">* Use previous values <span class="keyword">and</span> increment <span class="keyword">it</span>:</div></pre></td></tr></table></figure>
+
+<p>BABYLON.Animation.ANIMATIONLOOPMODE_RELATIVE</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* Restart <span class="keyword">from</span> initial <span class="keyword">value</span>:</div></pre></td></tr></table></figure>
+
+<p>BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* Keep their final <span class="keyword">value</span>:</div></pre></td></tr></table></figure>
+
+<p>BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Now <span class="keyword">that</span> we have our Animation object, <span class="keyword">it</span> <span class="keyword">is</span> <span class="property">time</span> <span class="keyword">to</span> <span class="command">say</span> how those values will be modified. In our case, we want <span class="keyword">to</span> scale our box, <span class="keyword">but</span> <span class="keyword">not</span> <span class="keyword">in</span> a linear way: <span class="keyword">it</span> must be faster when <span class="keyword">it</span> became larger, <span class="keyword">and</span> slower when <span class="keyword">it</span> became thinner. So:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>// An array with all animation keys<br>var keys = [];  </p>
+<p>   //At the animation key 0, the value of scaling is “1”<br>    keys.push({<br>        frame: 0,<br>        value: 1<br>    });</p>
+<pre><code><span class="comment">//At the animation key 20, the value of scaling is "0.2"</span>
+keys.push({
+    frame: <span class="number">20</span>,
+    <span class="keyword">value</span>: <span class="number">0.2</span>
+});
+
+<span class="comment">//At the animation key 100, the value of scaling is "1"</span>
+keys.push({
+    frame: <span class="number">100</span>,
+    <span class="keyword">value</span>: <span class="number">1</span>
+});
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">Next</span>, two important step<span class="variable">s:</span></div><div class="line">* Adding the animation array <span class="keyword">to</span> the animation objec<span class="variable">t:</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>animationBox.setKeys(keys);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="subst">*</span> <span class="keyword">Link</span> this animation <span class="keyword">to</span> our box:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>box1.animations.push(animationBox);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Finally, you can launch your animation <span class="operator">in</span> <span class="constant">one</span> <span class="built_in">line</span> <span class="operator">of</span> code, <span class="keyword">at</span> <span class="keyword">any</span> <span class="built_in">time</span> <span class="operator">in</span> your application:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>scene.beginAnimation(box1, 0, 100, true);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">This <span class="function"><span class="keyword">function</span> <span class="title">returns</span> <span class="title">a</span></span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.Animatable</p>
+<figure class="highlight object"><figcaption><span>that you can use to get access to individual animations (for instance using ```getAnimationByTargetProperty``` function).</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The</div></pre></td></tr></table></figure>
+
+<p>BABYLON.Animatable</p>
+<figure class="highlight object"><figcaption><span>also supports the following functions:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>pause()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>restart()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>stop()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can also <span class="keyword">get</span> access <span class="keyword">to</span> current <span class="property">running</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.Animatable</p>
+<figure class="highlight objects"><figcaption><span>by using ```scene.getAnimatableByTarget()``` providing the target object.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">And</span> you are done! Don<span class="attribute">'t</span> hesitate <span class="keyword">to</span> combine many animations <span class="keyword">for</span> one mesh object... by creating more Animations <span class="keyword">and</span> pushing them into the mesh<span class="attribute">'s</span> _animation_ <span class="keyword">property</span>. ;)  We have now completed an Animation <span class="keyword">for</span> box1.scaling.x. Maybe now you want <span class="keyword">to</span> build an Animation <span class="keyword">for</span> box1.scaling.y, <span class="keyword">and</span> really get box1 moving playfully.</div><div class="line"></div><div class="line">**<span class="number">2</span> - Controlling animations**</div><div class="line"></div><div class="line">Each Animation has a <span class="keyword">property</span> called</div></pre></td></tr></table></figure>
+
+<p>currentFrame</p>
+<figure class="highlight that"><figcaption><span>indicates the current animation key.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">For advanced keyframe animation, you can also define <span class="operator">the</span> functions used <span class="built_in">to</span> interpolate (transition) between <span class="built_in">keys</span>. By default these functions are <span class="operator">the</span> following:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>BABYLON.Animation.prototype.floatInterpolateFunction = function (startValue, endValue, gradient) {<br>    return startValue + (endValue - startValue) * gradient;<br>};</p>
+<p>BABYLON.Animation.prototype.quaternionInterpolateFunction = function (startValue, endValue, gradient) {<br>    return BABYLON.Quaternion.Slerp(startValue, endValue, gradient);<br>};</p>
+<p>BABYLON.Animation.prototype.vector3InterpolateFunction = function (startValue, endValue, gradient) {<br>    return BABYLON.Vector3.Lerp(startValue, endValue, gradient);<br>};</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**3 - Helper function**</div><div class="line"></div><div class="line">You can <span class="operator"><span class="keyword">use</span> an <span class="keyword">extended</span> <span class="keyword">function</span> <span class="keyword">to</span> <span class="keyword">create</span> a <span class="keyword">quick</span> animation:</span></div></pre></td></tr></table></figure>
+
+<p>Javascript<br>Animation.CreateAndStartAnimation = function(name, mesh, tartgetProperty, framePerSecond, totalFrame, from, to, loopMode);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">To</span> be able <span class="keyword">to</span> use this <span class="function"><span class="keyword">function</span>, <span class="title">you</span> <span class="title">need</span> <span class="title">to</span> <span class="title">know</span> <span class="title">that</span> :</span></div><div class="line">- Your animation will have predefined key frames (Only <span class="number">2</span> keyframes are generated : **Start** <span class="keyword">and</span> **<span class="keyword">End</span>**)</div><div class="line">- The animation works only <span class="keyword">on</span> **AbstractMesh** objects.</div><div class="line">- The animation <span class="keyword">is</span> starting right after the <span class="function"><span class="keyword">method</span> <span class="title">call</span>.</span></div><div class="line"></div><div class="line"><span class="title">Here</span> <span class="title">is</span> <span class="title">a</span> <span class="title">straightforward</span> <span class="title">sample</span> <span class="title">using</span> <span class="title">the</span> **<span class="title">CreateAndStartAnimation</span><span class="params">()</span>** <span class="title">function</span> :</div></pre></td></tr></table></figure>
+
+<p>Javascript<br>BABYLON.Animation.CreateAndStartAnimation(‘boxscale’, box1, ‘scaling.x’, 30, 120, 1.0, 1.5);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Pretty straightforward ? :)</div><div class="line"></div><div class="line"><span class="strong">**4 - Easing functions**</span></div><div class="line"></div><div class="line">You can add some behaviors to your animations, using easing functions. </div><div class="line">If you want more informations about easing functions, here are some useful links : </div><div class="line"><span class="bullet">- </span>[<span class="link_label">MSDN Easing functions documentation</span>](<span class="link_url">http://msdn.microsoft.com/en-us/library/ee308751.aspx</span>)</div><div class="line"><span class="bullet">- </span>[<span class="link_label">Easing functions cheat sheet</span>](<span class="link_url">http://easings.net/fr</span>)</div><div class="line"></div><div class="line">All those easing functions are implemented in BABYLON allowing you to apply custom mathematical formulas to your animations.</div><div class="line"></div><div class="line">Here are the predefined easing functions you can use : </div><div class="line">-</div></pre></td></tr></table></figure>
+
+<p>BABYLON.CircleEase()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.BackEase(amplitude)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.BounceEase(bounces, bounciness)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.CubicEase()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.ElasticEase(oscillations, springiness)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.ExponentialEase(exponent)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.PowerEase(power)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.QuadraticEase()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.QuarticEase()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.QuinticEase()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.SineEase()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can <span class="operator"><span class="keyword">use</span> the **EasingMode** property <span class="keyword">to</span> <span class="keyword">alter</span> how the easing <span class="keyword">function</span> behaves, that <span class="keyword">is</span>, <span class="keyword">change</span> how the animation interpolates. </span></div><div class="line">There <span class="keyword">are</span> three possible <span class="keyword">values</span> you can give <span class="keyword">for</span> EasingMode: </div><div class="line">-</div></pre></td></tr></table></figure>
+
+<p>BABYLON.EasingFunction.EASINGMODE_EASEIN</p>
+<figure class="highlight :"><figcaption><span>Interpolation follows the mathematical formula associated with the easing function.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.EasingFunction.EASINGMODE_EASEOUT</p>
+<figure class="highlight :"><figcaption><span>Interpolation follows 100% interpolation minus the output of the formula associated with the easing function.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.EasingFunction.EASINGMODE_EASEINOUT</p>
+<figure class="highlight :"><figcaption><span>Interpolation uses EaseIn for the first half of the animation and EaseOut for the second half.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Here is <span class="operator">a</span> straightforward sample <span class="built_in">to</span> animate <span class="operator">a</span> torus <span class="operator">within</span> <span class="operator">a</span></div></pre></td></tr></table></figure>
+
+<p>CirleEase</p>
+<figure class="highlight easing"><figcaption><span>function :</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+<p>Javascript<br>//Create a Vector3 animation at 30 FPS<br>var animationTorus = new BABYLON.Animation(“torusEasingAnimation”, “position”, 30,  BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);</p>
+<p>// the torus destination position<br>var nextPos = torus.position.add(new BABYLON.Vector3(-80, 0, 0));</p>
+<p>// Animation keys<br>var keysTorus = [];<br>keysTorus.push({ frame: 0, value: torus.position });<br>keysTorus.push({ frame: 120, value: nextPos });<br>animationTorus.setKeys(keysTorus);</p>
+<p>// Creating an easing function<br>var easingFunction = new BABYLON.CircleEase();</p>
+<p>// For each easing function, you can choose beetween EASEIN (default), EASEOUT, EASEINOUT<br>easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);</p>
+<p>// Adding the easing function to the animation<br>animationTorus.setEasingFunction(easingFunction);</p>
+<p>// Adding animation to my torus animations collection<br>torus.animations.push(animationTorus);</p>
+<p>//Finally, launch animations on torus, from key 0 to key 120 with loop activated<br>scene.beginAnimation(torus, 0, 120, true);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can play <span class="operator">with</span> bezier curve algorithm too, <span class="keyword">using</span> <span class="operator">the</span> **BezierCurveEase(x1, y1, x2, y2)** <span class="function"><span class="keyword">function</span>. </span></div><div class="line">For purpose, here is <span class="operator">a</span> good reference <span class="built_in">to</span> <span class="built_in">create</span> your curve algorithm : [<span class="keyword">http</span>://cubic-bezier.com](<span class="keyword">http</span>://cubic-bezier.com)</div><div class="line"></div><div class="line">Here is <span class="operator">a</span> pretty cool implementation <span class="keyword">using</span> <span class="operator">the</span> bezier curve algorithm :</div><div class="line"></div><div class="line">![](<span class="keyword">http</span>://www.dotmim.com/sitefiles/babylon/bezier.jpg)</div></pre></td></tr></table></figure>
+
+<p>Javascript<br>var bezierEase = new BABYLON.BezierCurveEase(0.32, -0.73, 0.69, 1.59);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">Finally</span>, you can extend the **EasingFunction** base <span class="keyword">function</span> <span class="keyword">to</span> create your own easing <span class="keyword">function</span>, <span class="keyword">like</span> this :</div></pre></td></tr></table></figure>
+
+<p>Javascript<br>var FunnyEase = (function (_super) {<br>    __extends(FunnyEase, _super);<br>    function FunnyEase() {<br>        _super.apply(this, arguments);<br>    }<br>    FunnyEase.prototype.easeInCore = function (gradient) {<br>        // Here is the core method you should change to make your own Easing Function<br>        // Gradient is the percent of value change<br>        return Math.pow(Math.pow(gradient, 4), gradient);</p>
+<pre><code>};
+<span class="keyword">return</span> FunnyEase;
+</code></pre><p>})(BABYLON.EasingFunction);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You will find <span class="operator">a</span> complete demonstration <span class="operator">of</span> <span class="operator">the</span> easing functions behaviors, <span class="operator">in</span> <span class="operator">the</span> playground : [Easing <span class="function"><span class="keyword">function</span> <span class="title">playground</span>](<span class="title">http</span>://<span class="title">www</span>.<span class="title">babylonjs-playground</span>.<span class="title">com</span>/?<span class="title">20</span>)</span></div><div class="line"></div><div class="line"></div><div class="line">**<span class="number">5</span> - Complex animation**</div><div class="line"></div><div class="line">The complex animation lets you choose everything <span class="keyword">at</span> <span class="keyword">each</span> frame <span class="operator">of</span> <span class="operator">the</span> animation (<span class="keyword">each</span> <span class="built_in">tick</span>). The code computed <span class="keyword">at</span> run <span class="built_in">time</span> must be located <span class="operator">in</span> this <span class="function"><span class="keyword">function</span>:</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>scene.registerBeforeRender(function () {<br>    //Your code here<br>});<br>```</p>
+<p>This function can be very useful for complex animation like games, where characters have to move depending on many parameters.</p>
+<p>Don’t hesitate to combine all those types of animations. If well done, it’s very powerful.</p>
+<p>Don’t forget to <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external">visit our API documentation</a> in order to learn more about the <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external"><strong>Babylon.js Animation</strong></a> class.</p>
+<p>You can view, edit, and get a zip of the code used in this tutorial… <a href="http://www.babylonjs.com/playground/?7" target="_blank" rel="external"><strong>right here</strong></a> …at the Babylon.js Playground.</p>
+<h2 id="Next_step">Next step</h2>
+<p>Your scene is now becoming dynamic, and all your meshes can move in all directions! Feel free to try different animations on different objects, then come back and learn all about <a href="https://github.com/BabylonJS/Babylon.js/wiki/08-Sprites" target="_blank" rel="external"><strong>Sprites</strong></a>.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/07-Animation/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/08 Sprites/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/09 Cameras and mesh collisions/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Animation"><span class="toc-number">1.</span> <span class="toc-text">Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

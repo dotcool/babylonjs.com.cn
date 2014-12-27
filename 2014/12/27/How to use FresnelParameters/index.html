@@ -1,0 +1,336 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Babylon.js 1.14 introduced new parameters for the StandardMaterial: FresnelParameters.
+
+There are 4 of them:
+
+1*
+
+
+
+StandardMaterial.opacityFresnelPar">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/How to use FresnelParameters/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>Babylon.js 1.14 introduced new parameters for the StandardMaterial: <em>FresnelParameters</em>.</p>
+<p><img src="http://www.babylonjs.com/Screenshots/fresnel.jpg" alt=""></p>
+<p>There are 4 of them:</p>
+<ul>
+<li><figure class="highlight StandardMaterial.diffuseFresnelParameters```"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>StandardMaterial.opacityFresnelParameters</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>StandardMaterial.reflectionFresnelParameters</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>StandardMaterial.emissiveFresnelParameters</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="preprocessor">## How fresnel is working</span></div><div class="line"></div><div class="line">A fresnel term <span class="keyword">is</span> computed <span class="keyword">by</span> the StandardMaterial <span class="keyword">in</span> <span class="keyword">order</span> <span class="keyword">to</span> change the way a color <span class="keyword">is</span> applied <span class="keyword">by</span> <span class="keyword">using</span> viewing angle.</div><div class="line"></div><div class="line"><span class="keyword">For</span> instance, you can simulate great glass <span class="keyword">or</span> reflection effects <span class="keyword">by</span> just <span class="keyword">using</span> a simple fresnel. The fresnel will <span class="keyword">let</span> you have more reflection <span class="keyword">on</span> edges <span class="keyword">and</span> <span class="keyword">not</span> all <span class="keyword">on</span> the center.</div><div class="line"></div><div class="line"><span class="keyword">To</span> <span class="keyword">do</span> so, just use this code:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters = new BABYLON.FresnelParameters();</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can <span class="keyword">then</span> control <span class="keyword">if</span> <span class="keyword">the</span> reflection <span class="keyword">is</span> applied <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> edges <span class="keyword">or</span> <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> center. For instance, <span class="keyword">if</span> you want <span class="keyword">the</span> reflection <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> edges (<span class="keyword">by</span> default), you can control <span class="keyword">it</span> using <span class="keyword">the</span> color properties:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters.leftColor = BABYLON.Color3.White();<br>material.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![](<span class="keyword">http</span>://www.babylonjs.com/forumpics/fresnel01.jpg)</div><div class="line"></div><div class="line">Conversely, <span class="keyword">if</span> you only want reflection <span class="operator">in</span> <span class="operator">the</span> center:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters.leftColor = BABYLON.Color3.Black();<br>material.reflectionFresnelParameters.rightColor = BABYLON.Color3.White();</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![](http:<span class="comment">//www.babylonjs.com/forumpics/fresnel02.jpg)</span></div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">using</span></div></pre></td></tr></table></figure>
+
+<p>bias</p>
+<figure class="highlight and"><figcaption><span>```power``` properties, you can control how the fresnel is computed along the surface of the object according to this formula:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">_finalFresnelTerm = pow<span class="comment">(**bias** + fresnelTerm, **power**)</span>_</div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">default</span>, bias == <span class="number">0</span> <span class="keyword">and</span> power == <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">For</span> instance, the following code:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters = new BABYLON.FresnelParameters();<br>material.reflectionFresnelParameters.leftColor = BABYLON.Color3.Black();<br>material.reflectionFresnelParameters.rightColor = BABYLON.Color3.White();<br>material.reflectionFresnelParameters.power = 4;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">...generates <span class="operator">the</span> following rendering:</div><div class="line"></div><div class="line">![](<span class="keyword">http</span>://www.babylonjs.com/forumpics/fresnel03.jpg)</div><div class="line"></div><div class="line"><span class="comment">## How to use it</span></div><div class="line"></div><div class="line">A _FresnelParameter_ is defined <span class="keyword">by</span> <span class="operator">the</span> following properties:</div><div class="line">*</div></pre></td></tr></table></figure>
+
+<p>isEnabled</p>
+<figure class="highlight to"><figcaption><span>activate or deactivate fresnel effect</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">* leftColor <span class="built_in">to</span> define color used <span class="command"><span class="keyword">on</span> <span class="title">edges</span></span></div><div class="line">* rightColor <span class="built_in">to</span> define color used <span class="command"><span class="keyword">on</span> <span class="title">center</span></span></div><div class="line">* bias <span class="built_in">to</span> define bias applied <span class="built_in">to</span> computed fresnel term</div><div class="line">* power <span class="built_in">to</span> compute exponent applied <span class="built_in">to</span> fresnel term</div><div class="line"></div><div class="line">Here is <span class="operator">a</span> simple example:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionTexture = new BABYLON.CubeTexture(“Scenes/Customs/skybox/TropicalSunnyDay”, scene);<br>material.diffuseColor = new BABYLON.Color3(0, 0, 0);<br>material.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);<br>material.alpha = 0.2;<br>material.specularPower = 16;</p>
+<p>// Fresnel<br>material.reflectionFresnelParameters = new BABYLON.FresnelParameters();<br>material.reflectionFresnelParameters.bias = 0.1;</p>
+<p>material.emissiveFresnelParameters = new BABYLON.FresnelParameters();<br>material.emissiveFresnelParameters.bias = 0.6;<br>material.emissiveFresnelParameters.power = 4;<br>material.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();<br>material.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();</p>
+<p>material.opacityFresnelParameters = new BABYLON.FresnelParameters();<br>material.opacityFresnelParameters.leftColor = BABYLON.Color3.White();<br>material.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();<br>```</p>
+<p>A complete demo can be found here: <a href="http://www.babylonjs.com/?FRESNEL" target="_blank" rel="external">http://www.babylonjs.com/?FRESNEL</a></p>
+<p>If you want to experiment FresnelParameters, just go here: <a href="http://www.babylonjs.com/playground/?19" target="_blank" rel="external">http://www.babylonjs.com/playground/?19</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/How to use FresnelParameters/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/Home/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/Entities-exported-from-Blender/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

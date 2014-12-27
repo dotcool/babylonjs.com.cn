@@ -1,0 +1,411 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Babylon.js Cameras
+In any Babylon.js scene, you can create as many cameras as you wish, but only one camera can be active at a time (unless you are us">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/05 Cameras/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Babylon-js_Cameras"><span class="toc-number">1.</span> <span class="toc-text">Babylon.js Cameras</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unique_Purpose_Cameras"><span class="toc-number">1.1.</span> <span class="toc-text">Unique Purpose Cameras</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wrapping_Up"><span class="toc-number">1.2.</span> <span class="toc-text">Wrapping Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">1.3.</span> <span class="toc-text">Next step</span></a></li></ol></li></ol>
+		</div>
+		
+		<h1 id="Babylon-js_Cameras">Babylon.js Cameras</h1>
+<p>In any Babylon.js scene, you can create as many cameras as you wish, but only one camera can be active at a time (unless you are using <a href="https://github.com/BabylonJS/Babylon.js/wiki/How-to-use-multi-views" target="_blank" rel="external">multi-viewports</a>).</p>
+<p>Camera management in Babylon.js is pretty simple.  Babylon.js supports many types of cameras.  We will begin with the two most-common types - the FreeCamera and the ArcRotateCamera.</p>
+<ul>
+<li><strong>FreeCamera</strong> - This is a ‘first person shooter’ (FPS) type of camera where you control the camera with the mouse and the cursors keys.  Like many of our cameras, you can also add control keys, or reassign them to other keys, such as keys ‘w’, ‘a’, ‘s’, and ‘d’.</li>
+</ul>
+<p>The FreeCamera does not automatically aim at a target, but after constructing a FreeCamera, you can easily set it to lock-on to a mesh or to a vector3 position… using the <em>lockedtarget</em> property.</p>
+<p>Here is how you construct a Babylon.js FreeCamera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// FreeCamera &gt;&gt; You can move around the scene with mouse and cursor keys</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.FreeCamera(<span class="string">"FreeCamera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>The FreeCamera is constructed aiming in a +z direction.  The position numbers we used in the constructor above… place it in a useful starting position.  FreeCameras have many properties that you can use to adjust your view.  Some of the most commonly used properties are <em>position</em>, <em>rotation</em>, <em>speed</em>, <em>inertia</em>, and <em>fov</em>.  The FreeCamera is also used as the base camera for many of our other cameras, so you will come to ‘view’ it as an old friend.  Please see the  <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.FreeCamera.html" target="_blank" rel="external">FreeCamera  API page</a> for more information.</p>
+<ul>
+<li><strong>ArcRotateCamera</strong> - This is a type of camera that rotates around a given target pivot. It can be controlled with cursors and mouse, or with touch events.  It requires a third-party file called “hand.js”.  This file is included in many of our demos, or it can be downloaded by <a href="http://handjs.codeplex.com/releases/view/120821" target="_blank" rel="external"><strong>clicking right here</strong></a>.</li>
+</ul>
+<p>Here is how you construct our handy ArcRotateCamera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ArcRotateCamera &gt;&gt; Camera turning around a 3D point (here Vector zero) with mouse and cursor keys</span></div><div class="line"><span class="comment">// Parameters : name, alpha, beta, radius, target, scene</span></div><div class="line">   <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"ArcRotateCamera"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>The ArcRotateCamera is a little strange to use, at first, but in no time, you will be using them often and easily. There are three unique properties on the ArcRotateCamera which are named <em>alpha</em> (in radians), <em>beta</em> (in radians), and <em>radius</em> (a number).  If you imagine an ArcRotateCamera being a satellite orbiting the Earth, then the <em>alpha</em> is the longitudinal or sideways axis, the <em>beta</em> is the latitudinal or up/down axis, and the <em>radius</em> is the altitude or height (distance) from the Earth’s core.  Here is an illustration:<br><img src="http://urbanproductions.com/wingy/babylon/misc/arc01.jpg" alt=""></p>
+<p>The ArcRotateCamera has many properties that you can use to adjust your view.  Some of the most commonly used properties are <em>alpha</em>, <em>beta</em>, <em>radius</em>, <em>target</em>, <em>speed</em>, <em>inertia</em>, and <em>fov</em>.</p>
+<p>By default, (with no .alpha and .beta values set), ArcRotateCameras aim in a +x direction.  Ironically, there is no rotation property on an ArcRotateCamera, but there is a position property.  Because the orientation of an ArcRotateCamera is relative to its <em>target</em> setting, it is wise to use a handy method called <em>setPosition()</em> to set the camera position.</p>
+<p>In the example below, we will construct an ArcRotateCamera with a target of ‘Zero()’ and no initial <em>alpha</em>, <em>beta</em>, or <em>radius</em> values.  (Be warned: A zeroed-out ArcRotateCamera aims in a strange way until <em>setPosition()</em> is called).  Then we will use the setPosition() function with a common Vector3 position value… to set our <em>alpha</em>, <em>beta</em>, and <em>radius</em> values all at once, automatically:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Create an ArcRotateCamera aimed at 0,0,0, with no alpha, beta or radius, so be careful.  It will look broken.</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"ArcRotateCamera"</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, BABYLON.Vector3.Zero(), scene);</div><div class="line"><span class="comment">// Quick, let's use the setPosition() method... with a common Vector3 position, to make our camera better aimed.</span></div><div class="line">camera.setPosition(<span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">15</span>, -<span class="number">30</span>));</div></pre></td></tr></table></figure>
+
+<p>When we use that useful <em>setPosition()</em> method, we need not concern ourselves with <em>alpha</em>, <em>beta</em>, and <em>radius</em>.  We just make sure we have a <em>target</em> property set ( which we did in the constructor with new BABYLON.Vector3.Zero() ), and then use <em>setPosition()</em> to put our camera exactly where we want it, in 3D space.  The handy <em>setPosition()</em> method does the rest.  Easy.</p>
+<p>The ArcRotateCamera is an excellent camera to animate.  By default, the ArcRotateCamera has no <em>upperAlphaLimit</em> or <em>lowerAlphaLimit</em>.  So once you have set your arcCamera as the scene.activeCamera (see further below), you can send your ArcRotateCamera gently orbiting around your target… by putting this simple line of Javascript into the render loop of your scene:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.activeCamera.alpha += <span class="number">.01</span>;</div></pre></td></tr></table></figure>
+
+<p>It’s beautiful, it’s easy, it’s Babylon.js. Please see the  <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.ArcRotateCamera.html" target="_blank" rel="external">ArcRotateCamera API page</a> for more information.</p>
+<p>Both of these basic Babylon.js cameras will automatically handle inputs for you… once you call the camera’s <em>attachControl</em> function. And you can revoke the control by using the <em>detachControl</em> function.  Most Babylon.js experts use a two-step process to activate and attach a camera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// First, set the scene's activeCamera... to be YOUR camera.</span></div><div class="line">   scene.activeCamera = myCamera;</div><div class="line"><span class="comment">// Then attach the activeCamera to the canvas.</span></div><div class="line">   scene.activeCamera.attachControl(canvas);</div></pre></td></tr></table></figure>
+
+<p>This activate-and-attach code is also used for our unique purpose cameras, which we will now talk about.</p>
+<h2 id="Unique_Purpose_Cameras">Unique Purpose Cameras</h2>
+<p>There are some Babylon.js cameras that have unique purposes.  I will try to explain their purposes as we examine each camera and their constructors.</p>
+<ul>
+<li><strong>TouchCamera</strong> - The TouchCamera is a camera that works closely with hand.js, and opens Babylon.js to the modern technology of DOM Gesture Events.  Touch is a type a ‘gesture’, whether it be on a pad or screen, with finger(s), stylus, glove, feet, or laser pointer.  Any movement that can be sensed… can be considered a gesture.  You can learn all about gestures by visiting  <a href="http://en.wikipedia.org/wiki/Gesture_recognition" target="_blank" rel="external"><strong>a wikipedia page that tells all about it</strong></a>.</li>
+</ul>
+<p>The TouchCamera is specially programmed for nearly all modern gesture-active input devices.  Much of its power comes from hand.js.  If you would like to learn more about hand.js and its gestures-ready methods, take a look at <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/01/16/hand-js-a-polyfill-for-supporting-pointer-events-on-every-browser.aspx" target="_blank" rel="external"><strong>this comprehensive blog entry</strong></a> written by our friend and hero David Catuhe.</p>
+<p>There is much underlying magic to the TouchCamera, but like everything else in Babylon.js, we make it easy and enjoyable for you.  Here is how to construct a TouchCamera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// TouchCamera &gt;&gt; Move in your world with your touch-gesture device</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.TouchCamera(<span class="string">"TouchCamera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene)</div></pre></td></tr></table></figure>
+
+<p>The TouchCamera uses a FreeCamera as its basis, so all the powerful properties and methods of our familiar FreeCamera… are also found on our TouchCamera.  You can explore all the properties and methods available on the TouchCamera… at <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.TouchCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>DeviceOrientationCamera</strong> - The DeviceOrientationCamera is a camera that is specifically designed to react-to device orientation events.  Device orientation is when you tilt your modern mobile device forward or back, left or right, to control cameras or other scene items.  And once again, our friend and technology guru David Catuhe has created <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/10/07/understanding-deviceorientation-events-by-creating-a-small-3d-game-with-babylon-js.aspx" target="_blank" rel="external"><strong>a wonderfully-detailed blog entry</strong></a> to tell us all about it.</li>
+</ul>
+<p>Again, we we want it to be easy and enjoyable for you.  Here is how you construct a Babylon.js DeviceOrientationCamera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// DeviceOrientationCamera &gt;&gt; Move in your scene with device orientation</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.DeviceOrientationCamera(<span class="string">"DevOr_camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>The DeviceOrientationCamera also uses a FreeCamera as its basis, so all the powerful properties and methods of our familiar FreeCamera… are also found on our DeviceOrientationCamera.  There are two rather important properties on the DeviceOrientationCamera: <em>angularSensibility</em> and <em>moveSensibility</em>, which you can discover and explore… along with all of the other properties and methods…  at <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.DeviceOrientationCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>FollowCamera</strong> - Forum user AlexB was kind enough to contribute the handy FollowCamera to Babylon.js.  (Thanks AlexB!)  This camera is specifically designed to follow any scene item with a .<em>position</em>… as it moves. It can be set to follow from the rear, from the front, or from any angle.  Its follow distance and movement speeds can be set, as well.</li>
+</ul>
+<p>The constructor method we will show below… is from <a href="http://www.html5gamedevs.com/topic/8433-smooth-camera-follow/" target="_blank" rel="external">Alex’s FollowCamera forum thread</a> and, as you can see, Alex makes it easy.  Here is how you construct a Babylon.js FollowCamera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// FollowCamera &gt;&gt; Follow a mesh through your scene</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.FollowCamera(<span class="string">"FollowCam"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">15</span>, -<span class="number">45</span>), scene);</div><div class="line">    camera.target = myMeshObject; <span class="comment">// target any mesh or object with a "position" Vector3</span></div></pre></td></tr></table></figure>
+
+<p>The code above… constructs the FollowCamera and adds a target mesh, which is all that is required.  But the FollowCamera has some more useful properties that you can set if you choose to do so.  Here’s a few, with some example values:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">camera.radius = <span class="number">30</span>; <span class="comment">// how far from the object to follow</span></div><div class="line">camera.heightOffset = <span class="number">8</span>; <span class="comment">// how high above the object to place the camera</span></div><div class="line">camera.rotationOffset = <span class="number">180</span>; <span class="comment">// the viewing angle</span></div><div class="line">camera.cameraAcceleration = <span class="number">0.05</span> <span class="comment">// how fast to move</span></div><div class="line">camera.maxCameraSpeed = <span class="number">20</span> <span class="comment">// speed limit</span></div></pre></td></tr></table></figure>
+
+<p>And don’t forget to set:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.activeCamera = camera;</div></pre></td></tr></table></figure>
+
+<p>There you have it.  AlexB’s cool FollowCamera.  The FollowCamera is SO NEW, that we have not yet added it to our API documentation, but that will happen soon.  We promise!</p>
+<ul>
+<li><strong>VirtualJoysticksCamera</strong> - The VirtualJoysticksCamera is a camera that is specifically designed to react-to Virtual Joystick events.  Virtual Joysticks are on-screen (canvas atop canvas) 2D graphics that are used to control cameras or other scene items.  This time, another friend and hero of ours… David Rousset… takes us on <a href="https://www.youtube.com/watch?v=53Piiy71lB0" target="_blank" rel="external"><strong>a video tour with Virtual Joysticks</strong></a>, and makes it look easy.  That is because it <strong>is</strong> easy. You can also <a href="http://blogs.msdn.com/b/davrous/archive/2013/02/22/creating-an-universal-virtual-touch-joystick-working-for-all-touch-models-thanks-to-hand-js.aspx" target="_blank" rel="external"><strong>read about Virtual Joysticks</strong></a> on David’s blog.</li>
+</ul>
+<p>With the touch of a touchscreen, or the click of a mouse button, the virtual joysticks activate.  Not a bit of extra work for you.  Like everything in Babylon.js, we try to make it easy and enjoyable.  Here is how to construct a Babylon.js VirtualJoysticksCamera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// VirtualJoysticksCamera &gt;&gt; Move in your world with on-screen Virtual Joysticks</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.VirtualJoysticksCamera(<span class="string">"VJ_camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>The VirtualJoysticksCamera also uses a FreeCamera as its basis, so all the properties and methods of our familiar FreeCamera… are found on our VirtualJoysticksCamera as well.  </p>
+<p>We have a <a href="https://github.com/BabylonJS/Babylon.js/wiki/Using-the-VirtualJoysticksCamera-with-Babylon.js" target="_blank" rel="external">special tutorial dedicated to the VirtualJoysticksCamera</a>.</p>
+<p>You can explore all the properties and methods available on the VirtualJoysticksCamera… at <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.VirtualJoysticksCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>OculusCamera</strong> - The OculusCamera is a dual-view camera that is specifically designed to react-to events generated by the Oculus Rift stereoscopic virtual reality headset.  Currently, this technology, as it applies to Babylon.js, is only available for Internet Explorer 11.  You might want to learn more about Oculus Rift by visiting <a href="http://tinyurl.com/moyxqwp" target="_blank" rel="external"><strong>this Wikipedia page about the device</strong></a> or by reading <a href="http://www.oculusvr.com/blog/sensor-fusion-keeping-it-simple/" target="_blank" rel="external"><strong>some information from one of the developers</strong></a>.</li>
+</ul>
+<p>We have a <a href="https://github.com/BabylonJS/Babylon.js/wiki/Using-Oculus-Rift-with-Babylon.js" target="_blank" rel="external">special tutorial dedicated to the OculusCamera</a>.</p>
+<p>You can read information about the interfacing of Oculus Rift to Babylon.js by taking a browse to  <a href="http://tinyurl.com/moyxqwp" target="_blank" rel="external"><strong>Simon Ferquel’s blog about the project</strong></a>. (Google Translation  - French to English).  And don’t forget about  <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.OculusOrientedCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<p><strong>Note:</strong>  The OculusCamera was once called The OculusOrientedCamera and it once used 6 parameters in its constructor, as the API documentation may still show.  The new OculusCamera has a simpler constructor, needing only name, position, and scene:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// OculusCamera &gt;&gt; Move in your Oculus scene with on-screen Virtual Joysticks</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.OculusCamera(<span class="string">"Camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">20</span>, -<span class="number">45</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>You might want to look at the <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.oculusCamera.js" target="_blank" rel="external"><strong>source code</strong></a> for this camera.  Notice that the Oculus OVR settings (OculusRiftDevKit2013_Metric) and the neutralOrientation values… are set to some default values.  The OculusCamera works closely with our Babylon.js OculusController class. More will be written about that, soon, and nearby.</p>
+<ul>
+<li><strong>AnaglyphCamera</strong> - The AnaglyphCamera is for use with red and cyan 3D glasses.  It is very new to Babylon.js, and to be honest quite sexy.  It uses post-processing filtering techniques.  There are actually two types of AnaglyphCamera.</li>
+</ul>
+<p>The first is the <strong>AnaglyphArcRotateCamera</strong>.  Its constructor looks like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// AnaglyphArcRotateCamera &gt;&gt; Analglyph 3D using filter-shifted ArcRotateCamera</span></div><div class="line"><span class="comment">// Parameters : name, alpha, beta, radius, target (in Vector3), eyeSpace (in degrees), scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.AnaglyphArcRotateCamera(<span class="string">"aar_cam"</span>, -<span class="built_in">Math</span>.PI/<span class="number">2</span>, <span class="built_in">Math</span>.PI/<span class="number">4</span>, <span class="number">20</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), <span class="number">1.0</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>The second is the <strong>AnaglyphFreeCamera</strong>.  Its constructor looks like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// AnaglyphFreeCamera &gt;&gt; Analglyph 3D using filter-shifted FreeCamera</span></div><div class="line"><span class="comment">// Parameters : name, position (in Vector3), eyeSpace (in degrees), scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.AnaglyphFreeCamera(<span class="string">"af_cam"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), <span class="number">0.5</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>The <em>eyeSpace</em> parameter (and property) sets the amount of shift between the left eye view and the right eye view.  Once you are wearing your 3D glasses, you might want to experiment with this float value.</p>
+<p>You can learn all about anaglyphs by visiting a <a href="http://en.wikipedia.org/wiki/Anaglyph_3D" target="_blank" rel="external">Wikipedia page that explains it thoroughly</a>. </p>
+<ul>
+<li><strong>GamepadCamera</strong> - Local superhero David “davrous” Rousset, who invented our cool VirtualJoysticksCamera, is also the inventor of our cool GamepadCamera.  Thanks David!  The Babylon.js GamepadCamera is specially designed to work with… you guessed it… gamepads.  This camera works closely with Babylon.js Gamepad, Gamepads, and Xbox360Pad classes.  More will be written about that, soon, and nearby.</li>
+</ul>
+<p>Ok, let’s create a GamepadCamera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// GamepadCamera &gt;&gt; Move in your scene with gamepad controls</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.GamepadCamera(<span class="string">"Camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">15</span>, -<span class="number">45</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>Easy.  Many of the powerful properties and methods found on our familiar FreeCamera… are also found on our GamepadCamera.  Take notice of the .<em>angularSensibility</em> and .<em>moveSensibility</em> properties, similar to our DeviceOrientationCamera.  You can explore all the properties and methods available on the GamepadCamera… at <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.GamepadCamera.html" target="_blank" rel="external">our API documentation site</a>.</p>
+<ul>
+<li><strong>OculusGamepadCamera</strong> - The <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.oculusGamepadCamera.js" target="_blank" rel="external">OculusGamepadCamera</a> is yet to be documented.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// OculusGamepadCamera &gt;&gt; Move in your Oculus scene with on-screen Virtual Joysticks</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.OculusGamepadCamera(<span class="string">"Camera"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">20</span>, -<span class="number">45</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>The OculusGamepadCamera uses FreeCameras as its basis, so all of the properties and methods of FreeCamera… are also found on our OculusGamepadCamera. (verify this)  You can explore all of the properties and methods…  at <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.OculusGamepadCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>VRDeviceOrientationCamera</strong> - The <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.vrDeviceOrientationCamera.js" target="_blank" rel="external">VRDeviceOrientationCamera</a> is yet to be documented.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// VRDeviceOrientationCamera &gt;&gt; Move in your VR scene with device orientation</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.VRDeviceOrientationCamera(<span class="string">"VRDO"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>The VRDeviceOrientationCamera uses FreeCameras as its basis, so all of the properties and methods of FreeCamera… are also found on our VRDeviceOrientationCamera (verify this).  You can explore all of the properties and methods…  at <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.VRDeviceOrientationCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<ul>
+<li><strong>WebVRCamera</strong> - The <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.webVRCamera.js" target="_blank" rel="external">WebVRCamera</a> is yet to be documented.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// WebVRCamera &gt;&gt; Move in your VR scene</span></div><div class="line"><span class="comment">// Parameters : name, position, scene</span></div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.WebVRCamera(<span class="string">"WVR"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, -<span class="number">15</span>), scene);</div></pre></td></tr></table></figure>
+
+<p>The WebVRCamera uses FreeCameras as its basis, so all of the properties and methods of FreeCamera… are also found on our WebVRCamera (verify this).  You can explore all of the properties and methods…  at <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.WebVRCamera.html" target="_blank" rel="external"><strong>our API documentation site</strong></a>.</p>
+<h2 id="Wrapping_Up">Wrapping Up</h2>
+<p>As a last reminder, Babylon.js cameras require you to use “attachControl” and “detachControl” functions, as needed.  Most Babylon.js experts… use a two-step process to activate and attach a camera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// First, set the scene's activeCamera... to be YOUR camera.</span></div><div class="line">   scene.activeCamera = myCamera;</div><div class="line"><span class="comment">// Then attach the activeCamera to the canvas.</span></div><div class="line">   scene.activeCamera.attachControl(canvas);</div></pre></td></tr></table></figure>
+
+<p>You already knew about activating and attaching cameras, didn’t you?  You remembered from the last time I told you, right?  :)</p>
+<h2 id="Next_step">Next step</h2>
+<p>You have now learned how to use the two most-common cameras, and you have been introduced to all of our innovative ‘unique purpose’ cameras.  You can control how you see your scene, you can choose your input and viewing devices, and you now know how to move cameras around.  To give your scene a more realistic effect, we are now going to learn <a href="https://github.com/BabylonJS/Babylon.js/wiki/06-Lights" target="_blank" rel="external"><strong>how to manage lights</strong></a>. See you soon.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/05 Cameras/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/04-Materials/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/06-Lights/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Babylon-js_Cameras"><span class="toc-number">1.</span> <span class="toc-text">Babylon.js Cameras</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unique_Purpose_Cameras"><span class="toc-number">1.1.</span> <span class="toc-text">Unique Purpose Cameras</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wrapping_Up"><span class="toc-number">1.2.</span> <span class="toc-text">Wrapping Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">1.3.</span> <span class="toc-text">Next step</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

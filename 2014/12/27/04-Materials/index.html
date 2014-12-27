@@ -1,0 +1,392 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Materials
+Now that you can create different basic mesh elements anywhere in the scene, we are going to give those meshes some materials, to define how">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/04-Materials/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Materials"><span class="toc-number">1.</span> <span class="toc-text">Materials</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#More_information:"><span class="toc-number">2.1.</span> <span class="toc-text">More information:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+		</div>
+		
+		<h2 id="Materials">Materials</h2>
+<p>Now that you can create different basic mesh elements anywhere in the scene, we are going to give those meshes some materials, to define how those mesh look.</p>
+<p><img src="http://www.babylonjs.com/tutorials/04 - Materials/04.png" alt="Elements"></p>
+<p><a href="http://www.babylonjs.com/playground/?4" target="_blank" rel="external"><strong>Playground Demo Scene 4 - Materials</strong></a></p>
+<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
+<p>We are so adept at making createScene functions that we can do it in our sleep, right? So let’s get rolling with an omni-directional PointLight and an orbiting ArcRotateCamera.  After that, we’ll start making some basic mesh elements to test our materials upon.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createScene</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line">    <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>), scene);</div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera"</span>, <span class="number">0</span>, <span class="number">0.8</span>, <span class="number">100</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), scene);</div><div class="line"></div><div class="line">    <span class="comment">//Creation of spheres</span></div><div class="line">    <span class="keyword">var</span> sphere1 = BABYLON.Mesh.CreateSphere(<span class="string">"Sphere1"</span>, <span class="number">10.0</span>, <span class="number">6.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> sphere2 = BABYLON.Mesh.CreateSphere(<span class="string">"Sphere2"</span>, <span class="number">2.0</span>, <span class="number">7.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> sphere3 = BABYLON.Mesh.CreateSphere(<span class="string">"Sphere3"</span>, <span class="number">10.0</span>, <span class="number">8.0</span>, scene);</div><div class="line">[…]</div><div class="line">    <span class="comment">//Positioning the meshes</span></div><div class="line">    sphere1.position.x = -<span class="number">40</span>;</div><div class="line">    sphere2.position.x = -<span class="number">30</span>;</div></pre></td></tr></table></figure>
+
+<p>So far, you only have some grey-colored meshes. How drab! To apply a material to them, you will need to create a new material object like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> materialSphere1 = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"texture1"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>And apply this material to the object of your choice, e.g.:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sphere1.material = materialSphere1;</div></pre></td></tr></table></figure>
+
+<p>Or, create and apply all in one step:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sphere1.material = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"texture1"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>“I tested my scene, and …nothing changed…”</p>
+<p>Exactly, because this material is the default one. You have to customize it as you like. You won’t change the mesh itself, but just the material.</p>
+<p>“So how can I adjust my material to give the perfect look to my object?”</p>
+<p>That is done by setting the properties on the material.  Let’s see what they are:</p>
+<ul>
+<li><strong>Transparency</strong> (alpha channel)</li>
+</ul>
+<p>Alpha compositing is an interesting and useful process.  Fully explaining it… is beyond the scope of this document, although you might want to read <a href="http://en.wikipedia.org/wiki/Alpha_compositing" target="_blank" rel="external">the wikipedia page about it</a>.  You will encounter even more uses for it when you enjoy the BabylonJS particle system, and BabylonJS sprites system. </p>
+<p> Alpha transparency, written in percent (%), can be applied to a material in this way:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.alpha = <span class="number">0.5</span>;</div></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Diffuse</strong></li>
+</ul>
+<p>The diffuse is the native color of the object material once it is lit with a light. You can specify a solid color with the </p>
+<figure class="highlight diffuseColor```"><figcaption><span>property:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="escape">``</span><span class="escape">`j</span>avascript</div><div class="line">materialSphere1.diffuseColor = new BABYLON.Color3(<span class="number">1.0</span>, <span class="number">0.2</span>, <span class="number">0.7</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+
+<p>Or, you can use a texture:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.diffuseTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"grass.png"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p><strong>More About Textures:</strong> Be sure to use the correct path to your image (relative or absolute path). Supported image formats include JPG, PNG, JPEG, BMP, GIF… (every image format supported by your browser).</p>
+<p>If you want to translate (offset) your texture on your mesh, you can use the “uOffset” and “vOffset” properties:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">materialSphere1.diffuseTexture.uOffset = <span class="number">1.5</span>;</div><div class="line">materialSphere1.diffuseTexture.vOffset = <span class="number">0.5</span>;</div></pre></td></tr></table></figure>
+
+<p>And if you want to repeat/tile an image pattern (e.g. grass texture), you can use the “uScale” and “vScale” properties:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">materialSphere1.diffuseTexture.uScale = <span class="number">5.0</span>;</div><div class="line">materialSphere1.diffuseTexture.vScale = <span class="number">5.0</span>;</div></pre></td></tr></table></figure>
+
+<p><img src="http://www.babylonjs.com/tutorials/04 - Materials/04-1.png" alt="tof"></p>
+<p>And if your texture has some alpha, you will need to specify it:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.diffuseTexture.hasAlpha = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p>All of these texture settings apply to the other StandardMaterial properties as well. (.emissiveTexture, .ambientTexture, .specularTexture)  I will remind you.  Now let’s continue talking about the other StandardMaterial properties.</p>
+<ul>
+<li><strong>Emissive</strong></li>
+</ul>
+<p>The emissive is the color produced by the object itself. You can specify a solid color with the </p>
+<figure class="highlight emissiveColor```"><figcaption><span>property:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="escape">``</span><span class="escape">`j</span>avascript</div><div class="line">materialSphere1.emissiveColor = new BABYLON.Color3(<span class="number">1</span>, .<span class="number">2</span>, .<span class="number">7</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+
+<p>Or, you can use a texture:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.emissiveTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"grass.png"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>See the <strong>More About Textures</strong> section above.  Change occurrences of ‘diffuse’ to ‘emissive’, of course.</p>
+<ul>
+<li><strong>Ambient</strong></li>
+</ul>
+<p>The ambient can be seen as a second level of diffuse. The produced color is multiplied to the diffuse color. This is especially useful if you want to use light maps baked into textures. You can specify a solid color with the </p>
+<figure class="highlight ambientColor```"><figcaption><span>property:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="escape">``</span><span class="escape">`j</span>avascript</div><div class="line">materialSphere1.ambientColor = new BABYLON.Color3(<span class="number">1</span>, <span class="number">0.2</span>, <span class="number">0.7</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+
+<p>Or, you can use a texture:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.ambientTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"grass.png"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>See the <strong>More About Textures</strong> section above.  Change occurrences of ‘diffuse’ to ‘ambient’, of course.</p>
+<ul>
+<li><strong>Specular</strong></li>
+</ul>
+<p>The specular is the color produced by a light reflecting from a surface. You can specify a solid color with the </p>
+<figure class="highlight specularColor```"><figcaption><span>property:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="escape">``</span><span class="escape">`j</span>avascript</div><div class="line">materialSphere1.specularColor = new BABYLON.Color3(<span class="number">1.0</span>, <span class="number">0.2</span>, <span class="number">0.7</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+
+<p>Or, you can use a texture:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.specularTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"grass.png"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>Again, see the <strong>More About Textures</strong> section far above.  Change occurrences of ‘diffuse’ to ‘specular’, of course.</p>
+<p>The specular property has one more setting.  The size/intensity of the specular reflection can be set using the </p>
+<figure class="highlight specularPower```"><figcaption><span>property:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="escape">``</span><span class="escape">`j</span>avascript</div><div class="line">materialSphere1.specularPower = <span class="number">32</span><span class="comment">;</span></div></pre></td></tr></table></figure>
+
+<p>There, we have visited the primary color and texture properties of StandardMaterial.  But we are not done yet.  Here are a few more handy properties.</p>
+<ul>
+<li><strong>Back-Face Culling</strong></li>
+</ul>
+<p>Simply put, “back-face culling” determines whether or not a StandardMaterial is visible from its back side (from behind).  TRUE = NOT visible.  More precisely, this rendering-speed-optimization technique determines if a polygon of a graphical object is visible or not. If set to TRUE or boolean 1, the  Babylon engine won’t render hidden face(s) of the meshes that use this material. It is set TRUE by default, but can be changed to false as wanted. You may want to read more about back-face culling at <a href="http://en.wikipedia.org/wiki/Back_face_culling" target="_blank" rel="external">the wikipedia page about it</a>.  </p>
+<p>In this example, the texture has some alpha, and back-face culling is set to false for the front sphere… in order to see its black inside face:</p>
+<p><img src="http://www.babylonjs.com/tutorials/04 - Materials/04-2.png" alt="tof"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.backFaceCulling = <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>WireFrame</strong></li>
+</ul>
+<p>You can see your object in wireframe mode… by using:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">materialSphere1.wireframe = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p><img src="http://www.babylonjs.com/tutorials/04 - Materials/04-3.png" alt="tof"></p>
+<p>Again, you can see things from this tutorial… come to life… by browsing to <a href="http://www.babylonjs.com/playground/?4" target="_blank" rel="external">the Babylon.js Playground scene 4</a>.</p>
+<h3 id="More_information:">More information:</h3>
+<p><a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external"><strong>Unleash the Standard Material</strong></a></p>
+<p><a href="https://github.com/BabylonJS/Babylon.js/wiki/Advanced-Texturing" target="_blank" rel="external"><strong>Advanced Texturing</strong></a></p>
+<h2 id="Next_step">Next step</h2>
+<p>Great, your scene is looking better than ever with those materials! Later we will see how to use advanced techniques with materials.  But for now, we have to learn <a href="https://github.com/BabylonJS/Babylon.js/wiki/05-Cameras" target="_blank" rel="external">how to use cameras</a>.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/04-Materials/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/09 Cameras and mesh collisions/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/05 Cameras/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Materials"><span class="toc-number">1.</span> <span class="toc-text">Materials</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">2.</span> <span class="toc-text">How can I do this ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#More_information:"><span class="toc-number">2.1.</span> <span class="toc-text">More information:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_step"><span class="toc-number">3.</span> <span class="toc-text">Next step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

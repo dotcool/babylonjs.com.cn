@@ -1,0 +1,360 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Now that you have learned about the camera types and how to place them into your scene, we will continue our tutorial series with learning about babyl">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/06-Lights/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Activating/Deactivating_Lights"><span class="toc-number">2.</span> <span class="toc-text">Activating/Deactivating Lights</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lights_types"><span class="toc-number">3.</span> <span class="toc-text">Lights types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extra_Information_About_Babylon-js_One-Line_Constructors:"><span class="toc-number">4.</span> <span class="toc-text">Extra Information About Babylon.js One-Line Constructors:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normals_and_Backfaces_-_Seeing_the_Light:"><span class="toc-number">5.</span> <span class="toc-text">Normals and Backfaces - Seeing the Light:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_Step"><span class="toc-number">6.</span> <span class="toc-text">Next Step</span></a></li></ol>
+		</div>
+		
+		<p>Now that you have learned about the camera types and how to place them into your scene, we will continue our tutorial series with learning about babylon.js lights.</p>
+<p><img src="http://www.babylonjs.com/Screenshots/testlight.jpg" alt="Elements"></p>
+<p><em>A pretty sphere with multiple lights</em></p>
+<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
+<p>Lights are used to produce the diffuse and specular color received by each pixel. This color is then used by materials to determine the final color of every pixel.  Babylon.js allows you to create and register as many lights as you choose, but know that a single StandardMaterial can only handle 4 simultaneous lights (the first four enabled lights of the scene’s lights list).</p>
+<p>During this tutorial, I will show you how to use every kind of light that is supported by babylon.js.</p>
+<h2 id="Activating/Deactivating_Lights">Activating/Deactivating Lights</h2>
+<p>Every light can be activated or deactivated by calling its <em>setEnabled(true/false)</em> method.  You can also control the global intensity of any light by using the <em>intensity</em> property. It uses a floating point value (such as 1.5). An example near the end of this tutorial shows how to use both the <em>intensity</em> property and the <em>setEnabled()</em> method.</p>
+<h2 id="Lights_types">Lights types</h2>
+<p>Here we go… with our 4 cool babylon.js light types:</p>
+<ul>
+<li><strong>The Point Light</strong></li>
+</ul>
+<p>A point light is a light defined by an unique point in world space. The light is emitted in every direction from this point.  A good example of a point light is the sun.</p>
+<p>You can control the color of any light… with the <em>diffuse</em> and <em>specular</em> properties:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">10</span>, <span class="number">1</span>), scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+
+<p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/8484.image_5F00_thumb_5F00_53D78E00.png" alt=""></p>
+<p><em>Red diffuse point light with white specular</em></p>
+<ul>
+<li><strong>The Directional Light</strong></li>
+</ul>
+<p>A directional light is defined by a direction (what a surprise!). The light is emitted from everywhere… toward a specific direction, and has an infinite range.  By default, the directional light is created at origin (0,0,0) position.  Like a point light, you can control the color of the light with the <em>diffuse</em> and <em>specular</em> properties:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.DirectionalLight(<span class="string">"Dir0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+
+<p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/1563.image_5F00_1ECD8F81.png" alt=""></p>
+<p><em>Red diffuse directional light with white specular</em></p>
+<ul>
+<li><strong>The Spot Light</strong></li>
+</ul>
+<p>A spot light is defined by a position (2nd arg), a direction (3rd arg), an angle (4th arg), and an exponent (5th arg). These values define a cone of light starting from the position, emitting toward the direction. </p>
+<p>The angle defines the size (field of illumination) of the spotlight’s conical beam (in radians), and the exponent defines the speed of the decay of the light with distance (the light’s ‘reach distance’).  Just like the other lights, you can control the color of the light with the <em>diffuse</em> and <em>specular</em> properties:</p>
+<p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/7723.image_5F00_thumb_5F00_11F5CA14.png" alt=""></p>
+<p> <em>A simple drawing showing the shape of a spot light</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.SpotLight(<span class="string">"Spot0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">30</span>, -<span class="number">10</span>), <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>), <span class="number">0.8</span>, <span class="number">2</span>, scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+
+<p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/1738.image_5F00_thumb_5F00_18AB6448.png" alt=""></p>
+<p><em>A red diffuse spot light with white specular, a 0.8 radians-wide cone, and an exponent of 2</em></p>
+<ul>
+<li><strong>The Hemispheric Light</strong></li>
+</ul>
+<p>A hemispheric light is an easy way to simulate realistic ambient environment light. A hemispheric light is defined by a direction to the sky (the 2nd arg in the constructor) and by 3 colors: one for the diffuse (the sky color - for pixels/faces facing upward), one for the ground (the color for pixels/faces facing downward), and one for the specular.</p>
+<p>Above, I used the terms ‘upward’ and ‘downward’, but keep in mind that the direction to the sky (the 2nd arg in the constructor) can be set to any direction.  The direction to the sky is often straight upward (0, 1, 0). We are simulating light from a cloudy sky, but even on cloudy days, the sun crosses the sky above the clouds.  So, you could tilt this light slightly toward the east for cloudy morning skies, and slightly toward the west for cloudy evening skies.  This is a soft light that cannot produce shadows.</p>
+<p>Now, back to creating the useful and interesting hemispheric light:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.HemisphericLight(<span class="string">"Hemi0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.groundColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+
+<p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/4760.image_5F00_thumb_5F00_058CC84D.png" alt=""></p>
+<p><em>White/black hemispheric light - upward pixels white (diffuse), downward pixels black (groundColor)</em></p>
+<p>Our <a href="http://www.babylonjs.com/" target="_blank" rel="external">web site</a> has a nice lights demo in the Features Tests section, and a similar lights demo can be found at our ‘playground’, <a href="http://www.babylonjs.com/playground/?06" target="_blank" rel="external">right here</a>.</p>
+<h2 id="Extra_Information_About_Babylon-js_One-Line_Constructors:">Extra Information About Babylon.js One-Line Constructors:</h2>
+<p>Here is an example of a babylon.js one-line constructor:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.SpotLight(<span class="string">"Spot0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">30</span>, -<span class="number">10</span>), <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>), <span class="number">0.8</span>, <span class="number">2</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>That one-line is all it takes to create a spot light.  We want babylon.js scene item creation… to be as quick and simple as possible.  We also want the scene item to be seen/operating with just one line of programming.  The spot light is a rather powerful scene item, and it takes quite a few arguments (args) in the constructor… in order for it to appear and operate in one line of code.  Each ‘arg’ of the one-line constructor is setting a ‘necessary initial property’ on the scene item. By doing that, we know that it will turn-on/operate with just that one line.</p>
+<p>There are some properties which we set ‘behind-the-scenes’.  One such property is <em>intensity</em>.  We ‘default’ that property to a float 1.0 value.  We set that ‘necessary initial property’ for you.  We also call the light’s <em>setEnabled(true)</em> method.</p>
+<p>I want you to know two important things.  First, all properties on a spot light or on any babylon.js scene item… can be set after the object has been constructed.  Second, if you so choose, you can null-out (set to zero/empty) the args in the one-line constructor, and then set all of the necessary initial properties yourself… property by property.  You have already seen the fast/simple way to construct the spot light scene item.  Below is an example of the slower and less-simple way to construct a spot light.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.SpotLight(<span class="string">""</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), <span class="keyword">new</span> BABYLON.Vector3.Zero(), <span class="number">0</span>, <span class="number">0</span>, scene);</div><div class="line">light0.name = <span class="string">"My Slowly and Discretely Constructed Spot Light"</span></div><div class="line">light0.position = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">30</span>, -<span class="number">10</span>);</div><div class="line">light0.direction = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>);</div><div class="line">light0.angle = <span class="number">0.8</span>;</div><div class="line">light0.exponent = <span class="number">2</span>;</div><div class="line">light0.intensity = <span class="number">0.5</span>;</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.setEnabled(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+
+<p>Using this ‘long method’ of scene item constructing… is rarely necessary or wanted.  But we thought you should know that you can do constructing in this way, if you so choose.</p>
+<h2 id="Normals_and_Backfaces_-_Seeing_the_Light:">Normals and Backfaces - Seeing the Light:</h2>
+<p>You may have heard words like ‘<em>normals</em>‘ and ‘<em>backfaces</em>‘ spoken or written, during your 3D travels.  We will not be deeply examining those two terms in this tutorial, but I am going to try to explain how normals and backfaces… affect lights.  </p>
+<p>The picture below will help you understand how lights interact with normals and backfaces.  The picture shows two planes and two lights.  One light is a spot light, the other is a point light.  The arrows show the direction of the lighting normals, and these arrows are not visible in a standard scene.  They are used in the picture to help illustrate the concept of normals, as are the diamond and cone shapes for the two lights.  Let’s look at the picture carefully.</p>
+<p><img src="http://urbanproductions.com/wingy/babylon/misc/normals03.jpg" alt=""><br> <em>A blue back-faced plane and a blue front-faced plane, with a spot light and point light</em></p>
+<p>As you can see, when a standard babylon.js plane has its backface lit (the left plane), the lights have no affect, because its normals are not facing toward the lights.  Conversely, when a standard plane has its frontface lit (the right plane), both lights work perfectly to light the plane, because its normals are facing toward the lights.  </p>
+<p>It is also interesting to note that neither plane blocks the lights.  You can see that the arrows on the left plane, are lit by the lights. The plane is not blocking the light rays.  The only way that any mesh can block light rays in babylon.js, is with the use of a ShadowGenerator or two.  The tutorial about shadows… is number 17 in the babylon.js basic series of tutorials.  </p>
+<p>As a last note, I want you to know that the left plane’s material.backFaceCulling = false.  Whether it is set to true or false, there will be no change in how lights affect backfaces.  The lights are primarily concerned about the direction of the lighting normals (the arrows).  The standard babylon.js plane (and ground) has its lighting normals aimed toward the frontface.</p>
+<p><strong>NEW</strong>:  In recent versions of Babylon.js, a new property was introduced… called <em>.range</em>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">light.range = <span class="number">300</span>;</div></pre></td></tr></table></figure>
+
+<p>More information about the <em>.range</em> property… coming soon.  Stay tuned.</p>
+<h2 id="Next_Step">Next Step</h2>
+<p>With the use of babylon.js powerful lights, your scene is likely really starting to ‘shine’.  And don’t forget that you can animate light positions, directions, colors, and therefore create wonderful ‘light shows’.  We’ll talk about that soon, or have fun discovering how to do it on your own.  Maybe you could do light property settings inside the scene’s render loop function.  Its fun and beautiful!</p>
+<p>Guess what!  The next tutorial… is about animation! <a href="https://github.com/BabylonJS/Babylon.js/wiki/07-Animation" target="_blank" rel="external">Click this and let’s go!</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/06-Lights/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/05 Cameras/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/02-Basic-elements/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_can_I_do_this_?"><span class="toc-number">1.</span> <span class="toc-text">How can I do this ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Activating/Deactivating_Lights"><span class="toc-number">2.</span> <span class="toc-text">Activating/Deactivating Lights</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lights_types"><span class="toc-number">3.</span> <span class="toc-text">Lights types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extra_Information_About_Babylon-js_One-Line_Constructors:"><span class="toc-number">4.</span> <span class="toc-text">Extra Information About Babylon.js One-Line Constructors:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normals_and_Backfaces_-_Seeing_the_Light:"><span class="toc-number">5.</span> <span class="toc-text">Normals and Backfaces - Seeing the Light:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next_Step"><span class="toc-number">6.</span> <span class="toc-text">Next Step</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

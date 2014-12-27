@@ -1,0 +1,420 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="In classic texturing, we use 2D images, often pictures that have been shaped specifically to match an object. Let’s imagine you are creating a medieva">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.babylonjs.com.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/27/How to use procedural textures?/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.babylonjs.com.cn" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-27T02:53:21.000Z" itemprop="datePublished">Dec 27 2014</time>
+    Updated:<time datetime="2014-12-27T02:53:21.000Z" itemprop="dateModified">Dec 27 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Procedural_Textures_in_Babylon-js"><span class="toc-number">1.</span> <span class="toc-text">Procedural Textures in Babylon.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Using_Standard_Procedural_Textures"><span class="toc-number">1.1.</span> <span class="toc-text">Using Standard Procedural Textures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#All_Standard_Procedural_Textures"><span class="toc-number">1.2.</span> <span class="toc-text">All Standard Procedural Textures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating_Custom_Procedural_Textures"><span class="toc-number">1.3.</span> <span class="toc-text">Creating Custom Procedural Textures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_a_Files-Based_Custom_Procedural_Texture"><span class="toc-number">1.3.1.</span> <span class="toc-text">Using a Files-Based Custom Procedural Texture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_a_ShaderStore_for_Shader_Storage"><span class="toc-number">1.3.2.</span> <span class="toc-text">Using a ShaderStore for Shader Storage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_a_DOM_Element_for_Shader_Storage"><span class="toc-number">1.3.3.</span> <span class="toc-text">Using a DOM Element for Shader Storage</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<p>In classic texturing, we use 2D images, often pictures that have been shaped specifically to match an object. Let’s imagine you are creating a medieval fantasy game, working on a dwarf pub, where there are multiple, big, “old school” wooden tables. With classic 2D texturing, you have 3 choices:</p>
+<ul>
+<li><p>Create a single texture and use it on all of the tables (but every table is going to look the same)</p>
+</li>
+<li><p>Create a collection of various wood textures and apply them randomly to each table</p>
+</li>
+<li><p>Create a separate texture for each table, insuring that they each look different </p>
+</li>
+</ul>
+<p>No choice seems to be a good one.</p>
+<p>Enter <strong>procedural textures</strong>. Procedural texturing is a way to programmatically create a texture. There are 2 types of procedural textures: code-only, and code that references some classic 2D images, sometimes called ‘refMaps’ or ‘sampler’ images.</p>
+<p>One main advantage of procedural textures is that they are written using a fragment shader (using GLSL in the case of Babylon.js). That means that the code generating the texture is executed by the GPU and not the CPU (that is to say, NOT executed in JavaScript code). This has a huge performance impact in a positive way.</p>
+<p>Procedural textures can be generated:</p>
+<ul>
+<li><p>Only once to create the texture which is put into cache</p>
+</li>
+<li><p>Every 1, 2, 3, or 4, or more frames to be able to create an animated texture (like fire)</p>
+</li>
+</ul>
+<p>See more about ‘refreshrate’ in the Custom Procedural Textures section… far below.</p>
+<h1 id="Procedural_Textures_in_Babylon-js">Procedural Textures in Babylon.js</h1>
+<p><strong>Babylon.js</strong> offers you an easy out-of-the-box way to use this kind of texture. The engine itself provides you with standard default textures that you can use right now. It also gives you the ability to create custom procedural textures and package them in a simple way.</p>
+<h2 id="Using_Standard_Procedural_Textures">Using Standard Procedural Textures</h2>
+<p>Babylon.js has a number of pre-built procedural textures that are very easy to use.  Applying a procedural texture is just the same as using a classic one. Let’s start with a simple mesh (a cylinder in this case) and attach it to your scene:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cylinder = BABYLON.Mesh.CreateCylinder(<span class="string">"mycylinder"</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">12</span>, <span class="number">1</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>Then, you need to create a StandardMaterial:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> material = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"material"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>Now, create a WoodProceduralTexture object for which you need to pass a name, the size of the generated texture and the scene.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> texture = <span class="keyword">new</span> BABYLON.WoodProceduralTexture(<span class="string">"texture"</span>, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>You are almost set! All you need to do now is to associate the texture to the material as a diffuseTexture, for instance, (or emissiveTexture, specularTexture, any other) and then apply the material to the mesh.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">material.diffuseTexture = texture;</div><div class="line">cylinder.material = material;</div></pre></td></tr></table></figure>
+
+<p>You can optionally change the values of special (wood-based) default properties :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">texture.woodColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.49</span>, <span class="number">0.25</span>, <span class="number">0</span>);</div><div class="line">texture.ampScale = <span class="keyword">new</span> BABYLON.Vector2(<span class="number">1.0</span>, <span class="number">1.0</span>);</div></pre></td></tr></table></figure>
+
+<h2 id="All_Standard_Procedural_Textures">All Standard Procedural Textures</h2>
+<p>All standard procedural textures can be used the same way, but they each have specific properties.</p>
+<ul>
+<li><strong>WoodProceduralTexture</strong><ul>
+<li><strong>woodColor</strong> to modify the color of the wood in the texture (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>ampScale</strong> to change the waves amplitude in the wood (<em><strong>BABYLON.Vector2</strong></em>)</li>
+</ul>
+</li>
+<li><strong>MarbleProceduralTexture</strong><ul>
+<li><strong>numberOfTilesHeight</strong> controls the number of tiles in height (<em><strong>Int</strong></em>)</li>
+<li><strong>numberOfTilesWidth</strong> controls the number of tiles in width (<em><strong>Int</strong></em>)</li>
+<li><strong>jointColor</strong> changes the color for the joint between tiles (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>marbleColor</strong> changes the color for the tile itself (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>BrickProceduralTexture</strong><ul>
+<li><strong>numberOfBricksHeight</strong> controls the number of bricks in height (<em><strong>Int</strong></em>)</li>
+<li><strong>numberOfBricksWidth</strong> controls the number of bricks in width (<em><strong>Int</strong></em>)</li>
+<li><strong>jointColor</strong> changes the color for the joint between bricks (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>brickColor</strong> changes the color for the brick itself (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>FireProceduralTexture</strong><ul>
+<li><strong>time</strong> can be set manually (float) if autoGenerateTime (boolean) is set to false. It is used inside the fire shader to animate it</li>
+<li><strong>speed</strong> controls the speed of the flames (<em><strong>BABYLON.Vector2</strong></em>)</li>
+<li><strong>shift</strong> controls the direction of the flames (<em><strong>BABYLON.Vector2</strong></em>)</li>
+<li><strong>fireColors</strong> is an array of 6 (<em><strong>BABYLON.Color3/4</strong></em>) defining the different color of the fire. You can define them manually of use presets available as static properties of the classe (<strong>PurpleFireColors</strong>, <strong>GreenFireColors</strong>, <strong>RedFireColors</strong>, <strong>BlueFireColors</strong>)  </li>
+</ul>
+</li>
+<li><strong>GrassProceduralTexture</strong><ul>
+<li><strong>grassColor</strong> is an array of 3 (<em><strong>BABYLON.Color3/4</strong></em>) for the grass. Should be green but you can create red grass if you want to (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>groundColor</strong> is the base color for the ground (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>RoadProceduralTexture</strong><ul>
+<li><strong>roadColor</strong> is the color for the road (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>CloudProceduralTexture</strong><ul>
+<li><strong>skyColor</strong> is the color for the sky (<em><strong>BABYLON.Color3/4</strong></em>)<ul>
+<li><strong>cloudColor</strong> is the color for the cloud (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Creating_Custom_Procedural_Textures">Creating Custom Procedural Textures</h2>
+<h3 id="Using_a_Files-Based_Custom_Procedural_Texture">Using a Files-Based Custom Procedural Texture</h3>
+<p>To use a files-based custom procedural texture, you need to create a folder containing at least 2 files:</p>
+<ul>
+<li>config.json</li>
+<li>custom.fragment.fx</li>
+</ul>
+<p>The config file is a Javascript Simple Object Notation file containing 4 elements. Here is an example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">  {</div><div class="line">   <span class="string">"animate"</span>: <span class="literal">false</span>,</div><div class="line">   <span class="string">"refreshrate"</span>: <span class="number">0</span>,</div><div class="line">   <span class="string">"uniforms"</span>: [</div><div class="line">    {</div><div class="line">    <span class="string">"type"</span>: <span class="string">"float"</span>,</div><div class="line">    <span class="string">"name"</span>: <span class="string">"dirtAmplifier"</span>,</div><div class="line">    <span class="string">"value"</span>: <span class="string">"6.0"</span></div><div class="line">    }</div><div class="line">],</div><div class="line">   <span class="string">"texture2Ds"</span>: [</div><div class="line">    {</div><div class="line">	    <span class="string">"textureName"</span>: <span class="string">"dirt"</span>,</div><div class="line">	    <span class="string">"textureRelativeUrl"</span>: <span class="string">"textures/dirt.jpg"</span></div><div class="line">    },</div><div class="line">    {</div><div class="line">	    <span class="string">"textureName"</span>: <span class="string">"grass"</span>,</div><div class="line">	    <span class="string">"textureRelativeUrl"</span>: <span class="string">"textures/grass.png"</span></div><div class="line">    }</div><div class="line">   ]</div><div class="line">  }</div></pre></td></tr></table></figure>
+
+<p>The <strong>animate</strong> property indicates if a time value should be created and increased each time the fragment shader code is executed.</p>
+<p>The <strong>refreshrate</strong> property needs to be set to 0 to indicate the texture to only render once. If set to 1, it will render every frame, 2 every two frames, etc.</p>
+<p><strong>Uniforms</strong> are the values that will be passed from the javascript code to the shader code. By setting them that way, you can allow the custom texture user to modify this value at runtime… to customize the texture. </p>
+<p>Uniforms can be of type:</p>
+<ul>
+<li><strong>float</strong> (parameters : value)</li>
+<li><strong>Vector2</strong> (parameters: x, y)</li>
+<li><strong>Vector3</strong> (parameters: x, y, z)</li>
+<li><strong>Color3</strong> (parameters: r, g, b)</li>
+<li><strong>Color4</strong> (parameters: r, g, b, a)</li>
+</ul>
+<p><strong>Textures2D</strong> are 2D image files that are passed to the shader code as <strong>sampler2D</strong> variables. They can be read by the shader code and be used to create the final pixel color. You only need to provide a name and the relative path inside the folder.</p>
+<p>The <strong>custom.fragment.fx</strong> file contains the GLSL code. The purpose of this wiki article is not to teach you how to create a fragment shader or how it works. You simply need to know that the code contained in your main function will be called once for each pixel to create on the texture. In this main function, you only know the coordinates of the current pixel in the final texture.</p>
+<p>Here is a simple code which is setting all pixels to a specific gray.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#ifdef GL_ES</div><div class="line">precision highp float;</div><div class="line">#endif</div><div class="line"></div><div class="line"><span class="keyword">void</span> main(<span class="keyword">void</span>) {</div><div class="line">	vec3 color = vec3(<span class="number">0.9</span>, <span class="number">0.9</span>, <span class="number">0.9</span>);</div><div class="line">	gl_FragColor = vec4(color, <span class="number">1.0</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>Gl_FragColor is the variable in which you put the color object you want the pixel to be.<br>Here is a more complex example using 2 samplers and mixing their color equally. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#ifdef GL_ES</div><div class="line">precision highp float;</div><div class="line">#endif</div><div class="line"></div><div class="line">varying vec2 vPosition;</div><div class="line">varying vec2 vUV;</div><div class="line"></div><div class="line">uniform sampler2D grass;</div><div class="line">uniform sampler2D dirt;</div><div class="line"></div><div class="line"><span class="keyword">void</span> main(<span class="keyword">void</span>) {</div><div class="line">	vec3 color = mix(texture2D(dirt, vUV).xyz, texture2D(grass, vUV).xyz, <span class="number">0.5</span>);</div><div class="line">	gl_FragColor = vec4(color, <span class="number">1.0</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>To use this custom texture, you need to make your folder available to your babylon.js html/javascript files and use a <strong>CustomProceduralTexture</strong> class instead of a standard one.  The difference is only that you specify a new parameter which is the relative path to the folder containing the custom texture. Babylon.js will automatically read the config.json and custom.fragment.fx files and load everything for you.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> texture = <span class="keyword">new</span> BABYLON.CustomProceduralTexture(<span class="string">"texture"</span>, <span class="string">"./pathtotexture"</span>, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<h3 id="Using_a_ShaderStore_for_Shader_Storage">Using a ShaderStore for Shader Storage</h3>
+<p>You can also use the ShaderStore to write a shader inline and use it in a CustomProceduralTexture.<br>This can be done easily using the <strong>BABYLON.Effect.ShaderStore</strong> array : </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">BABYLON.Effect.ShadersStore[<span class="string">"LinesPixelShader"</span>] =</div><div class="line">       <span class="string">"#ifdef GL_ES\n"</span> +</div><div class="line">       <span class="string">"precision highp float;\n"</span> +</div><div class="line">       <span class="string">"#endif\n\n"</span> +</div><div class="line">       <span class="string">"varying vec2 vUV; \n"</span> +</div><div class="line">       <span class="string">"void main(void) {\n"</span> +</div><div class="line">       <span class="string">"   gl_FragColor = vec4(vUV.x,vUV.y,-vUV.x, 1.0);\n"</span> +</div><div class="line">       <span class="string">"}\n"</span> +</div><div class="line">       <span class="string">""</span>;</div></pre></td></tr></table></figure>
+
+<p>Note that your shader name should be suffixed with <strong>PixelShader</strong> as the Procedural Texture shader is always a pixel shader. Babylon.JS will automatically understand it is a pixel shader.</p>
+<p>To use this shader, you just have to create a CustomProceduralTexture and put the name of your shader in the store instead of the path to the files.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> customProcText = <span class="keyword">new</span> BABYLON.CustomProceduralTexture(<span class="string">"customtext"</span>, <span class="string">"Lines"</span>, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<h3 id="Using_a_DOM_Element_for_Shader_Storage">Using a DOM Element for Shader Storage</h3>
+<p>Finally you can also use <strong>DOM Elements</strong> to store your shader. You just have to create a script tag in your HTML file like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"application/pixelShader"</span> id=<span class="string">"LinesPixelShader"</span>&gt;</div><div class="line">        #ifdef GL_ES</div><div class="line">        precision highp float;</div><div class="line">        #endif</div><div class="line">        varying vec2 vUV; </div><div class="line">        <span class="keyword">void</span> main(<span class="keyword">void</span>) {</div><div class="line">             gl_FragColor = vec4(vUV.x,vUV.y,-vUV.x, <span class="number">1.0</span>);</div><div class="line">        }</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+
+<p>To use it, you just have to create a simple object containing one property which is named <strong>fragmentElement</strong> and contains the id identifying the script DOM element.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> linesShader = { fragmentElement: <span class="string">'LinesPixelShader'</span> };</div><div class="line"><span class="keyword">var</span> customProcText = <span class="keyword">new</span> BABYLON.CustomProceduralTexture(<span class="string">"customtext"</span>, linesShader, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<p><strong>Note :</strong> when using ShaderStore or DOM Element shader for custom procedural textures : the config.json file is not needed anymore and you can just use setFloat or setVector3 (and so on) and setTexture on the CustomProceduralTexture to give values and Sampler2D to the shader code.</p>
+<p>Feel free to play with this scene… <a href="http://www.babylonjs-playground.com/#24C4KC" target="_blank" rel="external">at our online playground</a>.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.babylonjs.com.cn/2014/12/27/How to use procedural textures?/" data-title="Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/27/Naming-convention/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/27/How-to-use-lens-flares/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Procedural_Textures_in_Babylon-js"><span class="toc-number">1.</span> <span class="toc-text">Procedural Textures in Babylon.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Using_Standard_Procedural_Textures"><span class="toc-number">1.1.</span> <span class="toc-text">Using Standard Procedural Textures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#All_Standard_Procedural_Textures"><span class="toc-number">1.2.</span> <span class="toc-text">All Standard Procedural Textures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating_Custom_Procedural_Textures"><span class="toc-number">1.3.</span> <span class="toc-text">Creating Custom Procedural Textures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_a_Files-Based_Custom_Procedural_Texture"><span class="toc-number">1.3.1.</span> <span class="toc-text">Using a Files-Based Custom Procedural Texture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_a_ShaderStore_for_Shader_Storage"><span class="toc-number">1.3.2.</span> <span class="toc-text">Using a ShaderStore for Shader Storage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using_a_DOM_Element_for_Shader_Storage"><span class="toc-number">1.3.3.</span> <span class="toc-text">Using a DOM Element for Shader Storage</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.babylonjs.com.cn" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
