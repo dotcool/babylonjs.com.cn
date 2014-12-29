@@ -46,6 +46,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/06-Lights/">光源</a>
                                 </li>
                                 
@@ -99,10 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/08 Sprites/">精灵</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/07-Animation/">动画</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -281,16 +281,6 @@
                         </div>
                     </li>
                     
-                    <li>
-                        <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;微博</a>
-
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-weibo"></i>
-                                微博</h2>
-                            <a class="mp-back" href="#">返回</a>
-                        </div>
-                    </li>
-                    
                     <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我们</a></li>
                     <li><a class="fa fa-github" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;E家课堂</a></li>
 
@@ -300,6 +290,8 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
                 
                     <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
                 
@@ -328,8 +320,6 @@
                     <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
                 
                     <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
-                
-                    <a  data-pjax href="/2014/12/27/07-Animation/">动画</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -443,32 +433,32 @@
                 <h1 class="post-title" style="margin: 14px 0;color:#50585D">动画</h1>
 
                     <div class="post-meta">
-                        Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:01:33.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        发布于<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-29T04:37:40.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <h2 id="Animation">Animation</h2>
-<p>Your scene is beginning to look great, but it is very static. To put dynamics in it, we are going to learn how to tell your computer to move your meshes in any way you choose.</p>
+            <h2 id="动画">动画</h2>
+<p>你的场景看上去好看些了，但是他们都是静止的，为了添加动态的特性，那么我们现在就来告诉你如何在场景中移动你想要移动的组件。</p>
 <p><img src="http://www.babylonjs.com/tutorials/07 - Animation/07.png" alt="Elements"></p>
-<p><em>Final result</em></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>There are two primary ways of doing animations in your scene. The first is to define a collection of keys and defining your object’s situation at each key. The second way is for more complex animations, when you change animation code at run time.</p>
-<p><strong>1 - Basic animation</strong></p>
-<p>The animation is based on objects called Animation (!!). An Animation is defined by various properties and a collection of keys. Every key represents the value of the Animation at that key’s given time.</p>
-<p>To achieve today’s animated scene, we begin by creating our environment:</p>
+<p><em>最后的结果</em></p>
+<h2 id="如何开始">如何开始</h2>
+<p>在你的场景中制作动画有两种方式，第一种是定义一个键值对，其中的值是你的对象的情况，第二种方法是对应更加复杂的动画，是运行的时候改变你的动画。</p>
+<p><strong>1 - 基础动画</strong></p>
+<p>这个动画是建立在Animation的对象上的，这个动画是呗不同的属性定义或者一个键的集合定义。每一个键都是一种动画的值的表现。</p>
+<p>为了实现动画的场景，我们来创建我们的环境</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createScene</span><span class="params">()</span> </span>{</div><div class="line">    <span class="comment">//Here... your basic scene as before: [scene, light, camera]</span></div><div class="line">    </div><div class="line">    <span class="comment">//Create a box</span></div><div class="line">    <span class="keyword">var</span> box1 = BABYLON.Mesh.CreateBox(<span class="string">"Box1"</span>, <span class="number">10.0</span>, scene);</div><div class="line">    box1.position.x = -<span class="number">20</span>;</div></pre></td></tr></table></figure>
 
-<p>Our goal: move this “box1”. First, create our Animation object:</p>
+<p>我们的目标是：移动box1，首先我们创建动画对象：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animationBox = <span class="keyword">new</span> BABYLON.Animation(<span class="string">"myAnimation"</span>, <span class="string">"scaling.x"</span>, <span class="number">30</span>, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);</div></pre></td></tr></table></figure>
 
-<p>Much information is in the parameters:</p>
-<p>Parameter 1 - Name of this animation, nothing more.</p>
-<p>Parameter 2 - The property concerned. This can be any mesh property, depending upon what you want to change. Here we want to scale an object on the X axis, so it will be “scaling.x”.</p>
-<p>Parameter 3 - Frames per second requested: highest FPS possible in this animation.</p>
-<p>Parameter 4 - Type of change. Here you decide and enter what kind of value will be modified: is it a float (e.g. a translation), a vector (e.g. a direction), or a quaternion. Exact values are:</p>
+<p>更多的参数信息</p>
+<p>第一个参数 - 动画的名字。</p>
+<p>第二个参数 - 属性的名字，比如我们想按照x轴来缩放，我们就定义scaling.x</p>
+<p>第三个参数 - fps，帧每秒的最高的数值</p>
+<p>第四个参数 - 哪一种类型的值比如移动是一个浮点型，一个方向是一个向量等等</p>
 <ul>
 <li><figure class="highlight BABYLON.Animation.ANIMATIONTYPE_FLOAT```"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
 
@@ -478,16 +468,16 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
 
 <p>BABYLON.Animation.ANIMATIONTYPE_QUATERNION</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Parameter <span class="number">5.</span> Finally, you have <span class="keyword">to</span> decide <span class="keyword">and</span> enter <span class="keyword">the</span> type <span class="keyword">of</span> behavior this animation will take <span class="keyword">at</span> <span class="keyword">its</span> upper limit (e.g. will <span class="keyword">it</span> <span class="keyword">continue</span> <span class="function_start"><span class="keyword">on</span></span>, will <span class="keyword">it</span> begin again, will <span class="keyword">it</span> stop <span class="keyword">at</span> <span class="keyword">the</span> <span class="keyword">last</span> key value, etc.):</div><div class="line"></div><div class="line">* Use previous values <span class="keyword">and</span> increment <span class="keyword">it</span>:</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">第五个参数 - 最后你需要顶一个他的行为是循环还是一次等</div><div class="line"></div><div class="line"><span class="bullet">* </span>使用前一次的值并增加1:</div></pre></td></tr></table></figure>
 
 <p>BABYLON.Animation.ANIMATIONLOOPMODE_RELATIVE</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* Restart <span class="keyword">from</span> initial <span class="keyword">value</span>:</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">* </span>从最开始的值从新开始:</div></pre></td></tr></table></figure>
 
 <p>BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* Keep their final <span class="keyword">value</span>:</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">* </span>保持值不变:</div></pre></td></tr></table></figure>
 
 <p>BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Now <span class="keyword">that</span> we have our Animation object, <span class="keyword">it</span> <span class="keyword">is</span> <span class="property">time</span> <span class="keyword">to</span> <span class="command">say</span> how those values will be modified. In our case, we want <span class="keyword">to</span> scale our box, <span class="keyword">but</span> <span class="keyword">not</span> <span class="keyword">in</span> a linear way: <span class="keyword">it</span> must be faster when <span class="keyword">it</span> became larger, <span class="keyword">and</span> slower when <span class="keyword">it</span> became thinner. So:</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">现在我们拥有了一个动画对象而且我们要展示如何来修改这些值。在这个例子中，我们缩放我们的盒子，但是不是一种线性的缩放，当他变大事就缩放的更快，当他变小时就缩放的更慢：</div></pre></td></tr></table></figure>
 
 <p>javascript<br>// An array with all animation keys<br>var keys = [];  </p>
 <p>   //At the animation key 0, the value of scaling is “1”<br>    keys.push({<br>        frame: 0,<br>        value: 1<br>    });</p>
@@ -502,22 +492,16 @@ keys.push({
     frame: <span class="number">100</span>,
     <span class="keyword">value</span>: <span class="number">1</span>
 });
-</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">Next</span>, two important step<span class="variable">s:</span></div><div class="line">* Adding the animation array <span class="keyword">to</span> the animation objec<span class="variable">t:</span></div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">接下来的重要步骤：</div><div class="line"><span class="bullet">* </span>添加动画序列到动画对象中:</div></pre></td></tr></table></figure>
 
 <p>javascript<br>animationBox.setKeys(keys);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="subst">*</span> <span class="keyword">Link</span> this animation <span class="keyword">to</span> our box:</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">* </span>比如把动画序列添加到我们的盒子:</div></pre></td></tr></table></figure>
 
 <p>javascript<br>box1.animations.push(animationBox);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Finally, you can launch your animation <span class="operator">in</span> <span class="constant">one</span> <span class="built_in">line</span> <span class="operator">of</span> code, <span class="keyword">at</span> <span class="keyword">any</span> <span class="built_in">time</span> <span class="operator">in</span> your application:</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">最后，你就可以通过一行代码来启动这个动画了</div></pre></td></tr></table></figure>
 
 <p>javascript<br>scene.beginAnimation(box1, 0, 100, true);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">This <span class="function"><span class="keyword">function</span> <span class="title">returns</span> <span class="title">a</span></span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.Animatable</p>
-<figure class="highlight object"><figcaption><span>that you can use to get access to individual animations (for instance using ```getAnimationByTargetProperty``` function).</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The</div></pre></td></tr></table></figure>
-
-<p>BABYLON.Animatable</p>
-<figure class="highlight object"><figcaption><span>also supports the following functions:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这个函数返回了一个<span class="variable">BABYLON</span>.<span class="variable">Animatable</span>对象，使用get<span class="variable">AnimationByTargetProperty</span>函数来获取对象.</div><div class="line"></div><div class="line">动画对象也支持如下的几个方法:</div><div class="line">*</div></pre></td></tr></table></figure>
 
 <p>pause()</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
@@ -526,24 +510,18 @@ keys.push({
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
 
 <p>stop()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can also <span class="keyword">get</span> access <span class="keyword">to</span> current <span class="property">running</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.Animatable</p>
-<figure class="highlight objects"><figcaption><span>by using ```scene.getAnimatableByTarget()``` providing the target object.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">And</span> you are done! Don<span class="attribute">'t</span> hesitate <span class="keyword">to</span> combine many animations <span class="keyword">for</span> one mesh object... by creating more Animations <span class="keyword">and</span> pushing them into the mesh<span class="attribute">'s</span> _animation_ <span class="keyword">property</span>. ;)  We have now completed an Animation <span class="keyword">for</span> box1.scaling.x. Maybe now you want <span class="keyword">to</span> build an Animation <span class="keyword">for</span> box1.scaling.y, <span class="keyword">and</span> really get box1 moving playfully.</div><div class="line"></div><div class="line">**<span class="number">2</span> - Controlling animations**</div><div class="line"></div><div class="line">Each Animation has a <span class="keyword">property</span> called</div></pre></td></tr></table></figure>
-
-<p>currentFrame</p>
-<figure class="highlight that"><figcaption><span>indicates the current animation key.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">For advanced keyframe animation, you can also define <span class="operator">the</span> functions used <span class="built_in">to</span> interpolate (transition) between <span class="built_in">keys</span>. By default these functions are <span class="operator">the</span> following:</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">你也可以通过scene.getAnimatableByTarget()提供的方法来获取动画对象。</div><div class="line"></div><div class="line">然后你就可以对一个对一个网格对象使用各种动画了，通过创建更多的动画对象并把他们填入网格对象的_animation_属性中。我们已经完成了box1.scaling.x的动画对象，现在你可以构建一个box1.scaling.y的动画对象而且可以移动这个盒子了。</div><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>2 - 控制动画<span class="keyword">*</span><span class="keyword">*</span></div><div class="line"></div><div class="line">每一个动画对象都有一个currentFrame的属性表示了当前动画的键</div><div class="line"></div><div class="line">你也可以通过创建控制器就想下边一样：</div></pre></td></tr></table></figure>
 
 <p>javascript<br>BABYLON.Animation.prototype.floatInterpolateFunction = function (startValue, endValue, gradient) {<br>    return startValue + (endValue - startValue) * gradient;<br>};</p>
 <p>BABYLON.Animation.prototype.quaternionInterpolateFunction = function (startValue, endValue, gradient) {<br>    return BABYLON.Quaternion.Slerp(startValue, endValue, gradient);<br>};</p>
 <p>BABYLON.Animation.prototype.vector3InterpolateFunction = function (startValue, endValue, gradient) {<br>    return BABYLON.Vector3.Lerp(startValue, endValue, gradient);<br>};</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**3 - Helper function**</div><div class="line"></div><div class="line">You can <span class="operator"><span class="keyword">use</span> an <span class="keyword">extended</span> <span class="keyword">function</span> <span class="keyword">to</span> <span class="keyword">create</span> a <span class="keyword">quick</span> animation:</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>3 - 帮助函数<span class="keyword">*</span><span class="keyword">*</span></div><div class="line"></div><div class="line">你可以使用扩展函数去创建一个快捷的动画：</div></pre></td></tr></table></figure>
 
 <p>Javascript<br>Animation.CreateAndStartAnimation = function(name, mesh, tartgetProperty, framePerSecond, totalFrame, from, to, loopMode);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">To</span> be able <span class="keyword">to</span> use this <span class="function"><span class="keyword">function</span>, <span class="title">you</span> <span class="title">need</span> <span class="title">to</span> <span class="title">know</span> <span class="title">that</span> :</span></div><div class="line">- Your animation will have predefined key frames (Only <span class="number">2</span> keyframes are generated : **Start** <span class="keyword">and</span> **<span class="keyword">End</span>**)</div><div class="line">- The animation works only <span class="keyword">on</span> **AbstractMesh** objects.</div><div class="line">- The animation <span class="keyword">is</span> starting right after the <span class="function"><span class="keyword">method</span> <span class="title">call</span>.</span></div><div class="line"></div><div class="line"><span class="title">Here</span> <span class="title">is</span> <span class="title">a</span> <span class="title">straightforward</span> <span class="title">sample</span> <span class="title">using</span> <span class="title">the</span> **<span class="title">CreateAndStartAnimation</span><span class="params">()</span>** <span class="title">function</span> :</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="gherkin">为了能够使用这个函数你需要知道如下一些地方：</span></div><div class="line">- 动画将会有两个关键的帧定义(<span class="keyword">*</span><span class="keyword">*</span>Start<span class="keyword">*</span><span class="keyword">*</span> and <span class="keyword">*</span><span class="keyword">*</span>End<span class="keyword">*</span><span class="keyword">*</span>)</div><div class="line">- 动画对象只会工作于 <span class="keyword">*</span><span class="keyword">*</span>AbstractMesh<span class="keyword">*</span><span class="keyword">*</span> 对象.</div><div class="line">- 动画将会在调用函数之后就开始运行.</div><div class="line"></div><div class="line">这有一个更直接的例子通过使用<span class="keyword">*</span><span class="keyword">*</span>CreateAndStartAnimation()<span class="keyword">*</span><span class="keyword">*</span>:</div></pre></td></tr></table></figure>
 
 <p>Javascript<br>BABYLON.Animation.CreateAndStartAnimation(‘boxscale’, box1, ‘scaling.x’, 30, 120, 1.0, 1.5);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Pretty straightforward ? :)</div><div class="line"></div><div class="line"><span class="strong">**4 - Easing functions**</span></div><div class="line"></div><div class="line">You can add some behaviors to your animations, using easing functions. </div><div class="line">If you want more informations about easing functions, here are some useful links : </div><div class="line"><span class="bullet">- </span>[<span class="link_label">MSDN Easing functions documentation</span>](<span class="link_url">http://msdn.microsoft.com/en-us/library/ee308751.aspx</span>)</div><div class="line"><span class="bullet">- </span>[<span class="link_label">Easing functions cheat sheet</span>](<span class="link_url">http://easings.net/fr</span>)</div><div class="line"></div><div class="line">All those easing functions are implemented in BABYLON allowing you to apply custom mathematical formulas to your animations.</div><div class="line"></div><div class="line">Here are the predefined easing functions you can use : </div><div class="line">-</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="strong">**4 - 擦除函数**</span></div><div class="line"></div><div class="line">你喜欢添加一些动画的行为通过擦除函数</div><div class="line">更多信息</div><div class="line"><span class="bullet">- </span>[<span class="link_label">MSDN Easing functions documentation</span>](<span class="link_url">http://msdn.microsoft.com/en-us/library/ee308751.aspx</span>)</div><div class="line"><span class="bullet">- </span>[<span class="link_label">Easing functions cheat sheet</span>](<span class="link_url">http://easings.net/fr</span>)</div><div class="line"></div><div class="line">所有的这些函数在babylonjs中都是允许你应用自定义的数学方程：</div><div class="line">这里是一些你可以使用的预定义函数：</div><div class="line">Here are the predefined easing functions you can use : </div><div class="line">-</div></pre></td></tr></table></figure>
 
 <p>BABYLON.CircleEase()</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
@@ -576,7 +554,7 @@ keys.push({
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
 
 <p>BABYLON.SineEase()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can <span class="operator"><span class="keyword">use</span> the **EasingMode** property <span class="keyword">to</span> <span class="keyword">alter</span> how the easing <span class="keyword">function</span> behaves, that <span class="keyword">is</span>, <span class="keyword">change</span> how the animation interpolates. </span></div><div class="line">There <span class="keyword">are</span> three possible <span class="keyword">values</span> you can give <span class="keyword">for</span> EasingMode: </div><div class="line">-</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">你可以使用EasingMode属性去定义动作，下边就是介绍如何去控制动画，</div><div class="line">这里有一些可能的值你可以使用到EasingMode中：</div><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
 
 <p>BABYLON.EasingFunction.EASINGMODE_EASEIN</p>
 <figure class="highlight :"><figcaption><span>Interpolation follows the mathematical formula associated with the easing function.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
@@ -585,10 +563,7 @@ keys.push({
 <figure class="highlight :"><figcaption><span>Interpolation follows 100% interpolation minus the output of the formula associated with the easing function.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
 
 <p>BABYLON.EasingFunction.EASINGMODE_EASEINOUT</p>
-<figure class="highlight :"><figcaption><span>Interpolation uses EaseIn for the first half of the animation and EaseOut for the second half.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Here is <span class="operator">a</span> straightforward sample <span class="built_in">to</span> animate <span class="operator">a</span> torus <span class="operator">within</span> <span class="operator">a</span></div></pre></td></tr></table></figure>
-
-<p>CirleEase</p>
-<figure class="highlight easing"><figcaption><span>function :</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<figure class="highlight :"><figcaption><span>Interpolation uses EaseIn for the first half of the animation and EaseOut for the second half.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下边是CircleEase的一个简单使用</div></pre></td></tr></table></figure>
 
 <p>Javascript<br>//Create a Vector3 animation at 30 FPS<br>var animationTorus = new BABYLON.Animation(“torusEasingAnimation”, “position”, 30,  BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);</p>
 <p>// the torus destination position<br>var nextPos = torus.position.add(new BABYLON.Vector3(-80, 0, 0));</p>
@@ -598,7 +573,7 @@ keys.push({
 <p>// Adding the easing function to the animation<br>animationTorus.setEasingFunction(easingFunction);</p>
 <p>// Adding animation to my torus animations collection<br>torus.animations.push(animationTorus);</p>
 <p>//Finally, launch animations on torus, from key 0 to key 120 with loop activated<br>scene.beginAnimation(torus, 0, 120, true);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can play <span class="operator">with</span> bezier curve algorithm too, <span class="keyword">using</span> <span class="operator">the</span> **BezierCurveEase(x1, y1, x2, y2)** <span class="function"><span class="keyword">function</span>. </span></div><div class="line">For purpose, here is <span class="operator">a</span> good reference <span class="built_in">to</span> <span class="built_in">create</span> your curve algorithm : [<span class="keyword">http</span>://cubic-bezier.com](<span class="keyword">http</span>://cubic-bezier.com)</div><div class="line"></div><div class="line">Here is <span class="operator">a</span> pretty cool implementation <span class="keyword">using</span> <span class="operator">the</span> bezier curve algorithm :</div><div class="line"></div><div class="line">![](<span class="keyword">http</span>://www.dotmim.com/sitefiles/babylon/bezier.jpg)</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">你可以用贝塞尔曲线算法通过使用BezierCurveEase(x1, y1, x2, y2)函数. </div><div class="line">更多信息 : [<span class="link_label">http://cubic-bezier.com</span>](<span class="link_url">http://cubic-bezier.com</span>)</div><div class="line"></div><div class="line">下边是一个贝塞尔曲线算法的很好的实现：</div><div class="line"></div><div class="line">![](http://www.dotmim.com/sitefiles/babylon/bezier.jpg)</div></pre></td></tr></table></figure>
 
 <p>Javascript<br>var bezierEase = new BABYLON.BezierCurveEase(0.32, -0.73, 0.69, 1.59);</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">Finally</span>, you can extend the **EasingFunction** base <span class="keyword">function</span> <span class="keyword">to</span> create your own easing <span class="keyword">function</span>, <span class="keyword">like</span> this :</div></pre></td></tr></table></figure>
@@ -607,25 +582,25 @@ keys.push({
 <pre><code>};
 <span class="keyword">return</span> FunnyEase;
 </code></pre><p>})(BABYLON.EasingFunction);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You will find <span class="operator">a</span> complete demonstration <span class="operator">of</span> <span class="operator">the</span> easing functions behaviors, <span class="operator">in</span> <span class="operator">the</span> playground : [Easing <span class="function"><span class="keyword">function</span> <span class="title">playground</span>](<span class="title">http</span>://<span class="title">www</span>.<span class="title">babylonjs-playground</span>.<span class="title">com</span>/?<span class="title">20</span>)</span></div><div class="line"></div><div class="line"></div><div class="line">**<span class="number">5</span> - Complex animation**</div><div class="line"></div><div class="line">The complex animation lets you choose everything <span class="keyword">at</span> <span class="keyword">each</span> frame <span class="operator">of</span> <span class="operator">the</span> animation (<span class="keyword">each</span> <span class="built_in">tick</span>). The code computed <span class="keyword">at</span> run <span class="built_in">time</span> must be located <span class="operator">in</span> this <span class="function"><span class="keyword">function</span>:</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">你将会找到一个完善的例子关于擦除函数，更多信息: [<span class="link_label">Easing function playground</span>](<span class="link_url">http://www.babylonjs-playground.com/?20</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="strong">**5 - 复合动画**</span></div><div class="line"></div><div class="line">复合动画可以允许你在动画的每一帧都执行一次。所有的代码都必须放到这个函数中：</div></pre></td></tr></table></figure>
 
 <p>javascript<br>scene.registerBeforeRender(function () {<br>    //Your code here<br>});<br>```</p>
-<p>This function can be very useful for complex animation like games, where characters have to move depending on many parameters.</p>
-<p>Don’t hesitate to combine all those types of animations. If well done, it’s very powerful.</p>
-<p>Don’t forget to <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external">visit our API documentation</a> in order to learn more about the <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external"><strong>Babylon.js Animation</strong></a> class.</p>
-<p>You can view, edit, and get a zip of the code used in this tutorial… <a href="http://www.babylonjs.com/playground/?7" target="_blank" rel="external"><strong>right here</strong></a> …at the Babylon.js Playground.</p>
-<h2 id="Next_step">Next step</h2>
-<p>Your scene is now becoming dynamic, and all your meshes can move in all directions! Feel free to try different animations on different objects, then come back and learn all about <a href="https://github.com/BabylonJS/Babylon.js/wiki/08-Sprites" target="_blank" rel="external"><strong>Sprites</strong></a>.</p>
+<p>这个函数是很有用的，当所有的角色需要根据很多参数来移动。</p>
+<p>不要迟疑来试试吧。</p>
+<p>更多信息 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external">visit our API documentation</a>关于动画<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external"><strong>Babylon.js Animation</strong></a>.</p>
+<p>你可以通过编辑和运行这些代码来查看这些代码如何使用.</p>
+<h2 id="接下来">接下来</h2>
+<p>你的场景现在已经是动态的了，而且你的网格可以移动到所有的方向！尝试对不同的对象使用不同的动画，下边我们将学习如何使用精灵对象。</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/08 Sprites/">← Prev Post</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
-            <a class="share-button" data-original-title title>Share this Post</a>
+            <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/The-Playground/">Next Post →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/06-Lights/">后一篇 →</a>
             
         </nav>
         <br/>
