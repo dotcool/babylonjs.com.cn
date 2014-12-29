@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>如何使用虚拟操纵杆摄像机 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
+  <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="/favicon.ico" rel="bookmark" type="image/x-icon"/>
+  <meta name="generator" content="babylonjs中文网">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Tags/">标签</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Roadmap/">更新日志</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Naming-convention/">建业u命名</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Home/">WIKI主页</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/06-Lights/">光源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                
+                    <a  data-pjax href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/Tags/">标签</a>
+                
+                    <a  data-pjax href="/2014/12/29/Roadmap/">更新日志</a>
+                
+                    <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                
+                    <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                
+                    <a  data-pjax href="/2014/12/29/Naming-convention/">建业u命名</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                
+                    <a  data-pjax href="/2014/12/29/Home/">WIKI主页</a>
+                
+                    <a  data-pjax href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                
+                    <a  data-pjax href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                
+                    <a  data-pjax href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                
+                    <a  data-pjax href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                
+                    <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/29/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs中文网</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">如何使用虚拟操纵杆摄像机</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">如何使用虚拟操纵杆摄像机</h1>
+
+                    <div class="post-meta">
+                        发布于<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-29T09:34:24.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <p>The VirtualJoysticksCamera will create a babylon.js camera that can move within your games, thanks to 2 touch-enabled joysticks drawn on the left &amp; right of the screen. It’s designed to be controlled via your 2 thumbs.</p>
+<p>It derives from the <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Cameras/babylon.freeCamera.js" target="_blank" rel="external">FreeCamera</a> to provide a FPS-like experience and instantiate 2 <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Tools/babylon.virtualJoystick.js" target="_blank" rel="external">VirtualJoystick</a> for you.</p>
+<p><strong>Note:</strong> We’re using the <a href="http://www.w3.org/TR/pointerevents/" target="_blank" rel="external">W3C Pointer Events</a> model. To enable touch on all devices &amp; platforms, we’re using our <a href="http://handjs.codeplex.com/" target="_blank" rel="external">Hand.js polyfill</a> library. Don’t forget to include it in your project, otherwise the virtual joysticks will only work in IE.</p>
+<h3 id="Using_the_BABYLON-VirtualJoysticksCamera_camera">Using the BABYLON.VirtualJoysticksCamera camera</h3>
+<p>It’s the same concept as all our cameras, 1 line of code to activate all the magic. For instance, here is how to create a virtual joysticks camera at the center of the world:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> VJC = <span class="keyword">new</span> BABYLON.VirtualJoysticksCamera(<span class="string">"VJC"</span>, BABYLON.Vector3.Zero(), scene);</div></pre></td></tr></table></figure>
+
+<p>The camera constructor takes the following parameters:</p>
+<ul>
+<li>Name</li>
+<li>Position</li>
+<li>Scene</li>
+</ul>
+<h3 id="Video">Video</h3>
+<p>Here is a 1 minute video demonstrating how it works:</p>
+<p><a href="https://www.youtube.com/watch?v=53Piiy71lB0" target="_blank" rel="external">Virtual Joysticks Camera demo in video</a></p>
+<p><img src="http://david.blob.core.windows.net/babylonjs/VJCBabylon.jpg" alt="Screenshot of the Virtual Joysticks Camera in action on Espilit"></p>
+<h3 id="Complete_sample">Complete sample</h3>
+<p>Here is a complete sample that loads the Espilit demo and switches the default camera to a virtual joysticks camera:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>, startGame, <span class="literal">false</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">startGame</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">if</span> (BABYLON.Engine.isSupported()) {</div><div class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"renderCanvas"</span>);</div><div class="line">        <span class="keyword">var</span> engine = <span class="keyword">new</span> BABYLON.Engine(canvas, <span class="literal">true</span>);</div><div class="line"></div><div class="line">        BABYLON.SceneLoader.Load(<span class="string">"Espilit/"</span>, <span class="string">"Espilit.babylon"</span>, engine, <span class="function"><span class="keyword">function</span> <span class="params">(newScene)</span> </span>{</div><div class="line"></div><div class="line">            <span class="keyword">var</span> VJC = <span class="keyword">new</span> BABYLON.VirtualJoysticksCamera(<span class="string">"VJC"</span>, newScene.activeCamera.position, newScene);</div><div class="line">            VJC.rotation = newScene.activeCamera.rotation;</div><div class="line">            VJC.checkCollisions = newScene.activeCamera.checkCollisions;</div><div class="line">            VJC.applyGravity = newScene.activeCamera.applyGravity;</div><div class="line"></div><div class="line">            <span class="comment">// Wait for textures and shaders to be ready</span></div><div class="line">            newScene.executeWhenReady(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">                newScene.activeCamera = VJC;</div><div class="line">                <span class="comment">// Attach camera to canvas inputs</span></div><div class="line">                newScene.activeCamera.attachControl(canvas);</div><div class="line">                <span class="comment">// Once the scene is loaded, just register a render loop to render it</span></div><div class="line">                engine.runRenderLoop(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">                    newScene.render();</div><div class="line">                });</div><div class="line">            });</div><div class="line">        }, <span class="function"><span class="keyword">function</span> <span class="params">(progress)</span> </span>{</div><div class="line">            <span class="comment">// To do: give progress feedback to user</span></div><div class="line">        });</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="If_you’re_switching_back,_don’t_forget_to_dispose!">If you’re switching back, don’t forget to dispose!</h3>
+<p>If you switch back to another camera, don’t forget to call the dispose() function first. Indeed, the VirtualJoysticks are creating a 2D canvas on top of the 3D WebGL canvas to draw the joysticks with cyan &amp; yellow circles. If you forget to call the dispose() function, the 2D canvas will remain, and will cninue to use touch events input.</p>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2014/12/29/Working-with-Blender/">← 前一篇</a>
+            
+            <a class="share-button" data-original-title title>分享文章</a>
+            
+            <a data-pjax class="older-posts" href="/2014/12/29/Using-the-debug-layer/">后一篇 →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs中文网 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

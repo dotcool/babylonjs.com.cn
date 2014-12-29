@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>如何使用网格材质的参数 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
+  <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="/favicon.ico" rel="bookmark" type="image/x-icon"/>
+  <meta name="generator" content="babylonjs中文网">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Tags/">标签</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Roadmap/">更新日志</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Naming-convention/">建业u命名</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Home/">WIKI主页</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/06-Lights/">光源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                
+                    <a  data-pjax href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/Tags/">标签</a>
+                
+                    <a  data-pjax href="/2014/12/29/Roadmap/">更新日志</a>
+                
+                    <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                
+                    <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                
+                    <a  data-pjax href="/2014/12/29/Naming-convention/">建业u命名</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                
+                    <a  data-pjax href="/2014/12/29/Home/">WIKI主页</a>
+                
+                    <a  data-pjax href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                
+                    <a  data-pjax href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                
+                    <a  data-pjax href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                
+                    <a  data-pjax href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                
+                    <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/29/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs中文网</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">如何使用网格材质的参数</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">如何使用网格材质的参数</h1>
+
+                    <div class="post-meta">
+                        发布于<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-29T09:26:38.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <p>Babylon.js 1.14 introduced new parameters for the StandardMaterial: <em>FresnelParameters</em>.</p>
+<p><img src="http://www.babylonjs.com/Screenshots/fresnel.jpg" alt=""></p>
+<p>There are 4 of them:</p>
+<ul>
+<li><figure class="highlight StandardMaterial.diffuseFresnelParameters```"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>StandardMaterial.opacityFresnelParameters</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>StandardMaterial.reflectionFresnelParameters</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>StandardMaterial.emissiveFresnelParameters</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="preprocessor">## How fresnel is working</span></div><div class="line"></div><div class="line">A fresnel term <span class="keyword">is</span> computed <span class="keyword">by</span> the StandardMaterial <span class="keyword">in</span> <span class="keyword">order</span> <span class="keyword">to</span> change the way a color <span class="keyword">is</span> applied <span class="keyword">by</span> <span class="keyword">using</span> viewing angle.</div><div class="line"></div><div class="line"><span class="keyword">For</span> instance, you can simulate great glass <span class="keyword">or</span> reflection effects <span class="keyword">by</span> just <span class="keyword">using</span> a simple fresnel. The fresnel will <span class="keyword">let</span> you have more reflection <span class="keyword">on</span> edges <span class="keyword">and</span> <span class="keyword">not</span> all <span class="keyword">on</span> the center.</div><div class="line"></div><div class="line"><span class="keyword">To</span> <span class="keyword">do</span> so, just use this code:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters = new BABYLON.FresnelParameters();</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can <span class="keyword">then</span> control <span class="keyword">if</span> <span class="keyword">the</span> reflection <span class="keyword">is</span> applied <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> edges <span class="keyword">or</span> <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> center. For instance, <span class="keyword">if</span> you want <span class="keyword">the</span> reflection <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> edges (<span class="keyword">by</span> default), you can control <span class="keyword">it</span> using <span class="keyword">the</span> color properties:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters.leftColor = BABYLON.Color3.White();<br>material.reflectionFresnelParameters.rightColor = BABYLON.Color3.Black();</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![](<span class="keyword">http</span>://www.babylonjs.com/forumpics/fresnel01.jpg)</div><div class="line"></div><div class="line">Conversely, <span class="keyword">if</span> you only want reflection <span class="operator">in</span> <span class="operator">the</span> center:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters.leftColor = BABYLON.Color3.Black();<br>material.reflectionFresnelParameters.rightColor = BABYLON.Color3.White();</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![](http:<span class="comment">//www.babylonjs.com/forumpics/fresnel02.jpg)</span></div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">using</span></div></pre></td></tr></table></figure>
+
+<p>bias</p>
+<figure class="highlight and"><figcaption><span>```power``` properties, you can control how the fresnel is computed along the surface of the object according to this formula:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">_finalFresnelTerm = pow<span class="comment">(**bias** + fresnelTerm, **power**)</span>_</div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">default</span>, bias == <span class="number">0</span> <span class="keyword">and</span> power == <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">For</span> instance, the following code:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionFresnelParameters = new BABYLON.FresnelParameters();<br>material.reflectionFresnelParameters.leftColor = BABYLON.Color3.Black();<br>material.reflectionFresnelParameters.rightColor = BABYLON.Color3.White();<br>material.reflectionFresnelParameters.power = 4;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">...generates <span class="operator">the</span> following rendering:</div><div class="line"></div><div class="line">![](<span class="keyword">http</span>://www.babylonjs.com/forumpics/fresnel03.jpg)</div><div class="line"></div><div class="line"><span class="comment">## How to use it</span></div><div class="line"></div><div class="line">A _FresnelParameter_ is defined <span class="keyword">by</span> <span class="operator">the</span> following properties:</div><div class="line">*</div></pre></td></tr></table></figure>
+
+<p>isEnabled</p>
+<figure class="highlight to"><figcaption><span>activate or deactivate fresnel effect</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">* leftColor <span class="built_in">to</span> define color used <span class="command"><span class="keyword">on</span> <span class="title">edges</span></span></div><div class="line">* rightColor <span class="built_in">to</span> define color used <span class="command"><span class="keyword">on</span> <span class="title">center</span></span></div><div class="line">* bias <span class="built_in">to</span> define bias applied <span class="built_in">to</span> computed fresnel term</div><div class="line">* power <span class="built_in">to</span> compute exponent applied <span class="built_in">to</span> fresnel term</div><div class="line"></div><div class="line">Here is <span class="operator">a</span> simple example:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>material.reflectionTexture = new BABYLON.CubeTexture(“Scenes/Customs/skybox/TropicalSunnyDay”, scene);<br>material.diffuseColor = new BABYLON.Color3(0, 0, 0);<br>material.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);<br>material.alpha = 0.2;<br>material.specularPower = 16;</p>
+<p>// Fresnel<br>material.reflectionFresnelParameters = new BABYLON.FresnelParameters();<br>material.reflectionFresnelParameters.bias = 0.1;</p>
+<p>material.emissiveFresnelParameters = new BABYLON.FresnelParameters();<br>material.emissiveFresnelParameters.bias = 0.6;<br>material.emissiveFresnelParameters.power = 4;<br>material.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();<br>material.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();</p>
+<p>material.opacityFresnelParameters = new BABYLON.FresnelParameters();<br>material.opacityFresnelParameters.leftColor = BABYLON.Color3.White();<br>material.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();<br>```</p>
+<p>A complete demo can be found here: <a href="http://www.babylonjs.com/?FRESNEL" target="_blank" rel="external">http://www.babylonjs.com/?FRESNEL</a></p>
+<p>If you want to experiment FresnelParameters, just go here: <a href="http://www.babylonjs.com/playground/?19" target="_blank" rel="external">http://www.babylonjs.com/playground/?19</a></p>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2014/12/29/How to use procedural textures?/">← 前一篇</a>
+            
+            <a class="share-button" data-original-title title>分享文章</a>
+            
+            <a data-pjax class="older-posts" href="/2014/12/29/Home/">后一篇 →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs中文网 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

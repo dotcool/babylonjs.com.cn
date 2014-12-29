@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>如何使用后期处理渲染管道 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
+  <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="/favicon.ico" rel="bookmark" type="image/x-icon"/>
+  <meta name="generator" content="babylonjs中文网">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Tags/">标签</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Roadmap/">更新日志</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Naming-convention/">建业u命名</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Home/">WIKI主页</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/06-Lights/">光源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                
+                    <a  data-pjax href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/Tags/">标签</a>
+                
+                    <a  data-pjax href="/2014/12/29/Roadmap/">更新日志</a>
+                
+                    <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                
+                    <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                
+                    <a  data-pjax href="/2014/12/29/Naming-convention/">建业u命名</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                
+                    <a  data-pjax href="/2014/12/29/Home/">WIKI主页</a>
+                
+                    <a  data-pjax href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                
+                    <a  data-pjax href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                
+                    <a  data-pjax href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                
+                    <a  data-pjax href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                
+                    <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/29/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs中文网</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">如何使用后期处理渲染管道</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">如何使用后期处理渲染管道</h1>
+
+                    <div class="post-meta">
+                        发布于<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-29T09:30:11.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <h1 id="How_to_use_Post_Process_Render_Pipeline">How to use Post Process Render Pipeline</h1>
+<p>Post Process Renders pipelines allow you to create a chain of post processes and attach it to a camera.<br>A render pipeline can be managed by enabling and disabling some effects and displaying a specific pass for debugging.</p>
+<h2 id="Base_Render_Pipeline">Base Render Pipeline</h2>
+<p><img src="https://raw.githubusercontent.com/michael-korbas/Babylon.js/Docs/Docs/RenderPipeline/Resources/Architecture.png" alt=""></p>
+<p>Renders Pipelines are composed of serval classes.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderPipelineManager</code></strong></td>
+<td>Managing all pipelines, allow you to enable or disable an effect, displaying a pass of post process for debugging.</td>
+</tr>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderPipeline</code></strong></td>
+<td>Set of effects that can be ordered.</td>
+</tr>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderEffect</code></strong></td>
+<td>A render effect is a smart postprocess who can manage their own instances itself.</td>
+</tr>
+<tr>
+<td><strong><code>BABYLON.PostProcessRenderPass</code></strong></td>
+<td>A render pass is a render texture that you can use in differents render effects.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Reference">Reference</h2>
+<h3 id="BABYLON-PostProcessRenderPipelineManager">BABYLON.PostProcessRenderPipelineManager</h3>
+<p><center><code>new BABYLON.PostProcessRenderPipelineManager();</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderPipelineManager()</code></strong></td>
+<td>Create a new instance of PostProcessRenderPipelineManager.</td>
+</tr>
+<tr>
+<td><strong><code>addPipeline(renderPipeline)</code></strong></td>
+<td>Add a new pipeline to an instance of PostProcessRenderPipelineManager.</td>
+</tr>
+<tr>
+<td><strong><code>attachCamerasToRenderPipeline(renderPipelineName, cameras, unique)</code></strong></td>
+<td>Attach a render pipeline to a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>detachCamerasFromRenderPipeline(renderPipelineName, cameras)</code></strong></td>
+<td>Detach a render pipeline from a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>enableEffectInPipeline(renderPipelineName, renderEffectName, cameras)</code></strong></td>
+<td>Enable an effect in a pipeline for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>disableEffectInPipeline(renderPipelineName, renderEffectName, cameras)</code></strong></td>
+<td>Disable an effect in a pipeline for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>enableDisplayOnlyPass(renderPipelineName, passName, cameras)</code></strong></td>
+<td>Enable displaying of a specific pass used in a specific render pipeline, for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>disableDisplayOnlyPass(renderPipelineName, passName, cameras)</code></strong></td>
+<td>Disable displaying of a specific pass used in a specific render pipeline, for a list(or unique) of cameras</td>
+</tr>
+<tr>
+<td><strong><code>update</code></strong></td>
+<td>Update all pipelines.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="BABYLON-PostProcessRenderPipeline">BABYLON.PostProcessRenderPipeline</h3>
+<p><center><code>new BABYLON.PostProcessRenderPipeline(BABYLON.Engine engine, string name);</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderPipeline(engine, name)</code></strong></td>
+<td>Create a new instance of PostProcessRenderPipeline.</td>
+</tr>
+<tr>
+<td><strong><code>addEffect(renderEffect)</code></strong></td>
+<td>Add a new render effect to the pipeline.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="BABYLON-PostProcessRenderEffect">BABYLON.PostProcessRenderEffect</h3>
+<p><center><code>new BABYLON.PostProcessRenderEffect(BABYLON.Engine engine, string name, string postProcessType, number ratio, BABYLON.Texture.SAMPLING_MODE samplingMode, bool singleInstance);</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderEffect(engine, name, createPostProcessFunction, singleInstance)</code></strong></td>
+<td>Create a new instance of PostProcessRenderEffect. The createPostProcessFunction have to return a nes instance of the postprocess you want to use</td>
+</tr>
+<tr>
+<td><strong><code>addPass(renderPass)</code></strong></td>
+<td>Add a new pass to the effect.</td>
+</tr>
+<tr>
+<td><strong><code>addRenderEffectAsPass(renderEffect)</code></strong></td>
+<td>Add a render effect as a pass.</td>
+</tr>
+<tr>
+<td><strong><code>removePass(renderPass)</code></strong></td>
+<td>Delete a pass from the effect.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>parameters</code></strong></td>
+<td>Callback used for passing extra parameters on a post process.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="BABYLON-PostProcessRenderPass">BABYLON.PostProcessRenderPass</h3>
+<p><center><code>new BABYLON.PostProcessRenderPass(BABYLON.Scene scene, string name, object size, BABYLON.Mesh[] renderList, function(){} beforeRender, function(){} afterRender)</code></center><br></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>PostProcessRenderPass(scene, name, size, renderList, beforeRender, afterRender)</code></strong></td>
+<td>Create a new instance of PostProcessRenderPass.</td>
+</tr>
+<tr>
+<td><strong><code>setRenderList(meshes)</code></strong></td>
+<td>Update the renderList.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Let’s_play_with_Render_Pipeline">Let’s play with Render Pipeline</h2>
+<h3 id="Simple_Pipeline">Simple Pipeline</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"renderCanvas"</span>);</div><div class="line"><span class="keyword">var</span> engine = <span class="keyword">new</span> BABYLON.Engine(canvas, <span class="literal">true</span>);</div><div class="line"><span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line"></div><div class="line"><span class="keyword">var</span> camera_01 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_01"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> camera_02 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_02"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> camera_03 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_03"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> camera_04 = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera_04"</span>, <span class="number">1</span>, <span class="number">0.8</span>, <span class="number">10</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line">camera_01.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">camera_02.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.5</span>, <span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">camera_03.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">camera_04.viewport = <span class="keyword">new</span> BABYLON.Viewport(<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line"></div><div class="line">scene.activeCameras.push(camera_01);</div><div class="line">scene.activeCameras.push(camera_02);</div><div class="line">scene.activeCameras.push(camera_03);</div><div class="line">scene.activeCameras.push(camera_04);</div><div class="line"></div><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni_0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>), scene);</div><div class="line"><span class="keyword">var</span> light1 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni_1"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>), scene);</div><div class="line"><span class="keyword">var</span> light2 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni_2"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line"><span class="keyword">var</span> box = BABYLON.Mesh.CreateBox(<span class="string">"Box"</span>, <span class="number">3.0</span>, scene);</div><div class="line"></div><div class="line">camera_01.attachControl(canvas);</div><div class="line">camera_02.attachControl(canvas);</div><div class="line">camera_03.attachControl(canvas);</div><div class="line">camera_04.attachControl(canvas);</div><div class="line"></div><div class="line"><span class="keyword">var</span> standardPipeline = <span class="keyword">new</span> BABYLON.PostProcessRenderPipeline(engine, <span class="string">"standardPipeline"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> blackAndWhiteEffect = <span class="keyword">new</span> BABYLON.PostProcessRenderEffect(engine, <span class="string">"blackAndWhiteEffect"</span>, </div><div class="line">	<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{<span class="keyword">return</span> <span class="keyword">new</span> BABYLON.BlackAndWhitePostProcess(<span class="string">"bw"</span>, <span class="number">1.0</span>, <span class="literal">null</span>, <span class="literal">null</span>, engine, <span class="literal">true</span>)});</div><div class="line"></div><div class="line"><span class="keyword">var</span> horizontalBlur = <span class="keyword">new</span> BABYLON.PostProcessRenderEffect(engine, <span class="string">"horizontalBlurEffect"</span>, </div><div class="line">	<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{ <span class="keyword">return</span> <span class="keyword">new</span> BABYLON.BlurPostProcess(<span class="string">"hb"</span>, <span class="keyword">new</span> BABYLON.Vector2(<span class="number">1.0</span>, <span class="number">0</span>), <span class="number">10</span>, <span class="number">1.0</span>, <span class="literal">null</span>, <span class="literal">null</span>, engine, <span class="literal">true</span>) });</div><div class="line"></div><div class="line"><span class="keyword">var</span> verticalBlur = <span class="keyword">new</span> BABYLON.PostProcessRenderEffect(engine, <span class="string">"verticalBlurEffect"</span>, </div><div class="line">	<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{ <span class="keyword">return</span> <span class="keyword">new</span> BABYLON.BlurPostProcess(<span class="string">"vb"</span>, <span class="keyword">new</span> BABYLON.Vector2(<span class="number">0</span>, <span class="number">1.0</span>), <span class="number">10</span>, <span class="number">1.0</span>, <span class="literal">null</span>, <span class="literal">null</span>, engine, <span class="literal">true</span>) });</div><div class="line"></div><div class="line">standardPipeline.addEffect(blackAndWhiteEffect);</div><div class="line">standardPipeline.addEffect(horizontalBlur);</div><div class="line">standardPipeline.addEffect(verticalBlur);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.addPipeline(standardPipeline);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_01);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_02);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_03);</div><div class="line">scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(<span class="string">"standardPipeline"</span>, camera_04);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"blackAndWhiteEffect"</span>, camera_01);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"blackAndWhiteEffect"</span>, camera_02);</div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"horizontalBlurEffect"</span>, camera_02);</div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"verticalBlurEffect"</span>, camera_02);</div><div class="line"></div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"horizontalBlurEffect"</span>, camera_03);</div><div class="line">scene.postProcessRenderPipelineManager.disableEffectInPipeline(<span class="string">"standardPipeline"</span>, <span class="string">"verticalBlurEffect"</span>, camera_03);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//Render Loop</span></div><div class="line">engine.runRenderLoop(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">    scene.render();</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p><a href="http://www.babylonjs.com/playground/#21EWA7" target="_blank" rel="external">http://www.babylonjs.com/playground/#21EWA7</a></p>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2014/12/29/How-to-use-SceneOptimizer-tool/">← 前一篇</a>
+            
+            <a class="share-button" data-original-title title>分享文章</a>
+            
+            <a data-pjax class="older-posts" href="/2014/12/29/How-to-use-postprocesses/">后一篇 →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs中文网 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

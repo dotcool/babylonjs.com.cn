@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>如何使用程序材质 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
+  <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="/favicon.ico" rel="bookmark" type="image/x-icon"/>
+  <meta name="generator" content="babylonjs中文网">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        首页</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;归档</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                归档</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Tags/">标签</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Roadmap/">更新日志</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Naming-convention/">建业u命名</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Home/">WIKI主页</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/14-Height-map/">高度地图</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/07-Animation/">动画</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/06-Lights/">光源</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/28/05 Cameras/">摄像机</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/04-Materials/">材质</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;分类</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                分类</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;标签</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                标签</h2>
+                            <a class="mp-back" href="#">返回</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="搜索.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="http://www.ejiakt.com">&nbsp;&nbsp;&nbsp;关于我们</a></li>
+                    <li><a class="fa fa-github" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-the-debug-layer/">如何使用调试面板</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using-Oculus-Rift-with-Babylon.js/">使用双视角数据</a>
+                
+                    <a  data-pjax href="/2014/12/29/Using AssetsManager/">如何使用资源管理器</a>
+                
+                    <a  data-pjax href="/2014/12/29/The-Playground/">babylonjs的沙盒运行环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/Tags/">标签</a>
+                
+                    <a  data-pjax href="/2014/12/29/Roadmap/">更新日志</a>
+                
+                    <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
+                
+                    <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
+                
+                    <a  data-pjax href="/2014/12/29/Naming-convention/">建业u命名</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-postprocesses/">如何使用后期处理</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-multi-views/">如何使用对视图</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-level-of-details/">如何使用详细的水平</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-lens-flares/">如何使用喇叭裤效果</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-instances/">如何使用对象实例</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-bones-and-skeletons/">如何使用骨骼动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-use-Actions/">如何使用动作</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-merge-meshes/">如何合并网格</a>
+                
+                    <a  data-pjax href="/2014/12/29/How-to-handle-rotations-and-translations/">如何掌握旋转和变换</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use procedural textures?/">如何使用程序材质</a>
+                
+                    <a  data-pjax href="/2014/12/29/How to use FresnelParameters/">如何使用网格材质的参数</a>
+                
+                    <a  data-pjax href="/2014/12/29/Home/">WIKI主页</a>
+                
+                    <a  data-pjax href="/2014/12/29/Entities-exported-from-Blender/">从Blender中导出组件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating-your-own-file-importer/">创建个人的文件导入</a>
+                
+                    <a  data-pjax href="/2014/12/29/Creating the minified version/">创建最小版本的js文件</a>
+                
+                    <a  data-pjax href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
+                
+                    <a  data-pjax href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
+                
+                    <a  data-pjax href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
+                
+                    <a  data-pjax href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
+                
+                    <a  data-pjax href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                
+                    <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
+                
+                    <a  data-pjax href="/2014/12/29/13 Environment/">环境</a>
+                
+                    <a  data-pjax href="/2014/12/29/15-Shadows/">阴影</a>
+                
+                    <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
+                
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
+                    <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
+                
+                    <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
+                
+                    <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
+                
+                    <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
+                
+                    <a  data-pjax href="/2014/12/27/03---Position,-Rotation-&amp;-Scaling/">位移，旋转，缩放</a>
+                
+                    <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
+                
+                    <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
+                
+                
+                
+                <a data-pjax class="fa fa-user" href="https://github.com/dotcool/babylonjs.com.cn">&nbsp;&nbsp;&nbsp;Github</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs中文网</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">如何使用程序材质</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">如何使用程序材质</h1>
+
+                    <div class="post-meta">
+                        发布于<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-29T09:27:18.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <p>In classic texturing, we use 2D images, often pictures that have been shaped specifically to match an object. Let’s imagine you are creating a medieval fantasy game, working on a dwarf pub, where there are multiple, big, “old school” wooden tables. With classic 2D texturing, you have 3 choices:</p>
+<ul>
+<li><p>Create a single texture and use it on all of the tables (but every table is going to look the same)</p>
+</li>
+<li><p>Create a collection of various wood textures and apply them randomly to each table</p>
+</li>
+<li><p>Create a separate texture for each table, insuring that they each look different </p>
+</li>
+</ul>
+<p>No choice seems to be a good one.</p>
+<p>Enter <strong>procedural textures</strong>. Procedural texturing is a way to programmatically create a texture. There are 2 types of procedural textures: code-only, and code that references some classic 2D images, sometimes called ‘refMaps’ or ‘sampler’ images.</p>
+<p>One main advantage of procedural textures is that they are written using a fragment shader (using GLSL in the case of Babylon.js). That means that the code generating the texture is executed by the GPU and not the CPU (that is to say, NOT executed in JavaScript code). This has a huge performance impact in a positive way.</p>
+<p>Procedural textures can be generated:</p>
+<ul>
+<li><p>Only once to create the texture which is put into cache</p>
+</li>
+<li><p>Every 1, 2, 3, or 4, or more frames to be able to create an animated texture (like fire)</p>
+</li>
+</ul>
+<p>See more about ‘refreshrate’ in the Custom Procedural Textures section… far below.</p>
+<h1 id="Procedural_Textures_in_Babylon-js">Procedural Textures in Babylon.js</h1>
+<p><strong>Babylon.js</strong> offers you an easy out-of-the-box way to use this kind of texture. The engine itself provides you with standard default textures that you can use right now. It also gives you the ability to create custom procedural textures and package them in a simple way.</p>
+<h2 id="Using_Standard_Procedural_Textures">Using Standard Procedural Textures</h2>
+<p>Babylon.js has a number of pre-built procedural textures that are very easy to use.  Applying a procedural texture is just the same as using a classic one. Let’s start with a simple mesh (a cylinder in this case) and attach it to your scene:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cylinder = BABYLON.Mesh.CreateCylinder(<span class="string">"mycylinder"</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">12</span>, <span class="number">1</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>Then, you need to create a StandardMaterial:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> material = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"material"</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>Now, create a WoodProceduralTexture object for which you need to pass a name, the size of the generated texture and the scene.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> texture = <span class="keyword">new</span> BABYLON.WoodProceduralTexture(<span class="string">"texture"</span>, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<p>You are almost set! All you need to do now is to associate the texture to the material as a diffuseTexture, for instance, (or emissiveTexture, specularTexture, any other) and then apply the material to the mesh.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">material.diffuseTexture = texture;</div><div class="line">cylinder.material = material;</div></pre></td></tr></table></figure>
+
+<p>You can optionally change the values of special (wood-based) default properties :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">texture.woodColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.49</span>, <span class="number">0.25</span>, <span class="number">0</span>);</div><div class="line">texture.ampScale = <span class="keyword">new</span> BABYLON.Vector2(<span class="number">1.0</span>, <span class="number">1.0</span>);</div></pre></td></tr></table></figure>
+
+<h2 id="All_Standard_Procedural_Textures">All Standard Procedural Textures</h2>
+<p>All standard procedural textures can be used the same way, but they each have specific properties.</p>
+<ul>
+<li><strong>WoodProceduralTexture</strong><ul>
+<li><strong>woodColor</strong> to modify the color of the wood in the texture (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>ampScale</strong> to change the waves amplitude in the wood (<em><strong>BABYLON.Vector2</strong></em>)</li>
+</ul>
+</li>
+<li><strong>MarbleProceduralTexture</strong><ul>
+<li><strong>numberOfTilesHeight</strong> controls the number of tiles in height (<em><strong>Int</strong></em>)</li>
+<li><strong>numberOfTilesWidth</strong> controls the number of tiles in width (<em><strong>Int</strong></em>)</li>
+<li><strong>jointColor</strong> changes the color for the joint between tiles (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>marbleColor</strong> changes the color for the tile itself (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>BrickProceduralTexture</strong><ul>
+<li><strong>numberOfBricksHeight</strong> controls the number of bricks in height (<em><strong>Int</strong></em>)</li>
+<li><strong>numberOfBricksWidth</strong> controls the number of bricks in width (<em><strong>Int</strong></em>)</li>
+<li><strong>jointColor</strong> changes the color for the joint between bricks (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>brickColor</strong> changes the color for the brick itself (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>FireProceduralTexture</strong><ul>
+<li><strong>time</strong> can be set manually (float) if autoGenerateTime (boolean) is set to false. It is used inside the fire shader to animate it</li>
+<li><strong>speed</strong> controls the speed of the flames (<em><strong>BABYLON.Vector2</strong></em>)</li>
+<li><strong>shift</strong> controls the direction of the flames (<em><strong>BABYLON.Vector2</strong></em>)</li>
+<li><strong>fireColors</strong> is an array of 6 (<em><strong>BABYLON.Color3/4</strong></em>) defining the different color of the fire. You can define them manually of use presets available as static properties of the classe (<strong>PurpleFireColors</strong>, <strong>GreenFireColors</strong>, <strong>RedFireColors</strong>, <strong>BlueFireColors</strong>)  </li>
+</ul>
+</li>
+<li><strong>GrassProceduralTexture</strong><ul>
+<li><strong>grassColor</strong> is an array of 3 (<em><strong>BABYLON.Color3/4</strong></em>) for the grass. Should be green but you can create red grass if you want to (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+<li><strong>groundColor</strong> is the base color for the ground (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>RoadProceduralTexture</strong><ul>
+<li><strong>roadColor</strong> is the color for the road (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+<li><strong>CloudProceduralTexture</strong><ul>
+<li><strong>skyColor</strong> is the color for the sky (<em><strong>BABYLON.Color3/4</strong></em>)<ul>
+<li><strong>cloudColor</strong> is the color for the cloud (<em><strong>BABYLON.Color3/4</strong></em>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Creating_Custom_Procedural_Textures">Creating Custom Procedural Textures</h2>
+<h3 id="Using_a_Files-Based_Custom_Procedural_Texture">Using a Files-Based Custom Procedural Texture</h3>
+<p>To use a files-based custom procedural texture, you need to create a folder containing at least 2 files:</p>
+<ul>
+<li>config.json</li>
+<li>custom.fragment.fx</li>
+</ul>
+<p>The config file is a Javascript Simple Object Notation file containing 4 elements. Here is an example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">  {</div><div class="line">   <span class="string">"animate"</span>: <span class="literal">false</span>,</div><div class="line">   <span class="string">"refreshrate"</span>: <span class="number">0</span>,</div><div class="line">   <span class="string">"uniforms"</span>: [</div><div class="line">    {</div><div class="line">    <span class="string">"type"</span>: <span class="string">"float"</span>,</div><div class="line">    <span class="string">"name"</span>: <span class="string">"dirtAmplifier"</span>,</div><div class="line">    <span class="string">"value"</span>: <span class="string">"6.0"</span></div><div class="line">    }</div><div class="line">],</div><div class="line">   <span class="string">"texture2Ds"</span>: [</div><div class="line">    {</div><div class="line">	    <span class="string">"textureName"</span>: <span class="string">"dirt"</span>,</div><div class="line">	    <span class="string">"textureRelativeUrl"</span>: <span class="string">"textures/dirt.jpg"</span></div><div class="line">    },</div><div class="line">    {</div><div class="line">	    <span class="string">"textureName"</span>: <span class="string">"grass"</span>,</div><div class="line">	    <span class="string">"textureRelativeUrl"</span>: <span class="string">"textures/grass.png"</span></div><div class="line">    }</div><div class="line">   ]</div><div class="line">  }</div></pre></td></tr></table></figure>
+
+<p>The <strong>animate</strong> property indicates if a time value should be created and increased each time the fragment shader code is executed.</p>
+<p>The <strong>refreshrate</strong> property needs to be set to 0 to indicate the texture to only render once. If set to 1, it will render every frame, 2 every two frames, etc.</p>
+<p><strong>Uniforms</strong> are the values that will be passed from the javascript code to the shader code. By setting them that way, you can allow the custom texture user to modify this value at runtime… to customize the texture. </p>
+<p>Uniforms can be of type:</p>
+<ul>
+<li><strong>float</strong> (parameters : value)</li>
+<li><strong>Vector2</strong> (parameters: x, y)</li>
+<li><strong>Vector3</strong> (parameters: x, y, z)</li>
+<li><strong>Color3</strong> (parameters: r, g, b)</li>
+<li><strong>Color4</strong> (parameters: r, g, b, a)</li>
+</ul>
+<p><strong>Textures2D</strong> are 2D image files that are passed to the shader code as <strong>sampler2D</strong> variables. They can be read by the shader code and be used to create the final pixel color. You only need to provide a name and the relative path inside the folder.</p>
+<p>The <strong>custom.fragment.fx</strong> file contains the GLSL code. The purpose of this wiki article is not to teach you how to create a fragment shader or how it works. You simply need to know that the code contained in your main function will be called once for each pixel to create on the texture. In this main function, you only know the coordinates of the current pixel in the final texture.</p>
+<p>Here is a simple code which is setting all pixels to a specific gray.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#ifdef GL_ES</div><div class="line">precision highp float;</div><div class="line">#endif</div><div class="line"></div><div class="line"><span class="keyword">void</span> main(<span class="keyword">void</span>) {</div><div class="line">	vec3 color = vec3(<span class="number">0.9</span>, <span class="number">0.9</span>, <span class="number">0.9</span>);</div><div class="line">	gl_FragColor = vec4(color, <span class="number">1.0</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>Gl_FragColor is the variable in which you put the color object you want the pixel to be.<br>Here is a more complex example using 2 samplers and mixing their color equally. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#ifdef GL_ES</div><div class="line">precision highp float;</div><div class="line">#endif</div><div class="line"></div><div class="line">varying vec2 vPosition;</div><div class="line">varying vec2 vUV;</div><div class="line"></div><div class="line">uniform sampler2D grass;</div><div class="line">uniform sampler2D dirt;</div><div class="line"></div><div class="line"><span class="keyword">void</span> main(<span class="keyword">void</span>) {</div><div class="line">	vec3 color = mix(texture2D(dirt, vUV).xyz, texture2D(grass, vUV).xyz, <span class="number">0.5</span>);</div><div class="line">	gl_FragColor = vec4(color, <span class="number">1.0</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>To use this custom texture, you need to make your folder available to your babylon.js html/javascript files and use a <strong>CustomProceduralTexture</strong> class instead of a standard one.  The difference is only that you specify a new parameter which is the relative path to the folder containing the custom texture. Babylon.js will automatically read the config.json and custom.fragment.fx files and load everything for you.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> texture = <span class="keyword">new</span> BABYLON.CustomProceduralTexture(<span class="string">"texture"</span>, <span class="string">"./pathtotexture"</span>, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<h3 id="Using_a_ShaderStore_for_Shader_Storage">Using a ShaderStore for Shader Storage</h3>
+<p>You can also use the ShaderStore to write a shader inline and use it in a CustomProceduralTexture.<br>This can be done easily using the <strong>BABYLON.Effect.ShaderStore</strong> array : </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">BABYLON.Effect.ShadersStore[<span class="string">"LinesPixelShader"</span>] =</div><div class="line">       <span class="string">"#ifdef GL_ES\n"</span> +</div><div class="line">       <span class="string">"precision highp float;\n"</span> +</div><div class="line">       <span class="string">"#endif\n\n"</span> +</div><div class="line">       <span class="string">"varying vec2 vUV; \n"</span> +</div><div class="line">       <span class="string">"void main(void) {\n"</span> +</div><div class="line">       <span class="string">"   gl_FragColor = vec4(vUV.x,vUV.y,-vUV.x, 1.0);\n"</span> +</div><div class="line">       <span class="string">"}\n"</span> +</div><div class="line">       <span class="string">""</span>;</div></pre></td></tr></table></figure>
+
+<p>Note that your shader name should be suffixed with <strong>PixelShader</strong> as the Procedural Texture shader is always a pixel shader. Babylon.JS will automatically understand it is a pixel shader.</p>
+<p>To use this shader, you just have to create a CustomProceduralTexture and put the name of your shader in the store instead of the path to the files.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> customProcText = <span class="keyword">new</span> BABYLON.CustomProceduralTexture(<span class="string">"customtext"</span>, <span class="string">"Lines"</span>, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<h3 id="Using_a_DOM_Element_for_Shader_Storage">Using a DOM Element for Shader Storage</h3>
+<p>Finally you can also use <strong>DOM Elements</strong> to store your shader. You just have to create a script tag in your HTML file like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"application/pixelShader"</span> id=<span class="string">"LinesPixelShader"</span>&gt;</div><div class="line">        #ifdef GL_ES</div><div class="line">        precision highp float;</div><div class="line">        #endif</div><div class="line">        varying vec2 vUV; </div><div class="line">        <span class="keyword">void</span> main(<span class="keyword">void</span>) {</div><div class="line">             gl_FragColor = vec4(vUV.x,vUV.y,-vUV.x, <span class="number">1.0</span>);</div><div class="line">        }</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+
+<p>To use it, you just have to create a simple object containing one property which is named <strong>fragmentElement</strong> and contains the id identifying the script DOM element.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> linesShader = { fragmentElement: <span class="string">'LinesPixelShader'</span> };</div><div class="line"><span class="keyword">var</span> customProcText = <span class="keyword">new</span> BABYLON.CustomProceduralTexture(<span class="string">"customtext"</span>, linesShader, <span class="number">1024</span>, scene);</div></pre></td></tr></table></figure>
+
+<p><strong>Note :</strong> when using ShaderStore or DOM Element shader for custom procedural textures : the config.json file is not needed anymore and you can just use setFloat or setVector3 (and so on) and setTexture on the CustomProceduralTexture to give values and Sampler2D to the shader code.</p>
+<p>Feel free to play with this scene… <a href="http://www.babylonjs-playground.com/#24C4KC" target="_blank" rel="external">at our online playground</a>.</p>
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2014/12/29/How-to-handle-rotations-and-translations/">← 前一篇</a>
+            
+            <a class="share-button" data-original-title title>分享文章</a>
+            
+            <a data-pjax class="older-posts" href="/2014/12/29/How to use FresnelParameters/">后一篇 →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; babylonjs中文网 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>
