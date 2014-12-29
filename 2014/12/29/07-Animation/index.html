@@ -434,7 +434,7 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-29T04:37:40.000Z"
+                        <time datetime="2014-12-29T04:51:29.000Z"
                               itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
@@ -459,132 +459,74 @@
 <p>第二个参数 - 属性的名字，比如我们想按照x轴来缩放，我们就定义scaling.x</p>
 <p>第三个参数 - fps，帧每秒的最高的数值</p>
 <p>第四个参数 - 哪一种类型的值比如移动是一个浮点型，一个方向是一个向量等等</p>
+<p>BABYLON.Animation.ANIMATIONTYPE_FLOAT<br>BABYLON.Animation.ANIMATIONTYPE_VECTOR3<br>BABYLON.Animation.ANIMATIONTYPE_QUATERNION</p>
+<p>第五个参数 - 最后你需要顶一个他的行为是循环还是一次等</p>
 <ul>
-<li><figure class="highlight BABYLON.Animation.ANIMATIONTYPE_FLOAT```"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-</li>
+<li>使用前一次的值并增加1: BABYLON.Animation.ANIMATIONLOOPMODE_RELATIVE</li>
+<li>从最开始的值从新开始: BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE</li>
+<li>保持值不变: BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT</li>
 </ul>
-<p>BABYLON.Animation.ANIMATIONTYPE_VECTOR3</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
+<p>现在我们拥有了一个动画对象而且我们要展示如何来修改这些值。在这个例子中，我们缩放我们的盒子，但是不是一种线性的缩放，当他变大事就缩放的更快，当他变小时就缩放的更慢：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// An array with all animation keys</span></div><div class="line"><span class="keyword">var</span> keys = [];  </div><div class="line"></div><div class="line">   <span class="comment">//At the animation key 0, the value of scaling is "1"</span></div><div class="line">    keys.push({</div><div class="line">        frame: <span class="number">0</span>,</div><div class="line">        value: <span class="number">1</span></div><div class="line">    });</div><div class="line"></div><div class="line">    <span class="comment">//At the animation key 20, the value of scaling is "0.2"</span></div><div class="line">    keys.push({</div><div class="line">        frame: <span class="number">20</span>,</div><div class="line">        value: <span class="number">0.2</span></div><div class="line">    });</div><div class="line"></div><div class="line">    <span class="comment">//At the animation key 100, the value of scaling is "1"</span></div><div class="line">    keys.push({</div><div class="line">        frame: <span class="number">100</span>,</div><div class="line">        value: <span class="number">1</span></div><div class="line">    });</div></pre></td></tr></table></figure>
 
-<p>BABYLON.Animation.ANIMATIONTYPE_QUATERNION</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">第五个参数 - 最后你需要顶一个他的行为是循环还是一次等</div><div class="line"></div><div class="line"><span class="bullet">* </span>使用前一次的值并增加1:</div></pre></td></tr></table></figure>
+<p>接下来的重要步骤：</p>
+<ul>
+<li>添加动画序列到动画对象中:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">animationBox.setKeys(keys);</div></pre></td></tr></table></figure>
 
-<p>BABYLON.Animation.ANIMATIONLOOPMODE_RELATIVE</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">* </span>从最开始的值从新开始:</div></pre></td></tr></table></figure>
+<p>比如把动画序列添加到我们的盒子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box1.animations.push(animationBox);</div></pre></td></tr></table></figure>
 
-<p>BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">* </span>保持值不变:</div></pre></td></tr></table></figure>
+<p>最后，你就可以通过一行代码来启动这个动画了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.beginAnimation(box1, <span class="number">0</span>, <span class="number">100</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
 
-<p>BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">现在我们拥有了一个动画对象而且我们要展示如何来修改这些值。在这个例子中，我们缩放我们的盒子，但是不是一种线性的缩放，当他变大事就缩放的更快，当他变小时就缩放的更慢：</div></pre></td></tr></table></figure>
+<p>这个函数返回了一个BABYLON.Animatable对象，使用getAnimationByTargetProperty函数来获取对象.</p>
+<p>动画对象也支持如下的几个方法:<br>pause()<br>restart()<br>stop()</p>
+<p>你也可以通过scene.getAnimatableByTarget()提供的方法来获取动画对象。</p>
+<p>然后你就可以对一个对一个网格对象使用各种动画了，通过创建更多的动画对象并把他们填入网格对象的<em>animation</em>属性中。我们已经完成了box1.scaling.x的动画对象，现在你可以构建一个box1.scaling.y的动画对象而且可以移动这个盒子了。</p>
+<p><strong>2 - 控制动画</strong></p>
+<p>每一个动画对象都有一个currentFrame的属性表示了当前动画的键</p>
+<p>你也可以通过创建控制器就想下边一样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">BABYLON.Animation.prototype.floatInterpolateFunction = <span class="function"><span class="keyword">function</span> <span class="params">(startValue, endValue, gradient)</span> </span>{</div><div class="line">    <span class="keyword">return</span> startValue + (endValue - startValue) * gradient;</div><div class="line">};</div><div class="line"></div><div class="line">BABYLON.Animation.prototype.quaternionInterpolateFunction = <span class="function"><span class="keyword">function</span> <span class="params">(startValue, endValue, gradient)</span> </span>{</div><div class="line">    <span class="keyword">return</span> BABYLON.Quaternion.Slerp(startValue, endValue, gradient);</div><div class="line">};</div><div class="line"></div><div class="line">BABYLON.Animation.prototype.vector3InterpolateFunction = <span class="function"><span class="keyword">function</span> <span class="params">(startValue, endValue, gradient)</span> </span>{</div><div class="line">    <span class="keyword">return</span> BABYLON.Vector3.Lerp(startValue, endValue, gradient);</div><div class="line">};</div></pre></td></tr></table></figure>
 
-<p>javascript<br>// An array with all animation keys<br>var keys = [];  </p>
-<p>   //At the animation key 0, the value of scaling is “1”<br>    keys.push({<br>        frame: 0,<br>        value: 1<br>    });</p>
-<pre><code><span class="comment">//At the animation key 20, the value of scaling is "0.2"</span>
-keys.push({
-    frame: <span class="number">20</span>,
-    <span class="keyword">value</span>: <span class="number">0.2</span>
-});
+<p><strong>3 - 帮助函数</strong></p>
+<p>你可以使用扩展函数去创建一个快捷的动画：</p>
+<figure class="highlight Javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Animation.CreateAndStartAnimation = <span class="function"><span class="keyword">function</span><span class="params">(name, mesh, tartgetProperty, framePerSecond, totalFrame, from, to, loopMode)</span>;</span></div></pre></td></tr></table></figure>
 
-<span class="comment">//At the animation key 100, the value of scaling is "1"</span>
-keys.push({
-    frame: <span class="number">100</span>,
-    <span class="keyword">value</span>: <span class="number">1</span>
-});
-</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">接下来的重要步骤：</div><div class="line"><span class="bullet">* </span>添加动画序列到动画对象中:</div></pre></td></tr></table></figure>
+<p>为了能够使用这个函数你需要知道如下一些地方：</p>
+<ul>
+<li>动画将会有两个关键的帧定义(<strong>Start</strong> and <strong>End</strong>)</li>
+<li>动画对象只会工作于 <strong>AbstractMesh</strong> 对象.</li>
+<li>动画将会在调用函数之后就开始运行.</li>
+</ul>
+<p>这有一个更直接的例子通过使用<strong>CreateAndStartAnimation()</strong>:</p>
+<figure class="highlight Javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BABYLON.Animation.CreateAndStartAnimation(<span class="string">'boxscale'</span>, box1, <span class="string">'scaling.x'</span>, <span class="number">30</span>, <span class="number">120</span>, <span class="number">1.0</span>, <span class="number">1.5</span>);</div></pre></td></tr></table></figure>
 
-<p>javascript<br>animationBox.setKeys(keys);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">* </span>比如把动画序列添加到我们的盒子:</div></pre></td></tr></table></figure>
+<p><strong>4 - 擦除函数</strong></p>
+<p>你喜欢添加一些动画的行为通过擦除函数<br>更多信息</p>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/ee308751.aspx" target="_blank" rel="external">MSDN Easing functions documentation</a></li>
+<li><a href="http://easings.net/fr" target="_blank" rel="external">Easing functions cheat sheet</a></li>
+</ul>
+<p>所有的这些函数在babylonjs中都是允许你应用自定义的数学方程：<br>这里是一些你可以使用的预定义函数：<br>BABYLON.CircleEase()<br>BABYLON.BackEase(amplitude)<br>BABYLON.BounceEase(bounces, bounciness)<br>BABYLON.CubicEase()<br>BABYLON.ElasticEase(oscillations, springiness)<br>BABYLON.ExponentialEase(exponent)<br>BABYLON.PowerEase(power)<br>BABYLON.QuadraticEase()<br>BABYLON.QuarticEase()<br>BABYLON.QuinticEase()<br>BABYLON.SineEase()</p>
+<p>你可以使用EasingMode属性去定义动作，下边就是介绍如何去控制动画，<br>这里有一些可能的值你可以使用到EasingMode中：<br>BABYLON.EasingFunction.EASINGMODE_EASEIN: Interpolation follows the mathematical formula associated with the easing function.<br>BABYLON.EasingFunction.EASINGMODE_EASEOUT: Interpolation follows 100% interpolation minus the output of the formula associated with the easing function.<br>BABYLON.EasingFunction.EASINGMODE_EASEINOUT: Interpolation uses EaseIn for the first half of the animation and EaseOut for the second half.</p>
+<p>下边是CircleEase的一个简单使用</p>
+<figure class="highlight Javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Create a Vector3 animation at 30 FPS</span></div><div class="line"><span class="keyword">var</span> animationTorus = <span class="keyword">new</span> BABYLON.Animation(<span class="string">"torusEasingAnimation"</span>, <span class="string">"position"</span>, <span class="number">30</span>,  BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);</div><div class="line"></div><div class="line"><span class="comment">// the torus destination position</span></div><div class="line"><span class="keyword">var</span> nextPos = torus.position.add(<span class="keyword">new</span> BABYLON.Vector3(-<span class="number">80</span>, <span class="number">0</span>, <span class="number">0</span>));</div><div class="line"></div><div class="line"><span class="comment">// Animation keys</span></div><div class="line"><span class="keyword">var</span> keysTorus = [];</div><div class="line">keysTorus.push({ frame: <span class="number">0</span>, value: torus.position });</div><div class="line">keysTorus.push({ frame: <span class="number">120</span>, value: nextPos });</div><div class="line">animationTorus.setKeys(keysTorus);</div><div class="line"></div><div class="line"><span class="comment">// Creating an easing function</span></div><div class="line"><span class="keyword">var</span> easingFunction = <span class="keyword">new</span> BABYLON.CircleEase();</div><div class="line"></div><div class="line"><span class="comment">// For each easing function, you can choose beetween EASEIN (default), EASEOUT, EASEINOUT</span></div><div class="line">easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);</div><div class="line"></div><div class="line"><span class="comment">// Adding the easing function to the animation</span></div><div class="line">animationTorus.setEasingFunction(easingFunction);</div><div class="line"></div><div class="line"><span class="comment">// Adding animation to my torus animations collection</span></div><div class="line">torus.animations.push(animationTorus);</div><div class="line"></div><div class="line"><span class="comment">//Finally, launch animations on torus, from key 0 to key 120 with loop activated</span></div><div class="line">scene.beginAnimation(torus, <span class="number">0</span>, <span class="number">120</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
 
-<p>javascript<br>box1.animations.push(animationBox);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">最后，你就可以通过一行代码来启动这个动画了</div></pre></td></tr></table></figure>
+<p>你可以用贝塞尔曲线算法通过使用BezierCurveEase(x1, y1, x2, y2)函数.<br>更多信息 : <a href="http://cubic-bezier.com" target="_blank" rel="external">http://cubic-bezier.com</a></p>
+<p>下边是一个贝塞尔曲线算法的很好的实现：</p>
+<p><img src="http://www.dotmim.com/sitefiles/babylon/bezier.jpg" alt=""></p>
+<figure class="highlight Javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bezierEase = <span class="keyword">new</span> BABYLON.BezierCurveEase(<span class="number">0.32</span>, -<span class="number">0.73</span>, <span class="number">0.69</span>, <span class="number">1.59</span>);</div></pre></td></tr></table></figure>
 
-<p>javascript<br>scene.beginAnimation(box1, 0, 100, true);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这个函数返回了一个<span class="variable">BABYLON</span>.<span class="variable">Animatable</span>对象，使用get<span class="variable">AnimationByTargetProperty</span>函数来获取对象.</div><div class="line"></div><div class="line">动画对象也支持如下的几个方法:</div><div class="line">*</div></pre></td></tr></table></figure>
+<p>Finally, you can extend the <strong>EasingFunction</strong> base function to create your own easing function, like this :</p>
+<figure class="highlight Javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> FunnyEase = (<span class="function"><span class="keyword">function</span> <span class="params">(_super)</span> </span>{</div><div class="line">    __extends(FunnyEase, _super);</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">FunnyEase</span><span class="params">()</span> </span>{</div><div class="line">        _super.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">    }</div><div class="line">    FunnyEase.prototype.easeInCore = <span class="function"><span class="keyword">function</span> <span class="params">(gradient)</span> </span>{</div><div class="line">        <span class="comment">// Here is the core method you should change to make your own Easing Function</span></div><div class="line">        <span class="comment">// Gradient is the percent of value change</span></div><div class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.pow(<span class="built_in">Math</span>.pow(gradient, <span class="number">4</span>), gradient);</div><div class="line"></div><div class="line">    };</div><div class="line">    <span class="keyword">return</span> FunnyEase;</div><div class="line">})(BABYLON.EasingFunction);</div></pre></td></tr></table></figure>
 
-<p>pause()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+<p>你将会找到一个完善的例子关于擦除函数，更多信息: <a href="http://www.babylonjs-playground.com/?20" target="_blank" rel="external">Easing function playground</a></p>
+<p><strong>5 - 复合动画</strong></p>
+<p>复合动画可以允许你在动画的每一帧都执行一次。所有的代码都必须放到这个函数中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scene.registerBeforeRender(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">	<span class="comment">//Your code here</span></div><div class="line">});</div></pre></td></tr></table></figure>
 
-<p>restart()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>stop()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">你也可以通过scene.getAnimatableByTarget()提供的方法来获取动画对象。</div><div class="line"></div><div class="line">然后你就可以对一个对一个网格对象使用各种动画了，通过创建更多的动画对象并把他们填入网格对象的_animation_属性中。我们已经完成了box1.scaling.x的动画对象，现在你可以构建一个box1.scaling.y的动画对象而且可以移动这个盒子了。</div><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>2 - 控制动画<span class="keyword">*</span><span class="keyword">*</span></div><div class="line"></div><div class="line">每一个动画对象都有一个currentFrame的属性表示了当前动画的键</div><div class="line"></div><div class="line">你也可以通过创建控制器就想下边一样：</div></pre></td></tr></table></figure>
-
-<p>javascript<br>BABYLON.Animation.prototype.floatInterpolateFunction = function (startValue, endValue, gradient) {<br>    return startValue + (endValue - startValue) * gradient;<br>};</p>
-<p>BABYLON.Animation.prototype.quaternionInterpolateFunction = function (startValue, endValue, gradient) {<br>    return BABYLON.Quaternion.Slerp(startValue, endValue, gradient);<br>};</p>
-<p>BABYLON.Animation.prototype.vector3InterpolateFunction = function (startValue, endValue, gradient) {<br>    return BABYLON.Vector3.Lerp(startValue, endValue, gradient);<br>};</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>3 - 帮助函数<span class="keyword">*</span><span class="keyword">*</span></div><div class="line"></div><div class="line">你可以使用扩展函数去创建一个快捷的动画：</div></pre></td></tr></table></figure>
-
-<p>Javascript<br>Animation.CreateAndStartAnimation = function(name, mesh, tartgetProperty, framePerSecond, totalFrame, from, to, loopMode);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="gherkin">为了能够使用这个函数你需要知道如下一些地方：</span></div><div class="line">- 动画将会有两个关键的帧定义(<span class="keyword">*</span><span class="keyword">*</span>Start<span class="keyword">*</span><span class="keyword">*</span> and <span class="keyword">*</span><span class="keyword">*</span>End<span class="keyword">*</span><span class="keyword">*</span>)</div><div class="line">- 动画对象只会工作于 <span class="keyword">*</span><span class="keyword">*</span>AbstractMesh<span class="keyword">*</span><span class="keyword">*</span> 对象.</div><div class="line">- 动画将会在调用函数之后就开始运行.</div><div class="line"></div><div class="line">这有一个更直接的例子通过使用<span class="keyword">*</span><span class="keyword">*</span>CreateAndStartAnimation()<span class="keyword">*</span><span class="keyword">*</span>:</div></pre></td></tr></table></figure>
-
-<p>Javascript<br>BABYLON.Animation.CreateAndStartAnimation(‘boxscale’, box1, ‘scaling.x’, 30, 120, 1.0, 1.5);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="strong">**4 - 擦除函数**</span></div><div class="line"></div><div class="line">你喜欢添加一些动画的行为通过擦除函数</div><div class="line">更多信息</div><div class="line"><span class="bullet">- </span>[<span class="link_label">MSDN Easing functions documentation</span>](<span class="link_url">http://msdn.microsoft.com/en-us/library/ee308751.aspx</span>)</div><div class="line"><span class="bullet">- </span>[<span class="link_label">Easing functions cheat sheet</span>](<span class="link_url">http://easings.net/fr</span>)</div><div class="line"></div><div class="line">所有的这些函数在babylonjs中都是允许你应用自定义的数学方程：</div><div class="line">这里是一些你可以使用的预定义函数：</div><div class="line">Here are the predefined easing functions you can use : </div><div class="line">-</div></pre></td></tr></table></figure>
-
-<p>BABYLON.CircleEase()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.BackEase(amplitude)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.BounceEase(bounces, bounciness)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.CubicEase()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.ElasticEase(oscillations, springiness)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.ExponentialEase(exponent)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.PowerEase(power)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.QuadraticEase()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.QuarticEase()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.QuinticEase()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.SineEase()</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">你可以使用EasingMode属性去定义动作，下边就是介绍如何去控制动画，</div><div class="line">这里有一些可能的值你可以使用到EasingMode中：</div><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.EasingFunction.EASINGMODE_EASEIN</p>
-<figure class="highlight :"><figcaption><span>Interpolation follows the mathematical formula associated with the easing function.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.EasingFunction.EASINGMODE_EASEOUT</p>
-<figure class="highlight :"><figcaption><span>Interpolation follows 100% interpolation minus the output of the formula associated with the easing function.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="deletion">-</span></div></pre></td></tr></table></figure>
-
-<p>BABYLON.EasingFunction.EASINGMODE_EASEINOUT</p>
-<figure class="highlight :"><figcaption><span>Interpolation uses EaseIn for the first half of the animation and EaseOut for the second half.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下边是CircleEase的一个简单使用</div></pre></td></tr></table></figure>
-
-<p>Javascript<br>//Create a Vector3 animation at 30 FPS<br>var animationTorus = new BABYLON.Animation(“torusEasingAnimation”, “position”, 30,  BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);</p>
-<p>// the torus destination position<br>var nextPos = torus.position.add(new BABYLON.Vector3(-80, 0, 0));</p>
-<p>// Animation keys<br>var keysTorus = [];<br>keysTorus.push({ frame: 0, value: torus.position });<br>keysTorus.push({ frame: 120, value: nextPos });<br>animationTorus.setKeys(keysTorus);</p>
-<p>// Creating an easing function<br>var easingFunction = new BABYLON.CircleEase();</p>
-<p>// For each easing function, you can choose beetween EASEIN (default), EASEOUT, EASEINOUT<br>easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);</p>
-<p>// Adding the easing function to the animation<br>animationTorus.setEasingFunction(easingFunction);</p>
-<p>// Adding animation to my torus animations collection<br>torus.animations.push(animationTorus);</p>
-<p>//Finally, launch animations on torus, from key 0 to key 120 with loop activated<br>scene.beginAnimation(torus, 0, 120, true);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">你可以用贝塞尔曲线算法通过使用BezierCurveEase(x1, y1, x2, y2)函数. </div><div class="line">更多信息 : [<span class="link_label">http://cubic-bezier.com</span>](<span class="link_url">http://cubic-bezier.com</span>)</div><div class="line"></div><div class="line">下边是一个贝塞尔曲线算法的很好的实现：</div><div class="line"></div><div class="line">![](http://www.dotmim.com/sitefiles/babylon/bezier.jpg)</div></pre></td></tr></table></figure>
-
-<p>Javascript<br>var bezierEase = new BABYLON.BezierCurveEase(0.32, -0.73, 0.69, 1.59);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">Finally</span>, you can extend the **EasingFunction** base <span class="keyword">function</span> <span class="keyword">to</span> create your own easing <span class="keyword">function</span>, <span class="keyword">like</span> this :</div></pre></td></tr></table></figure>
-
-<p>Javascript<br>var FunnyEase = (function (_super) {<br>    __extends(FunnyEase, _super);<br>    function FunnyEase() {<br>        _super.apply(this, arguments);<br>    }<br>    FunnyEase.prototype.easeInCore = function (gradient) {<br>        // Here is the core method you should change to make your own Easing Function<br>        // Gradient is the percent of value change<br>        return Math.pow(Math.pow(gradient, 4), gradient);</p>
-<pre><code>};
-<span class="keyword">return</span> FunnyEase;
-</code></pre><p>})(BABYLON.EasingFunction);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">你将会找到一个完善的例子关于擦除函数，更多信息: [<span class="link_label">Easing function playground</span>](<span class="link_url">http://www.babylonjs-playground.com/?20</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="strong">**5 - 复合动画**</span></div><div class="line"></div><div class="line">复合动画可以允许你在动画的每一帧都执行一次。所有的代码都必须放到这个函数中：</div></pre></td></tr></table></figure>
-
-<p>javascript<br>scene.registerBeforeRender(function () {<br>    //Your code here<br>});<br>```</p>
 <p>这个函数是很有用的，当所有的角色需要根据很多参数来移动。</p>
 <p>不要迟疑来试试吧。</p>
 <p>更多信息 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external">visit our API documentation</a>关于动画<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Animation.html" target="_blank" rel="external"><strong>Babylon.js Animation</strong></a>.</p>
