@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>点击检测 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <title>摄像机和材质纹理 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
   <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
   <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
   <meta name="HandheldFriendly" content="True" />
@@ -44,6 +44,22 @@
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/07-Animation/">动画</a>
@@ -87,22 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/12 Particles/">粒子系统</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,14 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
                     <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
                 
                     <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
@@ -312,14 +320,6 @@
                     <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
                 
                     <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
-                
-                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                
-                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -401,7 +401,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">点击检测</a></li>
+                        <li id="navbar-title"><a href="#">摄像机和材质纹理</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -430,51 +430,67 @@
                   <div class="tag-tile">
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">点击检测</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">摄像机和材质纹理</h1>
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:02:40.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T06:34:55.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>The last collision type could be very useful for you: it’s picking an object with your mouse. The main difficulty is to click on a 3D object whereas your screen is a flat 2D display.</p>
-<p>Let’s see how we can get your mouse position transposed in your 3D scene by this gun shooting example:</p>
-<p><img src="http://www.babylonjs.com/tutorials/11 - Collisions PickResult/11.png" alt="Picking"></p>
-<p><em>Final result</em></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>Babylon engine lets you do this very easily by giving you useful functions.</p>
-<p>First of all, after creation of a plane representing the wall, and a plane with our impact’s picture, we have to detect a click on the UI (User Interface). Once the event is raised, use the function “pick” to get some powerful information about the relation between your click and your scene.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//When click event is raised</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">   <span class="comment">// We try to pick an object</span></div><div class="line">   <span class="keyword">var</span> pickResult = scene.pick(scene.pointerX, scene.pointerY);</div><div class="line">});</div></pre></td></tr></table></figure>
+            <p>你是否玩过第一视角游戏呢？在这个例子中沃恩将去模拟一个类似的摄像机动作：这个摄像机是放置在地板上，和地面以及其他在场景中的组件是有碰撞。</p>
+<p><img src="http://www.babylonjs.com/tutorials/09 - Collisions Gravity/09.png" alt="Elements"></p>
+<p><em>最终的效果</em></p>
+<h2 id="如何开始">如何开始</h2>
+<p>要实现这个动作，我们需要3个简单的步骤：</p>
+<p><strong>1 - 定义和应用重力</strong></p>
+<p>首先是定义我们的重力响铃，定义G的方向。在经典物理世界比如地球这个向下的重力方向是y轴，但是我们也可以轻松的改变他：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.gravity = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">9.81</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
 
-<p>The pickResult object is mainly composed of 4 pieces of information:</p>
-<ol>
-<li><em>hit</em> (bool): « True » if your click hits an object in the scene.</li>
-<li><em>distance</em> (float): the “distance” between the active camera and your hit (infinite if no mesh was hit)</li>
-<li><em>pickedMesh</em> (BABYLON.Mesh): if you hit an object, this is the selected mesh. If not, it’s null.</li>
-<li><em>pickedPoint</em> (BABYLON.Vector3): the point you have clicked, transformed in 3D coordinates, depending on the object you’ve clicked. Null if no hit.</li>
-</ol>
-<p>Now we have all the data we need to build our scene. We just have to position our gun’s impact picture (a plane made earlier… called impact) when the user clicks on the wall plane:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// if the click hits the wall object, we change the impact picture position</span></div><div class="line"><span class="keyword">if</span> (pickResult.hit) {</div><div class="line">            impact.position.x = pickResult.pickedPoint.x;</div><div class="line">            impact.position.y = pickResult.pickedPoint.y;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>重力可以被应用到你之前定义的任何摄像机上：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">camera.applyGravity = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
 
-<p>Fast, and easy, isn’t it?</p>
-<p>Feel free to play with this scene… <a href="http://www.babylonjs.com/playground/?11" target="_blank" rel="external">at our online playground</a>.</p>
-<h2 id="Next_step">Next step</h2>
-<p>This collision method is convenient in a lot of situations. Once you understand mouse pick events, you can begin using that functionality to advance your application’s development.</p>
-<p>Now you should know everything about collisions, so it’s time to move on to a classic effect in 3D : <a href="https://github.com/BabylonJS/Babylon.js/wiki/12-Particles" target="_blank" rel="external">particles</a>.</p>
+<p><strong>2 - 定义一个椭球</strong></p>
+<p>下一个重要的步骤就是定义在我们的摄像机周围定义一个椭球。这个椭球将会是我们角色的尺寸：一个碰撞的时间将会发生在和这个椭球相互撞击的网格上：</p>
+<p><img src="http://www.babylonjs.com/tutorials/09 - Collisions Gravity/09-1.jpg" alt="Ellipsoid"></p>
+<p>这个<em>ellipsoid</em>属性在babylonjs中被默认设置为(0.5, 1, 0.5), 想要改变他的大小。他是根据坐标轴，在这个例子中我们让摄像机的椭球比默认高。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Set the ellipsoid around the camera (e.g. your player's size)</span></div><div class="line">camera.ellipsoid = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+
+<p><strong>3 - </strong></p>
+<p>当你设置了之前的这些，我们最后的步骤就是在我们的场景中声明一个有趣的碰撞：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Enable Collisions</span></div><div class="line">scene.collisionsEnabled = <span class="literal">true</span>;</div><div class="line">camera.checkCollisions = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p>然后申明这些网格将于我们的摄像机产生碰撞：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ground.checkCollisions = <span class="literal">true</span>;</div><div class="line">box.checkCollisions = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+
+<p>现在你的摄像机将会从y轴上掉到地上。你的摄像机将会和盒子产生碰撞当你很靠近他时。</p>
+<p><strong>4 - 对象和对象的碰撞</strong></p>
+<p>你现在还需要做相同的事，当使用网格的 <em>mesh.ellipsoid</em> property属性和<em>mesh.moveWithCollisions(velocity)</em> 函数. 这个函数将会尝试根据给出的方向去移动网格并且去判断时候可以在当前和其他的网格中产生碰撞被激活的情况。</p>
+<p>你可以使用 <em>mesh.ellipsoidOffset</em> 去移动网格上的椭球 (默认情况下椭球是放置在网格中央的)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> velocity = <span class="keyword">new</span> BABYLON.Vector3(<span class="built_in">parseFloat</span>(<span class="built_in">Math</span>.sin(<span class="built_in">parseFloat</span>(character.rotation.y))) / <span class="number">8</span>, -<span class="number">0.7</span>, <span class="built_in">parseFloat</span>(<span class="built_in">Math</span>.cos(<span class="built_in">parseFloat</span>(character.rotation.y))) / <span class="number">8</span>);</div><div class="line">character.ellipsoid = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">0.5</span>);</div><div class="line">character.ellipsoidOffset = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1.0</span>, <span class="number">0</span>);</div><div class="line">character.moveWithCollisions(velocity);</div></pre></td></tr></table></figure>
+
+<p>更多例子 <a href="http://www.castorengine.com/babylon/moveCharacter/" target="_blank" rel="external">Move character with gravity and collision</a></p>
+<h2 id="轨道旋转摄像机">轨道旋转摄像机</h2>
+<p>轨道旋转摄像机能够检测是否碰撞，去检测障碍的边界。这个摄像机将会在碰撞发生时移动。</p>
+<p>为了激活碰撞，需要调用camera.checkCollisions = true你可以定义如下的碰撞:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">camera.collisionRadius = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>)</div></pre></td></tr></table></figure>
+
+<p>你现在可以运行这个实例<a href="http://www.babylonjs-playground.com/#4HUQQ" target="_blank" rel="external"><strong>playground demo</strong></a>.</p>
+<h2 id="接下来">接下来</h2>
+<p>现在你可以开发一个fps的游戏了，但是你可能也想知道当一个网格和另外的网格碰撞会发生什么？好的，可能这就是我们的目的所在。</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/12 Particles/">← 前一篇</a>
+            <a data-pjax class="newer-posts" href="/2014/12/29/10 Intersect collision object/">← 前一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/10 Intersect collision object/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/08 Sprites/">后一篇 →</a>
             
         </nav>
         <br/>

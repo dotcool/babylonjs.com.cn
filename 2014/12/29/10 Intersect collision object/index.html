@@ -46,6 +46,22 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/07-Animation/">动画</a>
                                 </li>
                                 
@@ -87,22 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/12 Particles/">粒子系统</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,14 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
                     <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
                 
                     <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
@@ -312,14 +320,6 @@
                     <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
                 
                     <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
-                
-                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                
-                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -434,51 +434,49 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:02:25.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T06:49:02.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>In dynamic scenes, objects are moving and interacting with each other. To get the best rendering, you will have to know when your meshes are in contact with each other.</p>
-<p>In this example, we are going to discover how the collision system works:</p>
+            <p>在动态的场景中，对象可以被其他的移动和交互。为了得到最好的渲染，在你知道你的网格和其他的相互关联的时候。</p>
+<p>在这个例子中，我们将要去发现碰撞系统如何工作：</p>
 <p><img src="http://www.babylonjs.com/tutorials/10 - Collisions Intersect/10.png" alt="Collisions"></p>
-<p><em>Final result</em></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>This tutorial is going to show you two ways of collision detection: the first one is to raise a collision event when two meshes are in contact, the other one is detecting contact between a mesh and a single point.<br>We are going to talk about the scene above. The first and second sphere (balloon) will collide on the rotated ground, the last one will be in collision only on a single point. Once you have created this basic scene, continue reading to learn how to check collisions.</p>
+<p><em>最终的效果</em></p>
+<h2 id="如何开始">如何开始</h2>
+<p>这个例子介绍了有两种碰撞检测机制：首先是在两个网格关联时的碰撞机制，然后是检测一个网格和一个点之间的关联。<br>我们将会讨论一下上边这个场景，第一个和第二球将会在旋转的地面上碰撞，最后一个将会和一个点碰撞，当你创建了基本的场景，继续阅读如何去检测碰撞。</p>
 <ul>
-<li><strong>Intersect mesh</strong></li>
+<li><strong> 相交网格</strong></li>
 </ul>
-<p>The point here is to check contact between our balloons and the ground. We will use the “intersectsMesh()” function, with two parameters: the mesh to be checked, and the precision of the intersection (boolean).</p>
+<p>这个点是检测小球和地面之间的关联。我们将会使用intersectsMesh()函数通过2个参数，如果网格被检测出碰撞将会对标志量进行赋值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (balloon1.intersectsMesh(plan1, <span class="literal">false</span>)) {</div><div class="line">   balloon1.material.emissiveColor = <span class="keyword">new</span> BABYLON.Color4(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);</div><div class="line">} <span class="keyword">else</span> {</div><div class="line">   balloon1.material.emissiveColor = <span class="keyword">new</span> BABYLON.Color4(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<p>To avoid costly calculation by checking many details on a mesh, Babylon engine creates a bounding box around the object, and tests for intersection between this box, and the colliding mesh. Here is an example of a bounding box:</p>
+<p>为了在检测网格时防止多余的计算，babylon引擎创建了一个有边际的盒子在物体的周围，检测发上在这个盒子和网格之上。</p>
 <p><img src="http://www.babylonjs.com/tutorials/10 - Collisions Intersect/10-1.png" alt="Collisions"></p>
-<p>But this bounding box can be more or less precise, and that’s why we have our second parameter. In short, if this parameter is set to true (false by default), then the bounding box is closer to the mesh (OBB bounding type), but it’s a more costly calculation. Be aware that this type of bounding box is especially useful when your mesh is rotated to an angle.</p>
+<p>但是这个盒子能个或多或少的误差，这就是我们必须要使用的第二个参数。简单的说，这个参数被设置为true(默认是false)这个有边际 盒子将会网格靠的更近。但是这个计算是更加耗时的，关注这种边际盒子是特别有用的丹尼需要旋转一个角度。</p>
 <p><img src="http://www.babylonjs.com/tutorials/10 - Collisions Intersect/10-2.png" alt="Collisions"></p>
-<p>So think about the collisions details you need before to choose.</p>
-<p>If you want more information about this second parameter, you can have a look at this Wikipedia page, especially about AABB and OBB mode: <a href="http://en.wikipedia.org/wiki/Bounding_volume" target="_blank" rel="external">http://en.wikipedia.org/wiki/Bounding_volume</a></p>
+<p>所以想一想这个碰撞的详情再做选择。</p>
+<p>更多信息<a href="http://en.wikipedia.org/wiki/Bounding_volume" target="_blank" rel="external">http://en.wikipedia.org/wiki/Bounding_volume</a></p>
 <ul>
-<li><strong>Intersect point</strong></li>
+<li><strong> 相交点</strong></li>
 </ul>
-<p>The other function you can use is “intersectsPoint()” with a specific point, like this:</p>
+<p>intersectsPoint也可以被用来使用特别的点。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pointToIntersect = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">10</span>, -<span class="number">5</span>, <span class="number">0</span>);</div><div class="line"><span class="keyword">if</span> (balloon3.intersectsPoint(pointToIntersect)){</div><div class="line">   balloon3.material.emissiveColor = <span class="keyword">new</span> BABYLON.Color4(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<p>We defined a precise point in our scene, and if our balloon intersects this point, wherever on the balloon, then the event is raised and we change the color of the balloon.</p>
-<p>You can play with the code used in this tutorial… by visiting <a href="http://www.babylonjs.com/playground/?10" target="_blank" rel="external"><strong>a demo at our playground</strong></a>.</p>
-<h2 id="Next_step">Next step</h2>
-<p>With those two functions, your scenes are becoming a lot more dynamic: you can define a specific reaction to object intersecting and colliding, and begin to introduce physics notions into your scene.</p>
-<p>In our next tutorial, you will discover how to <a href="https://github.com/BabylonJS/Babylon.js/wiki/11---Picking-collisions" target="_blank" rel="external">check collisions between your scene and the mouse</a>.</p>
+<p>我们在我们的场景中定义了一个点，如果球和点相交，不论是否在球上，事件将会触发去改变球的颜色。<br>你可以浏览demo <a href="http://www.babylonjs.com/playground/?10" target="_blank" rel="external"><strong>a demo at our playground</strong></a>.</p>
+<h2 id="接下来">接下来</h2>
+<p>使用这两个函数，你的场景将会变得更加富有动态：你可以定义个一个特别的交互和碰撞，现在我们将会介绍一些物理的概念</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/11   Picking collisions/">← 前一篇</a>
+            <a data-pjax class="newer-posts" href="/2014/12/29/11   Picking collisions/">← 前一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/09 Cameras and mesh collisions/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/09 Cameras and mesh collisions/">后一篇 →</a>
             
         </nav>
         <br/>

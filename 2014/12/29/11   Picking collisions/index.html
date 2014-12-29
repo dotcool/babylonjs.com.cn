@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>精灵 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <title>点击检测 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
   <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
   <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
   <meta name="HandheldFriendly" content="True" />
@@ -44,6 +44,22 @@
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/07-Animation/">动画</a>
@@ -87,22 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/12 Particles/">粒子系统</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,14 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
                     <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
                 
                     <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
@@ -312,14 +320,6 @@
                     <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
                 
                     <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
-                
-                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                
-                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -401,7 +401,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">精灵</a></li>
+                        <li id="navbar-title"><a href="#">点击检测</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -430,76 +430,50 @@
                   <div class="tag-tile">
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">精灵</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">点击检测</h1>
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:01:46.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T07:07:41.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>In this tutorial, we are going to learn how to manipulate Sprites. Sprites are 2D image/animation, and we will use them to display an image with alpha channel. Sprites always face the camera.</p>
-<p>Nowadays, sprites are often used to display animated characters, and for particles, and to simulate 3D complex objects like trees. </p>
-<p><img src="http://www.babylonjs.com/tutorials/08 - Sprites/08.png" alt="Elements"></p>
-<p><em>Final result</em></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>1- <strong>Sprite manager</strong></p>
-<p>If you want to use sprites, you need to create a “sprite manager” to optimize GPU resources by grouping in one place multiple instances of a sprite.<br>This manager is mandatory, even if you want to create one sprite. You just have to write:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Create a sprite manager</span></div><div class="line"><span class="keyword">var</span> spriteManagerTrees = <span class="keyword">new</span> BABYLON.SpriteManager(<span class="string">"treesManagr"</span>, <span class="string">"Assets/Palm-arecaceae.png"</span>, <span class="number">2000</span>, <span class="number">800</span>, scene);</div></pre></td></tr></table></figure>
+            <p>这种碰撞类型是很有用的：当你使用鼠标去点击一个对象。主要的困难是要在2D的平坦的屏幕上当点击一个3D的对象。</p>
+<p>让我们看一看怎么才能使用你的鼠标点击的位置变化成3D场景中的手枪视角。</p>
+<p><img src="http://www.babylonjs.com/tutorials/11 - Collisions PickResult/11.png" alt="Picking"></p>
+<p><em>最终效果</em></p>
+<h2 id="如何开始">如何开始</h2>
+<p>Babylon引擎通过使用一个有用的函数来实现这些功能。</p>
+<p>首先，当创建一个在墙上的飞机之后，飞机导入了我们的画面。我们必选在UI(用户的界面上)检测鼠标的点击。一旦事件发生，我们使用函数pick去得到更多信息在你的点击和屏幕之间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//When click event is raised</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">   <span class="comment">// We try to pick an object</span></div><div class="line">   <span class="keyword">var</span> pickResult = scene.pick(scene.pointerX, scene.pointerY);</div><div class="line">});</div></pre></td></tr></table></figure>
 
-<p>When creating a sprite manager, you have to decide a few parameters:</p>
-<ul>
-<li>Name: a name for this manager.</li>
-<li>The 2D image URL (most of the time, you will want use an image format which contain alpha channel, like .PNG).</li>
-<li>The capacity of this manager : the maximum number of instances in this manager (in our example, we could create 2000 instances of trees).</li>
-<li>The cell size, corresponding to the size of your image, like we’ll see below.</li>
-<li>The actual scene, to which we will add this manager.</li>
-</ul>
-<p>To give another example, look at this snippet:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> spriteManagerPlayer = <span class="keyword">new</span> BABYLON.SpriteManager(<span class="string">"playerManagr"</span>,<span class="string">"Assets/Player.png"</span>, <span class="number">2</span>, <span class="number">64</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>This time, we only want 2 instances, and we said that our sprite’s size is 64. Here is what our image looks like:</p>
-<p><img src="http://www.babylonjs.com/tutorials/08 - Sprites/08-1.png" alt="Elements"></p>
-<p>Each image of a sprite must be contained in a 64 pixel square, no more no less.</p>
-<p>2- <strong>Create an instance</strong></p>
-<p>Now that we have our manager, we can create instances of our sprite linked to this manager. Creating an instance is as simple as:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> player = <span class="keyword">new</span> BABYLON.Sprite(<span class="string">"player"</span>, spriteManagerPlayer);</div></pre></td></tr></table></figure>
+<p>pickResult对象包含了4个主要的信息：</p>
+<ol>
+<li><em>hit</em> (bool): « True » 如果你在场景中点击了一个对象.</li>
+<li><em>distance</em> (float): 激活的摄像机和你点击的位置的距离 (如果网格没有点击就是极大值)</li>
+<li><em>pickedMesh</em> (BABYLON.Mesh): 如果你点击了一个网格，那么这个就是你点击的网格否则为null.</li>
+<li><em>pickedPoint</em> (BABYLON.Vector3): 如果你点击了就会被转化成一个3D的向量.</li>
+</ol>
+<p>现在我们拥有了创建我们场景的所有数据。我们只是需要放置我们的的手枪画面当用户点击墙上的飞机:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// if the click hits the wall object, we change the impact picture position</span></div><div class="line"><span class="keyword">if</span> (pickResult.hit) {</div><div class="line">            impact.position.x = pickResult.pickedPoint.x;</div><div class="line">            impact.position.y = pickResult.pickedPoint.y;</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<p>Voilà, you have got your sprite displayed!</p>
-<p>If you want to add parameters to this instance, you can manipulate it like any other meshes:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">player.position.y = -<span class="number">0.3</span>;</div></pre></td></tr></table></figure>
-
-<p>But because it’s a sprite, you may use specific parameters: you can change their size, or their orientation:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">player.size = <span class="number">0.3</span>;</div><div class="line">player.angle = <span class="built_in">Math</span>.PI/<span class="number">4</span>;</div><div class="line">player.invertU = -<span class="number">1</span>;</div></pre></td></tr></table></figure>
-
-<p>3- <strong>Sprite animation</strong></p>
-<p>One of the advantages of sprites is animations. You only have to load one large image file which will contain all animation images, one next to another. Just be careful to respect the square pixel size that you have specified in your manager (e.g. 64 pixel).</p>
-<p>Here is what a complete sprite image looks like:</p>
-<p><img src="http://www.babylonjs.com/tutorials/08 - Sprites/08-2.png" alt="Elements"></p>
-<p>This will animate our players in more than 40 positions, depending upon the situation (walking, jumping,…). Babylon’s engine is automatically reading sprites on more than one line, so the engine does the work for you :)</p>
-<p>If you want to begin the animation, simply call this function:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">player.playAnimation(<span class="number">0</span>, <span class="number">43</span>, <span class="literal">true</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
-
-<p>By calling « playAnimation » with those parameters, our player will be animated from frame 0 to frame 43. The third parameter is indicating if this animation will loop or not. And the last parameter is the delay between the frames (the smaller it is, the faster the animation).</p>
-<p>Finally, if you want to go to a specific image (e.g. the last one, when the character is not moving), just call:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">player.cellIndex = <span class="number">44</span>;</div></pre></td></tr></table></figure>
-
-<p>You can play with the scene and code used in this tutorial… by visiting the Babylon.js <a href="http://www.babylonjs.com/playground/?8" target="_blank" rel="external"><strong>Playground sprites demo</strong></a>.</p>
-<h2 id="Next_step">Next step</h2>
-<p>Don’t hesitate to use sprites in your scene: they are not resource intensive, and they really can help keep high frame rates in your application.</p>
-<p>Now you know how to create a complete simple dynamic scene and it is going to be important to talk about <a href="https://github.com/BabylonJS/Babylon.js/wiki/09-Collisions-by-gravity" target="_blank" rel="external">collisions</a>.</p>
+<p>简单又快捷。</p>
+<p>可以通过浏览页面体验demo <a href="http://www.babylonjs.com/playground/?11" target="_blank" rel="external">at our online playground</a>.</p>
+<h2 id="接下来">接下来</h2>
+<p>在很多场景中碰撞方法是很方便的，当你理解了鼠标点击事件，你就可以使用功能函数去升级应用的开发体验。<br>那么接下来我们就要去介绍在3D场景中移动的经典效果。</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/09 Cameras and mesh collisions/">← 前一篇</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/The-Playground/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/10 Intersect collision object/">后一篇 →</a>
             
         </nav>
         <br/>

@@ -46,6 +46,22 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/07-Animation/">动画</a>
                                 </li>
                                 
@@ -87,22 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/12 Particles/">粒子系统</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,14 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
                     <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
                 
                     <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
@@ -312,14 +320,6 @@
                     <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
                 
                     <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
-                
-                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                
-                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -425,6 +425,139 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T07:07:41.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                这种碰撞类型是很有用的：当你使用鼠标去点击一个对象。主要的困难是要在2D的平坦的屏幕上当点击一个3D的对象。
+让我们看一看怎么才能使用你的鼠标点击的位置变化成3D场景中的手枪视角。
+
+最终效果
+如何开始
+Babylon引擎通过使用一个有用的函数来实现这些功能。
+首先，当创建一个在墙上的飞机之后，飞机导入了我们的画面。我们必选在UI(用户的界面上)检测鼠标的点击。一旦事件发生，我们使用函数pick去得到更多信息在你的点击和屏幕之间。
+12
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T06:49:02.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                在动态的场景中，对象可以被其他的移动和交互。为了得到最好的渲染，在你知道你的网格和其他的相互关联的时候。
+在这个例子中，我们将要去发现碰撞系统如何工作：
+
+最终的效果
+如何开始
+这个例子介绍了有两种碰撞检测机制：首先是在两个网格关联时的碰撞机制，然后是检测一个网格和一个点之间的关联。我们将会讨论一下上边这个场景，第一个和第二球将会在旋转的地面上碰撞，最后一个将会和一个点碰撞，当你创建了基本的场景，继续阅读如何去检测碰撞。
+
+ 相交网格
+
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T06:34:55.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                你是否玩过第一视角游戏呢？在这个例子中沃恩将去模拟一个类似的摄像机动作：这个摄像机是放置在地板上，和地面以及其他在场景中的组件是有碰撞。
+
+最终的效果
+如何开始
+要实现这个动作，我们需要3个简单的步骤：
+1 - 定义和应用重力
+首先是定义我们的重力响铃，定义G的方向。在经典物理世界比如地球这个向下的重力方向是y轴，但是我们也可以轻松的改变他：
+1scene.gravity = new BABYLON.Vector3(0, -9.81, 
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T05:47:54.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                在这个例子中，我们将要学会如去操控精灵，精灵是2D的图像或者动画，我们将用alpha通道去展示一个图片，精灵总是正对着摄像机。
+现在，精灵总是被用来展示动画角色或者是模拟3D的复杂对象，比如树：
+
+最终效果
+如何开始
+1- 精灵管理器
+如果你想使用精灵，你需要创建一个精灵管理器通过对精灵实例的分组去优化GPU的资源，所以即使你只是创建了一个精灵也需要创建一个精灵管理器：
+12// Create a sprite managervar s
+                
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -611,127 +744,6 @@ Playground Demo Scene 2 - Seven basic shapes/mesh
 我应该如何开始呢？
 使用基本元素的一个简单方法是访问 Playground Demo Scene 02。你可以下载或者在线的方式浏览整个实例.
 我确信你已经阅读过这篇文章  Babylon.js Prim
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-27T08:38:53.000Z"
-                      itemprop="datePublished">Dec 27 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                创建基础场景
-在这个例子里面，我们将使用babylongjs创建一个基本的3D场景。
-在场景里的两个物体
-在你开始之前，请确保你使用的浏览器兼容WebGL(比如IE 11+，Firefox 4+，Google Chrome 9+，Opera 15+等)
-Html代码
-首先创建一个基本的html5页面:
-123456789101112&lt;!DOCTYPE html&gt;&lt;html xmlns="http://www.w3.or
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/27/15-Shadows/">阴影</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-27T05:03:31.000Z"
-                      itemprop="datePublished">Dec 27 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                In this tutorial, we are going to learn how to create shadows in Babylon JS. Shadows are now becoming dynamic, and they are now dynamically generated depending upon a light.
-
-Final result
-How can I do this ?
-Shadows are 
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-27T05:03:20.000Z"
-                      itemprop="datePublished">Dec 27 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                In this tutorial, uur goal is to understand height maps, and to learn how to generate realistic grounds.
-
-Final result
-How can I do this ?
-
-Introduction
-
-Those mountains are very easy to generate with Babylon.js, and wit
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/27/13 Environment/">环境</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-27T05:02:56.000Z"
-                      itemprop="datePublished">Dec 27 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                You have come a long way, and your scene is full of shapes, lights, sprites, particles, materials, it looks pretty good.  But there is something missing: a proper environment.  This is the first of three tutorials that t
                 
             </p>
             

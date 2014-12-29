@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>摄像机和材质纹理 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <title>精灵 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
   <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
   <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
   <meta name="HandheldFriendly" content="True" />
@@ -44,6 +44,22 @@
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/08 Sprites/">精灵</a>
+                                </li>
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/07-Animation/">动画</a>
@@ -87,22 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/12 Particles/">粒子系统</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/08 Sprites/">精灵</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,14 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
+                
+                    <a  data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+                
+                    <a  data-pjax href="/2014/12/29/08 Sprites/">精灵</a>
+                
                     <a  data-pjax href="/2014/12/29/07-Animation/">动画</a>
                 
                     <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
@@ -312,14 +320,6 @@
                     <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
                 
                     <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
-                
-                    <a  data-pjax href="/2014/12/27/11   Picking collisions/">点击检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/10 Intersect collision object/">碰撞检测</a>
-                
-                    <a  data-pjax href="/2014/12/27/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
-                
-                    <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -401,7 +401,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">摄像机和材质纹理</a></li>
+                        <li id="navbar-title"><a href="#">精灵</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -430,69 +430,68 @@
                   <div class="tag-tile">
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">摄像机和材质纹理</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">精灵</h1>
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:02:06.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T05:47:54.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>Did you ever play a FPS (First Person Shooter) game? In this tutorial, we are going to simulate the same camera movements: the camera is on the floor, in collision with the ground, and potentially in collision with any objects in the scene.</p>
-<p><img src="http://www.babylonjs.com/tutorials/09 - Collisions Gravity/09.png" alt="Elements"></p>
-<p><em>Final result</em></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>To replicate this movement, we have to do 3 simple steps:</p>
-<p><strong>1 - Define and apply gravity</strong></p>
-<p>The first thing to do is to define our gravity vector, defining the G-force. In a classic world such as Earth, the direction of the force of gravity is down (negative) along the Y axis, but feel free to change it!</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.gravity = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">9.81</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+            <p>在这个例子中，我们将要学会如去操控精灵，精灵是2D的图像或者动画，我们将用alpha通道去展示一个图片，精灵总是正对着摄像机。</p>
+<p>现在，精灵总是被用来展示动画角色或者是模拟3D的复杂对象，比如树：</p>
+<p><img src="http://www.babylonjs.com/tutorials/08 - Sprites/08.png" alt="Elements"></p>
+<p><em>最终效果</em></p>
+<h2 id="如何开始">如何开始</h2>
+<p>1- <strong>精灵管理器</strong></p>
+<p>如果你想使用精灵，你需要创建一个精灵管理器通过对精灵实例的分组去优化GPU的资源，所以即使你只是创建了一个精灵也需要创建一个精灵管理器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Create a sprite manager</span></div><div class="line"><span class="keyword">var</span> spriteManagerTrees = <span class="keyword">new</span> BABYLON.SpriteManager(<span class="string">"treesManagr"</span>, <span class="string">"Assets/Palm-arecaceae.png"</span>, <span class="number">2000</span>, <span class="number">800</span>, scene);</div></pre></td></tr></table></figure>
 
+<p>当创建一个精灵管理器，你需要一些参数：<br>名字：管理器的名字，<br>2D图片的url需要包含alpha通道的格式比如png<br>管理器的容积：能够放置在管理器中的最大数量的对象实例<br>单元的大小：和图片的大小对应<br>实际的场景：可以把管理器放置在里面</p>
+<p>请看这个片段，给了如下的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> spriteManagerPlayer = <span class="keyword">new</span> BABYLON.SpriteManager(<span class="string">"playerManagr"</span>,<span class="string">"Assets/Player.png"</span>, <span class="number">2</span>, <span class="number">64</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>Gravity can be applied to any camera that you have defined previously in your code.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">camera.applyGravity = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+<p>这次我们只是想要2个实例，设置精灵的大小是64。这里是图片</p>
+<p><img src="http://www.babylonjs.com/tutorials/08 - Sprites/08-1.png" alt="Elements"></p>
+<p>每个精灵的图片都包含了64个像素的正方形：</p>
+<p>2- <strong>创建一个实例</strong></p>
+<p>现在我们拥有了一个管理器，我们需要创建一些与之关联的精灵的实例。创建一个实例很容易，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> player = <span class="keyword">new</span> BABYLON.Sprite(<span class="string">"player"</span>, spriteManagerPlayer);</div></pre></td></tr></table></figure>
 
-<p><strong>2 - Define an ellipsoid</strong></p>
-<p>The next important step is to define the ellipsoid around our camera. This ellipsoid represents our player’s dimensions: a collision event will be raised when a mesh comes in contact with this ellipsoid, preventing our camera from getting too close to this mesh:</p>
-<p><img src="http://www.babylonjs.com/tutorials/09 - Collisions Gravity/09-1.jpg" alt="Ellipsoid"></p>
-<p>The <em>ellipsoid</em> property on babylon.js cameras is default to size (0.5, 1, 0.5), but changing values will make you taller, bigger, smaller, thinner, it depends upon the adjusted axis.  In the example below, we will make our camera’s ellipsoid a bit bigger than the default one:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Set the ellipsoid around the camera (e.g. your player's size)</span></div><div class="line">camera.ellipsoid = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p>现在，我们就能看到精灵被展示出来了：</p>
+<p>如果你想对实例增加一些参数，你可以通过网格对象的其他属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">player.position.y = -<span class="number">0.3</span>;</div></pre></td></tr></table></figure>
 
-<p><strong>3 - Apply collision</strong></p>
-<p>Once you have those previous settings completed, our final step is to declare that we are interested in sensing collisions in our scene:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Enable Collisions</span></div><div class="line">scene.collisionsEnabled = <span class="literal">true</span>;</div><div class="line">camera.checkCollisions = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+<p>但是因为他是一个精灵，你需要区分参数，你可以控制他们的大小或者是方向：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">player.size = <span class="number">0.3</span>;</div><div class="line">player.angle = <span class="built_in">Math</span>.PI/<span class="number">4</span>;</div><div class="line">player.invertU = -<span class="number">1</span>;</div></pre></td></tr></table></figure>
 
-<p>And declare which meshes could be in collision with our camera:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ground.checkCollisions = <span class="literal">true</span>;</div><div class="line">box.checkCollisions = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+<p>3- <strong>精灵动画</strong></p>
+<p>精灵的一个高级应用是动画，你只需要加载一个包含所有动画的大图片，一个接着一个。只是要在精灵管理器中明确像素的位置。</p>
+<p>这里就是一个复杂精灵的图片</p>
+<p><img src="http://www.babylonjs.com/tutorials/08 - Sprites/08-2.png" alt="Elements"></p>
+<p>这个将会让我们的精灵移动40个位置根据情景比如走路或者是跳跃。babylonjs引擎就是自动阅读了这些精灵一行一行。</p>
+<p>如果你想从动画开始，你可以简单的调用如下这个语句：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">player.playAnimation(<span class="number">0</span>, <span class="number">43</span>, <span class="literal">true</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
 
-<p>That’s it!  Easy!</p>
-<p>Now, your camera is going to fall on the y-axis until it collides with the ground.  And, your camera will collide with the box when you move it too near to it.</p>
-<p><strong>4 - Object vs. object collision</strong></p>
-<p>You can also do the same thing with a mesh by playing with <em>mesh.ellipsoid</em> property and <em>mesh.moveWithCollisions(velocity)</em> function. This function will try to move the mesh according to given velocity and will check if there is no collision between current mesh and all meshes with checkCollisions activated.</p>
-<p>You can also use <em>mesh.ellipsoidOffset</em> to move the ellipsoid on the mesh (By default the ellipsoid is centered on the mesh)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> velocity = <span class="keyword">new</span> BABYLON.Vector3(<span class="built_in">parseFloat</span>(<span class="built_in">Math</span>.sin(<span class="built_in">parseFloat</span>(character.rotation.y))) / <span class="number">8</span>, -<span class="number">0.7</span>, <span class="built_in">parseFloat</span>(<span class="built_in">Math</span>.cos(<span class="built_in">parseFloat</span>(character.rotation.y))) / <span class="number">8</span>);</div><div class="line">character.ellipsoid = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">0.5</span>);</div><div class="line">character.ellipsoidOffset = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1.0</span>, <span class="number">0</span>);</div><div class="line">character.moveWithCollisions(velocity);</div></pre></td></tr></table></figure>
+<p>通过调用playAnimation函数，我们的角色将会从弟0帧到第43帧。第三个参数就确定了这些动画是否是重复的。最后的参数就是两个帧之间的间隔时间：</p>
+<p>最后，如果你想到确定的图片，只需要调用如下函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">player.cellIndex = <span class="number">44</span>;</div></pre></td></tr></table></figure>
 
-<p>Demo By dad72: <a href="http://www.castorengine.com/babylon/moveCharacter/" target="_blank" rel="external">Move character with gravity and collision</a></p>
-<h2 id="ArcRotateCamera">ArcRotateCamera</h2>
-<p>The ArcRotateCamera can also check collisions but instead of sliding along obstacles, this camera won’t move when a collision appends.</p>
-<p>To activate collisions, just call </p>
-<figure class="highlight camera.checkCollisions"><figcaption><span>= true```. You can define the collision radius with this code:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-
-<p>javascript<br>camera.collisionRadius = new BABYLON.Vector3(0.5, 0.5, 0.5)<br>```</p>
-<p>You can play with the scene used in this tutorial… by visiting the Babylon.js <a href="http://www.babylonjs-playground.com/#4HUQQ" target="_blank" rel="external"><strong>playground demo</strong></a>.</p>
-<h2 id="Next_step">Next step</h2>
-<p>Great, now you can develop a real FPS game! But maybe you would like to know when a mesh is in collision with another mesh?  Good, because that is exactly the purpose of our <a href="https://github.com/BabylonJS/Babylon.js/wiki/10-Object-collisions" target="_blank" rel="external">next tutorial</a>.</p>
+<p>你可以研究例子中的代码，更多信息<a href="http://www.babylonjs.com/playground/?8" target="_blank" rel="external"><strong>Playground sprites demo</strong></a>.</p>
+<h2 id="接下来">接下来</h2>
+<p>不要犹豫了，在场景中去使用精灵吧：他们不顺号资源你可以看到他们在你的应用中的帧率很高。接下来我们来讨论一下碰撞。</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/10 Intersect collision object/">← 前一篇</a>
+            <a data-pjax class="newer-posts" href="/2014/12/29/09 Cameras and mesh collisions/">← 前一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/08 Sprites/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/07-Animation/">后一篇 →</a>
             
         </nav>
         <br/>
