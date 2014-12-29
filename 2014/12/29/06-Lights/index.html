@@ -4,14 +4,15 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>灯光 | babylonjs</title>
-  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析" />
+  <title>光源 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
+  <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="/css/component.css" />
   <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <meta name="generator" content="babylonjs">
+  <meta name="generator" content="babylonjs中文网">
   <script src="http://static.duoshuo.com/embed.js"></script>
   
   
@@ -41,6 +42,10 @@
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/06-Lights/">光源</a>
+                                </li>
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/28/05 Cameras/">摄像机</a>
@@ -96,10 +101,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/07-Animation/">动画</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/06-Lights/">灯光</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -298,6 +299,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/06-Lights/">光源</a>
+                
                     <a  data-pjax href="/2014/12/28/05 Cameras/">摄像机</a>
                 
                     <a  data-pjax href="/2014/12/27/04-Materials/">材质</a>
@@ -325,8 +328,6 @@
                     <a  data-pjax href="/2014/12/27/08 Sprites/">精灵</a>
                 
                     <a  data-pjax href="/2014/12/27/07-Animation/">动画</a>
-                
-                    <a  data-pjax href="/2014/12/27/06-Lights/">灯光</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -404,11 +405,11 @@
                 <li  style="border-left: 1px solid #c6d0da;">
                     <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
                 </li>
-                <li ><a id="nexus-back" data-pjax href="/">babylonjs</a></li>
+                <li ><a id="nexus-back" data-pjax href="/">babylonjs中文网</a></li>
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">灯光</a></li>
+                        <li id="navbar-title"><a href="#">光源</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -437,99 +438,98 @@
                   <div class="tag-tile">
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">灯光</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">光源</h1>
 
                     <div class="post-meta">
                         Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:01:26.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T03:03:53.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>Now that you have learned about the camera types and how to place them into your scene, we will continue our tutorial series with learning about babylon.js lights.</p>
+            <p>现在我们已经学习了摄像机的类型并放置他们到我们的场景中，我们将继续学习babylonjs的光源实例。</p>
 <p><img src="http://www.babylonjs.com/Screenshots/testlight.jpg" alt="Elements"></p>
-<p><em>A pretty sphere with multiple lights</em></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>Lights are used to produce the diffuse and specular color received by each pixel. This color is then used by materials to determine the final color of every pixel.  Babylon.js allows you to create and register as many lights as you choose, but know that a single StandardMaterial can only handle 4 simultaneous lights (the first four enabled lights of the scene’s lights list).</p>
-<p>During this tutorial, I will show you how to use every kind of light that is supported by babylon.js.</p>
-<h2 id="Activating/Deactivating_Lights">Activating/Deactivating Lights</h2>
-<p>Every light can be activated or deactivated by calling its <em>setEnabled(true/false)</em> method.  You can also control the global intensity of any light by using the <em>intensity</em> property. It uses a floating point value (such as 1.5). An example near the end of this tutorial shows how to use both the <em>intensity</em> property and the <em>setEnabled()</em> method.</p>
-<h2 id="Lights_types">Lights types</h2>
-<p>Here we go… with our 4 cool babylon.js light types:</p>
+<p>_多光束照射下的球面</p>
+<h2 id="如何开始？">如何开始？</h2>
+<p>灯被用来产生由每个像素接收的漫反射和镜面反射的颜色，这些颜色就是每一个像素的材质定义的最终的颜色，babylonjs提供了你创建和注册很多光源的方法，但是确保一个StandardMaterial标准材质只能同时拥有4中光源。</p>
+<p>在这个例子中将要给你展示如何使用各种等过</p>
+<h2 id="激活和停用光源">激活和停用光源</h2>
+<p>通过方法<em>setEnabled(true/false)</em>我们可以激活或者是停用光源。你可以控制全局的光源的强度。他是一个浮点数比如1.5.下边这个例子就展示了intentsity和setEnabled()的使用方法。</p>
+<h2 id="光源的类型">光源的类型</h2>
+<p>在babylonjs中有4种光源的类型：</p>
 <ul>
-<li><strong>The Point Light</strong></li>
+<li><strong>点光源</strong></li>
 </ul>
-<p>A point light is a light defined by an unique point in world space. The light is emitted in every direction from this point.  A good example of a point light is the sun.</p>
-<p>You can control the color of any light… with the <em>diffuse</em> and <em>specular</em> properties:</p>
+<p>点光源在世界空间中被一个唯一的点定义的光源。光就是从这个点被发射出来。太阳就是点光源的很好的例子。</p>
+<p>你可以通过使用<em>diffuse</em>和<em>specular</em>属性控制光源的颜色</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">10</span>, <span class="number">1</span>), scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
 
 <p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/8484.image_5F00_thumb_5F00_53D78E00.png" alt=""></p>
-<p><em>Red diffuse point light with white specular</em></p>
+<p><em>红色弥漫性点光源白色镜面</em></p>
 <ul>
-<li><strong>The Directional Light</strong></li>
+<li><strong>平行光</strong></li>
 </ul>
-<p>A directional light is defined by a direction (what a surprise!). The light is emitted from everywhere… toward a specific direction, and has an infinite range.  By default, the directional light is created at origin (0,0,0) position.  Like a point light, you can control the color of the light with the <em>diffuse</em> and <em>specular</em> properties:</p>
+<p>平行光是被一个方向定义的。可以朝向一个特定的方向向任何地方发射，并且没有边界。通常，平行光是被放置在(0,0,0)这个点上。和点光源类似你可以通过使用<em>diffuse</em>和<em>specular</em>属性控制光源的颜色</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.DirectionalLight(<span class="string">"Dir0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
 
 <p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/1563.image_5F00_1ECD8F81.png" alt=""></p>
-<p><em>Red diffuse directional light with white specular</em></p>
+<p><em>红色弥漫性平行光白色镜面</em></p>
 <ul>
-<li><strong>The Spot Light</strong></li>
+<li><strong>聚光灯</strong></li>
 </ul>
-<p>A spot light is defined by a position (2nd arg), a direction (3rd arg), an angle (4th arg), and an exponent (5th arg). These values define a cone of light starting from the position, emitting toward the direction. </p>
-<p>The angle defines the size (field of illumination) of the spotlight’s conical beam (in radians), and the exponent defines the speed of the decay of the light with distance (the light’s ‘reach distance’).  Just like the other lights, you can control the color of the light with the <em>diffuse</em> and <em>specular</em> properties:</p>
+<p>聚光灯是由一个位置、方向、角度和指数定义。这些值定义的光起始锥从位置，朝向发光方向。</p>
+<p>角度定义聚光灯的锥形束（弧度）的大小（照度的场），和指数定义的距离（光的“到达距离’）的光的衰减的速度。就像其他的灯，你可以控制光线的<em>漫反射</em>和<em>镜面</em>属性的颜色:</p>
 <p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/7723.image_5F00_thumb_5F00_11F5CA14.png" alt=""></p>
-<p> <em>A simple drawing showing the shape of a spot light</em></p>
+<p> <em>一个简单的绘图显示聚光灯的形状</em></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.SpotLight(<span class="string">"Spot0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">30</span>, -<span class="number">10</span>), <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>), <span class="number">0.8</span>, <span class="number">2</span>, scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
 
 <p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/1738.image_5F00_thumb_5F00_18AB6448.png" alt=""></p>
-<p><em>A red diffuse spot light with white specular, a 0.8 radians-wide cone, and an exponent of 2</em></p>
+<p><em>红漫射灯，白色镜面，0.8弧度范围内锥，和2的指数</em></p>
 <ul>
-<li><strong>The Hemispheric Light</strong></li>
+<li><strong>半球光源</strong></li>
 </ul>
-<p>A hemispheric light is an easy way to simulate realistic ambient environment light. A hemispheric light is defined by a direction to the sky (the 2nd arg in the constructor) and by 3 colors: one for the diffuse (the sky color - for pixels/faces facing upward), one for the ground (the color for pixels/faces facing downward), and one for the specular.</p>
-<p>Above, I used the terms ‘upward’ and ‘downward’, but keep in mind that the direction to the sky (the 2nd arg in the constructor) can be set to any direction.  The direction to the sky is often straight upward (0, 1, 0). We are simulating light from a cloudy sky, but even on cloudy days, the sun crosses the sky above the clouds.  So, you could tilt this light slightly toward the east for cloudy morning skies, and slightly toward the west for cloudy evening skies.  This is a soft light that cannot produce shadows.</p>
-<p>Now, back to creating the useful and interesting hemispheric light:</p>
+<p>半球光源是一个简单的方法来模拟真实的周围环境光线。半球光源的方向限定指向天空（构造函数的第二个参数），拥有3种颜色：一个用于漫（天空颜色 - 朝上的像素），一个用于接地（朝下面的像素颜色），和一个用于镜面</p>
+<p>虽然使用了朝向上或者下，但是方向依然是指向天空的。指向天空精彩使用(0,1,0)。当我们模拟一个多云的天空，太阳从云层中穿过，所以，你只要稍微倾斜有鉴于此向东为上午多云的天空，微微向西阴天傍晚的天空。这是一个柔和的光线不能产生阴影</p>
+<p>那么现在让我们创建一个有趣的半球光源：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.HemisphericLight(<span class="string">"Hemi0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.groundColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
 <p><img src="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-44-73-metablogapi/4760.image_5F00_thumb_5F00_058CC84D.png" alt=""></p>
-<p><em>White/black hemispheric light - upward pixels white (diffuse), downward pixels black (groundColor)</em></p>
-<p>Our <a href="http://www.babylonjs.com/" target="_blank" rel="external">web site</a> has a nice lights demo in the Features Tests section, and a similar lights demo can be found at our ‘playground’, <a href="http://www.babylonjs.com/playground/?06" target="_blank" rel="external">right here</a>.</p>
-<h2 id="Extra_Information_About_Babylon-js_One-Line_Constructors:">Extra Information About Babylon.js One-Line Constructors:</h2>
-<p>Here is an example of a babylon.js one-line constructor:</p>
+<p><em>黑白半球光源，向上的是白色，而向下是黑色</em></p>
+<p>我们的网站 <a href="http://www.babylonjs.com/" target="_blank" rel="external">web site</a> 有相似的灯光实例 请查看 ‘playground’, <a href="http://www.babylonjs.com/playground/?06" target="_blank" rel="external">right here</a>.</p>
+<h2 id="更多关于babylonjs中的一行构造函数">更多关于babylonjs中的一行构造函数</h2>
+<p>这里是关于babylonjs的一行构造函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.SpotLight(<span class="string">"Spot0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">30</span>, -<span class="number">10</span>), <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>), <span class="number">0.8</span>, <span class="number">2</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>That one-line is all it takes to create a spot light.  We want babylon.js scene item creation… to be as quick and simple as possible.  We also want the scene item to be seen/operating with just one line of programming.  The spot light is a rather powerful scene item, and it takes quite a few arguments (args) in the constructor… in order for it to appear and operate in one line of code.  Each ‘arg’ of the one-line constructor is setting a ‘necessary initial property’ on the scene item. By doing that, we know that it will turn-on/operate with just that one line.</p>
-<p>There are some properties which we set ‘behind-the-scenes’.  One such property is <em>intensity</em>.  We ‘default’ that property to a float 1.0 value.  We set that ‘necessary initial property’ for you.  We also call the light’s <em>setEnabled(true)</em> method.</p>
-<p>I want you to know two important things.  First, all properties on a spot light or on any babylon.js scene item… can be set after the object has been constructed.  Second, if you so choose, you can null-out (set to zero/empty) the args in the one-line constructor, and then set all of the necessary initial properties yourself… property by property.  You have already seen the fast/simple way to construct the spot light scene item.  Below is an example of the slower and less-simple way to construct a spot light.</p>
+<p>这一行构造函数构造了一个聚光灯，我们希望babylonjs的一些场景组件的构造变得简单而迅捷，我们也希望可以通过一行代码就能让组件被创建或者是查看到。聚光灯是很有用的场景组件，他可以使用较少的参数在一个代码中展示或者操控他。在一行构造函数中的每一个参数都是组件必须的初始化的值。</p>
+<p>有一些属性是在场景背后设置。比如强度这个属性。我们通常设置的值是浮点型1.0.我们通过设置setEnabled(true)方法来设置必要的属性。</p>
+<p>希望你可以明白两个重要的事，首先所有的属性比如聚光灯或者是其他的babylonjs的场景组件都可以在对象被创建之后设置，第二你可以选择设置参数在一行构造函数中和她们所有的初始化的值。你现在已经可以很容易的创建一个聚光灯组件了，下边就是一个实例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light0 = <span class="keyword">new</span> BABYLON.SpotLight(<span class="string">""</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), <span class="keyword">new</span> BABYLON.Vector3.Zero(), <span class="number">0</span>, <span class="number">0</span>, scene);</div><div class="line">light0.name = <span class="string">"My Slowly and Discretely Constructed Spot Light"</span></div><div class="line">light0.position = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">30</span>, -<span class="number">10</span>);</div><div class="line">light0.direction = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>);</div><div class="line">light0.angle = <span class="number">0.8</span>;</div><div class="line">light0.exponent = <span class="number">2</span>;</div><div class="line">light0.intensity = <span class="number">0.5</span>;</div><div class="line">light0.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.specular = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">light0.setEnabled(<span class="number">1</span>);</div></pre></td></tr></table></figure>
 
-<p>Using this ‘long method’ of scene item constructing… is rarely necessary or wanted.  But we thought you should know that you can do constructing in this way, if you so choose.</p>
-<h2 id="Normals_and_Backfaces_-_Seeing_the_Light:">Normals and Backfaces - Seeing the Light:</h2>
-<p>You may have heard words like ‘<em>normals</em>‘ and ‘<em>backfaces</em>‘ spoken or written, during your 3D travels.  We will not be deeply examining those two terms in this tutorial, but I am going to try to explain how normals and backfaces… affect lights.  </p>
-<p>The picture below will help you understand how lights interact with normals and backfaces.  The picture shows two planes and two lights.  One light is a spot light, the other is a point light.  The arrows show the direction of the lighting normals, and these arrows are not visible in a standard scene.  They are used in the picture to help illustrate the concept of normals, as are the diamond and cone shapes for the two lights.  Let’s look at the picture carefully.</p>
-<p><img src="http://urbanproductions.com/wingy/babylon/misc/normals03.jpg" alt=""><br> <em>A blue back-faced plane and a blue front-faced plane, with a spot light and point light</em></p>
-<p>As you can see, when a standard babylon.js plane has its backface lit (the left plane), the lights have no affect, because its normals are not facing toward the lights.  Conversely, when a standard plane has its frontface lit (the right plane), both lights work perfectly to light the plane, because its normals are facing toward the lights.  </p>
-<p>It is also interesting to note that neither plane blocks the lights.  You can see that the arrows on the left plane, are lit by the lights. The plane is not blocking the light rays.  The only way that any mesh can block light rays in babylon.js, is with the use of a ShadowGenerator or two.  The tutorial about shadows… is number 17 in the babylon.js basic series of tutorials.  </p>
-<p>As a last note, I want you to know that the left plane’s material.backFaceCulling = false.  Whether it is set to true or false, there will be no change in how lights affect backfaces.  The lights are primarily concerned about the direction of the lighting normals (the arrows).  The standard babylon.js plane (and ground) has its lighting normals aimed toward the frontface.</p>
-<p><strong>NEW</strong>:  In recent versions of Babylon.js, a new property was introduced… called <em>.range</em>:</p>
+<p>使用这种冗余的构建方式是不必要使用的，但是你需要了解可以使用这样的方式来创建。</p>
+<h2 id="前向和后向:">前向和后向:</h2>
+<p>你可以能在3D知识学习中听说过<em>normals</em>和<em>backfaces</em>。我们不会深入的介绍，但是会在灯光介绍之后介绍一下。</p>
+<p>下边的这个图片可以帮助你理解灯光的前向和后向反射。这个图片展示了两个飞机和两个灯光。一个灯光是一个聚光灯而另外的一个是一个点光源。场景中的箭头介绍了前向灯光的方向，在实际的场景中式不可见的。这些箭头是用来刻画前向灯光的概念，我们来仔细看一看图。</p>
+<p><img src="http://urbanproductions.com/wingy/babylon/misc/normals03.jpg" alt=""><br> <em>在一个聚光灯和点光源下的蓝色的后向的飞机和蓝色的前向飞机</em></p>
+<p>如你所见，标准的babylonjs的飞机是有后向的点的，这些灯光是没有作用的，因为前向并没有朝向这些光线。反过来，当一个标准的飞机朝向了这些光源，两个光源都很好的作用在了飞机上，因为他们已经朝向了这些灯光。</p>
+<p>这些飞机挡住了光线也是很有意思的，你可以看到在左边飞机的箭头，飞机没有挡住光线。所有的网孔都可以主当光线，通常使用在ShadowGenerator在关于阴影的这两个例子中。</p>
+<p>最后，左边飞机的材质参数backFaceCulling = false. 不能是true还是false，都对这些光线影响飞机的背面没有作用。这些光线只会和光线的正方向相关(如箭头所示)</p>
+<p><strong>新要点</strong>:  在新版中开始使用了属性<em>.range</em>:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">light.range = <span class="number">300</span>;</div></pre></td></tr></table></figure>
 
-<p>More information about the <em>.range</em> property… coming soon.  Stay tuned.</p>
-<h2 id="Next_Step">Next Step</h2>
-<p>With the use of babylon.js powerful lights, your scene is likely really starting to ‘shine’.  And don’t forget that you can animate light positions, directions, colors, and therefore create wonderful ‘light shows’.  We’ll talk about that soon, or have fun discovering how to do it on your own.  Maybe you could do light property settings inside the scene’s render loop function.  Its fun and beautiful!</p>
-<p>Guess what!  The next tutorial… is about animation! <a href="https://github.com/BabylonJS/Babylon.js/wiki/07-Animation" target="_blank" rel="external">Click this and let’s go!</a></p>
+<p>更多信息将在随后介绍</p>
+<h2 id="接下来">接下来</h2>
+<p>通过学习babylonjs的光线，游戏的场景看上去比较阳光，但是不要忘记光线的位置变化、方向和颜色创建有意思的光线展示，我们将会很快来介绍如何创建一个你自己的光线展示，同样你可以把光线属性的设置放在在场景的渲染循环中，那将是很有意思的事。</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/07-Animation/">← Prev Post</a>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
             <a class="share-button" data-original-title title>Share this Post</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/The-Playground/">Next Post →</a>
+            <a data-pjax class="older-posts" href="/2014/12/28/05 Cameras/">Next Post →</a>
             
         </nav>
         <br/>
@@ -547,7 +547,7 @@
 <footer class="site-footer">
     
     <div class="inner">
-        <section class="copyright"><a href="/"></a> &copy; babylonjs 2014</section>
+        <section class="copyright"><a href="/"></a> &copy; babylonjs中文网 2014</section>
         <section class="poweredby">Published with <a target="_blank" href="http://www.ejiakt.com">E家课堂</a></section>
     </div>
 </footer>
