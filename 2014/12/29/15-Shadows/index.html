@@ -46,6 +46,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/15-Shadows/">阴影</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/12 Particles/">粒子系统</a>
                                 </li>
                                 
@@ -91,10 +95,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/01---Basic-scene/">基础场景</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/15-Shadows/">阴影</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/15-Shadows/">阴影</a>
+                
                     <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
                 
                     <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
@@ -314,8 +316,6 @@
                     <a  data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
                 
                     <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
-                
-                    <a  data-pjax href="/2014/12/27/15-Shadows/">阴影</a>
                 
                     <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
                 
@@ -434,64 +434,64 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:03:31.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T08:33:31.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>In this tutorial, we are going to learn how to create shadows in Babylon JS. Shadows are now becoming dynamic, and they are now dynamically generated depending upon a light.</p>
+            <p>在这个例子中，我们将要学会如何创建阴影。阴影现在是动态的他们将会在一束灯光下变成动态的。</p>
 <p><img src="http://www.babylonjs.com/tutorials/15 - Shadows/15.png" alt="Shadows"></p>
-<p><em>Final result</em></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>Shadows are easy to generate using the babylon.js “ShadowGenerator”. This function uses a shadow map: a map of your scene generated from the light’s point of view, as you can see here:</p>
+<p><em>最终效果</em></p>
+<h2 id="如何开始">如何开始</h2>
+<p>通过ShadowGenerator我们可以很容易的创建阴影。这个函数就是一个阴影的地图：在你看到的这个视图的光线的点上被创建出来的场景地图。</p>
 <p><img src="http://www.babylonjs.com/tutorials/15 - Shadows/15-1.png" alt="Shadows2"></p>
-<p>The two parameters used by the shadow generator are: the size of the shadow map, and which light is used for the shadow map’s computation.</p>
+<p>阴影生成器有两个参数：第一个是阴影地图的大小，第二给是光线用来计算地图的参数。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> shadowGenerator = <span class="keyword">new</span> BABYLON.ShadowGenerator(<span class="number">1024</span>, light);</div></pre></td></tr></table></figure>
 
-<p>Next, you have to define which shadows will be rendered. Here we want the shadow of our torus, but you can “push” any meshes you want:</p>
+<p>然后你必须定义一个将要被渲染的阴影。这里我们定义需要被渲染的花托，我们可以添加很多网格对象：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shadowGenerator.getShadowMap().renderList.push(torus);</div></pre></td></tr></table></figure>
 
-<p>And finally, you will have to define where the shadows will be displayed… by setting a mesh parameter to true:</p>
+<p>最后，你需要定义将要被渲染的阴影，通过设置网格参数为true：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ground.receiveShadows = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
 
-<p><strong>Filters</strong></p>
-<p>If you want to go further, you can activate shadows filtering.</p>
-<p>There are two filters available:</p>
+<p><strong>过滤器</strong></p>
+<p>如果你想更加深入了解，你可以激活阴影过滤器。</p>
+<p>这里有两个可供使用的过滤器：</p>
 <ul>
-<li>Variance shadow map </li>
+<li>方差阴影地图</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shadowGenerator.useVarianceShadowMap = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
 
-<p>It is <em>true</em> by default, because it is useful to decrease the aliasing of the shadow.  But if you want to reduce computation time, feel free to change it.</p>
+<p>默认就是true，因为在减少阴影的增量是很有用的。但是如果你想减少计算，就要去改变他。</p>
 <ul>
-<li>Poisson sampling</li>
+<li>泊松抽样</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shadowGenerator.usePoissonSampling = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
 
-<p>If you set this one to <em>true</em>, Variance shadow maps will be disabled. This filter uses Poisson sampling to soften shadows. The result is better, but slower.</p>
-<h2 id="About_the_light">About the light</h2>
-<p>Keep in mind that this shadow generator can only be used with one light.  If you want to generate shadows from another light, then you will need to create another shadow generator.</p>
-<p>Only directional lights can cast shadows:</p>
+<p>如果你设置了这个属性是true，方差阴影地图将会失效。这个过滤器将会变成泊松抽样的阴影。结果将会变得缓慢优雅。</p>
+<h2 id="关于光线">关于光线</h2>
+<p>记住阴影是被一束光照射生成的。如果你想要通过另外一束光来生成阴影，你需要创建另外一个阴影生成器。</p>
+<p>只有平行光可以产生很多阴影：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.DirectionalLight(<span class="string">"dir01"</span>, <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">1</span>, -<span class="number">2</span>, -<span class="number">1</span>), scene);</div></pre></td></tr></table></figure>
 
-<p>You must also define a <em>position</em> for your light (because Babylon.js must have a light’s point of view to create the shadow map):</p>
+<p>同时你也需要定义光线的位置：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="shader"><span class="keyword">light</span>.position = new BABYLON.Vector3(</span><span class="number">20</span>, <span class="number">40</span>, <span class="number">20</span>);</div></pre></td></tr></table></figure>
 
-<p>The light’s position, as well as the positions of the mesh that you have pushed into the renderlist, determine<br>where the shadows will appear.</p>
-<p>Now you might want to visit <a href="http://babylonjs-playground.azurewebsites.net/?15" target="_blank" rel="external"><strong>the playground scene</strong></a> for this tutorial.</p>
-<h2 id="Next_step">Next step</h2>
-<p>Now that you are becoming a real professional about Babylon.js, maybe it’s time to go deeper into the code to manipulate complex shaders, mesh, or textures. Our <a href="https://github.com/BabylonJS/Babylon.js/wiki/" target="_blank" rel="external">home menu for our wiki</a> is your portal to many advanced topics. You can also participate in this project by going to our Github page: <a href="https://github.com/BabylonJS/Babylon.js" target="_blank" rel="external">https://github.com/BabylonJS/Babylon.js</a> and also by participating in our very active forum: <a href="http://www.html5gamedevs.com/forum/16-babylonjs" target="_blank" rel="external">http://www.html5gamedevs.com/forum/16-babylonjs</a>. See you there.</p>
+<p>这个光线的位置同样是你添加到渲染列表中的网格位置，阴影将会在定义 的时候出现：</p>
+<p>演示demo <a href="http://babylonjs-playground.azurewebsites.net/?15" target="_blank" rel="external"><strong>the playground scene</strong></a></p>
+<h2 id="接下来">接下来</h2>
+<p>现在你可以说事一个babylonjs的专家了，所以如果你想了解关于更多复杂的阴影、网格或者是文理，你可以访问我们的wiki<a href="https://github.com/BabylonJS/Babylon.js/wiki/" target="_blank" rel="external">home menu for our wiki</a></p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/01---Basic-scene/">← 前一篇</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/14-Height-map/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/12 Particles/">后一篇 →</a>
             
         </nav>
         <br/>
