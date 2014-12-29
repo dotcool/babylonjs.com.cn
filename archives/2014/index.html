@@ -46,6 +46,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
                                 </li>
                                 
@@ -99,10 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/13 Environment/">环境</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/12 Particles/">粒子系统</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
+                
                     <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
                 
                     <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
@@ -318,8 +320,6 @@
                     <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
                 
                     <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
-                
-                    <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -425,6 +425,37 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T08:01:51.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                这个实例就介绍了如何使用粒子系统，粒子兄台那个通常监狱小的精灵很难制造的现象，比如火、烟或者是虚拟的效果。
+
+例如 the playground’s ParticleSystem demo
+如何开始
+为了实现这个充满魔法的效果，首先是创建一个对象，可以用来触发粒子效果。在我们的场景中，一个盒子将会是我们的触发对象展示了粒子系统。
+1var fountain = BABYLON.Mesh.CreateBox("fountain", 1.0
+                
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -713,37 +744,6 @@ Playground Demo Scene 3 - Positioned, Scaled, and Rotated Boxes
 我应该如何做？
 通常，我们将会在createScene中创建一个基本元素的场景
 1234function createScene() {    var sc
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/27/02-Basic-elements/">基本元素</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-27T08:39:01.000Z"
-                      itemprop="datePublished">Dec 27 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                创建一个基本元素(形状或者纹理)
-在这个实例中，我们将要学会如何使用babylongjs创构建一个基本的元素，例如盒子，气缸或者飞机。
-Playground Demo Scene 2 - Seven basic shapes/mesh
-我应该如何开始呢？
-使用基本元素的一个简单方法是访问 Playground Demo Scene 02。你可以下载或者在线的方式浏览整个实例.
-我确信你已经阅读过这篇文章  Babylon.js Prim
                 
             </p>
             

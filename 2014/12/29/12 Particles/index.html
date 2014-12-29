@@ -46,6 +46,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/12 Particles/">粒子系统</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/11   Picking collisions/">点击检测</a>
                                 </li>
                                 
@@ -99,10 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/13 Environment/">环境</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/12 Particles/">粒子系统</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
+                
                     <a  data-pjax href="/2014/12/29/11   Picking collisions/">点击检测</a>
                 
                     <a  data-pjax href="/2014/12/29/10 Intersect collision object/">碰撞检测</a>
@@ -318,8 +320,6 @@
                     <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
                 
                     <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
-                
-                    <a  data-pjax href="/2014/12/27/12 Particles/">粒子系统</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -434,149 +434,123 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:02:49.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T08:01:51.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>This tutorial is going to talk about the particle system in BabylonJS. Particles are often small sprites used to simulate hard-to-reproduce phenomena like fire, smoke, water, or abstract visual effects like magic glitter and faery dust.</p>
+            <p>这个实例就介绍了如何使用粒子系统，粒子兄台那个通常监狱小的精灵很难制造的现象，比如火、烟或者是虚拟的效果。</p>
 <p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12.png" alt="Particles"></p>
-<p>A picture of <a href="http://www.babylonjs.com/playground/?12" target="_blank" rel="external">the playground’s ParticleSystem demo</a></p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>To perform this magic trick, the first thing to do is to create a new object, which will be the particle emitter. In our case, a box will be our emitting object, representing a particle fountain.</p>
+<p>例如 <a href="http://www.babylonjs.com/playground/?12" target="_blank" rel="external">the playground’s ParticleSystem demo</a></p>
+<h2 id="如何开始">如何开始</h2>
+<p>为了实现这个充满魔法的效果，首先是创建一个对象，可以用来触发粒子效果。在我们的场景中，一个盒子将会是我们的触发对象展示了粒子系统。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fountain = BABYLON.Mesh.CreateBox(<span class="string">"fountain"</span>, <span class="number">1.0</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>The emitter acts as the source of the particles, and its location in 3D space determines where they are generated and how they move. So pay attention to the location/rotation of this object.<br>In our case, the emitter is our fountain, but if you wish, you can use only a vector (BABYLON.Vector3) as an emitter.</p>
-<p>Now, we must create a new (not-rendered) ParticleSystem object:</p>
+<p>触发动作将会作为粒子系统的资源，而且是定义在3D的空间中他们如何生成如何移动。所以需要注意位置和选择这些对象。<br>在我们的例子中，喷泉就是我们的触发器，当然你也可以使用一个向量去当做触发。</p>
+<p>现在我们创建一个没有被渲染过的粒子系统对象：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> particleSystem = <span class="keyword">new</span> BABYLON.ParticleSystem(<span class="string">"particles"</span>, <span class="number">2000</span>, scene, customEffect);</div></pre></td></tr></table></figure>
 
-<p>Simple.  The first parameter is the name, the second parameter is the maximum number of particles, the third parameter is the scene, and the optional fourth parameter is a reference to a shader effect for the particles, overriding the default shader.  I will talk about the fourth parameter further below.</p>
-<p>An important part is to define the texture of each particle. Each one will have the same pattern, so choose carefully which one you want. But keep in mind that a single scene can contain multiple particleSystems, and each one can emit particles with unique texture patterns.  Also keep in mind that multiple particle systems can use the same emitter object.<br>Our particle texture is going to be this one:</p>
+<p>简单的说，第一个参数是名字，第二个事最大的粒子数量，第三个是场景，第四个是可选择的表示形状的效果，是复写了默认的形状类，之后来讨论第四个参数。</p>
+<p>一个重要的部分是位每个粒子定义纹理质地，每一个将会使用一样的模式，所以仔细选择你想要的。但是注意一个简单的场景包含了复杂的粒子系统，或者是每个都可以触发粒子通过唯一的质地。所以要记住我们的粒子系统的纹理是什么：</p>
 <p><img src="http://www.babylonjs.com/tutorials/12 - Particles/Flare.png" alt="Flare"></p>
-<p>To define the particle’s texture, add a line like this:</p>
+<p>定义一个粒子系统的纹理通常是这样:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.particleTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"Flare.png"</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>(in the playground demo, we used /textures/flare.png)</p>
-<p>For this texture, you can use an optional mask to filter some colors, or filter a part of the alpha channel.</p>
+<p>对于这个纹理，我们使用了一个过滤的颜色和alpha通道来作为遮罩。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.textureMask = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>, <span class="number">1.0</span>);</div></pre></td></tr></table></figure>
 
-<p>This is the output of this configuration:</p>
+<p>这个就是配置文件的输出</p>
 <p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-1.png" alt="TextureMask"></p>
-<p>The last main thing to do is to define our emitter that we talked about earlier:</p>
+<p>最后的事情就是定义我们的触发器：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Where the particles comes from</span></div><div class="line">particleSystem.emitter = fountain; <span class="comment">// the starting object, the emitter, a box in this case.</span></div></pre></td></tr></table></figure>
 
-<p>Now you should see your particle system working. But it might not be our final result. We can refine some parameters:</p>
-<ul>
-<li>Box around our emitter. Our emitter is the center of particles source, but if you want your particles to emit from more than one point, then you can tell it to do so:</li>
-</ul>
+<p>现在你可以看到粒子系统已经开始工作了，但是他可能不是我们最后的结果，我们需要重新设置一些参数：<br>触发器周围的盒子，我们的触发器是粒子系统的中心，按时如果你想让你的粒子系统从一个点触发，你需要告诉系统这么做：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">particleSystem.minEmitBox = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">// Starting all From</span></div><div class="line">particleSystem.maxEmitBox = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">// To...</span></div></pre></td></tr></table></figure>
 
-<p>As you can see, particles are emitted from different positions along the X-axis:</p>
+<p>和你看到的一样，在x轴上的不同的位置粒子系统被触发了：</p>
 <p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-2.png" alt="EmitBox"></p>
-<ul>
-<li>Now you can give some colors to your particles. Color one and two are combined, and “colorDead” is the color that the particle takes-on just before it disappears.</li>
-</ul>
+<p>现在你可以给你的粒子系统一些颜色，颜色1和颜色2都会被混合，颜色最后在出现时生成。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Colors of all particles (splited in 2 + specific color before dispose)</span></div><div class="line">particleSystem.color1 = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0.7</span>, <span class="number">0.8</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line">particleSystem.color2 = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0.2</span>, <span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line">particleSystem.colorDead = <span class="keyword">new</span> BABYLON.Color4(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>, <span class="number">0.0</span>);</div></pre></td></tr></table></figure>
 
 <ul>
-<li>Size of particles:</li>
+<li>粒子系统的大小:</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Size of each particle (random between...)</span></div><div class="line">particleSystem.minSize = <span class="number">0.1</span>;</div><div class="line">particleSystem.maxSize = <span class="number">0.5</span>;</div></pre></td></tr></table></figure>
 
 <ul>
-<li>LifeTime of particles:</li>
+<li>粒子系统的生存时间:</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Life time of each particle (random between...)</span></div><div class="line">particleSystem.minLifeTime = <span class="number">0.3</span>;</div><div class="line">particleSystem.maxLifeTime = <span class="number">1.5</span>;</div></pre></td></tr></table></figure>
 
 <ul>
-<li>Emit rate. This is the density of particles, the rate of particle flow:</li>
+<li>触发几率，是粒子系统的强度:</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.emitRate = <span class="number">1000</span>;</div></pre></td></tr></table></figure>
 
 <p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-3.png" alt="emitRate"></p>
-<p>If you want to launch only a few particles at once, that can be done, as well.  For example, if you want to emit only 300 particles:</p>
+<p>如果你只是想产生一些粒子系统，那已经可以了，但是如果你想产生300个粒子系统</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.manualEmitCount = <span class="number">300</span>;</div></pre></td></tr></table></figure>
 
-<p>Be aware that the stream is no longer continuous.  This is a one-shot particle emission, so this function overrides the previous “emitRate” parameter.</p>
-<ul>
-<li>The selected mode for particles. You can choose between “BLENDMODE_ONEONE” (default choice: source color is added to the destination color without alpha affecting the result), and “BLENDMODE_STANDARD” (to blend current color and particle color using particle’s alpha).</li>
-</ul>
+<p>注意这些方法不再有效了，这是一个粒子系统通过复写了emitRate方法</p>
+<p>粒子系统的模式。当你选择 “BLENDMODE_ONEONE”，默认的选择是颜色被加载到目标的颜色里面没有alpha通道的影响，而模式 “BLENDMODE_STANDARD” 就会在当前的颜色里面使用alpha通道。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;</div></pre></td></tr></table></figure>
 
-<ul>
-<li>Gravity. You can use gravity if you want to give an orientation to your particles (e.g.: fire particles travel upward on the Y-axis)</li>
-</ul>
+<p>重力。当你对你的粒子系统使用了重力这个方向</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Set the gravity of all particles (not necessarily down)</span></div><div class="line">particleSystem.gravity = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">9.81</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<ul>
-<li>Direction. Random direction of each particle after it has been emitted, between direction1 and direction2 vectors.</li>
-</ul>
+<p>方向。当粒子系统被创建时时随机的方向，在方向1和方向2之间</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">particleSystem.direction1 = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">7</span>, <span class="number">8</span>, <span class="number">3</span>);</div><div class="line">particleSystem.direction2 = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">7</span>, <span class="number">8</span>, -<span class="number">3</span>);</div></pre></td></tr></table></figure>
 
 <p><img src="http://www.babylonjs.com/tutorials/12 - Particles/12-4.png" alt="emitRate"></p>
-<ul>
-<li>AngularSpeed. You can define a Z-axis rotation for each particle (in radian):</li>
-</ul>
+<p>角速度，你可以为某个粒子系统定义z轴的旋转：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">particleSystem.minAngularSpeed = <span class="number">0</span>;</div><div class="line">particleSystem.maxAngularSpeed = <span class="built_in">Math</span>.PI;</div></pre></td></tr></table></figure>
 
-<ul>
-<li>Speed/Strength. You can define the power of emitting particles, and the overall motion speed (0.01 is default update speed, faster updates = faster animation).</li>
-</ul>
+<p>速度和力量，当你定了触发粒子系统的强度，就会复写动作的速度默认是0.0.1</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">particleSystem.minEmitPower = <span class="number">1</span>;</div><div class="line">particleSystem.maxEmitPower = <span class="number">3</span>;</div><div class="line"></div><div class="line">particleSystem.updateSpeed = <span class="number">0.005</span>;</div></pre></td></tr></table></figure>
 
-<ul>
-<li>Duration. You can set the amount of time the particle system is running (depends of the overall speed above).</li>
-</ul>
+<p>持续时间，当你设置了正在运行的粒子系统的持续时间。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.targetStopDuration = <span class="number">5</span>;</div></pre></td></tr></table></figure>
 
-<ul>
-<li>Dispose. Disposes (or not) the particle system on stop (very useful if you want to create a one shot particle system with a specific targetStopDuration):</li>
-</ul>
+<p>部署。当你需要对一个独特的目标创建一个粒子系统的时候你需要部署他属性</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.disposeOnStop = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
 
-<p>Finally, you can start this particle system whenever you want in your code with:</p>
+<p>最后你可以在代码的任何位置开启粒子系统：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.start();</div></pre></td></tr></table></figure>
 
 <p>And naturally stop it:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">particleSystem.stop();</div></pre></td></tr></table></figure>
 
-<p>Feel free to play with this scene… <a href="http://www.babylonjs.com/playground/?12" target="_blank" rel="external">at our online playground</a>.</p>
-<h3 id="customEffect_(the_fourth_parameter_in_the_constructor)">customEffect (the fourth parameter in the constructor)</h3>
+<p>demo的演示 <a href="http://www.babylonjs.com/playground/?12" target="_blank" rel="external">at our online playground</a>.</p>
+<h3 id="自定义效果_构造函数的第四个值">自定义效果 构造函数的第四个值</h3>
 <p>var ps = new BABYLON.ParticleSystem(“particles”, 2000, scene, <strong>customEffect</strong>);</p>
-<p>The customEffect is a type of BABYLON.Effect used to target a valid shader program.</p>
-<p>The primary author of Babylon.js was kind enough to make us <a href="http://www.babylonjs.com/playground/#1ASENS" target="_blank" rel="external">a fantastic playground demo of a particle system using a fragment shader effect</a>.  Visit that link, and you can see a fragment shader program that has been stored in a shader store.  Notice the line:</p>
+<p>自定义效果是BABYLON.Effect的一种类型用于一个判定一个形状是否正常的程序。</p>
+<p>更多信息 <a href="http://www.babylonjs.com/playground/#1ASENS" target="_blank" rel="external">a fantastic playground demo of a particle system using a fragment shader effect</a>.  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BABYLON.Effect.ShadersStore[<span class="string">"myParticleFragmentShader"</span>] = [...]</div></pre></td></tr></table></figure>
 
-<p>A bit below that, you will see:</p>
+<p>从下边你将会看到更多信息:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> effect = engine.createEffectForParticles(<span class="string">"myParticle"</span>, [<span class="string">"time"</span>]);</div></pre></td></tr></table></figure>
 
-<p><em>.createEffectForParticles</em> accepts the following parameters:</p>
+<p><em>.createEffectForParticles</em> 统一接下来的参数:</p>
 <ul>
-<li>fragment name (can be in the shaders store or the id of a DOM element)</li>
-<li>array of additional parameters (uniforms)</li>
-<li>array of additional samplers (for additional textures!)</li>
+<li>碎片的名字或者是dom的id</li>
+<li>额外的参数列表</li>
+<li>额外的纹理参数列表</li>
 </ul>
-<p>The particle Effect Object is a slightly-modified <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Effect.html" target="_blank" rel="external">Babylon Effect Object</a>.  Also notice that the ShadersStore is a namespace upon this special <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Effect.html" target="_blank" rel="external">Effect Object</a>.  </p>
-<p>The Effect Object has many ‘setter’ methods on it, one of which is <em>.setFloat</em>.  Notice how it is used in the registerBeforeRender function.  This causes the speed of the effect to cycle across about a 20 second time span.  We are (the demo author is) varying the time parameter of the fragment shader program… from within the scene’s render loop!  WE LOVE IT!</p>
-<p>Here is a short comment from Deltakosh… regarding that playground demo linked above:</p>
-<blockquote>
-<p>By default Babylon.js will give you a vUV and a vColor varying parameter. It will also transmit you the particle texture. But you can feel free to add any new parameter, like I did, with ‘time’.</p>
-</blockquote>
-<p>This section of the tutorial is under construction.  We will have much more to say, soon.</p>
-<h2 id="Next_step">Next step</h2>
-<p>ParticleSystems are very powerful and versatile tools that can help bring realness and movement to your scenes. Don’t hesitate to use them as they are not resource-intensive.</p>
-<p>Stay with us, because we are going to learn a new, very interesting thing: <a href="https://github.com/BabylonJS/Babylon.js/wiki/13-Environment" target="_blank" rel="external">Configuring your environment</a>.</p>
+<p>粒子系统给的效果对象有一个很小的改动 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Effect.html" target="_blank" rel="external">Babylon Effect Object</a>.  也提示了ShaderStore是形状物体的一部分<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Effect.html" target="_blank" rel="external">Effect Object</a>.  </p>
+<p>效果对象有很多设置方法，有一个<em>.setFloat</em>. 注意他是用在registerBeforeRender 函数里.  这样会导致循环的速度空闲20ms，我们的粒子就定义了碎片的形状程序在场景的渲染循环中。</p>
+<h2 id="接下来">接下来</h2>
+<p>粒子系统是很有用的当给我们的场景带来真实话体验和运动是。但是不要犹豫去运用他们。接下来我们要去学习如何使用环境。</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/13 Environment/">← 前一篇</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/The-Playground/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/11   Picking collisions/">后一篇 →</a>
             
         </nav>
         <br/>
