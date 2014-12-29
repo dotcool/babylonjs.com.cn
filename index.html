@@ -46,6 +46,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/15-Shadows/">阴影</a>
                                 </li>
                                 
@@ -99,10 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/14-Height-map/">高度地图</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/13 Environment/">环境</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/13 Environment/">环境</a>
+                
                     <a  data-pjax href="/2014/12/29/15-Shadows/">阴影</a>
                 
                     <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
@@ -318,8 +320,6 @@
                     <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
                 
                     <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
-                
-                    <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -425,6 +425,37 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/13 Environment/">环境</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T09:05:30.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                你的场景里面充满了形状、光线、精灵、粒子系统和材质。他们看上去都很漂亮，但是缺少一个东西那就是环境，一个合适的环境，这就是在开始的3个示例中讨论的场景环境。我们将会从简单的背景颜色场景开始简单的讨论渐变颜色和6纹理天空环境以及通过烟雾来达到不同景深的效果。
+在不同动作下的烟雾效果
+如何开始
+我们将会讨论漂亮的烟雾效果，首先我需要介绍一些有趣的东西 scene class object:
+
+scene.clearColor - 修改背景颜
+                
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -714,38 +745,6 @@ _多光束照射下的球面
 摄像机的管理是很简单的，babylonjs提供了很多种类的摄像机，我们将从最常见的两种(自由摄像机和轨迹旋转摄像机)
 
 自由摄像机 - 这是一个第一视角种类的摄像机，当你使用鼠标和键盘来控制时，和很多摄像机一样，你也可以添加控制键比如wasd等自由相机并不会自动对准目标，
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/27/04-Materials/">材质</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-27T09:34:58.000Z"
-                      itemprop="datePublished">Dec 27 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                材质
-现在我们可以在场景中创建不同的纹理元素，现在我们将介绍如何定义材质让纹理物体看上去不一样。
-
-Playground Demo Scene 4 - Materials
-我应该如何做
-我们已经熟练的在createScene函数中创建对象了了，所以我们现在创建一个全向点光源和一个轨道旋转摄像机，然后我们就开始制作一些基本的为纹理去测试我们的材质
-12345678910111213function createScene() {    v
                 
             </p>
             

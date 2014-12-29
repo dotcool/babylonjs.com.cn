@@ -46,6 +46,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/13 Environment/">环境</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/15-Shadows/">阴影</a>
                                 </li>
                                 
@@ -99,10 +103,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/27/14-Height-map/">高度地图</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/27/13 Environment/">环境</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/29/13 Environment/">环境</a>
+                
                     <a  data-pjax href="/2014/12/29/15-Shadows/">阴影</a>
                 
                     <a  data-pjax href="/2014/12/29/12 Particles/">粒子系统</a>
@@ -318,8 +320,6 @@
                     <a  data-pjax href="/2014/12/27/01---Basic-scene/">基础场景</a>
                 
                     <a  data-pjax href="/2014/12/27/14-Height-map/">高度地图</a>
-                
-                    <a  data-pjax href="/2014/12/27/13 Environment/">环境</a>
                 
                     <a  data-pjax href="/2014/12/27/The-Playground/"></a>
                 
@@ -434,93 +434,87 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T05:02:56.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-29T09:05:30.000Z"
+                              itemprop="datePublished">Dec 29 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>You have come a long way, and your scene is full of shapes, lights, sprites, particles, materials, it looks pretty good.  But there is something missing: a proper environment.  This is the first of three tutorials that talk about scene environment factors and effects.  We will start off with simple scene <code>clearColor</code> (background color), then talk briefly about scene <code>ambientColor</code>, then on to 6-texture skyboxes, and then fog to give an illusion of depth to your scenes.</p>
-<p><img src="http://www.babylonjs.com/tutorials/13 - Environment/13.png" alt="Environment"><br><em>A picture showing babylon.js fog in action</em></p>
-<h2 id="How_can_I_do_this?">How can I do this?</h2>
-<p>We will talk about that nice fog effect, shortly.  First, I want to introduce you to two interesting properties on the <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Scene.html" target="_blank" rel="external">scene class object</a>:</p>
+            <p>你的场景里面充满了形状、光线、精灵、粒子系统和材质。他们看上去都很漂亮，但是缺少一个东西那就是环境，一个合适的环境，这就是在开始的3个示例中讨论的场景环境。我们将会从简单的背景颜色场景开始简单的讨论渐变颜色和6纹理天空环境以及通过烟雾来达到不同景深的效果。</p>
+<p><img src="http://www.babylonjs.com/tutorials/13 - Environment/13.png" alt="Environment"><br><em>在不同动作下的烟雾效果</em></p>
+<h2 id="如何开始">如何开始</h2>
+<p>我们将会讨论漂亮的烟雾效果，首先我需要介绍一些有趣的东西 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.Scene.html" target="_blank" rel="external">scene class object</a>:</p>
 <ul>
-<li><code>scene.clearColor</code> - changes the ‘background’ color.</li>
-<li><code>scene.ambientColor</code> - changes the color used in several effects, including ambient lighting.</li>
+<li><code>scene.clearColor</code> - 修改背景颜色.</li>
+<li><code>scene.ambientColor</code> - 改变环境灯光的颜色.</li>
 </ul>
-<p>Both of them are very useful, and powerful in their own right.</p>
-<h3 id="Changing_the_Background_color_(scene-clearColor)">Changing the Background color (<code>scene.clearColor</code>)</h3>
-<p>The ‘clearColor’ property on the scene object is the most rudimentary of environment properties/adjustments. Simply stated, this is how you change the background color of the scene.  Here is how it is done:</p>
+<p>所有的这些都是有用且强大的。</p>
+<h3 id="修改背景颜色_(scene-clearColor)">修改背景颜色 (<code>scene.clearColor</code>)</h3>
+<p>属性clearColor是重要的设置环境的参数.简单的来说，这个就是你如何去修改的背景颜色的方法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.clearColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.5</span>, <span class="number">0.8</span>, <span class="number">0.5</span>);</div></pre></td></tr></table></figure>
 
-<p>Or maybe you want to use one of our preset colors and avoid using the <code>new</code> keyword:</p>
+<p>或者你想使用我们的颜色避免使用new这个关键字</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.clearColor = BABYLON.Color3.Blue();</div></pre></td></tr></table></figure>
 
-<p>This color and property is not used in any calculations for the final colors of mesh, materials, textures, or anything else. It is simply the background color of the scene.  Easy.</p>
-<h3 id="Changing_the_Ambient_color_(scene-ambientColor)">Changing the Ambient color (<code>scene.ambientColor</code>)</h3>
-<p>Conversely, the <code>ambientColor</code> property on the scene object is a very powerful and influential environment property/adjustment.  First, let’s have a look at its syntax:</p>
+<p>这个颜色和属性是没有被用作最终颜色的计算的，网格、材质、纹理等等。就是简单的场景的背景颜色。</p>
+<h3 id="修改环境颜色(scene-ambientColor)">修改环境颜色(<code>scene.ambientColor</code>)</h3>
+<p>相应的ambientColor就是甚至场景对象的一个很有用且有影响力的环境参数。首先我们看看一语法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.ambientColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.3</span>, <span class="number">0.3</span>, <span class="number">0.3</span>);</div></pre></td></tr></table></figure>
 
-<p>As you can see, it is set using the same format as <code>clearColor</code>, but <code>ambientColor</code> is used in quite a few calculations toward determining the final colors of scene items.  Mainly, it is used in conjunction with a mesh’s <code>StandardMaterial.ambientColor</code> to determine a FINAL <code>ambientColor</code> for the mesh material.  </p>
-<p>You will find that when there is no <code>scene.ambientColor</code>, then <code>StandardMaterial.ambientColor</code> and <code>StandardMaterial.ambientTexture</code> will appear to do nothing.  Set a <code>scene.ambientColor</code> of some value, like the example above, and <code>StandardMaterial.ambientColor</code>/<code>StandardMaterial.ambientTexture</code> will become active on meshes where you have applied such.</p>
-<p>By default, <code>scene.ambientColor</code> is set to <code>Color3(0, 0, 0)</code>, which means there is no <code>scene.ambientColor</code>.</p>
-<p>(Please see the section on ambientColors in our <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a> tutorial, for more information.)</p>
-<h3 id="Skybox">Skybox</h3>
-<p>To give a perfect illusion of a beautiful sunny sky, we are going to create a simple box, but with a special texture.</p>
+<p>如你所见这个方法和clearColor和相近被用作是计算最终颜色的场景组件。最后被用作网格对象的关联的属性StandardMaterial.ambientColor来定义最终的颜色</p>
+<p>你会发现没有场景的ambientColor然后StandardMaterial.ambientColor和StandardMaterial.ambientTexture不会生效。通过设置场景的ambientColor值或者是ambientTexture将会让激活的网格对象让设置生效</p>
+<p>默认情况下，场景的scene.ambientColor被设置为Color3(0, 0, 0)也就是没有设置。</p>
+<p>更多信息 <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a></p>
+<h3 id="天空盒子">天空盒子</h3>
+<p>为了实现一个漂亮的晴朗的天空，我们需要去创建一个使用了独特纹理简单地的盒子。</p>
 <p><img src="http://www.babylonjs.com/tutorials/13 - Environment/13-1.png" alt="Skybox"></p>
-<p>First, our box, nothing new, just take notice of the disabled <a href="http://en.wikipedia.org/wiki/Back-face_culling" target="_blank" rel="external">backface culling</a>:</p>
+<p>首先，我们的盒子一如既往只是需要注意下已被注销的方法  <a href="http://en.wikipedia.org/wiki/Back-face_culling" target="_blank" rel="external">backface culling</a>:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> skybox = BABYLON.Mesh.CreateBox(<span class="string">"skyBox"</span>, <span class="number">100.0</span>, scene);</div><div class="line"><span class="keyword">var</span> skyboxMaterial = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"skyBox"</span>, scene);</div><div class="line">skyboxMaterial.backFaceCulling = <span class="literal">false</span>;</div><div class="line">skybox.material = skyboxMaterial;</div></pre></td></tr></table></figure>
 
-<p>Next, we set the <code>infiniteDistance</code> property. This makes the skybox follow our camera’s position.</p>
+<p>然后我们设置infiniteDistance属性。这就是在设置我们的天空盒子的跟踪摄像机的位置</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">skybox.infiniteDistance = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
 
-<p>Now we must remove all light reflections on our box (the sun doesn’t reflect on the sky!):</p>
+<p>现在我们必须除去所有的光线的反射</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">skyboxMaterial.diffuseColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">skyboxMaterial.specularColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<p>Next, we apply our special sky texture to it. This texture must have been prepared to be a skybox, in a dedicated directory, named “skybox” in our example:</p>
+<p>然后我们应用我们的纹理到盒子上，这个纹理必须是位天空盒子准备的，在预定的方向上名字是 skybox的例子中：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">skyboxMaterial.reflectionTexture = <span class="keyword">new</span> BABYLON.CubeTexture(<span class="string">"textures/skybox"</span>, scene);</div><div class="line">skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;</div></pre></td></tr></table></figure>
 
-<p>(More about reflectionTextures can be found in our <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a> tutorial.)</p>
-<p>In that <code>/skybox</code> directory, we must find 6 sky textures, one for each face of our box. Each image must be named per the corresponding face: “skybox_nx.png”, “skybox_ny.png”, “skybox_nz.png”, “skybox_px.png”, “skybox_py.png”, “skybox_pz.png”.</p>
+<p>更多反射纹理的相关只是 <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a></p>
+<p>在/skybox的文件夹中，我们要找到6个天空的纹理每个对应一个天空的面。单个图片必须命名为天空的朝向 ：“skybox_nx.png”, “skybox_ny.png”, “skybox_nz.png”, “skybox_px.png”, “skybox_py.png”, “skybox_pz.png”.</p>
 <p><img src="http://www.babylonjs.com/tutorials/13 - Environment/13-2.png" alt="Skybox"></p>
-<p>If you want some free skybox texture samples, point your browser to: <a href="http://3delyvisions.co/skf1.htm" target="_blank" rel="external">http://3delyvisions.co/skf1.htm</a> (look at licenses before use, please.)  As you can see by those examples, skybox textures need not be textures of sky alone.  Buildings, hills, mountains, trees, lakes, planets, stars, you name it (all can be used nicely) as part of skybox textures.</p>
-<p>Final note, if you want your skybox to render behind everything else, set the skybox’s <code>renderingGroupId</code> to <code>0</code>, and every other renderable object’s <code>renderingGroupId</code> greater than zero, for example:</p>
+<p>更多实例: <a href="http://3delyvisions.co/skf1.htm" target="_blank" rel="external">http://3delyvisions.co/skf1.htm</a> (look at licenses before use, please.) 如同你看到的这些例子，天空的纹理不是单独被定义到天空的纹理，建筑、高山、树、湖等等都成了天空盒子的一部分。</p>
+<p>最后，如果你想再所有的组件被渲染之后再去渲染天空盒子，你可以设置renderingGroupId=0，而其他的组件的enderingGroupId大于0:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">skybox.renderingGroupId = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">// Some other mesh</span></div><div class="line">myMesh.renderingGroupId = <span class="number">1</span>;</div></pre></td></tr></table></figure>
 
-<h3 id="Fog">Fog</h3>
-<p>Fog is quite an advanced effect, but fog in Babylon.js has been simplified to the maximum.  It’s now very easy to add fog to your scenes.  First, we define the fog mode like this:</p>
+<h3 id="烟雾">烟雾</h3>
+<p>烟雾是一种很高级的特效，但是babylon的烟雾已经被简化了，现在可以很容易的加载到你的场景中，我们定义烟雾通过：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.fogMode = BABYLON.Scene.FOGMODE_EXP;</div></pre></td></tr></table></figure>
 
-<p>Here are the available modes :</p>
-<ul>
-<li><code>BABYLON.Scene.FOGMODE_NONE</code> - default one, fog is deactivated.</li>
-<li><code>BABYLON.Scene.FOGMODE_EXP</code> - the fog density is following an exponential function.</li>
-<li><code>BABYLON.Scene.FOGMODE_EXP2</code> - same that above but faster.</li>
-<li><code>BABYLON.Scene.FOGMODE_LINEAR</code> - the fog density is following a linear function.</li>
-</ul>
-<p>-&gt; If you choose the <code>EXP</code>, or <code>EXP2</code> mode, then you can define the density option (default is <code>0.1</code>):</p>
+<p>这里有一些可以使用的模式：<br>BABYLON.Scene.FOGMODE_NONE<br>BABYLON.Scene.FOGMODE_EXP<br>BABYLON.Scene.FOGMODE_EXP<br>BABYLON.Scene.FOGMODE_LINEAR</p>
+<p>如果你选择了EXP和EXP2模型，你就可以定义目标属性0.1。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.fogDensity = <span class="number">0.01</span>;</div></pre></td></tr></table></figure>
 
-<p>-&gt; Otherwise, if you choose <code>LINEAR</code> mode, then you can define where fog starts and where fog ends:</p>
+<p>否者，如果你选择了LINEAR模型，你可以定义烟雾在什么地方开始和结束：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scene.fogStart = <span class="number">20.0</span>;</div><div class="line">scene.fogEnd = <span class="number">60.0</span>;</div></pre></td></tr></table></figure>
 
-<p>Finally, whatever the mode, you can specify the color of the fog (default is <code>BABYLON.Color3(0.2, 0.2, 0.3)</code>):</p>
+<p>最后，不管什么模式，你可以定义烟雾的颜色默认颜色是BABYLON.Color3(0.2, 0.2, 0.3):</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.fogColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.9</span>, <span class="number">0.9</span>, <span class="number">0.85</span>);</div></pre></td></tr></table></figure>
 
-<p>See, we told you it was easy.</p>
-<p>If you want to see and play with the playground scene for this tutorial, you can <a href="http://babylonjs-playground.azurewebsites.net/?13" target="_blank" rel="external"><strong>click right here</strong></a>.</p>
+<p>你看很容易吧！</p>
+<p>demo实例 <a href="http://babylonjs-playground.azurewebsites.net/?13" target="_blank" rel="external"><strong>click right here</strong></a>.</p>
 <h2 id="Next_step">Next step</h2>
-<p>You should have a beautiful scene now, but except from your 3D models, your world is pretty flat, and that’s a shame for your scene. So, in our next environment tutorial, we are going to transform your flat ground into beautiful mountains. To learn this, go <a href="https://github.com/BabylonJS/Babylon.js/wiki/14-Height-map" target="_blank" rel="external">here!</a>.</p>
+<p>现在你拥有了一个很漂亮的场景，但是没有3D模型，世界是扁平的。所以在我们下一个粒子中我们将要介绍如何创建高山</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/14-Height-map/">← 前一篇</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/The-Playground/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/15-Shadows/">后一篇 →</a>
             
         </nav>
         <br/>
