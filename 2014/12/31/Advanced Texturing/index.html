@@ -46,6 +46,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/31/Advanced Texturing/">纹理深入阅读</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
                                 </li>
                                 
@@ -178,10 +182,6 @@
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/14-Height-map/">高度地图</a>
                                 </li>
                                 
@@ -291,6 +291,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/31/Advanced Texturing/">纹理深入阅读</a>
+                
                     <a  data-pjax href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
                 
                     <a  data-pjax href="/2014/12/29/Naming-convention/">命名</a>
@@ -356,8 +358,6 @@
                     <a  data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
                 
                     <a  data-pjax href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
-                
-                    <a  data-pjax href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
                 
                     <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
                 
@@ -434,74 +434,73 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-29T09:22:40.000Z"
-                              itemprop="datePublished">Dec 29 2014</time>
+                        <time datetime="2014-12-31T02:24:29.000Z"
+                              itemprop="datePublished">Dec 31 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>You have already seen how you can apply textures on meshes, but here you are going one step further, with more complex textures like mirrors, videos, bump mapping, and multi-texture.</p>
+            <p>你已经学会了如何在网格中使用纹理，但是你需要更进一步去实现更加复杂的纹理，比如镜面、视频、地图和复合纹理。</p>
 <p><img src="http://www.babylonjs.com/tutorials/Advanced Texturing/0.png" alt="AdvancedTexturing"></p>
-<p>A picture from our <a href="http://www.babylonjs.com/playground/#EKFLA" target="_blank" rel="external">Advanced Texturing playground demo</a>.</p>
-<h2 id="How_can_I_do_this_?">How can I do this ?</h2>
-<p>These new types of textures are considered advanced because we are not used to dealing with them, but you’ll see that it is very easy to create them with JavaScript and Babylon.js!</p>
+<p>实例 <a href="http://www.babylonjs.com/playground/#EKFLA" target="_blank" rel="external">Advanced Texturing playground demo</a>.</p>
+<h2 id="如何开始">如何开始</h2>
+<p>这些纹理的新类型被当做是高级的应用我们还没有接触过他们，但是你可以很轻松的使用js和babylonjs去创建他们。</p>
 <ul>
-<li><strong>Mirror</strong></li>
+<li><strong>镜面</strong></li>
 </ul>
-<p>Mirror textures are used to simulate “mirrors” (!) which means that babylon.js will compute the reflection and fill the texture with the results. A mirror texture must be set in the <em>reflectionTexture</em>  channel of a <em>StandardMaterial</em> :</p>
+<p>镜面的纹理是被用来模拟镜面，反射和填充这些结果的纹理。一个镜面纹理必须设置一个<em>StandardMaterial</em> 的通道<em>reflectionTexture</em>:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mirrorMaterial = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"texture4"</span>, scene);</div><div class="line">mirrorMaterial.reflectionTexture = <span class="keyword">new</span> BABYLON.MirrorTexture(<span class="string">"mirror"</span>, <span class="number">512</span>, scene, <span class="literal">true</span>);</div><div class="line">mirrorMaterial.reflectionTexture.mirrorPlane = <span class="keyword">new</span> BABYLON.Plane(<span class="number">0</span>, -<span class="number">1.0</span>, <span class="number">0</span>, -<span class="number">10.0</span>);</div><div class="line">mirrorMaterial.reflectionTexture.renderList = [sphere1, sphere2];</div></pre></td></tr></table></figure>
 
-<p>A <em>mirrorTexture</em> is created with a parameter that specifies the size of the rendering buffer (512x512 here, better reflection quality if increased).<br>Then you have to define the reflection plane and a render list (the list of meshes to render inside the mirror).</p>
-<p>You can also use a <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.CubeTexture.html" target="_blank" rel="external">CubeTexture</a> as a reflectionTexture on a StandardMaterial.</p>
+<p>镜面纹理是被一个懈怠了特别尺寸的渲染缓冲比如512x512的去反射，然后你可以低估一个反射的飞机和渲染的列表(在镜面里被渲染的网格列表)</p>
+<p>你也可以使用<a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.CubeTexture.html" target="_blank" rel="external">CubeTexture</a> as a reflectionTexture on a StandardMaterial.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">material.reflectionTexture = <span class="keyword">new</span> BABYLON.CubeTexture(<span class="string">"textures/TropicalSunnyDay"</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>Like the CubeTextures used in skyboxes, the textures/TropicalSunnyDay directory must contain 6 textures, covering all 6 directions of the cube.  Each image must be named according to the corresponding CubeTexture face: “TropicalSunnyDay_nx.jpg”, “TropicalSunnyDay_ny.jpg”, “TropicalSunnyDay_nz.jpg”, “TropicalSunnyDay_px.jpg”, “TropicalSunnyDay_py.jpg”, “TropicalSunnyDay_pz.jpg”.</p>
-<p>You can see this nice advanced texturing technique… in <a href="http://babylonjs-playground.azurewebsites.net/#IRZYH" target="_blank" rel="external">this playground scene</a>, and in this <a href="https://github.com/BabylonJS/Babylon.js/wiki/How-to-use-FresnelParameters" target="_blank" rel="external">Fresnel</a>-enhanced <a href="http://www.babylonjs.com/playground/#SBTYP" target="_blank" rel="external">playground scene</a>, as well.</p>
+<p>就好像在skyboxes里面被使用的CubeTextures纹理目录textures/TropicalSunnyDay必须包含6个纹理，包含了方块的6个方向的面，每一个图像都必须根据朝向来设置名字：“TropicalSunnyDay_nx.jpg”, “TropicalSunnyDay_ny.jpg”, “TropicalSunnyDay_nz.jpg”, “TropicalSunnyDay_px.jpg”, “TropicalSunnyDay_py.jpg”, “TropicalSunnyDay_pz.jpg”.</p>
+<p>更多信息<a href="http://babylonjs-playground.azurewebsites.net/#IRZYH" target="_blank" rel="external">this playground scene</a>和这里<a href="https://github.com/BabylonJS/Babylon.js/wiki/How-to-use-FresnelParameters" target="_blank" rel="external">Fresnel</a>-enhanced <a href="http://www.babylonjs.com/playground/#SBTYP" target="_blank" rel="external">playground scene</a>.</p>
 <ul>
-<li><strong>Bump Mapping</strong></li>
+<li><strong>凹凸地图</strong></li>
 </ul>
-<p>Bump mapping is a technique in computer graphics to make a rendered surface look more realistic without modifying surface geometry. This is only a texture modification, so computation is the same but rendering is much better, have a look:</p>
+<p>凹凸地图是为了在不修改表面集合的情况下让渲染的地标看上去更真实的一种计算机图形技术，这里只是一个纹理的修改，更多信息:</p>
 <p><img src="http://www.babylonjs.com/tutorials/Advanced Texturing/1.png" alt="bumpMap"></p>
-<p>The bump texture simulates bumps and dents using a map called a normal map.</p>
+<p>通过一个普通的地图来模拟凸凹和凹痕的纹理。</p>
 <p><img src="http://www.babylonjs.com/tutorials/Advanced Texturing/normalMap.jpg" alt="normalMap"></p>
-<p><em>A normal map</em></p>
-<p>And now, let’s code this amazing texture within two lines of JavaScript: first we create a new standard material, and then, simply declare a new bump texture:</p>
+<p><em>普通的图片</em></p>
+<p>现在我们来使用2行js代码就可以创建这样一个富有魔力的纹理：首先我们创建一个标准的材质，然后简单的申明这样的凹凸纹理：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bumpMaterial = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"texture1"</span>, scene);</div><div class="line">bumpMaterial.bumpTexture = <span class="keyword">new</span> BABYLON.Texture(<span class="string">"normalMap.jpg"</span>, scene);</div></pre></td></tr></table></figure>
 
-<p>That’s it! The bump texture disturbs/perturbs the normal to produce a result like this, where you should recognize our normal map:</p>
+<p>然后通过普通的图片就创建了一个凹凸的纹理，我们可以修改普通的地图然后看不同的渲染效果：</p>
 <p><img src="http://www.babylonjs.com/tutorials/Advanced Texturing/2.png" alt="finalResult"></p>
-<p><em>Resulting gorgeous bumpy sphere</em></p>
+<p><em>最终的结果</em></p>
 <ul>
-<li><strong>Video</strong></li>
+<li><strong>视频</strong></li>
 </ul>
-<p>If you want to display a video in your scene, the Babylon engine has a special texture for that. This special texture works similar to other textures, with the exception of a few parameters. These parameters include video urls (an url array), the size of the video texture (here is 256), the scene, and a final optional boolean that indicates if you want to use <a href="http://en.wikipedia.org/wiki/Mipmap" target="_blank" rel="external">mipmap</a> or not. </p>
-<p>Here is an example from our <a href="http://www.babylonjs.com/?9" target="_blank" rel="external">Flat2009 demo</a>. This plays a video on the demo’s tv screen (ecran = screen).  </p>
+<p>如果你想再你的场景中播放一个视频，babylon引擎有一个独特的纹理来处理。这个独特的纹理就是和其他的纹理类似，只是多了一个些其他的参数。这些参数可以包含视频的url或者是数组视频纹理的材质大小(这里是256)，场景和一个可选的属性变量设置了你是否想使用<a href="http://en.wikipedia.org/wiki/Mipmap" target="_blank" rel="external">mipmap</a>. </p>
+<p>这里是一个例子，让视频在我们的实例的屏幕上播放 <a href="http://www.babylonjs.com/?9" target="_blank" rel="external">Flat2009 demo</a>.  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ecran.material.diffuseTexture = <span class="keyword">new</span> BABYLON.VideoTexture(<span class="string">"video"</span>, </div><div class="line">[<span class="string">"Scenes/Flat2009/babylonjs.mp4"</span>, <span class="string">"Scenes/Flat2009/babylonjs.webm"</span>], <span class="number">256</span>, scene, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
 
-<p>The <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.VideoTexture.html" target="_blank" rel="external"><em>VideoTexture</em> object</a> accepts an array of videos (to take into account various codecs).  The first video in the array that can be loaded… is the one used as content source.  Currently, HTML5 supports .mp4, .webm, and .ogv video formats.</p>
-<p>The internal <a href="http://www.w3.org/wiki/HTML/Elements/video" target="_blank" rel="external">video DOM object</a> is accessible via the VideoTexture.video property… which allows you to control some characteristics and monitor the status of the video (things such as play, pause, stop, loop, autoplay).  See the link above for the full story.</p>
+<p>实例 <a href="http://www.sokrate.fr/documentation/babylonjs/BABYLON.VideoTexture.html" target="_blank" rel="external"><em>VideoTexture</em> object</a> 通过一系列的视频来展现，在视频列表的第一个视频将会被加载，可以支持这些格式.mp4, .webm, and .ogv.</p>
+<p>可以通过VideoTextture.video属性来获取内部对象 <a href="http://www.w3.org/wiki/HTML/Elements/video" target="_blank" rel="external">video DOM object</a> ，可以让你去控制视频的一些特征和记录比如播放、暂停和自动播放，更多信息请查看以上的链接.</p>
 <p><img src="http://www.babylonjs.com/tutorials/Advanced Texturing/3.png" alt="video"></p>
-<p>Even though we are working with advanced texturing techniques, <em>VideoTexture</em> works in conjunction with a StandardMaterial. Simply put, it needs to have some light. As a handy alternative or video illumination assistant, you may want to set an <em>emissiveColor</em> on the base material of the mesh.</p>
+<p>即使我们使用了高级的纹理技术，<em>VideoTexture</em>属性依然和StandardMaterial关联起来。简单的说，他需要一些光线。作为方便的视频处理助手，你可能希望给网格的基础材质设置<em>emissiveColor</em></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ecran.material.emissiveColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</div></pre></td></tr></table></figure>
 
 <ul>
-<li><strong>Multi Materials</strong></li>
+<li><strong>复合材质</strong><br>使用专用的材质，复合材质可以被应用到单个网格中，如果你想让你的网格随着高度宽度和深度看上去不同的话(比如在地核的切面)</li>
 </ul>
-<p>Using a dedicated texture, multi materials can be assigned to one single mesh. It can be useful if you want your mesh to look different at diferent locations along its width, height, or depth. (such as a cutaway cross-section of the Earth’s mantle).</p>
 <p><img src="http://www.babylonjs.com/tutorials/Advanced Texturing/4.png" alt="multimap"></p>
-<p>Sometimes it is a bit diffiicult to determine which indices of a mesh should be textured by which of the multiple textures. David Catuhe has provided a comprehensive post about multi materials… on his blog:<br><a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/10/babylon-js-using-multi-materials.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/eternalcoding/archive/2013/07/10/babylon-js-using-multi-materials.aspx</a></p>
-<p>You can view and play-with the demo used in this tutorial… <a href="http://www.babylonjs.com/playground/#EKFLA" target="_blank" rel="external">right here</a>.</p>
-<p>You might also be interested in our <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a> tutorial, and our <a href="https://github.com/BabylonJS/Babylon.js/wiki/04-Materials" target="_blank" rel="external">basic materials</a> tutorial.</p>
+<p>有时候去定义一个网格和复合的材质是有一点困难的:<br><a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/10/babylon-js-using-multi-materials.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/eternalcoding/archive/2013/07/10/babylon-js-using-multi-materials.aspx</a></p>
+<p>你可以查看和试玩这样的实例 <a href="http://www.babylonjs.com/playground/#EKFLA" target="_blank" rel="external">right here</a>.</p>
+<p>更多信息 <a href="http://blogs.msdn.com/b/eternalcoding/archive/2013/07/01/babylon-js-unleash-the-standardmaterial-for-your-babylon-js-game.aspx" target="_blank" rel="external">Unleash the Standard Material</a> 实例 <a href="https://github.com/BabylonJS/Babylon.js/wiki/04-Materials" target="_blank" rel="external">basic materials</a>.</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/29/Babylon.js-file-format/">← 前一篇</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/29/14-Height-map/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">后一篇 →</a>
             
         </nav>
         <br/>
