@@ -46,6 +46,14 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Naming-convention/">命名</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
                                 </li>
                                 
@@ -83,10 +91,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/Naming-convention/">建业u命名</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -175,10 +179,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,10 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                
+                    <a  data-pjax href="/2014/12/29/Naming-convention/">命名</a>
+                
                     <a  data-pjax href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
                 
                     <a  data-pjax href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
@@ -310,8 +314,6 @@
                     <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
                 
                     <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                
-                    <a  data-pjax href="/2014/12/29/Naming-convention/">建业u命名</a>
                 
                     <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
                 
@@ -356,8 +358,6 @@
                     <a  data-pjax href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
                 
                     <a  data-pjax href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
-                
-                    <a  data-pjax href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
                 
                     <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
                 
@@ -434,62 +434,48 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-29T09:22:26.000Z"
-                              itemprop="datePublished">Dec 29 2014</time>
+                        <time datetime="2014-12-31T01:40:43.000Z"
+                              itemprop="datePublished">Dec 31 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>Basically Babylon.js comes with a plugin already defined for cannon.js</p>
-<h1 id="Define_your_plugin">Define your plugin</h1>
-<p>You can create your own plugin by creating a class that provides the following interface:</p>
+            <p>最基础的插件定义是在cannon.js中。</p>
+<h1 id="自定义插件">自定义插件</h1>
+<p>你可以通过创建一个支持如下接口的类来实现自己的插件<br>function initialize(): 初始化引擎</p>
+<p>function setGravity(gravity): babylonjs使用的用来设置当前的重力。</p>
+<p>function runOneStep(data): babylonjs将会在每一帧都调用这个函数，在当前和之前的帧之间有一个等待时间，可以根据你的物理模拟效果来相对的更新网格的位置。</p>
+<p>function registerMesh(mesh,impostor,options):babylonjs当用户希望为一个网格创建一个物理的效果时可以调用的函数。有三个参数。其中 options有三种值：mass、friction、restitution而impostor的值可能是</p>
 <ul>
-<li><figure class="highlight function"><figcaption><span>initialize()```: Must initialize your engine</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-</li>
+<li>NoImpostor = 0;</li>
+<li>SphereImpostor = 1;</li>
+<li>BoxImpostor = 2;</li>
+<li>PlaneImpostor = 3;</li>
+<li>CompoundImpostor = 4;</li>
+<li>MeshImpostor = 4;</li>
 </ul>
-<p>function setGravity(gravity)</p>
-<figure class="highlight :"><figcaption><span>Used by Babylon.js to set the current gravity</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+<p>函数 registerMeshesAsCompound(parts,options):babylonjs可以对混合对象调用，parts参数包含了一组{mesh,impostor}，而options参数和以上的方法一样。</p>
+<p>函数 unregisterMesh(mesh): 用来去掉对网格施用的模拟情况。</p>
+<p>函数 applyImpulse(mesh,force,contactPoint):对所给的网格应用一个强制的关联的点。</p>
+<p>函数 createLink(mesh1,mesh2,pivot1,pivot2):在两个网格之间创建连接。</p>
+<p>函数 dispose(): 释放所用分配的资源</p>
+<p>函数 isSupported：当每一个资源被调用之前都会被你的插件调用的实例，你需要检查必要的js文件是否被包含在实例中。</p>
+<p>更多信息 <a href="https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Physics/Plugins/babylon.cannonJSPlugin.js" target="_blank" rel="external">https://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Physics/Plugins/babylon.cannonJSPlugin.js</a></p>
+<h1 id="使用插件">使用插件</h1>
+<p>当你创建了一个物理的模拟，你可以增加一个新的参数 enablePhysics 函数去包含想要使用的插件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.enablePhysics(<span class="literal">null</span>, <span class="keyword">new</span> BABYLON.CannonJSPlugin());</div></pre></td></tr></table></figure>
 
-<p>function runOneStep(delta)</p>
-<figure class="highlight :"><figcaption><span>babylon.js will call this function for each frame, giving you the delta time between current and previous frame. This is the responsibility of the plugin to update meshes' position and rotation accordingly to the physics simulation.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>function registerMesh(mesh, impostor, options)</p>
-<figure class="highlight :"><figcaption><span>babylon.js will call this function when the user wants to create a physics impostor for a mesh. ```options``` parameter contains 3 values: ```mass```, ```friction``` and ```restitution```. Possible values for ```impostor``` are the following:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">*</span> NoImpostor = 0;</div><div class="line">  <span class="keyword">*</span> SphereImpostor = 1;</div><div class="line">  <span class="keyword">*</span> BoxImpostor = 2;</div><div class="line">  <span class="keyword">*</span> PlaneImpostor = 3;</div><div class="line">  <span class="keyword">*</span> CompoundImpostor = 4;</div><div class="line">  <span class="keyword">*</span> MeshImpostor = 4;</div><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>function registerMeshesAsCompound(parts, options)</p>
-<figure class="highlight :"><figcaption><span>Babylon.js will call this function for compound objects. ```parts``` parameter contains an array of ```{mesh, impostor}```. ```options``` parameter is the same as above.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>function unregisterMesh(mesh)</p>
-<figure class="highlight :"><figcaption><span>Called to remove a mesh from the simulation</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>function applyImpulse(mesh, force, contactPoint)</p>
-<figure class="highlight :"><figcaption><span>Apply a specific force to a specific contact point for a given mesh</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>function createLink(mesh1, mesh2, pivot1, pivot2)</p>
-<figure class="highlight :"><figcaption><span>Create a joint between two meshes</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>function dispose()</p>
-<figure class="highlight :"><figcaption><span>Free all allocated resources</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p>function isSupported()</p>
-<figure class="highlight :"><figcaption><span>This function will be called by Babylon.js before everything else to ensure that your plugin can be instanciated (You have to check if required .js files are included for instance)</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">For implementation details, you can refer <span class="built_in">to</span> cannon.js plugin: <span class="keyword">https</span>://github.com/BabylonJS/Babylon.js/blob/master/Babylon/Physics/Plugins/babylon.cannonJSPlugin.js</div><div class="line"></div><div class="line"><span class="comment"># Using your plugin</span></div><div class="line">When you launch <span class="operator">the</span> physics simulation, you can <span class="built_in">add</span> <span class="operator">a</span> <span class="built_in">new</span> parameter <span class="built_in">to</span></div></pre></td></tr></table></figure>
-
-<p>enablePhysics</p>
-<figure class="highlight function"><figcaption><span>to indicate which plugin to use:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-
-<p>javascript<br>scene.enablePhysics(null, new BABYLON.CannonJSPlugin());<br>```</p>
-<p>The first parameter can be used to define gravity (which is (0, -9.82, 0) by default).</p>
+<p>第一个参数可以被用来定义的重力向量默认情况是 (0,-9.82,0)</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/29/Advanced Texturing/">← 前一篇</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/29/14-Height-map/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/29/Naming-convention/">后一篇 →</a>
             
         </nav>
         <br/>

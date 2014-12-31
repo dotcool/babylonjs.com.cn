@@ -46,6 +46,14 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/29/Naming-convention/">命名</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
                                 </li>
                                 
@@ -83,10 +91,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/Naming-convention/">建业u命名</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -175,10 +179,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,10 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+                
+                    <a  data-pjax href="/2014/12/29/Naming-convention/">命名</a>
+                
                     <a  data-pjax href="/2014/12/29/Working-with-Blender/">如何使用混合器</a>
                 
                     <a  data-pjax href="/2014/12/29/Using-the-VirtualJoysticksCamera-with-Babylon.js/">如何使用虚拟操纵杆摄像机</a>
@@ -310,8 +314,6 @@
                     <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
                 
                     <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                
-                    <a  data-pjax href="/2014/12/29/Naming-convention/">建业u命名</a>
                 
                     <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
                 
@@ -356,8 +358,6 @@
                     <a  data-pjax href="/2014/12/29/Babylon.js-file-format/">描述场景文件的格式</a>
                 
                     <a  data-pjax href="/2014/12/29/Advanced Texturing/">纹理深入阅读</a>
-                
-                    <a  data-pjax href="/2014/12/29/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
                 
                     <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
                 
@@ -425,6 +425,66 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/31/Adding-your-own-physics-engine-plugin-to-Babylon.js/">添加你个人的物理引擎插件到babylonjs中</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-31T01:40:43.000Z"
+                      itemprop="datePublished">Dec 31 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                最基础的插件定义是在cannon.js中。
+自定义插件
+你可以通过创建一个支持如下接口的类来实现自己的插件function initialize(): 初始化引擎
+function setGravity(gravity): babylonjs使用的用来设置当前的重力。
+function runOneStep(data): babylonjs将会在每一帧都调用这个函数，在当前和之前的帧之间有一个等待时间，可以根据你的物理模拟效果来相对的更
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/Naming-convention/">命名</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T14:10:09.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                If you want to contribute to babylon.js (What an excellent idea!), you should attempt to align your code with the following naming conventions:
+
+Private variables are named starting with _ : 
+
+1- Camel casing is used for
+                
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -658,61 +718,6 @@ Vertex color and vertex alpha from 3ds max
 ProceduralTexture
 WebAudio support 
 SceneOpti
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-29T09:31:35.000Z"
-                      itemprop="datePublished">Dec 29 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                Why is it better than “ctrl + prt scr” screenshot?
-With a ctrl + print screen you can’t make screenshot with higher resolution than your screen resolution. With BabylonJS screenshot feature you can, there is no problem w
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-29T09:31:06.000Z"
-                      itemprop="datePublished">Dec 29 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                Octrees are a really powerful data structure that can quickly select entities based on space coordinates.More on wikipedia: http://en.wikipedia.org/wiki/Octree
-Babylon.js supports octrees through a class named 
-Dedicated
                 
             </p>
             
