@@ -46,6 +46,14 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/02/Babylon.js-Primer/">babylonjs知识介绍</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/31/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/31/Babylon.js-file-format/">描述场景文件的格式</a>
                                 </li>
                                 
@@ -99,10 +107,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -175,10 +179,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,10 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2015/01/02/Babylon.js-Primer/">babylonjs知识介绍</a>
+                
+                    <a  data-pjax href="/2014/12/31/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                
                     <a  data-pjax href="/2014/12/31/Babylon.js-file-format/">描述场景文件的格式</a>
                 
                     <a  data-pjax href="/2014/12/31/Advanced Texturing/">纹理深入阅读</a>
@@ -318,8 +322,6 @@
                     <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
                 
                     <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                
-                    <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
                 
                     <a  data-pjax href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
                 
@@ -356,8 +358,6 @@
                     <a  data-pjax href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
                 
                     <a  data-pjax href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
-                
-                    <a  data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
                 
                     <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
                 
@@ -501,34 +501,6 @@ You can then browse for a .babylon file and the page will return a zip file cont
             <p>
                 
                 Starting with the 1.4 release of Babylon.JS, you can now very easily indicate that you want to cache the resources associated with your scene/game inside the local IndexedDB of the browser. It can enhance the gamer exper
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-12-29T09:23:24.000Z"
-                      itemprop="datePublished">Dec 29 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                Welcome to the…
-Babylon.js WebGL Game Creation System!
-Hi! Welcome to The Babylon.js Primer, an introduction to some of the things you will need to know in order to get the most out of this useful Javascript-based WebGL 
                 
             </p>
             
@@ -725,6 +697,39 @@ Babylon引擎通过使用一个有用的函数来实现这些功能。
 
  相交网格
 
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/29/09 Cameras and mesh collisions/">摄像机和材质纹理</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-29T06:34:55.000Z"
+                      itemprop="datePublished">Dec 29 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                你是否玩过第一视角游戏呢？在这个例子中沃恩将去模拟一个类似的摄像机动作：这个摄像机是放置在地板上，和地面以及其他在场景中的组件是有碰撞。
+
+最终的效果
+如何开始
+要实现这个动作，我们需要3个简单的步骤：
+1 - 定义和应用重力
+首先是定义我们的重力响铃，定义G的方向。在经典物理世界比如地球这个向下的重力方向是y轴，但是我们也可以轻松的改变他：
+1scene.gravity = new BABYLON.Vector3(0, -9.81, 
                 
             </p>
             

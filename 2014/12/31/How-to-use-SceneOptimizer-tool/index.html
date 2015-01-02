@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>位移，旋转，缩放 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <title>如何使用场景优化 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
   <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
   <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
   <meta name="HandheldFriendly" content="True" />
@@ -401,7 +401,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">位移，旋转，缩放</a></li>
+                        <li id="navbar-title"><a href="#">如何使用场景优化</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -430,66 +430,83 @@
                   <div class="tag-tile">
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">位移，旋转，缩放</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">如何使用场景优化</h1>
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T08:54:22.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
+                        <time datetime="2014-12-31T04:46:18.000Z"
+                              itemprop="datePublished">Dec 31 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <h2 id="位移，旋转，缩放">位移，旋转，缩放</h2>
-<p>在这个实例里面，我们将要学会如何使用放置、旋转和缩放我们例子里面的所以元素对象。我们将设置一个父类以及学习父类如何影响着位移旋转和缩放。<br><img src="http://www.babylonjs.com/tutorials/03 - Rotation and scaling/03.png" alt="Elements"></p>
-<p><a href="http://www.babylonjs.com/playground/?3" target="_blank" rel="external"><strong>Playground Demo Scene 3 - Positioned, Scaled, and Rotated Boxes</strong></a></p>
-<h2 id="我应该如何做？">我应该如何做？</h2>
-<p>通常，我们将会在createScene中创建一个基本元素的场景</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createScene</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line">    <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>), scene);</div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera"</span>, <span class="number">0</span>, <span class="number">0.8</span>, <span class="number">100</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), scene);</div></pre></td></tr></table></figure>
+            <p><strong>From version 2.0 of babylonJS</strong></p>
+<p>Rendering a scene on a browser is a great experience because you can reach a lot of different users and hardware. But the main associated caveat is that you can encounter very low end devices.</p>
+<p>The SceneOptimizer tool is designed to help you reach a specific framerate by gracefully degrading rendering quality at runtime.</p>
+<h1 id="Basic_usage">Basic usage</h1>
+<p>The main function you have to know is </p>
+<figure class="highlight BABYLON.SceneOptimizer.OptimizeAsync()```."><figcaption><span>You can call this function when you want to optimize your scene. The simplest call you can do is the following:</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
 
-<p>然后创建一些盒子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Creation of 3 boxes</span></div><div class="line">    <span class="keyword">var</span> box1 = BABYLON.Mesh.CreateBox(<span class="string">"Box1"</span>, <span class="number">6.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> box2 = BABYLON.Mesh.CreateBox(<span class="string">"Box2"</span>, <span class="number">6.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> box3 = BABYLON.Mesh.CreateBox(<span class="string">"Box3"</span>, <span class="number">6.0</span>, scene);</div><div class="line">	[…]</div></pre></td></tr></table></figure>
+<p>javascript<br>BABYLON.SceneOptimizer.OptimizeAsync(scene);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You have <span class="keyword">to</span> provide at least <span class="keyword">a</span> scene. That <span class="keyword">previous</span> code <span class="built_in">line</span> <span class="keyword">is</span> actually equivalent <span class="keyword">to</span> thi<span class="variable">s:</span></div></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>放置</strong></li>
-</ul>
-<p>你能轻松的在场景里面放置盒子在你任何想要的地方，比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Positioning the boxes</span></div><div class="line">box1.position = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">20</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">box2.position.x = -<span class="number">10</span>; <span class="comment">// or box2.position = new BABYLON.Vector3(-10,0,0);</span></div><div class="line">box3.position.x = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+<p>javascript<br>BABYLON.SceneOptimizer.OptimizeAsync(scene, BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed(),<br>function() {<br>   // On success<br>}, function() {<br>   // FPS target not reached<br>});</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">As you can see, you can provide success/fail callbacks and a <span class="operator"><span class="keyword">set</span> <span class="keyword">of</span> options.</span></div><div class="line">A <span class="keyword">set</span> <span class="keyword">of</span> options contains a list <span class="keyword">of</span> optimization <span class="keyword">to</span> apply <span class="keyword">in</span> a specific <span class="keyword">order</span>. <span class="keyword">As</span> soon <span class="keyword">as</span> the target FPS <span class="keyword">is</span> reached, the SceneOptimizer stops. There <span class="keyword">are</span> different layers (<span class="keyword">or</span> passes) that <span class="keyword">are</span> applied one <span class="keyword">after</span> another. The SceneOptimizer pauses <span class="keyword">between</span> <span class="keyword">each</span> layer <span class="keyword">to</span> ensure a stable FPS, <span class="keyword">for</span> measuring.</div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">default</span>, there <span class="keyword">are</span> <span class="number">3</span> sets available:</div></pre></td></tr></table></figure>
 
-<p>现在我们让这些盒子围绕一个轴线转动一定角度</p>
-<ul>
-<li><strong>Rotation</strong> (angles are in radians)</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Rotate the box around the x axis</span></div><div class="line">box1.rotation.x = <span class="built_in">Math</span>.PI/<span class="number">4</span>; <span class="comment">// or box1.rotation = new BABYLON.Vector3(Math.PI/4,0,0);</span></div><div class="line"></div><div class="line"><span class="comment">//Rotate the box around the y axis</span></div><div class="line">box2.rotation.y = <span class="built_in">Math</span>.PI/<span class="number">6</span>;</div></pre></td></tr></table></figure>
+<p>javascript<br>BABYLON.SceneOptimizerOptions.LowDegradationAllowed()<br>BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed()<br>BABYLON.SceneOptimizerOptions.HighDegradationAllowed()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">All these sets <span class="constant">return</span> <span class="operator">a</span></div></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>Scaling</strong></li>
-</ul>
-<p>然后我们也能将盒子缩放</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Scaling of 2x on the x axis</span></div><div class="line">    box3.scaling.x = <span class="number">2</span>; <span class="comment">// or box3.scaling = new BABYLON.Vector3(2,1,1);</span></div></pre></td></tr></table></figure>
+<p>BABYLON.SceneOptimizerOptions</p>
+<figure class="highlight object"><figcaption><span>configured with progressive degradations.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Here are <span class="operator">the</span> properties available <span class="command"><span class="keyword">on</span> <span class="title">a</span></span></div></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>Parenting</strong></li>
-</ul>
-<p>babylonjs的另外一个特性就是可以绑定对象，在两个纹理对象之间建立相对的父子关系，父类的改变将会被应用到子类中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Positioning box3 relative to box1</span></div><div class="line">    box3.parent = box1;</div><div class="line">    box3.position.z = -<span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>BABYLON.SceneOptimizerOptions</p>
+<figure class="highlight object:"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* targetFrameRate: <span class="operator">a</span> <span class="built_in">number</span> defining <span class="operator">the</span> FPS you want <span class="built_in">to</span> achieve (<span class="number">60</span> <span class="keyword">by</span> default)</div><div class="line">* optimizations: <span class="operator">an</span> array <span class="operator">of</span></div></pre></td></tr></table></figure>
 
-<h2 id="注意">注意</h2>
-<p>父子的层级关系是在每一帧都会被执行的，所以所有的位移、旋转缩放都是作用于父类应用到子类、子类变化作用于父类的。</p>
-<p>所有的变换都是发生在父子关系声明之后。 </p>
-<p>简单的一个约定就是，在你没有声明一个父类关系自谦不要去旋转或者移动一个子类，同时记住额外的旋转等效果将会被应用到对应的孩子节点。</p>
-<h2 id="接下来">接下来</h2>
-<p>现在你已经指导如何在一个场景里面去创建和移动一些物体，但是你的所有物体都是一个皮肤，接下来我们将会讲一讲材质的问题。</p>
+<p>BABYLON.SceneOptimization</p>
+<figure class="highlight objects."><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">* trackerDuration: <span class="built_in">time</span> <span class="operator">in</span> <span class="built_in">milliseconds</span> between passes (<span class="number">2000</span> <span class="keyword">by</span> default)</div><div class="line"></div><div class="line">SceneOptimizer comes <span class="operator">with</span> some out-<span class="operator">of</span>-<span class="operator">the</span>-box optimizations:</div><div class="line">*</div></pre></td></tr></table></figure>
+
+<p>BABYLON.TextureOptimization(priority, maximumSize)</p>
+<figure class="highlight :"><figcaption><span>This optimization tries to reduce the size of render textures.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.HardwareScalingOptimization(priority, maximumScale)</p>
+<figure class="highlight :"><figcaption><span>This optimization increments the value of hardware scaling. This is a really aggressive optimization.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.ShadowsOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables shadows.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.PostProcessesOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables post-processes.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.LensFlaresOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables lens flares.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.ParticlesOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables particles.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">*</span></div></pre></td></tr></table></figure>
+
+<p>BABYLON.RenderTargetsOptimization(priority)</p>
+<figure class="highlight :"><figcaption><span>This optimization disables render targets.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Based on these optimizations, the basic sets are configured like this:</div><div class="line"><span class="keyword">*</span> BABYLON.SceneOptimizerOptions.LowDegradationAllowed():</div><div class="line"> <span class="keyword">*</span> Level 0: ShadowsOptimization and LensFlaresOptimization</div><div class="line"> <span class="keyword">*</span> Level 1: PostProcessesOptimization and ParticlesOptimization</div><div class="line"> <span class="keyword">*</span> Level 2: TextureOptimization(2, 1024)</div><div class="line"><span class="keyword">*</span> BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed():</div><div class="line"> <span class="keyword">*</span> Level 0: ShadowsOptimization and LensFlaresOptimization</div><div class="line"> <span class="keyword">*</span> Level 1: PostProcessesOptimization and ParticlesOptimization</div><div class="line"> <span class="keyword">*</span> Level 2: TextureOptimization(2, 512) </div><div class="line"> <span class="keyword">*</span> Level 3: RenderTargetsOptimization </div><div class="line"> <span class="keyword">*</span> Level 4: HardwareScalingOptimization(4, 2)</div><div class="line"><span class="keyword">*</span> BABYLON.SceneOptimizerOptions.HighDegradationAllowed():</div><div class="line"> <span class="keyword">*</span> Level 0: ShadowsOptimization and LensFlaresOptimization</div><div class="line"> <span class="keyword">*</span> Level 1: PostProcessesOptimization and ParticlesOptimization</div><div class="line"> <span class="keyword">*</span> Level 2: TextureOptimization(2, 256) </div><div class="line"> <span class="keyword">*</span> Level 3: RenderTargetsOptimization </div><div class="line"> <span class="keyword">*</span> Level 4: HardwareScalingOptimization(4, 4)</div><div class="line"></div><div class="line"><span class="comment"># Advanced usage</span></div><div class="line">You can create your own set of options with the following code:</div></pre></td></tr></table></figure>
+
+<p>javascript<br>var result = new BABYLON.SceneOptimizerOptions(60, 2000);</p>
+<p>var priority = 0;<br>result.optimizations.push(new BABYLON.ShadowsOptimization(priority));<br>result.optimizations.push(new BABYLON.LensFlaresOptimization(priority));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.PostProcessesOptimization(priority));<br>result.optimizations.push(new BABYLON.ParticlesOptimization(priority));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.TextureOptimization(priority, 256));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.RenderTargetsOptimization(priority));</p>
+<p>// Next priority<br>priority++;<br>result.optimizations.push(new BABYLON.HardwareScalingOptimization(priority, 4));</p>
+<p>return result;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You can also <span class="operator"><span class="keyword">create</span> your own optimization <span class="keyword">by</span> creating your own object:</span></div></pre></td></tr></table></figure>
+
+<p>javascript<br>function mySceneOptimization(priority) {<br>  if (typeof priority === “undefined”) {<br>     priority = 0;<br>  }</p>
+<p>  this.priority = priority;<br>  this.apply = function (scene) {<br>     // Work on scene…<br>  };<br>}<br>```</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/27/04-Materials/">← 前一篇</a>
+            <a data-pjax class="newer-posts" href="/2015/01/02/Babylon.js-Primer/">← 前一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/27/02-Basic-elements/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/31/Babylon.js-file-format/">后一篇 →</a>
             
         </nav>
         <br/>

@@ -46,6 +46,14 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/02/Babylon.js-Primer/">babylonjs知识介绍</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/31/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/31/Babylon.js-file-format/">描述场景文件的格式</a>
                                 </li>
                                 
@@ -99,10 +107,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -175,10 +179,6 @@
                                 
                                 <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,6 +291,10 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2015/01/02/Babylon.js-Primer/">babylonjs知识介绍</a>
+                
+                    <a  data-pjax href="/2014/12/31/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
+                
                     <a  data-pjax href="/2014/12/31/Babylon.js-file-format/">描述场景文件的格式</a>
                 
                     <a  data-pjax href="/2014/12/31/Advanced Texturing/">纹理深入阅读</a>
@@ -318,8 +322,6 @@
                     <a  data-pjax href="/2014/12/29/Render-scene-on-a-PNG-(Screenshot)/">通过png图片来渲染场景</a>
                 
                     <a  data-pjax href="/2014/12/29/Optimizing-performances-with-octrees/">通过octree来优化表现</a>
-                
-                    <a  data-pjax href="/2014/12/29/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
                 
                     <a  data-pjax href="/2014/12/29/How-to-use-PostProcessRenderPipeline/">如何使用后期处理渲染管道</a>
                 
@@ -356,8 +358,6 @@
                     <a  data-pjax href="/2014/12/29/Converting-a-.babylon-file-to-.incremental.babylon-file/">格式转换</a>
                 
                     <a  data-pjax href="/2014/12/29/Caching-the-resources-in-IndexedDB/">在IndexdDB中缓存资源</a>
-                
-                    <a  data-pjax href="/2014/12/29/Babylon.js-Primer/">babylonjs知识介绍</a>
                 
                     <a  data-pjax href="/2014/12/29/14-Height-map/">高度地图</a>
                 
@@ -434,24 +434,23 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-29T09:23:24.000Z"
-                              itemprop="datePublished">Dec 29 2014</time>
+                        <time datetime="2015-01-02T09:20:06.000Z"
+                              itemprop="datePublished">Jan 2 2015</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <h3 id="Welcome_to_the…">Welcome to the…</h3>
-<h2 id="Babylon-js_WebGL_Game_Creation_System!">Babylon.js WebGL Game Creation System!</h2>
-<p>Hi! Welcome to The Babylon.js Primer, an introduction to some of the things you will need to know in order to get the most out of this useful Javascript-based WebGL framework.<br>What is a framework, you ask?  You can think of a framework as scaffolding for a building, allowing you to build around it without worrying about the foundation. It makes a complicated system, (WebGL,) much easier to use.</p>
-<p>We hope to teach you a large amount of information in a very quick manner.  Often there are more ways than one to accomplish a task here.  I will let you discover those other ways by yourself.  For now we will teach you the quickest and easiest ways, determined by studying the traits of other new users of Babylon.js.</p>
-<h2 id="The_Browser">The Browser</h2>
-<p>Simply put, you will need to use a browser that supports WebGL and has Javascript activated.  Internet Explorer 11+, Firefox 4+, Google Chrome 9+, Opera 12+, etc.  WebGL is also supported by many browsers for mobile devices.  I will let you investigate the details of mobile WebGL, but know that Babylon.js has many features designed with mobile WebGL in mind.  Additionally, Babylon.js has complete support for full-immersion stereoscopic viewing and virtual reality head gear!</p>
-<h2 id="Useful_Links">Useful Links</h2>
+            <h2 id="babylonjs是一个WEBGL的构建系统">babylonjs是一个WEBGL的构建系统</h2>
+<p>欢迎来到babylonjs的手册，这里是一些你需要知道的事，可以让你获得很多基于javascript的WEBGL框架。什么是框架呢，你可以想象成一幢建筑的低级，允许你可以不用担心一些基础的东西，虽然很复杂但是却容易使用。</p>
+<p>我们想要让你可以在短时间内学习很多东西，我们将要让你去发现他们。现在我们只是教会你最快捷和最简单的方法去学习babylonjs。</p>
+<h2 id="浏览器要求">浏览器要求</h2>
+<p>简单来说你需要支持webgl的并且是让javascript处于激活状态的。比如IE 11+，Firefox 4+，Chrome 9+，Opera 12+等，WebGL也被很多移动设备支持，我们将会详细的讲述移动端的WebGL，因为babylon针对移动端GL提供了很多特性，而且提供了虚拟现实设备。</p>
+<h2 id="有用链接">有用链接</h2>
 <table>
 <thead>
 <tr>
-<th>Clickable Link</th>
-<th>What you will find</th>
+<th>点击链接</th>
+<th>你将会找到</th>
 </tr>
 </thead>
 <tbody>
@@ -481,110 +480,101 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Scene_File_Layout">Scene File Layout</h2>
-<p>Although we have another tutorial that covers basic scenes, I would like you to now EXAMINE a basic Babylon.js scene file.  So here we go:</p>
+<h2 id="场景文件布局">场景文件布局</h2>
+<p>虽然我们有另外一个例子覆盖了基础的场景，我会讲解一个基础的babylon的场景文件。比如</p>
 <p><img src="http://urbanproductions.com/wingy/babylon/misc/codepic04.jpg" alt=""></p>
-<p>That is a BIG picture, isn’t it?  This is a complete Babylon.js scene, using the ‘single HTML file’ method.  This  is not the only (or best) method of setting up a scene, but it is fast and easy.  I have colored important sections of ‘the big picture’ above.<br>Now we will now examine each section individually.</p>
-<h3 id="The_External_Includes_-_Red_Section">The External Includes - Red Section</h3>
-<p>‘Includes’ is not necessarily the best term to describe the red section of the big picture, but I will be using that term often in this tutorial.  Three external Javascript files are being included into this scene.  </p>
-<p>The first external include is hand.minified-1.2.js (often simply called hand.js) - a small Javascript framework that assists the Babylon.js cameras.  </p>
-<p>The next is cannon.js - an optional physics ‘engine’ that allows WebGL shapes (meshes) to act like real life objects.  </p>
-<p>After that comes oimo.js - a different physics ‘engine’ that performs a similar function to cannon.js, but is generally faster although it lacks some of the more advanced features present in cannon.js.</p>
-<p>Most important, though, is the Babylon.js framework, our pride and joy.  </p>
-<p>Each of these includes are JavaSCRIPT files, and so they are included-in by using HTML &lt;SCRIPT&gt; elements/tags.  The shown ‘src’ (source location) of these files is at the Babylon.js web site folders, but later I will tell you how to put these files on your home hard drive if you wish, and include them from there.  They load-in faster when they are ‘local’, but you will need to change the ‘src’ URL once you have saved them locally.  I will show you how to do that soon.</p>
-<h3 id="The_CSS_Styles_-_Blue_Section">The CSS Styles - Blue Section</h3>
-<p> Notice the blue section of the big picture.  That is the CSS (Cascading Style Sheets) styles used to present the scene’s web page,  and adjust its WebGL canvas to be centered and filled-out nicely in your browser.  </p>
-<p>Someday, you may want to ‘externalize’ these styles by placing them in a separate file, possibly called styles.css.  Then you could remove the blue section from this HTML file, and use a HTML LINK element/tag to include-in that separate CSS style document.  I will not be telling you how to do that, but there are plenty of documents on the web that will show you how.  It is very easy.</p>
-<h3 id="The_Internal_Include_-_Green_Section">The Internal Include - Green Section</h3>
-<p>Here is the fifth HTML SCRIPT element/tag in the big picture scene file.  We used 4 SCRIPT elements/tags to do the external includes.  This one is an INTERNAL include.  Notice that it has no ‘src’ URL.  That is because it is a section of Javascript code that YOU have written directly into this document.  Yes, YOU.  Now you are a Javascript programmer!</p>
-<p>You could ‘externalize’ the entire green section, and possibly place it into a file called… ‘myJavascript.js’… maybe in a folder called ‘jsfolder’.  Then you could remove the green section, and add one more EXTERNAL INCLUDE script element/tag that might look like this:</p>
+<p>这是一个很大的图片，这就是babylon的一个场景使用了单一html文件的方法，这个不是唯一的也不是最好的方法去构建一个场景，但是确实很快速而简单。我已经用颜色标注出重要的部分，现在我们来对单个区域进行测试。</p>
+<h3 id="扩展引入_红色部分">扩展引入 红色部分</h3>
+<p>引入不是最好的方法去定义大图片的红色区域，但是我经常在场景中使用，第三方的javascript文件将会被引入这个场景。</p>
+<p>第一个扩展引入是 hand.minified-1.2.js通常称为hand.js-一个小型的babylon摄像机库框架</p>
+<p>接下来是cannon.js - 一个重要的物理引擎可以让WebGL调整物体和真实生活差不多。</p>
+<p>然后是 oimo.js-一个和cannon.js相似的物理引擎，但是确实很多高级的表现特性但是更快。</p>
+<p>最重要的是babylon.js框架</p>
+<p>所有的这些javascript文件都会被html语言中的script元素包裹。这些src显示了他们在babylon网页目录中的位置，但是之后我将会告诉你如何放置这些文件在你的硬件上并包括他们。当他们在本地时会被更快的加载，但是你需要修改src的url。</p>
+<h3 id="样式_蓝色区域">样式 蓝色区域</h3>
+<p>记住大图的蓝色区域，这些css文件可以用来表现场景的web页面，为了让WebGL的画布在中间并合理的充满你的浏览器。</p>
+<p>有一天你可能修想定义这些单独的样式文件而不是在一个文件style.css中，然后你可以移除蓝色的区域而是去使用html语言的link元素去包含他们。方法很简单。</p>
+<h3 id="内部包含_绿色区域">内部包含 绿色区域</h3>
+<p>这里是大的场景二年间的第四个html的script的元素，我们使用script元素来当做额外包含。而这里是一个内部包含。现在他里面没有src的url，就是因为javascript的代码指向了你的文档。记住你是一个script的工程师。</p>
+<p>我们可以把绿色的区域放置在其他的文件中，比如‘myJavascript.js’然后放置在某个文件夹中。然后你可以移除这个绿色的区域而去增加一个额外的包含标签，例如</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"./jsfolder/myJavascript.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div></pre></td></tr></table></figure>
 
-<p>You need not concern yourself with that, at this point.  Externalizing your Javascript is often done when you have written LOTS of Javascript code.  Externalizing your code into separate files helps your project be organized, but it is not necessary this early in your webGL adventures.  </p>
-<p>The JS code you see inside the green section… will be talked about soon.  Mainly, I would like you to study the big picture, and see how the single HTML file method of creating Babylon.js scenes… is structured.  I want you to try to visualize and somewhat memorize… this scene file’s ‘layout’.</p>
-<h3 id="The_createScene()_Function_-_Purple_Section">The createScene() Function - Purple Section</h3>
-<p>The purple section of the big picture… is the createScene() ‘function’… a Javascript ‘function’.  It is the most important section of a ‘single HTML file’ Babylon.js scene.  You are not required to use a createScene() function in your Javascript code, but please do… in these early days of your webGL learning.  I have some magic to show you… which is available if you keep most of your scene code… inside a function called createScene().  (Like the one shown in the big picture.)</p>
-<p>Inside the createScene() function (the purple section)… we will be doing the actual Babylon.js commands and directives that cause beautiful webGL to happen.  The rest of the big picture sections… are simply helpers and preparations… for the fantastic purple section… the createScene() function.  Remember its name, because I will be mentioning it often in many Playpen Series tutorials.  It will become your best friend.  This I can promise.</p>
-<h2 id="A_Visit_to_The_Playground">A Visit to The Playground</h2>
-<p>We have worked hard and learned much, so we deserve some playground time, at the Babylon.js Playground web site.  Here is a scene that I once created and then saved… at the playground:</p>
+<p>在这里你不用担心，当你使用很多代码是你需要把这些代码放置在外部的js文件中，然后在将扩展引入到工程中，这个不是webGL的特性了。</p>
+<p>在js代码中你可以在绿色的区域，学习这个大的图片，而且学会如何在单个html文件中去创建babylonjs的场景。我将会让你去尝试其他的方法，这个场景文件的布局。</p>
+<h3 id="createScene()_函数_紫色的区域">createScene() 函数 紫色的区域</h3>
+<p>在这个图片的紫色区域是createScene函数是一个javascript函数。在这个单一文件的babylon场景中最重要的函数。你需要使用这个函数，在早些的课程中我已经向你展示了如何保证你代码的最大可用性，在这个函数中是createScene()。</p>
+<p>在函数createScene()紫色区域中，我们将会使用实际的babylonjs的命令和指令去产生漂亮的webGL功能。就是图片的剩下区域，记住他的名字因为我们已经在很多实例中提到。</p>
+<h2 id="运行环境">运行环境</h2>
+<p>我们努力的学习并在babylon的后台中创建了运行环境。这个场景我创建并保存在这里</p>
 <h2 id="BabylonJS_Playground"><a href="http://www.babylonjs.com/playground/#QKQHS" target="_blank" rel="external">BabylonJS Playground</a></h2>
-<p>You might want to open that playground scene in a new window or new tab, so you can switch back and forth between here and there.  </p>
-<p>See the ‘createScene’ function in the left-side code editing window?  Does it look familiar?  It is the very same code from the purple section of the big picture (but with a couple of word-wrapped lines).  Now you can see why the createScene function is an important section.  It is somewhat portable.  You can copy createScene functions to/from the playground editor, and to/from your home scene files.</p>
-<p>Let’s pretend that you have been working on a scene file at home, and after many tries, you just cannot get it to work properly.  You could copy your home createScene function, then visit the playground, press its <strong>CLEAR</strong> button to empty its editor window, and then paste YOUR createScene function into the editor. Press the playground’s <strong>RUN</strong> button and see if it works.  If it does not work, you can do some changes in the editor window, and hit <strong>RUN</strong> again… and again, and again.  Experiment with it there, and if you still cannot get it to work, you can press the <strong>SAVE</strong> button.  When you do that, the playground will give your scene a unique URL.  It will look something like this:</p>
+<p>你可能想打开背景的场景在新的窗口中，如此一来你可以在前台和后台切换</p>
+<p>同时左侧的createScene()函数你可以发现他是如此的熟悉。就是图片的紫色区域。现在你可以看见为什么createScene函数如此重要，他是一个接口，你可以从背景编辑器中拷贝这个createScene函数而且粘贴到你的场景文件中。</p>
+<p>我们假设你已经在首页创建了这样的文件依然不能很好的工作，你可以在点击clear按钮去清除运行环境的代码，然后粘贴你的创建场景函数到编辑器中，然后你点击run按钮，你就可以看代码是否运行正常了，通过这些工作调试成功之后，你再点击save按钮就可以保存代码了。</p>
 <h3 id="http://www-babylonjs-com/playground/#QKQHS"><a href="http://www.babylonjs.com/playground/#QKQHS" target="_blank" rel="external">http://www.babylonjs.com/playground/#QKQHS</a></h3>
-<p>Now you can bookmark that unique URL, and then visit the Babylon.js forum at:</p>
+<p>你可以把这个独立的url保存为书签，然后访问论坛：</p>
 <h3 id="http://www-html5gamedevs-com/forum/16-babylonjs/"><a href="http://www.html5gamedevs.com/forum/16-babylonjs/" target="_blank" rel="external">http://www.html5gamedevs.com/forum/16-babylonjs/</a></h3>
-<p>There, you can start a new topic, tell everyone the URL to your broken playground createScene function, and ask others if they will please visit your playground scene and help you get it working correctly.  </p>
-<p>This is called white-boarding.  It is an easy way to allow many people to work on your createScene function and help you figure out what is wrong.  See how the createScene function is ‘portable’?  You took it from your home, to the playground, then played with it there for awhile.  Then, if needed, you clicked the playground’s <strong>SAVE</strong> button, which gave it a URL.   Then you went to the forum and showed that URL to others, and asked for their help.  Handy, huh?  We think so.</p>
-<h2 id="More_About_The_Playground">More About The Playground</h2>
-<p>Once again let’s visit the saved playground scene that I sent you to, above.</p>
+<p>然后你可以开启一个新的主题，告诉每个人拟定饿函数，或者是询问他们去访问你的运行环境的场景是否正常工作。</p>
+<p>这个被称为白板。这个事最简单的方法允许很多人同时在你的createScene函数中，并帮你指出什么地方出现了错误。</p>
+<h2 id="更多关于运行环境">更多关于运行环境</h2>
+<p>你可以访问</p>
 <h3 id="http://www-babylonjs-com/playground/#QKQHS-1"><a href="http://www.babylonjs.com/playground/#QKQHS" target="_blank" rel="external">http://www.babylonjs.com/playground/#QKQHS</a></h3>
-<p>This time, I would like you to press the <strong>Get .zip</strong> button.  The playground will open a small panel allowing you to download this scene.  Save the zip file in some new empty folder on your home computer.  Now use an UNZIP utility program to unzip it.  Notice that there is one file in the folder, called index.html.  Please load that file into a text editor or programming editor.  Does it look like the big picture above?  Sure it does.  ANY scene from the Babylon.js playground, including its pre-installed demo scenes, can be brought to your home with the <strong>Get .zip</strong> button.  Most of them will look very similar to the big picture, above.</p>
-<p>There is a tutorial for the Babylon.js playground.  Just <a href="https://github.com/BabylonJS/Babylon.js/wiki/The-Playground" target="_blank" rel="external"><strong>click here</strong></a>.</p>
-<p>Wow, this is a lot of information, isn’t it?  You have learned what a scene file (the big picture) looks like, you have learned about its important createScene() function and how copy’n’paste portable it is.  You have seen a createScene() function in the Babylon.js playground, and you have been introduced to the playground’s RUN, SAVE, and Get .zip buttons.</p>
-<p>You are becoming a Babylon.js TOOLS expert.  When I say ‘tools’, I mean… you have learned the things that SUPPORT the createScene() function.  Are you ready to engage in learning some things about the code that is used in a createScene() function?  I knew you were.</p>
-<h2 id="Diving_into_createScene()">Diving into createScene()</h2>
-<p>I would like you to visit the Babylon.js Playground once again (open in a new window or new tab, if possible), but this time we will visit its base URL at:</p>
+<p>这次，我将会让你去点击Get.zip按钮。这个运行环境将会打开一个小的面板允许你去下载这个场景，保存为zip文件的饿形式到你的电脑。现在请使用unzip工具软件去解压。记住只有一个文件在文件夹中式index.html。请使用文本编辑器和编程工具打开他。他是否和之前的大图片很类似。保证他包含了之前包含的场景文件。</p>
+<p>这就是一个babylonjs的运行环境的例子<a href="https://github.com/BabylonJS/Babylon.js/wiki/The-Playground" target="_blank" rel="external"><strong>click here</strong></a>.</p>
+<p>哦，这么多信息，你已经在大图片中学习了什么是一个场景文件。我们已经学习了最重要函数createScene。现在我们拷贝并粘贴他们，你在createScene函数中可以介绍如何去运行运行环境中的run按钮，保存，获取zip文件的按钮</p>
+<p>你现在成为了babylonjs的一个导出工具了，我的意思是你需要学习那些创建createScene的函数，你需要学习在createScene中的功能函数。</p>
+<h2 id="深入createScene()函数">深入createScene()函数</h2>
+<p>当我去访问babylonjs的运行环境(开启一个新的窗口或者是标签页)，在如下的url：</p>
 <h3 id="http://www-babylonjs-com/playground"><a href="http://www.babylonjs.com/playground" target="_blank" rel="external">http://www.babylonjs.com/playground</a></h3>
-<p>Notice the button that is currently labeled <strong>Basic Scene</strong>.  (It is actually called the Scene Selector button, but it is currently LABELED ‘Basic Scene’)</p>
-<p>Click on it, please.  Notice that there is a wide variety of pre-installed scenes (createScene functions).  Feel free to select any of them.  Tour them, drag your pointer around on them, and even change the code in the editor and hit <strong>RUN</strong> again.  You cannot damage the pre-installed scenes, even if you hit <strong>SAVE</strong>.  You are safe in a playground of Babylon.js scenes, and you can see MANY createScene functions in action.  You can play with their settings and hit Run again - fun.  And again, you can use the <strong>Get .zip</strong> button on any of these playground demos, and take copies of them for your home collection.  Handy, yes?</p>
-<p>Now for the good stuff.  Every createScene() (every scene)… in Babylon.js… generally REQUIRES three things.</p>
-<p><strong>1. A Camera.</strong>  The three most commonly used TYPES of cameras… are ArcRotateCamera, FreeCamera, and TouchCamera.  There are many types of camera available in Babylon.js, but these three are the most common.  ANY number of cameras can be coded into a scene, but only one of those cameras… is the ‘active camera’.  We have a tutorial in our Playpen Series… dedicated to talking about cameras.</p>
-<p><strong>2. A Light.</strong>   There are 4 basic types of lights available in Babylon.js.  They are PointLight, SpotLight, DirectionalLight, and HemisphericLight.  ANY number of lights can be coded into a scene,  but only the first 4 lights in the scene’s lights list… will be used by the scene. </p>
-<p>To be honest, a light is not an absolute requirement.  If the mesh in a scene… all have a material.emissiveColor or material.emissiveTexture properly set, then they will each produce their own light.  They will be ‘self-illuminated’.  Careful, it is easy to get lost in a scene without a light.  Good advice would be to ALWAYS have one light (a HemisphericLight aimed to the sky, is a very handy wide-lighting tool).  You can adjust its .intensity value to set its brightness.  We have a tutorial in our Playpen Series… dedicated to talking about lights.</p>
-<p><strong>2. A Shape.</strong>  A shape is also called a <strong>mesh</strong>.  Every scene needs something to be viewed, right?  Cameras are invisible, and so are lights.  Every scene needs a mesh, or many.  There is no limit to the number of mesh in your scene.  A mesh can be one of the many shapes that are built-in to Babylon.js, or it can be a shape that you plotted yourself using Babylon’s VertexData system, or it can be a mesh that has been ‘imported’ into the scene… from a modeling package such as Blender or 3D Studio Max.</p>
-<p>You can learn many more things about Babylon.js scenes… in the other <a href="https://github.com/BabylonJS/Babylon.js/wiki" target="_blank" rel="external">tutorials and documentation</a>.  And don’t forget to look at the ‘createScene()’ functions of the playground’s pre-installed demo scenes.  The Babylon.js playground is a learning wonderland, and it is a whole lot of fun, too.</p>
-<h2 id="Babylon-js_Objects,_Properties,_Methods,_and_Values">Babylon.js Objects, Properties, Methods, and Values</h2>
-<p>You have seen some createScene functions, and you have noticed that much of the Javascript code used to make a Babylon.js scene… sets values on object properties.  To illustrate what I mean:</p>
+<p>现在注意Basic Scene这个按钮，</p>
+<p>请点击，主意这是一种大范围的创建预制的场景，你可以选择任意一个。选中他们并拖拽到你需要的位置，甚至是在编辑器中修改代码然后点击run按钮。你可以破坏预制的场景然后保存。你可以阿安全的使用babylon的场景，你可以看见在一个动作中邮很多createScene函数，你可以点击run按钮之后使用这些场景了，然后点击Get按钮获得代码集合，是不是很愉快呢？</p>
+<p>好的，那么每个createScene函数都包含了3个东西。<br>1.一个摄像机 这三个最常见的就是说和相机，轨道旋转摄像机，自由摄像机，触摸摄像机。还有很多摄像机is可供选择的，但是这三个是最常见的，在一个场景中可以防止很多数量的摄像机，但是只有一个摄像机是激活状态，我们已经在实例系列中有讲解了。<br>2.一个灯光 有4种类型的灯光，他们是点光源，聚光灯，平行光，半球灯，同样可以放置任意多灯光在场景中，但是只有场景灯光列表的前4个灯可以被使用。记住一个灯光不是必须的，但是好的建议是放置一个灯光，你可以调节光线的强度。<br>3.一个物体，物体也被称作网格，每个场景都需要一些可以看见的东西，摄像机和光线是不可见的，每一个场景都需要网格，没有树木的限制，一个网格可以被很多其他的网格构建，但是你需要使用向量系统来指出他们，也可以通过blender或者是3dmax来导入网格数据</p>
+<p>你可以学习更多的babylon的场景，在其他的实例中<a href="https://github.com/BabylonJS/Babylon.js/wiki" target="_blank" rel="external">tutorials and documentation</a>. 不要忘记查看示例来学习哦</p>
+<h2 id="Babylon-js对象属性方法和值">Babylon.js对象属性方法和值</h2>
+<p>你已经看到了很多createScene函数，你已经注意了很多javascript代码被用在了babylon的场景中，对对象的属性进行赋值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">object.property = value;</div></pre></td></tr></table></figure>
 
 
 <p>Let’s talk more about these four things… objects, properties, methods, and values.</p>
-<p><strong>Objects</strong></p>
-<p>First, do not think of objects as 3D shapes/mesh.  Those ARE objects, but here, we are talking about…  </p>
-<p><strong>Javascript Objects</strong></p>
-<p>Some of the common Javascript objects used in a Babylon.js scene… are named <strong>engine, scene, canvas, mesh, light, camera, Vector3, Color3, ActionManager, and Animation</strong>.  </p>
-<p>For example, each of the following code lines… creates a Javascript object (or more):</p>
+<p><strong>对象</strong></p>
+<p>首相不要考虑对象是3D物体或者是网格，我们只是这么说。</p>
+<p><strong>Javascript 对象</strong></p>
+<p>一个通常的javascript的对象被使用在babylon的场景中，他们被命名为engine，scene，canvas，mesh，light，camera，Vector3，color3等等</p>
+<p>比如，如下的每一行代码都是一个javascript对象：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Create a BABYLON.Engine type of object.</span></div><div class="line"><span class="keyword">var</span> engine = <span class="keyword">new</span> BABYLON.Engine(canvas, <span class="literal">true</span>);</div><div class="line"></div><div class="line"><span class="comment">// Creates a BABYLON.Scene type of object.</span></div><div class="line"><span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line"></div><div class="line"><span class="comment">// Creates a BABYLON.FreeCamera type of object</span></div><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.FreeCamera(<span class="string">"freecam"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>), scene); </div><div class="line"></div><div class="line"><span class="comment">// Creates a BABYLON.DirectionalLight type of object</span></div><div class="line"><span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.DirectionalLight(<span class="string">"Dir0"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>), scene);</div><div class="line"></div><div class="line"><span class="comment">// Creates a BABYLON.Mesh type of object</span></div><div class="line"><span class="keyword">var</span> mybox = BABYLON.Mesh.CreateBox(<span class="string">"box"</span>, <span class="number">6.0</span>, scene);</div></pre></td></tr></table></figure>
 
 
-<p>You get the idea.  Javascript objects, are used often in Babylon.js scenes.  Sometimes you will create them, and other times you will get a ‘reference’ or ‘handle’ to an object that was created earlier.  Getting a reference/handle to a Javascript object, essentially means opening a communication line to an already-built object.</p>
-<p>Each of these Javascript objects have named ‘pockets’ to store things-within.  Often, values, data, and objects… get stored in those pockets.  These value-storing pockets are called object ‘properties’.  Properties are commonly ‘set’ (putting a value INTO the pocket), and often ‘get’ (looking into the pocket to see what’s there).</p>
-<p><strong>Properties</strong></p>
-<p>Properties store values.  These values are used by the Babylon.js framework… to ‘render’ the scene.  Here is an example:</p>
+<p>现在你可能知道了javascript对象被经常使用在babylon的场景中，有时你创建了他们有时是对他们应用或者操作他们，当你应用和操作他们时就建立了一个连接方式同之前创建好的对象。</p>
+<p>每一个javascript对象都有一个存储内部事务的东西。通常值数据和对象被存储在这些包里面，这些值被保存在属性里面，可以通过get、set方法去操作这些值。</p>
+<p><strong>属性</strong></p>
+<p>属性是用来存储值的。这些值被babylon框架使用去渲染场景，这里是例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">light.intensity = <span class="number">0.5</span>;</div></pre></td></tr></table></figure>
 
-<p>Here, we ‘set’ the property named ‘intensity’ on the object called ‘light’ to a value of 0.5 (0.5 is called a FLOATING POINT value, or just ‘a float’).  We’ll talk about values, shortly.  The main thing I want you to notice is that the property (pocket) had a NAME… .intensity, and we stored the value 0.5 into that pocket (on the object named ‘light’).</p>
-<p><strong>Methods</strong></p>
-<p>The other common type of ‘pocket’ on a Javascript object… is called a ‘method’ (sometimes called a ‘function’).  Methods are used to store Javascript code onto Javascript objects.  Earlier, I said that properties are ‘set’.  Well, methods are ‘called’.  Here is the way a method is ‘called’.</p>
+<p>这里我们给光线这个对象设置了强度是0.5，我们将会讨论这个值，强度就是存放在属性包里面并且其值就是0.5.</p>
+<p><strong>方法</strong></p>
+<p>javascript对象的包的另外一个常见类型就是方法或者是函数。方法就是被用来储存javascript代码到javascript对象中。早些我们说过属性是设置的，方法就是调用，这里就是被调用。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scene.getMeshByName(<span class="string">"box"</span>);</div></pre></td></tr></table></figure>
 
-<p>Here, we have ‘called’ the getMeshByName() method that is located on the object called ‘scene’.  See that “box” thing inside the parentheses?  That is called a ‘parameter’ or sometimes called an ‘argument’ or just… ‘an arg’.  Some methods require one or more parameters inside the parentheses, and some require none at all.  If you look at your createScene function (method) from the big picture above, it had empty parentheses.  It did not require any parameters in order to be called.  At other times, you might see createScene(engine).  In this case, the createScene method DOES require a parameter…  a Javascript ENGINE-type of object.</p>
-<p>It is beyond the scope of this tutorial to teach everything about callable methods and settable properties on Javascript objects.  The main thing is to try to take notice WHEN a ‘pocket’ on an object… is a property, and when it is a method.  Methods always use parentheses… sometimes empty, sometimes full of parameters/args.  Properties never use parentheses and therefore never require parameters.</p>
-<p>Sometimes, methods are used to SET values of properties, and sometimes methods are used to GET values of properties.  These methods/functions are often called GETTERS and SETTERS.  Notice the word ‘get’ in the getMeshByName method above?  It is a GETTER method.  Here is a more proper use of that ‘call’:</p>
+<p>这里我们调用了方法getMeshByName()这个方法是在对象场景中。方法的括号中的对象那些就被称为参数。一些方法需要1个或者多个参数或者一个也不需要。如果你在找createScene函数的参数，他就是空的参数列表。调用他不需要任何的参数，在其他时候你可能看到createScene(engine)这样的方法，在这个例子中，createScene就是需要参数的。</p>
+<p>在例子中我们讲述了被称作javascript对象的方法和属性。这个主要的事就是注意对象的包里的方法还是属性。方法通常拥有参数列表，有时是孔的有时是满参数列表，属性就不需要参数列表了。</p>
+<p>通常，方法被使用来设置属性的值，或者是从属性中获取值。这些方法被称作getter和setter，常用的就是调用方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box_I_made = scene.getMeshByName(<span class="string">"box"</span>);</div></pre></td></tr></table></figure>
 
-<p>This call is getting a reference/handle on a box that was made earlier in the code, and putting that reference into a variable called ‘box_I_made’.  After you get that reference, you can do things to the box… like set property values.</p>
+<p>在这段代码中我们早些时候就定义的盒子的引用和调用，放置引用到一个变量名字叫做box_I_made中，当你获取了那个引用，你可以对那个盒子使用比如设置属性的值等：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box_I_made.rotation.y = <span class="built_in">Math</span>.PI/<span class="number">2</span>;  <span class="comment">// Rotate the box 90 degrees on the Y-axis.</span></div></pre></td></tr></table></figure>
 
-<p>It is difficult for me to explain, but actually quite easy to do, thanks to Babylon.js.  Experimenting with properties and methods… is the fastest way to learn.</p>
-<p><strong>Values</strong></p>
-<p>Values… are often the things that are stored in an object’s properties (‘pockets’) and the things that are returned when GETTER methods are called.  As crazy as this sounds, all values are Javascript objects.  Remember that 0.5 float that we saw earlier?  That is a Floating Point  NUMBER OBJECT.  The ‘box_I_made’ variable above… it is a MESH OBJECT.  The names of mesh, cameras, and lights… are STRING OBJECTS. Objects are everywhere, but they are good friends that help us stay organized. </p>
-<p>There are two types of value objects that are very common in Babylon.js.  They are the Vector3 value, and the Color3 value.  Vector3 and Color3 values… deserve to have their own section in this giant tutorial.  Here we go…</p>
-<h2 id="Vector3_and_Color3_Values">Vector3 and Color3 Values</h2>
-<p>Two of the most-used values in Babylon.js, are Vector3 values and Color3 values.</p>
-<h3 id="Vector3_Values">Vector3 Values</h3>
-<p>Vector3 values take the form of…</p>
+<p>通过属性和方法你可以更快的学习babylonjs。</p>
+<p><strong>值</strong></p>
+<p>值被存在对象的属性中并且可以通过getter方法去调用。所有的javascript对象的值，记得之前设置的0.5吗？那就是一个浮点型变量，而box_I_made变量就是一个网格对象。网格、摄像机、灯光的名字是字符串对象，但是他们很容易被我们组织起来。</p>
+<p>在babylonjs中式很容易让一个值对象有两种类型。比如他们是Vector3和Color3.Vector3和Color3的值在我们的实例中邮不同的值，例如：</p>
+<h2 id="Vector3_和_Color3_值">Vector3 和 Color3 值</h2>
+<p>这是两个被使用最多的变量值，Vector3和Color3.</p>
+<h3 id="Vector3_值">Vector3 值</h3>
+<p>Vector3 的值是这样的形式…</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BABYLON.Vector3(xValue, yValue, zValue)</div></pre></td></tr></table></figure>
 
-<p>They are often used to set/store…</p>
-<ul>
-<li>the value of a .position property on mesh, light, or camera objects</li>
-<li>the value of a .rotation property on a mesh object</li>
-<li>the value of a .scaling property on a mesh object</li>
-<li>the value of a .direction property on a light object</li>
-</ul>
-<p>The three ‘parameters’ inside the parentheses of a Vector3 value… are floats.  They can be negative or positive, and there is no practical limit to the size of those values.  Let’s look at a Vector3 being used to set the .position of a mesh.</p>
+<p>他们被用来读取和存取…</p>
+<p>网格、光线、摄像机对象的属性<br>网格对象的旋转属性<br>网格对象的缩放属性<br>光的方向属性</p>
+<p>在Vector3值的参数列表中有3个参数，都是浮点型。他们<br>The three ‘parameters’ inside the parentheses of a Vector3 value… are floats.  They can be negative or positive, and there is no practical limit to the size of those values.  Let’s look at a Vector3 being used to set the .position of a mesh.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box.position = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
 <p>The xValue is 0, meaning that the box is positioned in the center of the x-axis.  The yValue is 10, meaning that the box is positioned 10 units above the center of the y-axis.  The zValue is 0, meaning that the box is positioned in the center of the z-axis.  Easy.  We will talk more about positioning… further below.  </p>
@@ -673,11 +663,11 @@
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/12/29/Caching-the-resources-in-IndexedDB/">← 前一篇</a>
+            <a style="cursor:default" class="newer-posts" href="#">第一篇</a>
             
             <a class="share-button" data-original-title title>分享文章</a>
             
-            <a data-pjax class="older-posts" href="/2014/12/29/14-Height-map/">后一篇 →</a>
+            <a data-pjax class="older-posts" href="/2014/12/31/How-to-use-SceneOptimizer-tool/">后一篇 →</a>
             
         </nav>
         <br/>

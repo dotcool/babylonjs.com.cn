@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>位移，旋转，缩放 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
+  <title>Archives: 2015 | babylonjs中文网 - babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析</title>
   <meta name="description" content="babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析，帮助大家学习和开发babylonjs" />
   <meta name='keyword' content='babylonjs中文网，专注html5游戏开发，babylonjs的文档翻译和实例分析'/>
   <meta name="HandheldFriendly" content="True" />
@@ -401,7 +401,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">位移，旋转，缩放</a></li>
+                        <li id="navbar-title"><a href="#">undefined</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >介绍</span><i class="fa fa-chevron-down" ></i>
@@ -420,86 +420,47 @@
 
 
 <!-- -->
-<!--<body class="post-template">-->
+<!--<body class="home-template">-->
 <!---->
   
-
 <main class="content" role="main">
-    <article class="post" >
-    <span class="post-meta">
-                  <div class="tag-tile">
-                      
-                  </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">位移，旋转，缩放</h1>
 
-                    <div class="post-meta">
-                        发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-12-27T08:54:22.000Z"
-                              itemprop="datePublished">Dec 27 2014</time>
-                    </div>
-    </span>
+    
+    <article class="post">
 
-        <section class="post-content">
-            <h2 id="位移，旋转，缩放">位移，旋转，缩放</h2>
-<p>在这个实例里面，我们将要学会如何使用放置、旋转和缩放我们例子里面的所以元素对象。我们将设置一个父类以及学习父类如何影响着位移旋转和缩放。<br><img src="http://www.babylonjs.com/tutorials/03 - Rotation and scaling/03.png" alt="Elements"></p>
-<p><a href="http://www.babylonjs.com/playground/?3" target="_blank" rel="external"><strong>Playground Demo Scene 3 - Positioned, Scaled, and Rotated Boxes</strong></a></p>
-<h2 id="我应该如何做？">我应该如何做？</h2>
-<p>通常，我们将会在createScene中创建一个基本元素的场景</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createScene</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">var</span> scene = <span class="keyword">new</span> BABYLON.Scene(engine);</div><div class="line">    <span class="keyword">var</span> light = <span class="keyword">new</span> BABYLON.PointLight(<span class="string">"Omni"</span>, <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>), scene);</div><div class="line">    <span class="keyword">var</span> camera = <span class="keyword">new</span> BABYLON.ArcRotateCamera(<span class="string">"Camera"</span>, <span class="number">0</span>, <span class="number">0.8</span>, <span class="number">100</span>, <span class="keyword">new</span> BABYLON.Vector3.Zero(), scene);</div></pre></td></tr></table></figure>
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/01/02/Babylon.js-Primer/">babylonjs知识介绍</a>
+            </h1>
 
-<p>然后创建一些盒子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Creation of 3 boxes</span></div><div class="line">    <span class="keyword">var</span> box1 = BABYLON.Mesh.CreateBox(<span class="string">"Box1"</span>, <span class="number">6.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> box2 = BABYLON.Mesh.CreateBox(<span class="string">"Box2"</span>, <span class="number">6.0</span>, scene);</div><div class="line">    <span class="keyword">var</span> box3 = BABYLON.Mesh.CreateBox(<span class="string">"Box3"</span>, <span class="number">6.0</span>, scene);</div><div class="line">	[…]</div></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>放置</strong></li>
-</ul>
-<p>你能轻松的在场景里面放置盒子在你任何想要的地方，比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Positioning the boxes</span></div><div class="line">box1.position = <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">20</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">box2.position.x = -<span class="number">10</span>; <span class="comment">// or box2.position = new BABYLON.Vector3(-10,0,0);</span></div><div class="line">box3.position.x = <span class="number">0</span>;</div></pre></td></tr></table></figure>
-
-<p>现在我们让这些盒子围绕一个轴线转动一定角度</p>
-<ul>
-<li><strong>Rotation</strong> (angles are in radians)</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Rotate the box around the x axis</span></div><div class="line">box1.rotation.x = <span class="built_in">Math</span>.PI/<span class="number">4</span>; <span class="comment">// or box1.rotation = new BABYLON.Vector3(Math.PI/4,0,0);</span></div><div class="line"></div><div class="line"><span class="comment">//Rotate the box around the y axis</span></div><div class="line">box2.rotation.y = <span class="built_in">Math</span>.PI/<span class="number">6</span>;</div></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>Scaling</strong></li>
-</ul>
-<p>然后我们也能将盒子缩放</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Scaling of 2x on the x axis</span></div><div class="line">    box3.scaling.x = <span class="number">2</span>; <span class="comment">// or box3.scaling = new BABYLON.Vector3(2,1,1);</span></div></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>Parenting</strong></li>
-</ul>
-<p>babylonjs的另外一个特性就是可以绑定对象，在两个纹理对象之间建立相对的父子关系，父类的改变将会被应用到子类中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Positioning box3 relative to box1</span></div><div class="line">    box3.parent = box1;</div><div class="line">    box3.position.z = -<span class="number">10</span>;</div></pre></td></tr></table></figure>
-
-<h2 id="注意">注意</h2>
-<p>父子的层级关系是在每一帧都会被执行的，所以所有的位移、旋转缩放都是作用于父类应用到子类、子类变化作用于父类的。</p>
-<p>所有的变换都是发生在父子关系声明之后。 </p>
-<p>简单的一个约定就是，在你没有声明一个父类关系自谦不要去旋转或者移动一个子类，同时记住额外的旋转等效果将会被应用到对应的孩子节点。</p>
-<h2 id="接下来">接下来</h2>
-<p>现在你已经指导如何在一个场景里面去创建和移动一些物体，但是你的所有物体都是一个皮肤，接下来我们将会讲一讲材质的问题。</p>
-
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-01-02T09:20:06.000Z"
+                      itemprop="datePublished">Jan 2 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                babylonjs是一个WEBGL的构建系统
+欢迎来到babylonjs的手册，这里是一些你需要知道的事，可以让你获得很多基于javascript的WEBGL框架。什么是框架呢，你可以想象成一幢建筑的低级，允许你可以不用担心一些基础的东西，虽然很复杂但是却容易使用。
+我们想要让你可以在短时间内学习很多东西，我们将要让你去发现他们。现在我们只是教会你最快捷和最简单的方法去学习babylonjs。
+浏览器要求
+简单来说你需要支持webgl的
+                
+            </p>
+            
         </section>
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-            
-            <a data-pjax class="newer-posts" href="/2014/12/27/04-Materials/">← 前一篇</a>
-            
-            <a class="share-button" data-original-title title>分享文章</a>
-            
-            <a data-pjax class="older-posts" href="/2014/12/27/02-Basic-elements/">后一篇 →</a>
-            
-        </nav>
-        <br/>
-        <br/>
-        <section id="comment">
-            <div id="comment-box"></div>
-        </section>
-
-
     </article>
+    
+    <nav class="pagination" role="pagination">
+        
+        <span class="page-number">文章 1 of 1</span>
+        
+    </nav>
 </main>
 
 
