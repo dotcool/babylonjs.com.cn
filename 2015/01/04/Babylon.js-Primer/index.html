@@ -46,7 +46,7 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/02/Babylon.js-Primer/">babylonjs知识介绍</a>
+                                    <a href="/2015/01/04/Babylon.js-Primer/">babylonjs知识介绍</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -291,7 +291,7 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
-                    <a  data-pjax href="/2015/01/02/Babylon.js-Primer/">babylonjs知识介绍</a>
+                    <a  data-pjax href="/2015/01/04/Babylon.js-Primer/">babylonjs知识介绍</a>
                 
                     <a  data-pjax href="/2014/12/31/How-to-use-SceneOptimizer-tool/">如何使用场景优化</a>
                 
@@ -434,8 +434,8 @@
 
                     <div class="post-meta">
                         发布于<span class="fa fa-clock-o"></span>
-                        <time datetime="2015-01-02T09:20:06.000Z"
-                              itemprop="datePublished">Jan 2 2015</time>
+                        <time datetime="2015-01-03T16:02:07.000Z"
+                              itemprop="datePublished">Jan 4 2015</time>
                     </div>
     </span>
 
@@ -574,51 +574,49 @@
 
 <p>他们被用来读取和存取…</p>
 <p>网格、光线、摄像机对象的属性<br>网格对象的旋转属性<br>网格对象的缩放属性<br>光的方向属性</p>
-<p>在Vector3值的参数列表中有3个参数，都是浮点型。他们<br>The three ‘parameters’ inside the parentheses of a Vector3 value… are floats.  They can be negative or positive, and there is no practical limit to the size of those values.  Let’s look at a Vector3 being used to set the .position of a mesh.</p>
+<p>在Vector3值的参数列表中有3个参数，都是浮点型。他们可以为正数或者负数，他们没有对值的大小限制，让我们看一下网格的位置属性Vector3.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box.position = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<p>The xValue is 0, meaning that the box is positioned in the center of the x-axis.  The yValue is 10, meaning that the box is positioned 10 units above the center of the y-axis.  The zValue is 0, meaning that the box is positioned in the center of the z-axis.  Easy.  We will talk more about positioning… further below.  </p>
-<p>Now let’s look at a Vector3 being used to set a .rotation value:</p>
+<p>x的值是0，所以他被放置在x轴的原点处，y的值是10所以放在y的正方向的10的单元而z是0就意味着放置在z轴的原点处。当让之后我们还会讨论更多的位置的设置。</p>
+<p>现在我们来看一下Vector3被用来设置旋转的值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box.rotation = <span class="keyword">new</span> BABYLON.Vector3(<span class="built_in">Math</span>.PI/<span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<p>Here, our box is being rotated around the x-axis… about 45 degrees.  In Babylon.js, rotation is measured in radians.  Math.PI/4 is approximately .707 radians.  To rotate 90 degrees, it would be Math.PI/2, or about 1.57 radians.  For 180 degrees, it would be Math.PI, or about 3.14 radians.  To rotate 360 degrees, it would Math.PI times 2, or about 6.28 radians.</p>
-<p>Keep in mind that Vector3 values can be negative numbers as well.  So you could easily use -Math.PI/4, -Math.PI/2, -Math.PI, and -Math.PI times 2.  These values would rotate the object in the opposite direction around the x-axis.  How about this Vector3 rotation:</p>
+<p>这里我们的盒子被围绕着x轴旋转大概45度。在babylonjs中，旋转就是角度，π/4就是大概707弧度，为了旋转90度将会是π/2大概1.57弧度。为了旋转180度大概是π，3.14弧度。为了旋转360度就是2π大概6.28度。</p>
+<p>记住Vector3也可以是负数，所以你可以使用-π/4,-π/2,-π*2等等</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box.rotation = <span class="keyword">new</span> BABYLON.Vector3(<span class="built_in">Math</span>.PI/<span class="number">2</span>, <span class="number">0</span>, -<span class="number">.707</span>);</div></pre></td></tr></table></figure>
 
-<p>If you think that it rotates our box in a positive (+) direction 90 degrees around the x-axis, AND ALSO rotates our box 45 degrees in a negative (-) direction around the z-axis, you would be correct.  </p>
-<p>Even though Vector3 values can contain very large negative or positive numbers, it is rarely necessary for any xValue, yValue, or zValue… to be outside the range of -6.28 to +6.28 <strong>for setting rotations</strong>.  Any numbers outside that range would be unnecessary, because -6.28 (radians) rotates 360 degrees in one direction, and +6.28 (radians) rotates 360 degrees in the opposite direction.  That’s a full range of rotation, isn’t it?  We’ll talk a bit more about rotation, further below.</p>
-<p>Now let’s see a Vector3 used for scaling (stretching and shrinking) a mesh:</p>
+<p>如果你想我们的盒子在正的方向围绕着x轴旋转90度，并且在负z轴上旋转45度你就可以这么来设置</p>
+<p>尽管Vector3的值可以是很大的正数或者负数但是他有一个范围，在-6.28到+6.28之间，超过了这个数字区间是没有意义的，可以查看一下Vector3用于网格的缩放：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box.scaling = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
 
-<p>Scaling is a way to shrink or stretch a mesh along any of the 3 scene axes.  In the above example, the xValue (1) indicates that no scaling change to the mesh along its x-axis… is desired.  The yValue of 1 indicates that we want no change in scaling along the y-axis, either.  The zValue of 3 indicates that we we are ‘stretching’ our mesh along its z-axis… to 3 times its normal size.  Easy, right?  You bet!  </p>
-<p>I will talk more about scaling… further below.</p>
-<p>Another use for a Vector3 value… is setting the .direction for certain types of lights:</p>
+<p>缩放可以在三个方向上进行扩展，在上边的例子中x的值表示没有缩放，y是1也表示没有缩放，但是z是3表示是普通状态的3倍。</p>
+<p>下边我们将继续介绍缩放。</p>
+<p>另外一个例子就是灯光的方向设置也是Vector3：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mySpotLight.direction = <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<p>Generally speaking, when a Vector3 value is used to set a DIRECTION, the xValue, yValue, and zValue are each in a range of negative 1… to positive 1.  In the example above, our light is aimed negative on the y-axis… or… straight down.  Directions (directional vectors) are used for more things than just lights, but lights is a common use.  Directional vectors are not always easy things to determine the x, y, and z parameters/values for.  We have some helpful tools on our lights… that will assist you in setting directions.  You will learn about those tools in our lights tutorial.</p>
-<h3 id="Color3_Values">Color3 Values</h3>
-<p>Color3 values look very much like Vector3 values.  Here is an example:</p>
+<p>通常来说，当一个Vector3的值被设置到方向上，xyz的值就是一个从-1到1的这么个范围。在上边的例子中，我们的光线是对着负的y轴或者说事垂直朝下，方向向量被用于很多不仅限于光线。方向向量也不是那么简单的设置xyz的，我们有可用的工具来辅助设置方向，你可以在光线的例子中找到这些工具。</p>
+<h3 id="Color3_值">Color3 值</h3>
+<p>Color3值和Vector3值很接近：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BABYLON.Color3(rValue, gValue, bValue)</div></pre></td></tr></table></figure>
 
-<p>The rValue is for red, the gValue is for green, and the bValue is for blue.  I bet you have already figured out that Color3 values are used for setting colors.  The rValue, gValue, and bValue, all contain float numbers in the range of 0 to 1.  Let’s look at a few examples:</p>
+<p>r的值是红色，g的值是绿色，b的值是蓝色，Color3就是被用来设置颜色的设置的范围是0到1，先看一下这个例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>) - red</div><div class="line">BABYLON.Color3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>) - cyan</div><div class="line">BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) - green</div><div class="line">BABYLON.Color3(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>) - violet</div><div class="line">BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>) - yellow</div><div class="line">BABYLON.Color3(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) - black</div><div class="line">BABYLON.Color3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>) - white</div><div class="line">BABYLON.Color3(<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>) - medium gray</div><div class="line">BABYLON.Color3(<span class="number">0.2</span>, <span class="number">0</span>, <span class="number">0.2</span>) - dark purple</div></pre></td></tr></table></figure>
 
-
-<p>Not so difficult.  Let’s say that you wanted to put a color on a box that you have already created.  The first thing you do is create a Javascript object called a StandardMaterial.  Then you would apply (set) that StandardMaterial as the box’s .material property.  This is covered by our Materials tutorial, but let’s look at how that is done, here.</p>
+<p>不是很难，让我们在你创建的盒子上放置一个颜色，首先你需要创建一个StandardMaterial的javascript对象。然后你可以设置盒子的material属性，我们可以看一下代码：  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myMaterial = <span class="keyword">new</span> BABYLON.StandardMaterial(<span class="string">"mymat"</span>, scene);</div><div class="line">myBox.material = myMaterial;</div></pre></td></tr></table></figure>
 
-<p>The first line creates a StandardMaterial and puts it into the variable named myMaterial.  The second line sets the box’s .material property… to be that newly-made StandardMaterial.  The appearance of the box will not change yet, because we have not given the StandardMaterial any information about what color we want the box to be.  </p>
-<p>One of the many properties on a StandardMaterial object… is named .diffuseColor.  That property is the primary way to set a basic color.  And right here… is where we use our new Color3 value.  Let’s have a look:</p>
+<p>第一个行就是创建一个StandardMaterial并赋予变量myMaterial。第二行就是设置盒子的material属性，盒子的外观还没有改变，因为欧明文还没有设置颜色到对象上。</p>
+<p>StandardMaterial对象有很多属性比如diffuseColor，这个属性是设置基础颜色的唯一方法，并且也是我们使用Color3值的地方。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myMaterial.diffuseColor = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>, <span class="number">0.5</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<p>Our box is now colored medium green.  It’s just that easy.  The StandardMaterial object has many other properties on it.  You can add color to properties such as  .specularColor, .emissiveColor, .ambientColor.  All those properties are set (if you choose)… using our friend… the Babylon.js Color3 value.</p>
-<p>Another use of the Color3 value is to set the .diffuse property of lights.  Take careful note that the name of this property is .diffuse, and not .diffuseColor.  Lights use a property named .diffuse to set their primary color.  Let’s take a look at how to set the primary color of a light that you have already created:</p>
+<p>我们的盒子被染上了绿色，如此容易。StandardMaterial对象有很多属性你可以添加颜色到这些属性中，比如 .specularColor, .emissiveColor, .ambientColor.所有的属性都可以被设置成Color3的值</p>
+<p>同时Color3值也可以用来设置灯光的.diffuse属性，这是设置主颜色的方法，那么我们来设置一下。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myLight.diffuse = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<p>And there we go.  We have colored the light beam that emits from our light… to be medium red.  There is one more use for a Color3 value, and that is on one of our newest basic shape objects… called a LINES object.  A LINES object does not use a StandardMaterial object for its color.  It uses a property called .color.  Here is an example of a LINES object being created, and then colored:</p>
+<p>然后我么可以发现已经让发射的光线改变了颜色，编程了浅红色。更多的使用是对物体的对象的属性赋值，比如LINES对象，一个LINES对象并不使用StandardMaterial对象的颜色。他使用了属性.color，这里是一个例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Creation of a triangular lines mesh</span></div><div class="line"><span class="keyword">var</span> myLines = BABYLON.Mesh.CreateLines(<span class="string">"itsName"</span>, [</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">5</span>, <span class="number">0</span>, <span class="number">5</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">5</span>, <span class="number">0</span>, <span class="number">5</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(<span class="number">0</span>, <span class="number">0</span>, -<span class="number">5</span>),</div><div class="line">        <span class="keyword">new</span> BABYLON.Vector3(-<span class="number">5</span>, <span class="number">0</span>, <span class="number">5</span>)</div><div class="line">], scene);</div><div class="line"></div><div class="line"><span class="comment">// And here is how it is colored green...</span></div><div class="line">myLines.color = <span class="keyword">new</span> BABYLON.Color3(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>);</div></pre></td></tr></table></figure>
 
-<p>The creation of the lines object was a bit strange, but it sure was easy to make it green, using a Color3 value.  You will learn more about the lines mesh…. in our Basic Elements tutorial.  For now, I just wanted to show you that it does not use a .diffuseColor property like a box with a StandardMaterial applied, nor a .diffuse property like we used for coloring light beams.  It, instead, uses a property called .color.  Simple.</p>
+<p>lines对象的创建有一点奇怪，但是确实创建了一个绿色的属性。你可以在基本元素的例子中学习lines网格。从现在器，我只是想给你展示不使用盒子一样的属性.diffuseColor或者是.diffuse属性<br>The creation of the lines object was a bit strange, but it sure was easy to make it green, using a Color3 value.  You will learn more about the lines mesh…. in our Basic Elements tutorial.  For now, I just wanted to show you that it does not use a .diffuseColor property like a box with a StandardMaterial applied, nor a .diffuse property like we used for coloring light beams.  It, instead, uses a property called .color.  Simple.</p>
 <h2 id="My_New_Friends_-_-position,_-rotation,_and_-scaling">My New Friends - .position, .rotation, and .scaling</h2>
 <p>As you toured the Babylon.js Playground demo scenes, you surely saw some .position, .rotation, and maybe some .scaling properties being ‘set’ with values.  Let’s take a look at each one:</p>
 <p><strong>POSITION</strong> - Also called translation, every mesh is POSITIONED in a scene using X, Y, and Z settings.  You can think of the .position property… as the mesh’s LOCATION.  The link below… is a saved playground scene that illustrates using a mesh’s .position property.  Try to open it in a new window or new tab, so you can jump back and forth between this tutorial… and the playground scene:</p>
